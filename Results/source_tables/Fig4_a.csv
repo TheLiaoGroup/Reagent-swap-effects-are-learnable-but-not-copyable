@@ -1,0 +1,5 @@
+label,value,unit,source,selector,observation_id,reactant1_smiles,reactant2_smiles,recipe,provenance_source_file,source_filter
+calibration_only,216.290361290479,MSE pp2,scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv,common8; raw_delta; all; equal_class_edge_balanced; budget=8,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4a; source and selector columns retain original provenance
+frozen_family,200.8986473474289,MSE pp2,scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv,common8; raw_delta; all; equal_class_edge_balanced; budget=8,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4a; source and selector columns retain original provenance
+joint,195.3049241951297,MSE pp2,scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv,common8; raw_delta; all; equal_class_edge_balanced; budget=8,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4a; source and selector columns retain original provenance
+

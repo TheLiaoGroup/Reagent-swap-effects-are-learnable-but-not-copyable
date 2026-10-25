@@ -1,0 +1,16 @@
+{
+  "retained_measurement_ids": 114733,
+  "published_measurement_ids": 47015,
+  "overlapping_measurement_ids": 45546,
+  "retained_only_measurement_ids": 69187,
+  "published_only_measurement_ids": 1469,
+  "reference_url": "https://raw.githubusercontent.com/aichemeco/amide_coupling/f6fdbe283fc24af53389aab8dcba5e46386ac9c0/data/all_HTE_with_condition.csv",
+  "reference_commit": "f6fdbe283fc24af53389aab8dcba5e46386ac9c0",
+  "reference_sha256": "5085e1ae50ee26173bd170a4b10a99c4e3101a46b706d115e425aff17c091b41",
+  "source_file": "Acylation_260805.xlsx",
+  "reference_input": "Analysis/auxiliary_inputs/zhang_2025.csv",
+  "reference_access": "packaged auxiliary input; no network",
+  "exclusion_sha256": "236b9ab8558e8f708e845912e4c95acb287c67b5ed6fab2f2ae315cc5088d5db",
+  "definition": "Exact measurement-ID (name0) overlap; current SMILES are retained as written"
+}
+

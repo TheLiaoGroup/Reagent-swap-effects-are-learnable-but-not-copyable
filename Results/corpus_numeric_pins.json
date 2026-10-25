@@ -1,0 +1,1823 @@
+[
+  {
+    "item": "recon_source_tables20_records",
+    "actual": 410983,
+    "shown": "410,983",
+    "source": "out/M1_well_measurement_status_exclusions.json",
+    "selector": "source_records; reaction sheets only"
+  },
+  {
+    "item": "recon_excluded_records",
+    "actual": 396,
+    "shown": "396",
+    "source": "out/M1_well_measurement_status_exclusions.json",
+    "selector": "deleted_wells; exact authoritative measurement IDs"
+  },
+  {
+    "item": "recon_tables20_records",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_tables20_count",
+    "actual": 20,
+    "shown": "20",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "nunique(source_file)"
+  },
+  {
+    "item": "recon_arrays19_count",
+    "actual": 19,
+    "shown": "19",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "reaction_table != Finkelstein; nunique(source_file)"
+  },
+  {
+    "item": "recon_arrays19_records_available",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_arrays19_records",
+    "actual": 406909,
+    "shown": "406,909",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "reaction_table != Finkelstein"
+  },
+  {
+    "item": "recon_arrays19_records_difference",
+    "actual": 3678,
+    "shown": "3,678",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (all retained reaction records) minus used (reaction_table != Finkelstein)"
+  },
+  {
+    "item": "recon_tables20_finite_available",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_tables20_finite",
+    "actual": 381688,
+    "shown": "381,688",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "measurement_status in [quantified, zero_by_rule]"
+  },
+  {
+    "item": "recon_tables20_finite_difference",
+    "actual": 28899,
+    "shown": "28,899",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (all retained reaction records) minus used (measurement_status in [quantified, zero_by_rule])"
+  },
+  {
+    "item": "recon_status_quantified_available",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_status_quantified",
+    "actual": 360034,
+    "shown": "360,034",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "measurement_status == quantified"
+  },
+  {
+    "item": "recon_status_quantified_difference",
+    "actual": 50553,
+    "shown": "50,553",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (all retained reaction records) minus used (measurement_status == quantified)"
+  },
+  {
+    "item": "recon_status_zero_by_rule_available",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_status_zero_by_rule",
+    "actual": 21654,
+    "shown": "21,654",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "measurement_status == zero_by_rule"
+  },
+  {
+    "item": "recon_status_zero_by_rule_difference",
+    "actual": 388933,
+    "shown": "388,933",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (all retained reaction records) minus used (measurement_status == zero_by_rule)"
+  },
+  {
+    "item": "recon_status_detected_not_quantified_available",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_status_detected_not_quantified",
+    "actual": 24286,
+    "shown": "24,286",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "measurement_status == detected_not_quantified"
+  },
+  {
+    "item": "recon_status_detected_not_quantified_difference",
+    "actual": 386301,
+    "shown": "386,301",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (all retained reaction records) minus used (measurement_status == detected_not_quantified)"
+  },
+  {
+    "item": "recon_status_no_screen_record_available",
+    "actual": 410587,
+    "shown": "410,587",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "all retained reaction records"
+  },
+  {
+    "item": "recon_status_no_screen_record",
+    "actual": 4613,
+    "shown": "4,613",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "measurement_status == no_screen_record"
+  },
+  {
+    "item": "recon_status_no_screen_record_difference",
+    "actual": 405974,
+    "shown": "405,974",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (all retained reaction records) minus used (measurement_status == no_screen_record)"
+  },
+  {
+    "item": "recon_arrays19_finite_available",
+    "actual": 406909,
+    "shown": "406,909",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "reaction_table != Finkelstein; count records"
+  },
+  {
+    "item": "recon_arrays19_finite",
+    "actual": 378070,
+    "shown": "378,070",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "reaction_table != Finkelstein; numerical yield present"
+  },
+  {
+    "item": "recon_arrays19_finite_difference",
+    "actual": 28839,
+    "shown": "28,839",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "available (reaction_table != Finkelstein; count records) minus used (reaction_table != Finkelstein; numerical yield present)"
+  },
+  {
+    "item": "recon_recipe_options_tables20_strict_available",
+    "actual": 381688,
+    "shown": "381,688",
+    "source": "scripts/recipe_options/Analysis/data/normalized_records.csv.gz",
+    "selector": "yield_numeric in [0,1]; count records"
+  },
+  {
+    "item": "recon_recipe_options_tables20_strict",
+    "actual": 380910,
+    "shown": "380,910",
+    "source": "scripts/recipe_options/Analysis/data/normalized_records.csv.gz",
+    "selector": "strict_eligible == True"
+  },
+  {
+    "item": "recon_recipe_options_tables20_strict_difference",
+    "actual": 778,
+    "shown": "778",
+    "source": "scripts/recipe_options/Analysis/data/normalized_records.csv.gz",
+    "selector": "available (yield_numeric in [0,1]; count records) minus used (strict_eligible == True)"
+  },
+  {
+    "item": "recon_recipe_options_arrays19_strict_available",
+    "actual": 378070,
+    "shown": "378,070",
+    "source": "scripts/recipe_options/Analysis/data/normalized_records.csv.gz",
+    "selector": "dataset_id != Finkelstein; yield_numeric in [0,1]; count records"
+  },
+  {
+    "item": "recon_recipe_options_arrays19_strict",
+    "actual": 377292,
+    "shown": "377,292",
+    "source": "scripts/recipe_options/Analysis/data/normalized_records.csv.gz",
+    "selector": "strict_eligible == True; dataset_id != Finkelstein"
+  },
+  {
+    "item": "recon_recipe_options_arrays19_strict_difference",
+    "actual": 778,
+    "shown": "778",
+    "source": "scripts/recipe_options/Analysis/data/normalized_records.csv.gz",
+    "selector": "available (dataset_id != Finkelstein; yield_numeric in [0,1]; count records) minus used (strict_eligible == True; dataset_id != Finkelstein)"
+  },
+  {
+    "item": "recon_response_learning_tables20_eligible_records_available",
+    "actual": 381688,
+    "shown": "381,688",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(n_yield_finite)"
+  },
+  {
+    "item": "recon_response_learning_tables20_eligible_records",
+    "actual": 381686,
+    "shown": "381,686",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(n_eligible_raw_observations)"
+  },
+  {
+    "item": "recon_response_learning_tables20_eligible_records_difference",
+    "actual": 2,
+    "shown": "2",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (sum(n_yield_finite)) minus used (sum(n_eligible_raw_observations))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_eligible_records_available",
+    "actual": 378070,
+    "shown": "378,070",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(n_yield_finite)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_eligible_records",
+    "actual": 378068,
+    "shown": "378,068",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(n_eligible_raw_observations)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_eligible_records_difference",
+    "actual": 2,
+    "shown": "2",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (reaction_type != finkelstein; sum(n_yield_finite)) minus used (reaction_type != finkelstein; sum(n_eligible_raw_observations))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_exact_swaps_available",
+    "actual": 2135,
+    "shown": "2,135",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(strict_swaps)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_exact_swaps",
+    "actual": 2021,
+    "shown": "2,021",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(strict_swaps)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_exact_swaps_difference",
+    "actual": 114,
+    "shown": "114",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (sum(strict_swaps)) minus used (reaction_type != finkelstein; sum(strict_swaps))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_typed_edges_available",
+    "actual": 1550,
+    "shown": "1,550",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(typed_edges)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_typed_edges",
+    "actual": 1475,
+    "shown": "1,475",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(typed_edges)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_typed_edges_difference",
+    "actual": 75,
+    "shown": "75",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (sum(typed_edges)) minus used (reaction_type != finkelstein; sum(typed_edges))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_responses_available",
+    "actual": 828658,
+    "shown": "828,658",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(corpus_rows)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_responses",
+    "actual": 824473,
+    "shown": "824,473",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(corpus_rows)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_responses_difference",
+    "actual": 4185,
+    "shown": "4,185",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (sum(corpus_rows)) minus used (reaction_type != finkelstein; sum(corpus_rows))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_multibackground_types_available",
+    "actual": 303,
+    "shown": "303",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(multi_background_edges)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_multibackground_types",
+    "actual": 293,
+    "shown": "293",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(multi_background_edges)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_multibackground_types_difference",
+    "actual": 10,
+    "shown": "10",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (sum(multi_background_edges)) minus used (reaction_type != finkelstein; sum(multi_background_edges))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_multibackground_responses_available",
+    "actual": 267462,
+    "shown": "267,462",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "sum(legacy_profile_rows)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_multibackground_responses",
+    "actual": 265714,
+    "shown": "265,714",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "reaction_type != finkelstein; sum(legacy_profile_rows)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_multibackground_responses_difference",
+    "actual": 1748,
+    "shown": "1,748",
+    "source": "scripts/response_learning/Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv",
+    "selector": "available (sum(legacy_profile_rows)) minus used (reaction_type != finkelstein; sum(legacy_profile_rows))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_structure_types_available",
+    "actual": 293,
+    "shown": "293",
+    "source": "scripts/response_learning/Matched_Representation_E62/results/e62_support_bridge_1548.csv",
+    "selector": "reaction_type != finkelstein; n_backgrounds >= 2; count rows"
+  },
+  {
+    "item": "recon_response_learning_arrays19_structure_types",
+    "actual": 93,
+    "shown": "93",
+    "source": "scripts/response_learning/Matched_Representation_E62/results/e62_support_bridge_1548.csv",
+    "selector": "panel_status == eligible; reaction_type != finkelstein"
+  },
+  {
+    "item": "recon_response_learning_arrays19_structure_types_difference",
+    "actual": 200,
+    "shown": "200",
+    "source": "scripts/response_learning/Matched_Representation_E62/results/e62_support_bridge_1548.csv",
+    "selector": "available (reaction_type != finkelstein; n_backgrounds >= 2; count rows) minus used (panel_status == eligible; reaction_type != finkelstein)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_structure_vectors",
+    "actual": 25956,
+    "shown": "25,956",
+    "source": "scripts/response_learning/Matched_Representation_E62/results/e62_support_bridge_1548.csv",
+    "selector": "panel_status == eligible; sum(n_scored_vectors)"
+  },
+  {
+    "item": "recon_response_learning_structure_arrays",
+    "actual": 14,
+    "shown": "14",
+    "source": "scripts/response_learning/Matched_Representation_E62/results/e62_support_bridge_1548.csv",
+    "selector": "panel_status == eligible; nunique(reaction_type)"
+  },
+  {
+    "item": "recon_response_learning_family_supported_available",
+    "actual": 25956,
+    "shown": "25,956",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "sum(n_all_original)"
+  },
+  {
+    "item": "recon_response_learning_family_supported",
+    "actual": 25520,
+    "shown": "25,520",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "sum(n_family_supported)"
+  },
+  {
+    "item": "recon_response_learning_family_supported_difference",
+    "actual": 436,
+    "shown": "436",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "available (sum(n_all_original)) minus used (sum(n_family_supported))"
+  },
+  {
+    "item": "recon_response_learning_update_supported_available",
+    "actual": 25956,
+    "shown": "25,956",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "sum(n_all_original)"
+  },
+  {
+    "item": "recon_response_learning_update_supported",
+    "actual": 24943,
+    "shown": "24,943",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "sum(n_update_supported)"
+  },
+  {
+    "item": "recon_response_learning_update_supported_difference",
+    "actual": 1013,
+    "shown": "1,013",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "available (sum(n_all_original)) minus used (sum(n_update_supported))"
+  },
+  {
+    "item": "recon_response_learning_arrays19_local_common8_available",
+    "actual": 25956,
+    "shown": "25,956",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "sum(n_all_original)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_local_common8",
+    "actual": 24221,
+    "shown": "24,221",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "sum(n_common8)"
+  },
+  {
+    "item": "recon_response_learning_arrays19_local_common8_difference",
+    "actual": 1735,
+    "shown": "1,735",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_support_classes_20.csv",
+    "selector": "available (sum(n_all_original)) minus used (sum(n_common8))"
+  },
+  {
+    "item": "recon_reference_learning_duplicate_rows",
+    "actual": 338,
+    "shown": "338",
+    "source": "scripts/reference_learning/Analysis/data/screen_reconstruction_manifest.json",
+    "selector": "duplicate_rows_excluded"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_conditions",
+    "actual": 94,
+    "shown": "94",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Acylation|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_analysis_pairs",
+    "actual": 596,
+    "shown": "596",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Acylation|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_analysis_wells",
+    "actual": 54874,
+    "shown": "54,874",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Acylation|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_reserve_pairs",
+    "actual": 256,
+    "shown": "256",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Acylation|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_reserve_wells",
+    "actual": 23580,
+    "shown": "23,580",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Acylation|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Acylation|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_01_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Acylation|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_conditions",
+    "actual": 95,
+    "shown": "95",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_analysis_pairs",
+    "actual": 50,
+    "shown": "50",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_analysis_wells",
+    "actual": 4673,
+    "shown": "4,673",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_reserve_pairs",
+    "actual": 8,
+    "shown": "8",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_reserve_wells",
+    "actual": 760,
+    "shown": "760",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_02_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_conditions",
+    "actual": 95,
+    "shown": "95",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_analysis_pairs",
+    "actual": 50,
+    "shown": "50",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_analysis_wells",
+    "actual": 4657,
+    "shown": "4,657",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_reserve_pairs",
+    "actual": 6,
+    "shown": "6",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_reserve_wells",
+    "actual": 563,
+    "shown": "563",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_03_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|2; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_conditions",
+    "actual": 91,
+    "shown": "91",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_analysis_pairs",
+    "actual": 50,
+    "shown": "50",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_analysis_wells",
+    "actual": 4519,
+    "shown": "4,519",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_reserve_pairs",
+    "actual": 4,
+    "shown": "4",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_reserve_wells",
+    "actual": 354,
+    "shown": "354",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_04_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig(CMC)|3; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_conditions",
+    "actual": 95,
+    "shown": "95",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Buchwald-Hartwig|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_analysis_pairs",
+    "actual": 213,
+    "shown": "213",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_analysis_wells",
+    "actual": 19823,
+    "shown": "19,823",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_sealed_pairs",
+    "actual": 53,
+    "shown": "53",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_05_sealed_wells",
+    "actual": 4917,
+    "shown": "4,917",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_conditions",
+    "actual": 89,
+    "shown": "89",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Buchwald-Hartwig|2; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_analysis_pairs",
+    "actual": 57,
+    "shown": "57",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|2; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_analysis_wells",
+    "actual": 5027,
+    "shown": "5,027",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|2; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|2; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|2; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_sealed_pairs",
+    "actual": 14,
+    "shown": "14",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|2; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_06_sealed_wells",
+    "actual": 1239,
+    "shown": "1,239",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Buchwald-Hartwig|2; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_conditions",
+    "actual": 92,
+    "shown": "92",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == C-O competitive reactions|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_analysis_pairs",
+    "actual": 50,
+    "shown": "50",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == C-O competitive reactions|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_analysis_wells",
+    "actual": 4557,
+    "shown": "4,557",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == C-O competitive reactions|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_reserve_pairs",
+    "actual": 16,
+    "shown": "16",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == C-O competitive reactions|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_reserve_wells",
+    "actual": 1459,
+    "shown": "1,459",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == C-O competitive reactions|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == C-O competitive reactions|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_07_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == C-O competitive reactions|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_conditions",
+    "actual": 32,
+    "shown": "32",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Chan-Lam|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_analysis_pairs",
+    "actual": 105,
+    "shown": "105",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_analysis_wells",
+    "actual": 3334,
+    "shown": "3,334",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_sealed_pairs",
+    "actual": 26,
+    "shown": "26",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_08_sealed_wells",
+    "actual": 830,
+    "shown": "830",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_conditions",
+    "actual": 33,
+    "shown": "33",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Chan-Lam|2; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_analysis_pairs",
+    "actual": 50,
+    "shown": "50",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|2; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_analysis_wells",
+    "actual": 1639,
+    "shown": "1,639",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|2; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|2; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|2; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|2; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_09_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Chan-Lam|2; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_conditions",
+    "actual": 95,
+    "shown": "95",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Esterification|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_analysis_pairs",
+    "actual": 50,
+    "shown": "50",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Esterification|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_analysis_wells",
+    "actual": 4656,
+    "shown": "4,656",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Esterification|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_reserve_pairs",
+    "actual": 2,
+    "shown": "2",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Esterification|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_reserve_wells",
+    "actual": 187,
+    "shown": "187",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Esterification|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Esterification|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_10_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Esterification|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_conditions",
+    "actual": 46,
+    "shown": "46",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Grignard|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_analysis_pairs",
+    "actual": 62,
+    "shown": "62",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Grignard|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_analysis_wells",
+    "actual": 2741,
+    "shown": "2,741",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Grignard|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Grignard|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Grignard|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_sealed_pairs",
+    "actual": 16,
+    "shown": "16",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Grignard|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_11_sealed_wells",
+    "actual": 710,
+    "shown": "710",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Grignard|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_conditions",
+    "actual": 90,
+    "shown": "90",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Heck|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_analysis_pairs",
+    "actual": 142,
+    "shown": "142",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Heck|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_analysis_wells",
+    "actual": 12410,
+    "shown": "12,410",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Heck|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_reserve_pairs",
+    "actual": 61,
+    "shown": "61",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Heck|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_reserve_wells",
+    "actual": 5345,
+    "shown": "5,345",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Heck|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Heck|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_12_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Heck|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_conditions",
+    "actual": 91,
+    "shown": "91",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Hiyama|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_analysis_pairs",
+    "actual": 74,
+    "shown": "74",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Hiyama|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_analysis_wells",
+    "actual": 6647,
+    "shown": "6,647",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Hiyama|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_reserve_pairs",
+    "actual": 31,
+    "shown": "31",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Hiyama|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_reserve_wells",
+    "actual": 2771,
+    "shown": "2,771",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Hiyama|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Hiyama|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_13_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Hiyama|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_conditions",
+    "actual": 89,
+    "shown": "89",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Kumada|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_analysis_pairs",
+    "actual": 126,
+    "shown": "126",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Kumada|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_analysis_wells",
+    "actual": 10917,
+    "shown": "10,917",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Kumada|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Kumada|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Kumada|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_sealed_pairs",
+    "actual": 32,
+    "shown": "32",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Kumada|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_14_sealed_wells",
+    "actual": 2790,
+    "shown": "2,790",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Kumada|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_conditions",
+    "actual": 47,
+    "shown": "47",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Reductive-amination|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_analysis_pairs",
+    "actual": 113,
+    "shown": "113",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Reductive-amination|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_analysis_wells",
+    "actual": 5243,
+    "shown": "5,243",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Reductive-amination|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_reserve_pairs",
+    "actual": 48,
+    "shown": "48",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Reductive-amination|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_reserve_wells",
+    "actual": 2224,
+    "shown": "2,224",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Reductive-amination|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Reductive-amination|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_15_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Reductive-amination|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_conditions",
+    "actual": 47,
+    "shown": "47",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == SNAr|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_analysis_pairs",
+    "actual": 229,
+    "shown": "229",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == SNAr|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_analysis_wells",
+    "actual": 10660,
+    "shown": "10,660",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == SNAr|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == SNAr|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == SNAr|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_sealed_pairs",
+    "actual": 57,
+    "shown": "57",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == SNAr|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_16_sealed_wells",
+    "actual": 2637,
+    "shown": "2,637",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == SNAr|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_conditions",
+    "actual": 95,
+    "shown": "95",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Sonogashira|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_analysis_pairs",
+    "actual": 86,
+    "shown": "86",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Sonogashira|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_analysis_wells",
+    "actual": 7952,
+    "shown": "7,952",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Sonogashira|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Sonogashira|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Sonogashira|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_sealed_pairs",
+    "actual": 22,
+    "shown": "22",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Sonogashira|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_17_sealed_wells",
+    "actual": 2040,
+    "shown": "2,040",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Sonogashira|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_conditions",
+    "actual": 94,
+    "shown": "94",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Suzuki|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_analysis_pairs",
+    "actual": 242,
+    "shown": "242",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Suzuki|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_analysis_wells",
+    "actual": 22002,
+    "shown": "22,002",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Suzuki|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_reserve_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Suzuki|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_reserve_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Suzuki|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_sealed_pairs",
+    "actual": 61,
+    "shown": "61",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Suzuki|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_18_sealed_wells",
+    "actual": 5540,
+    "shown": "5,540",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Suzuki|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_conditions",
+    "actual": 95,
+    "shown": "95",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "screen == Ullmann|1; conditions"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_analysis_pairs",
+    "actual": 109,
+    "shown": "109",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Ullmann|1; partition == analysis; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_analysis_wells",
+    "actual": 10160,
+    "shown": "10,160",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Ullmann|1; partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_reserve_pairs",
+    "actual": 47,
+    "shown": "47",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Ullmann|1; partition == reserve; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_reserve_wells",
+    "actual": 4393,
+    "shown": "4,393",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Ullmann|1; partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_sealed_pairs",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Ullmann|1; partition == sealed; count rows"
+  },
+  {
+    "item": "recon_reference_learning_screen_19_sealed_wells",
+    "actual": 0,
+    "shown": "0",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "screen == Ullmann|1; partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_screens",
+    "actual": 19,
+    "shown": "19",
+    "source": "scripts/reference_learning/Analysis/tables/screen_inventory.csv",
+    "selector": "nunique(screen)"
+  },
+  {
+    "item": "recon_reference_learning_parent_arrays",
+    "actual": 15,
+    "shown": "15",
+    "source": "scripts/reference_learning/Analysis/data/qualified_observations.csv.gz",
+    "selector": "unique screen-to-source_file parents"
+  },
+  {
+    "item": "recon_reference_learning_arrays_without_screen",
+    "actual": 4,
+    "shown": "4",
+    "source": "scripts/reference_learning/Analysis/data/raw_file_inventory.csv",
+    "selector": "reaction tables excluding Finkelstein minus mapped qualified-screen parent arrays"
+  },
+  {
+    "item": "recon_reference_learning_qualified_wells_available",
+    "actual": 378070,
+    "shown": "378,070",
+    "source": "out/M1_well_measurement_status.csv.gz",
+    "selector": "reaction_table != Finkelstein; yield_fraction_0_1 present; count records"
+  },
+  {
+    "item": "recon_reference_learning_qualified_wells",
+    "actual": 258830,
+    "shown": "258,830",
+    "source": "scripts/reference_learning/Analysis/data/qualified_observations.csv.gz",
+    "selector": "all qualified observations"
+  },
+  {
+    "item": "recon_reference_learning_qualified_wells_difference",
+    "actual": 119240,
+    "shown": "119,240",
+    "source": "out/M1_well_measurement_status.csv.gz; scripts/reference_learning/Analysis/data/qualified_observations.csv.gz",
+    "selector": "available (reaction_table != Finkelstein; yield_fraction_0_1 present; count records) minus used (all qualified observations)"
+  },
+  {
+    "item": "recon_reference_learning_analysis_wells_available",
+    "actual": 258830,
+    "shown": "258,830",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_analysis_wells",
+    "actual": 196491,
+    "shown": "196,491",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "partition == analysis; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_analysis_wells_difference",
+    "actual": 62339,
+    "shown": "62,339",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "available (sum(n_observed)) minus used (partition == analysis; sum(n_observed))"
+  },
+  {
+    "item": "recon_reference_learning_analysis_pairs",
+    "actual": 2454,
+    "shown": "2,454",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "partition == analysis; row count"
+  },
+  {
+    "item": "recon_reference_learning_reserve_wells_available",
+    "actual": 258830,
+    "shown": "258,830",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_reserve_wells",
+    "actual": 41636,
+    "shown": "41,636",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "partition == reserve; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_reserve_wells_difference",
+    "actual": 217194,
+    "shown": "217,194",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "available (sum(n_observed)) minus used (partition == reserve; sum(n_observed))"
+  },
+  {
+    "item": "recon_reference_learning_reserve_pairs",
+    "actual": 479,
+    "shown": "479",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "partition == reserve; row count"
+  },
+  {
+    "item": "recon_reference_learning_sealed_wells_available",
+    "actual": 258830,
+    "shown": "258,830",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_sealed_wells",
+    "actual": 20703,
+    "shown": "20,703",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "partition == sealed; sum(n_observed)"
+  },
+  {
+    "item": "recon_reference_learning_sealed_wells_difference",
+    "actual": 238127,
+    "shown": "238,127",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "available (sum(n_observed)) minus used (partition == sealed; sum(n_observed))"
+  },
+  {
+    "item": "recon_reference_learning_sealed_pairs",
+    "actual": 281,
+    "shown": "281",
+    "source": "scripts/reference_learning/Analysis/data/screen_partition_registry.csv",
+    "selector": "partition == sealed; row count"
+  },
+  {
+    "item": "broad_copy_edges",
+    "actual": 663,
+    "shown": "663",
+    "source": "scripts/reference_learning/Analysis/tables/chemically_aligned_measurements_headline.csv",
+    "selector": "split=pair; fraction=1; scope=primary; context_balanced; family_macro; n_edges"
+  },
+  {
+    "item": "broad_copy_scores",
+    "actual": 326004,
+    "shown": "326,004",
+    "source": "scripts/reference_learning/Analysis/tables/chemically_aligned_measurements_headline.csv",
+    "selector": "split=pair; fraction=1; scope=primary; context_balanced; family_macro; target_score_count"
+  },
+  {
+    "item": "broad_copy_main_edges",
+    "actual": 655,
+    "shown": "655",
+    "source": "scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv",
+    "selector": "level=headline; model=direct_raw; n_edges"
+  },
+  {
+    "item": "broad_copy_main_scores",
+    "actual": 242766,
+    "shown": "242,766",
+    "source": "scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv",
+    "selector": "level=headline; model=direct_raw; target_score_count"
+  },
+  {
+    "item": "broad_direct_raw_main",
+    "actual": 42.36024689158564,
+    "shown": "42.4",
+    "source": "scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv",
+    "selector": "level=headline; model=direct_raw; relative to marginal"
+  },
+  {
+    "item": "broad_direct_raw_wide",
+    "actual": 45.806972988835106,
+    "shown": "45.8",
+    "source": "scripts/reference_learning/Analysis/tables/chemically_aligned_measurements_headline.csv",
+    "selector": "split=pair; fraction=1; scope=primary; context_balanced; family_macro; direct_raw_recovery_vs_marginal"
+  },
+  {
+    "item": "broad_semantic_full_raw_main",
+    "actual": 13.713965922903192,
+    "shown": "13.7",
+    "source": "scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv",
+    "selector": "level=headline; model=semantic_full_raw; relative to marginal"
+  },
+  {
+    "item": "broad_semantic_full_raw_wide",
+    "actual": 12.29176805912412,
+    "shown": "12.3",
+    "source": "scripts/reference_learning/Analysis/tables/chemically_aligned_measurements_headline.csv",
+    "selector": "split=pair; fraction=1; scope=primary; context_balanced; family_macro; semantic_recovery_vs_marginal"
+  },
+  {
+    "item": "broad_specificity_main_min",
+    "actual": 8.944964620399409,
+    "shown": "8.94",
+    "source": "scripts/reference_learning/Analysis/tables/chemical_observation_specificity_headline.csv",
+    "selector": "domain=strict_641; scope=all_panels_complete; context_balanced; family_macro; min(100*other_recovery_vs_control)"
+  },
+  {
+    "item": "broad_specificity_main_max",
+    "actual": 11.901993552889099,
+    "shown": "11.90",
+    "source": "scripts/reference_learning/Analysis/tables/chemical_observation_specificity_headline.csv",
+    "selector": "domain=strict_641; scope=all_panels_complete; context_balanced; family_macro; max(100*other_recovery_vs_control)"
+  },
+  {
+    "item": "broad_specificity_wide_min",
+    "actual": 8.00331970620368,
+    "shown": "8.0",
+    "source": "scripts/reference_learning/Analysis/tables/chemical_observation_specificity_headline.csv",
+    "selector": "domain=strict_641; scope=primary; context_balanced; family_macro; min(100*other_recovery_vs_control)"
+  },
+  {
+    "item": "broad_specificity_wide_max",
+    "actual": 11.24833672835238,
+    "shown": "11.2",
+    "source": "scripts/reference_learning/Analysis/tables/chemical_observation_specificity_headline.csv",
+    "selector": "domain=strict_641; scope=primary; context_balanced; family_macro; max(100*other_recovery_vs_control)"
+  },
+  {
+    "item": "broad_cross_scored_directions",
+    "actual": 28,
+    "shown": "28",
+    "source": "scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv",
+    "selector": "domain=all_scored; relation=cross_family; direction_macro; channel=d; budget=192; n_scored_directions"
+  },
+  {
+    "item": "broad_cross_delta_test_main",
+    "actual": -8.662425068500001,
+    "shown": "-8.66",
+    "source": "scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv",
+    "selector": "domain=b24_fixed; relation=cross_family; direction_macro; channel=d; budget=192; delta_test"
+  },
+  {
+    "item": "broad_cross_delta_test_wide",
+    "actual": -5.034714315331,
+    "shown": "-5.03",
+    "source": "scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv",
+    "selector": "domain=all_scored; relation=cross_family; direction_macro; channel=d; budget=192; delta_test"
+  },
+  {
+    "item": "broad_cross_net_gain_main",
+    "actual": 17.308491709845,
+    "shown": "17.31",
+    "source": "scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv",
+    "selector": "domain=b24_fixed; relation=cross_family; direction_macro; channel=d; budget=192; net_gain"
+  },
+  {
+    "item": "broad_cross_net_gain_wide",
+    "actual": 9.402040566428,
+    "shown": "9.40",
+    "source": "scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv",
+    "selector": "domain=all_scored; relation=cross_family; direction_macro; channel=d; budget=192; net_gain"
+  },
+  {
+    "item": "broad_recovery_joint_main_queries",
+    "actual": 24221,
+    "shown": "24,221",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=common8; raw_delta; budget=8; learner=joint; all; equal_class_edge_balanced; n_test_vectors"
+  },
+  {
+    "item": "broad_recovery_joint_main",
+    "actual": 195.3049241951297,
+    "shown": "195.30",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=common8; raw_delta; budget=8; learner=joint; all; equal_class_edge_balanced; native_vector_mse"
+  },
+  {
+    "item": "broad_recovery_joint_wide_queries",
+    "actual": 25956,
+    "shown": "25,956",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=all_original; raw_delta; budget=8; learner=joint; all; equal_class_edge_balanced; n_test_vectors"
+  },
+  {
+    "item": "broad_recovery_joint_wide",
+    "actual": 190.48752501126089,
+    "shown": "190.49",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=all_original; raw_delta; budget=8; learner=joint; all; equal_class_edge_balanced; native_vector_mse"
+  },
+  {
+    "item": "broad_recovery_calibration_only_main_queries",
+    "actual": 24221,
+    "shown": "24,221",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=common8; raw_delta; budget=8; learner=calibration_only; all; equal_class_edge_balanced; n_test_vectors"
+  },
+  {
+    "item": "broad_recovery_calibration_only_main",
+    "actual": 216.290361290479,
+    "shown": "216.29",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=common8; raw_delta; budget=8; learner=calibration_only; all; equal_class_edge_balanced; native_vector_mse"
+  },
+  {
+    "item": "broad_recovery_calibration_only_wide_queries",
+    "actual": 25379,
+    "shown": "25,379",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=all_original; raw_delta; budget=8; learner=calibration_only; all; equal_class_edge_balanced; n_test_vectors"
+  },
+  {
+    "item": "broad_recovery_calibration_only_wide",
+    "actual": 214.3474764596277,
+    "shown": "214.35",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=all_original; raw_delta; budget=8; learner=calibration_only; all; equal_class_edge_balanced; native_vector_mse"
+  },
+  {
+    "item": "broad_recovery_frozen_family_main_queries",
+    "actual": 24221,
+    "shown": "24,221",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=common8; raw_delta; budget=8; learner=frozen_family; all; equal_class_edge_balanced; n_test_vectors"
+  },
+  {
+    "item": "broad_recovery_frozen_family_main",
+    "actual": 200.8986473474289,
+    "shown": "200.90",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=common8; raw_delta; budget=8; learner=frozen_family; all; equal_class_edge_balanced; native_vector_mse"
+  },
+  {
+    "item": "broad_recovery_frozen_family_wide_queries",
+    "actual": 25520,
+    "shown": "25,520",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=all_original; raw_delta; budget=8; learner=frozen_family; all; equal_class_edge_balanced; n_test_vectors"
+  },
+  {
+    "item": "broad_recovery_frozen_family_wide",
+    "actual": 192.34167856871207,
+    "shown": "192.34",
+    "source": "scripts/response_learning/Family_Information_Recovery_E66/results/e66_summary.csv",
+    "selector": "population=all_original; raw_delta; budget=8; learner=frozen_family; all; equal_class_edge_balanced; native_vector_mse"
+  },
+  {
+    "item": "broad_sign_large_threshold_pp",
+    "actual": 20,
+    "shown": "20",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; observed_sparse; objective=count; stratum=ALL; threshold_pp=20"
+  },
+  {
+    "item": "broad_sign_19_0_cyclic",
+    "actual": 283,
+    "shown": "283",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=0; ALL minus finkelstein"
+  },
+  {
+    "item": "broad_sign_19_0_conflicting",
+    "actual": 271,
+    "shown": "271",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=0; ALL minus finkelstein"
+  },
+  {
+    "item": "broad_sign_20_0_cyclic",
+    "actual": 293,
+    "shown": "293",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=0; ALL"
+  },
+  {
+    "item": "broad_sign_20_0_conflicting",
+    "actual": 281,
+    "shown": "281",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=0; ALL"
+  },
+  {
+    "item": "broad_sign_19_20_cyclic",
+    "actual": 212,
+    "shown": "212",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=20; ALL minus finkelstein"
+  },
+  {
+    "item": "broad_sign_19_20_conflicting",
+    "actual": 143,
+    "shown": "143",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=20; ALL minus finkelstein"
+  },
+  {
+    "item": "broad_sign_20_20_cyclic",
+    "actual": 218,
+    "shown": "218",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=20; ALL"
+  },
+  {
+    "item": "broad_sign_20_20_conflicting",
+    "actual": 148,
+    "shown": "148",
+    "source": "scripts/response_learning/Existing_Data_Mining_2026-10-16/results/sparse_sign_feasibility_summary.csv",
+    "selector": "population=all; panel=observed_sparse; objective=count; threshold_pp=20; ALL"
+  },
+  {
+    "item": "broad_structure_min",
+    "actual": 91.11666443779283,
+    "shown": "91.1",
+    "source": "scripts/response_learning/Response_Information_Decomposition_E63/results/e63_paired_component_summary.csv",
+    "selector": "comparison=centroid_minus_codebook_continuous; min(100*offset_difference_pp2/mse_difference_pp2)"
+  },
+  {
+    "item": "broad_structure_max",
+    "actual": 96.55817402161851,
+    "shown": "96.6",
+    "source": "scripts/response_learning/Response_Information_Decomposition_E63/results/e63_paired_component_summary.csv",
+    "selector": "comparison=centroid_minus_codebook_continuous; max(100*offset_difference_pp2/mse_difference_pp2)"
+  },
+  {
+    "item": "broad_shared_scope_conflicts",
+    "actual": 542,
+    "shown": "542",
+    "source": "scripts/recipe_options/Analysis/round29/option_scope_domains/all_collective_conflict_domains.csv",
+    "selector": "all rows"
+  }
+]
+

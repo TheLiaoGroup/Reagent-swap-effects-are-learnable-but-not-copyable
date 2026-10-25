@@ -1,0 +1,8 @@
+dataset_id,n_actions,n_distinct_comparisons,n_edits,unit,provenance_source_file,source_filter
+Acylation,13,10,10,count,scripts/recipe_options/Analysis/round9/pairing_repair/all_actual_yield_repairs_with_12cells.csv,all actual_yield_repair_5pp_gain10; distinct by measured_cell_repair_id
+Buchwald-Hartwig,4,4,3,count,scripts/recipe_options/Analysis/round9/pairing_repair/all_actual_yield_repairs_with_12cells.csv,all actual_yield_repair_5pp_gain10; distinct by measured_cell_repair_id
+Grignard,10,10,4,count,scripts/recipe_options/Analysis/round9/pairing_repair/all_actual_yield_repairs_with_12cells.csv,all actual_yield_repair_5pp_gain10; distinct by measured_cell_repair_id
+Kumada,4,4,4,count,scripts/recipe_options/Analysis/round9/pairing_repair/all_actual_yield_repairs_with_12cells.csv,all actual_yield_repair_5pp_gain10; distinct by measured_cell_repair_id
+Suzuki,99,87,27,count,scripts/recipe_options/Analysis/round9/pairing_repair/all_actual_yield_repairs_with_12cells.csv,all actual_yield_repair_5pp_gain10; distinct by measured_cell_repair_id
+Ullmann,2,2,2,count,scripts/recipe_options/Analysis/round9/pairing_repair/all_actual_yield_repairs_with_12cells.csv,all actual_yield_repair_5pp_gain10; distinct by measured_cell_repair_id
+

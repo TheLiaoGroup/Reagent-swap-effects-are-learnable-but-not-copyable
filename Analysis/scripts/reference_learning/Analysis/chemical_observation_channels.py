@@ -1,0 +1,403 @@
+"""Report66: mean and oriented-difference channels of frozen two-cell panels."""
+from __future__ import annotations
+import sys as _reader_sys
+from pathlib import Path as _ReaderPath
+_reader_sys.path.insert(0, str(next((p for p in _ReaderPath(__file__).resolve().parents if (p / 'reader_tables.py').is_file()))))
+import reader_tables
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import platform
+import time
+for _name in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS'):
+    os.environ[_name] = '1'
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from threadpoolctl import threadpool_limits
+from chemical_mode_recovery import fit_clean_covariance
+from chemical_observation_specificity import build_coverage, check_original_baselines, domain_masks
+from chemically_aligned_measurements import FOLD_KEYS, aggregate_scores, average_draw_scores, digest, oriented_difference, panel_predictions, score_values, validate_training_sample
+from chemical_response_structure import AMBIGUOUS
+from response_mode_ablation import rank1_diagonal_covariance
+from shrinkage_covariance_analysis import matrix_path
+HERE = Path(__file__).resolve().parent
+TABLES, DATA, FIGURES = (HERE / 'tables', HERE / 'data', HERE / 'figures')
+PREFIX = 'chemical_observation_channels'
+REPORT = HERE / '66_CHEMICAL_OBSERVATION_CHANNELS_2026-10-17.md'
+FIGURE = FIGURES / '52_CHEMICAL_OBSERVATION_CHANNELS.png'
+FROZEN_DESIGN = HERE / 'chemical_observation_channels.py'
+MODELS, FITS, CHANNELS, KINDS = (('full', 'rank1'), ('frozen', 'optimal'), ('s', 'd', 'sd'), ('raw', 'clip'))
+POLICIES = ('semantic', 'different_any', 'different_other', 'random')
+DESIGN = {'timing': 'Retrospective follow-up after reports63/65; design frozen before report66 channel scoring, not independent confirmation.', 'registry': 'Exact report65 all1808/18screens registry;649same references;strict641/relaxed643;8fixed random draws;no reselection.', 'coordinates': 'Centered endpoints v=y-mu;S=(v_a+v_b)/2;D=r(v_a-v_b);reference own inherited orientation, random r=+1.', 'cost': 'Every s,d,sd panel requires the same2planned cells;all channel modes require both finite endpoints, else common marginal.', 'frozen': 'Endpoint coefficients jointly fitted on SD under each TRAIN covariance;retain S, D, or both coefficients without refitting.', 'optimal': 'TRAIN-covariance linear-optimal S-only, D-only, SD endpoint coefficients;SD shared with frozen;original mean imputation unchanged.', 'clip': 'Reconstruct both target endpoint conditional means for the selected channels, clip each to[0,1], then oriented difference.', 'training': 'Inherited720TRAIN samples and original folds;quarter/full;pair/role1/role2;fullLW/rank1+diagonal;TRAINmu identical.', 'masks': 'Primary finite target pairs;strictall11/relaxedall10 panel complete shared masks;all modes/policies share denominators.', 'main': 'Strict641/fullhistory/pair/fullLW/optimal/raw/all_panels_complete/context_balanced/family_macro;C=(R_same,S-R_same,SD)-(R_other,S-R_other,SD).', 'aggregation': 'Equal8randomdraw SSE before fold;sumSSE/n edge;equal edge/context,context/screen,screen/family;familymacro primary;swapbalanced sensitivity.', 'bridge': 'Original partially available two-cell covariance prediction kept separately;all649report63 and strict/relaxed report65 scores and masks reproduced.', 'limits': 'Observed selected population;channels correlated;frozen ablation not mechanistic contribution;no independent edge/draw significance or causal intervention.'}
+
+def channel_coordinates(values, anchor_means, reference_orientation):
+    if int(reference_orientation) not in (-1, 1):
+        raise ValueError('reference orientation must be signed')
+    centered = np.asarray(values, float) - np.asarray(anchor_means, float)
+    transform = np.array([[0.5, 0.5], [reference_orientation, -reference_orientation]], float)
+    return centered @ transform.T
+
+def endpoint_contrasts(predicted, orientation):
+    raw = orientation * (predicted[:, 0] - predicted[:, 1])
+    clipped = np.clip(predicted, 0.0, 1.0)
+    return (raw, orientation * (clipped[:, 0] - clipped[:, 1]))
+
+def channel_predictions(fit, rank1_covariance, values, anchors, endpoints, orientation, reference_orientation):
+    """Accept only the two reference columns; every channel has the same availability."""
+    anchors, endpoints = (np.asarray(anchors, int), np.asarray(endpoints, int))
+    values, mu = (np.asarray(values, float), np.asarray(fit['mu'], float))
+    if len(anchors) != 2 or len(set(anchors)) != 2 or len(endpoints) != 2 or set(anchors) & set(endpoints) or (values.ndim != 2) or (values.shape[1] != 2):
+        raise ValueError('two disjoint observed anchors and hidden endpoints required')
+    if int(orientation) not in (-1, 1):
+        raise ValueError('target orientation must be signed')
+    z = channel_coordinates(values, mu[anchors], reference_orientation)
+    complete = np.isfinite(values).all(axis=1)
+    z = np.where(complete[:, None], z, 0.0)
+    transform = np.array([[0.5, 0.5], [reference_orientation, -reference_orientation]], float)
+    predictions, audits = ({}, [])
+    for model, covariance in (('full', fit['cov']), ('rank1', rank1_covariance)):
+        aa = covariance[np.ix_(anchors, anchors)]
+        zz = transform @ aa @ transform.T
+        ez = covariance[np.ix_(endpoints, anchors)] @ transform.T
+        used_pinv = False
+        try:
+            joint = np.linalg.solve(zz, ez.T).T
+        except np.linalg.LinAlgError:
+            joint = ez @ np.linalg.pinv(zz, rcond=1e-12)
+            used_pinv = True
+        if not np.isfinite(joint).all() or np.any(np.diag(zz) < -1e-12):
+            raise ValueError('invalid channel covariance')
+        scalar = np.zeros_like(joint)
+        for index in (0, 1):
+            if zz[index, index] > 0:
+                scalar[:, index] = ez[:, index] / zz[index, index]
+        for family in FITS:
+            for channel in CHANNELS:
+                indices = [0, 1] if channel == 'sd' else [0] if channel == 's' else [1]
+                coefficient = joint if family == 'frozen' or channel == 'sd' else scalar
+                predicted = np.tile(mu[endpoints], (len(values), 1)) + z[:, indices] @ coefficient[:, indices].T
+                raw, clip = endpoint_contrasts(predicted, orientation)
+                predictions[f'{model}_{family}_{channel}_raw'] = raw
+                predictions[f'{model}_{family}_{channel}_clip'] = clip
+        target_cross = orientation * (ez[0] - ez[1])
+        target_variance = float(covariance[endpoints[0], endpoints[0]] + covariance[endpoints[1], endpoints[1]] - 2 * covariance[endpoints[0], endpoints[1]])
+        joint_target = orientation * (joint[0] - joint[1])
+        scalar_target = orientation * (scalar[0] - scalar[1])
+        risks = dict(full_sd_expected_risk=float(target_variance - 2 * target_cross @ joint_target + joint_target @ zz @ joint_target), optimal_s_expected_risk=float(target_variance - 2 * target_cross[0] * scalar_target[0] + zz[0, 0] * scalar_target[0] ** 2), optimal_d_expected_risk=float(target_variance - 2 * target_cross[1] * scalar_target[1] + zz[1, 1] * scalar_target[1] ** 2), frozen_s_expected_risk=float(target_variance - 2 * target_cross[0] * joint_target[0] + zz[0, 0] * joint_target[0] ** 2), frozen_d_expected_risk=float(target_variance - 2 * target_cross[1] * joint_target[1] + zz[1, 1] * joint_target[1] ** 2))
+        audits.append(dict(model=model, joint_pinv=used_pinv, zero_s_variance=bool(zz[0, 0] <= 0), zero_d_variance=bool(zz[1, 1] <= 0), s_variance=float(zz[0, 0]), d_variance=float(zz[1, 1]), sd_covariance=float(zz[0, 1]), h_ss=float(zz[0, 0]), h_sd=float(zz[0, 1]), h_dd=float(zz[1, 1]), cross_t_s=float(target_cross[0]), cross_t_d=float(target_cross[1]), var_target=target_variance, sd_weight_s=float(joint_target[0]), sd_weight_d=float(joint_target[1]), optimal_s_weight=float(scalar_target[0]), optimal_d_weight=float(scalar_target[1]), endpoint_a_sd_weight_s=float(joint[0, 0]), endpoint_a_sd_weight_d=float(joint[0, 1]), endpoint_b_sd_weight_s=float(joint[1, 0]), endpoint_b_sd_weight_d=float(joint[1, 1]), endpoint_a_optimal_s_weight=float(scalar[0, 0]), endpoint_a_optimal_d_weight=float(scalar[0, 1]), endpoint_b_optimal_s_weight=float(scalar[1, 0]), endpoint_b_optimal_d_weight=float(scalar[1, 1]), d_given_s_conditional_variance=float(zz[1, 1] - zz[0, 1] ** 2 / zz[0, 0]) if zz[0, 0] > 0 else float(zz[1, 1]), s_given_d_conditional_variance=float(zz[0, 0] - zz[0, 1] ** 2 / zz[1, 1]) if zz[1, 1] > 0 else float(zz[0, 0]), expected_d_given_s_gain=risks['optimal_s_expected_risk'] - risks['full_sd_expected_risk'], expected_s_given_d_gain=risks['optimal_d_expected_risk'] - risks['full_sd_expected_risk'], channel_condition_number=float(np.linalg.cond(zz)), **risks))
+    return (predictions, audits)
+
+def channel_panel_registry(source, panels):
+    lookup = source.set_index(['screen', 'edge_id'])
+    rows = []
+    for panel in panels.itertuples(index=False):
+        target = lookup.loc[panel.screen, panel.edge_id]
+        orientation = target.reference_orientation if panel.policy == 'semantic' else 1 if panel.policy == 'random' else target[panel.policy + '_orientation']
+        rows.append({**panel._asdict(), 'reference_orientation': int(orientation), 'required_finite_cells': 2, 'channel_cost_cells': 2})
+    return pd.DataFrame(rows)
+
+def channel_derivatives(frame):
+    output = {}
+    for model in MODELS:
+        for family in FITS:
+            for kind in KINDS:
+                increments = {}
+                for policy in POLICIES:
+                    s, d, sd = [f'{policy}_{model}_{family}_{channel}_{kind}_mse' for channel in CHANNELS]
+                    if s in frame and sd in frame:
+                        name = f'{policy}_{model}_{family}_d_given_s_{kind}_mse'
+                        output[name] = frame[s] - frame[sd]
+                        increments[policy] = output[name]
+                        marginal = 'marginal_mse' if kind == 'raw' else 'marginal_clip_mse'
+                        if marginal in frame:
+                            output[f'{policy}_{model}_{family}_sd_gain_vs_marginal_{kind}_mse'] = frame[marginal] - frame[sd]
+                            output[f'{policy}_{model}_{family}_sd_recovery_vs_marginal_{kind}'] = 1 - frame[sd] / frame[marginal].replace(0, np.nan)
+                    if d in frame and sd in frame:
+                        output[f'{policy}_{model}_{family}_s_given_d_{kind}_mse'] = frame[d] - frame[sd]
+                if 'semantic' in increments:
+                    for other, label in (('different_any', 'any'), ('different_other', 'other'), ('random', 'random')):
+                        if other in increments:
+                            output[f'{label}_{model}_{family}_d_given_s_specificity_{kind}_mse'] = increments['semantic'] - increments[other]
+                    for channel in CHANNELS:
+                        semantic = f'semantic_{model}_{family}_{channel}_{kind}_mse'
+                        for other, label in (('different_any', 'any'), ('different_other', 'other'), ('random', 'random')):
+                            control = f'{other}_{model}_{family}_{channel}_{kind}_mse'
+                            if semantic in frame and control in frame:
+                                output[f'{label}_{model}_{family}_{channel}_specificity_{kind}_mse'] = frame[control] - frame[semantic]
+    return pd.concat([frame, pd.DataFrame(output, index=frame.index)], axis=1)
+
+def aggregate_domains(folds):
+    outputs = [[] for _ in range(5)]
+    for domain, group in folds.groupby('domain', sort=True):
+        group = group.drop(columns=[name for name in group if name.endswith('_sse') and group[name].isna().all()])
+        for output, frame in zip(outputs, aggregate_scores(group)):
+            output.append(channel_derivatives(frame).assign(domain=domain))
+    return tuple((pd.concat(output, ignore_index=True) for output in outputs))
+
+def bridge_baseline_check(current, original):
+    keys = FOLD_KEYS + ['edge_id', 'domain', 'scope']
+    score_columns = [name for name in original if name.endswith('_sse')]
+    renamed = current.rename(columns={name: name.replace('_bridge_', '_') for name in current if '_bridge_' in name})
+    columns = ['n', 'target_mask_sha256', *score_columns]
+    checked = renamed[keys + columns].merge(original[keys + columns], on=keys, how='outer', suffixes=('', '_65'), validate='one_to_one', indicator=True)
+    if not checked._merge.eq('both').all() or not checked.n.eq(checked.n_65).all() or (not checked.target_mask_sha256.eq(checked.target_mask_sha256_65).all()):
+        raise ValueError('inherited report65 target mask changed')
+    errors = np.stack([(checked[name] - checked[name + '_65']).fillna(0.0).abs().to_numpy() for name in score_columns])
+    checked['max_absolute_sse_difference'] = np.max(errors, axis=0)
+    if checked.max_absolute_sse_difference.max() > 1e-11:
+        raise ValueError('inherited report65 bridge changed')
+    return checked[keys + ['n', 'target_mask_sha256', 'max_absolute_sse_difference']]
+
+def availability_summary(folds):
+    keys = ['domain', 'screen', 'family', 'split', 'fraction', 'scope']
+    columns = [name for name in folds if name.endswith(('_observed_cells', '_complete_rows', '_partial_rows', '_fallback_rows'))]
+    summary = folds.groupby(keys, as_index=False)[['n', *columns]].sum(min_count=1)
+    for name in columns:
+        summary[name + '_per_target'] = summary[name] / summary.n.replace(0, np.nan)
+    return summary
+
+def evaluate(registry, panel_registry, samples, original_folds):
+    records, draws, audits, all649, diagnostics = ([], [], [], [], [])
+    batches = [[] for _ in range(5)]
+    scored_rows = 0
+    start = time.monotonic()
+    for screen, screen_samples in samples.groupby('screen', sort=True):
+        with np.load(matrix_path(screen), allow_pickle=False) as saved:
+            matrix, conditions, identities = (saved['M'], saved['conds'].astype(str), saved['sps'].astype(str))
+        roles = np.asarray([identity.split(' >> ') for identity in identities])
+        excluded = [i for i, condition in enumerate(conditions) if (screen.split('|')[0], condition) in AMBIGUOUS]
+        one = registry[registry.screen.eq(screen) & registry.eligible.eq(1)]
+        panels_by_target = {key: group for key, group in panel_registry[panel_registry.screen.eq(screen)].groupby('edge_id', sort=False)}
+        fold_groups = {key: group for key, group in original_folds[original_folds.screen.eq(screen)].groupby(['split', 'repeat', 'fold'], sort=True)}
+        for sample in screen_samples.itertuples(index=False):
+            source = fold_groups[sample.split, sample.repeat, sample.fold]
+            tests, selected = [np.asarray(json.loads(getattr(sample, name)), int) for name in ('test_indices_json', 'training_indices_json')]
+            validate_training_sample(sample, len(matrix), source.pair_index.to_numpy(int))
+            if source.subpair.tolist() != identities[tests].tolist():
+                raise ValueError('original TEST identities changed')
+            if sample.split.startswith('role'):
+                role = int(sample.split[-1]) - 1
+                if set(roles[selected, role]) & set(roles[tests, role]):
+                    raise ValueError('held-out role leaks into TRAIN')
+            key = {field: getattr(sample, field) for field in FOLD_KEYS}
+            fit = fit_clean_covariance(matrix[selected], excluded)
+            rank1 = rank1_diagonal_covariance(fit['cov'])
+            audit = {**key, 'n_training': len(selected), 'n_test': len(tests), 'n_original_eligible': len(one), 'n_strict': int(one.strict_eligible.sum()), 'n_relaxed': int(one.relaxed_eligible.sum()), 'n_excluded_ambiguous': len(excluded), 'shrinkage': fit['shrinkage'], 'imputed_training_cells': fit['imputed_cells'], 'train_register_exact': True, 'train_test_disjoint': True, 'quarter_nested_in_full': True, 'n_channel_panel_models': 0, 'n_joint_pinv': 0, 'n_zero_s_variance': 0, 'n_zero_d_variance': 0, 'maximum_complete_sd_prediction_error': 0.0, 'maximum_channel_condition_number': 0.0}
+            for target in one.itertuples(index=False):
+                endpoints = [int(target.condition_a_index), int(target.condition_b_index)]
+                actual = oriented_difference(matrix[tests], *endpoints, target.orientation)
+                finite_target = np.isfinite(actual)
+                marginal_raw, marginal_clip = endpoint_contrasts(fit['mu'][endpoints][None, :], target.orientation)
+                predictions = {'marginal': np.full(len(tests), marginal_raw[0]), 'marginal_clip': np.full(len(tests), marginal_clip[0])}
+                panel_values, random_values, random_predictions = ({}, [], [])
+                for panel in panels_by_target[target.edge_id].itertuples(index=False):
+                    anchors = json.loads(panel.anchor_indices_json)
+                    values = matrix[np.ix_(tests, anchors)]
+                    prediction, channel_audits = channel_predictions(fit, rank1, values, anchors, endpoints, target.orientation, panel.reference_orientation)
+                    bridge = panel_predictions(fit, rank1, values, anchors, endpoints, target.orientation)
+                    complete = np.isfinite(values).all(axis=1)
+                    for model in MODELS:
+                        for kind in KINDS:
+                            difference = np.abs(prediction[f'{model}_optimal_sd_{kind}'][complete] - bridge[f'{model}_{kind}'][complete])
+                            if len(difference):
+                                audit['maximum_complete_sd_prediction_error'] = max(audit['maximum_complete_sd_prediction_error'], float(difference.max()))
+                    for row in channel_audits:
+                        diagnostics.append({**key, 'edge_id': target.edge_id, 'context_id': target.context_id, 'swap_key': target.swap_key, 'policy': panel.policy, 'draw': panel.draw, 'reference_orientation': panel.reference_orientation, 'anchor_a_index': anchors[0], 'anchor_b_index': anchors[1], 'strict_eligible': target.strict_eligible, 'relaxed_eligible': target.relaxed_eligible, **row})
+                        audit['n_channel_panel_models'] += 1
+                        for name in ('joint_pinv', 'zero_s_variance', 'zero_d_variance'):
+                            audit['n_' + name] += int(row[name])
+                        audit['maximum_channel_condition_number'] = max(audit['maximum_channel_condition_number'], row['channel_condition_number'])
+                    prediction.update({'bridge_' + name: value for name, value in bridge.items()})
+                    if panel.policy == 'random':
+                        random_values.append(values)
+                        random_predictions.append(prediction)
+                    else:
+                        panel_values[panel.policy] = values
+                        predictions.update({panel.policy + '_' + name: value for name, value in prediction.items()})
+                if len(random_values) != 8 or audit['maximum_complete_sd_prediction_error'] > 1e-10:
+                    raise ValueError('frozen panels or complete-anchor SD bridge changed')
+                edge_key = {**key, 'edge_id': target.edge_id, 'context_id': target.context_id, 'swap_key': target.swap_key}
+                original_predictions = {name.replace('_bridge_', '_'): value for name, value in predictions.items() if name.startswith('semantic_bridge_') or name == 'marginal'}
+                original_score = score_values(actual, original_predictions, np.ones(len(tests), bool))
+                original_random = average_draw_scores([score_values(actual, {name.replace('bridge_', ''): value for name, value in prediction.items() if name.startswith('bridge_')}, np.ones(len(tests), bool)) for prediction in random_predictions])
+                all649.append({**edge_key, **original_score, **{'random_' + name: value for name, value in original_random.items() if name.endswith('_sse')}, 'target_mask_sha256': hashlib.sha256(tests[finite_target].astype('<i8').tobytes()).hexdigest()})
+                for domain, eligible in (('strict_641', target.strict_eligible), ('relaxed_643', target.relaxed_eligible)):
+                    if not eligible:
+                        continue
+                    active_policies = ['semantic', 'different_any'] + (['different_other'] if domain == 'strict_641' else [])
+                    active = {name: value for name, value in predictions.items() if name.startswith('marginal') or any((name.startswith(policy + '_') for policy in active_policies))}
+                    masks = domain_masks(panel_values['semantic'], panel_values['different_any'], panel_values.get('different_other'), random_values, domain)
+                    for scope, mask in masks.items():
+                        score = score_values(actual, active, mask)
+                        valid = mask & finite_target
+                        draw_scores, random_availability = ([], [])
+                        for draw, (values, prediction) in enumerate(zip(random_values, random_predictions)):
+                            draw_score = score_values(actual, prediction, mask)
+                            observed = np.isfinite(values[valid])
+                            counts = dict(observed_cells=int(observed.sum()), complete_rows=int(observed.all(axis=1).sum()), partial_rows=int((observed.sum(axis=1) == 1).sum()), fallback_rows=int((~observed.all(axis=1)).sum()))
+                            draws.append({**edge_key, 'domain': domain, 'scope': scope, 'draw': draw, **draw_score, **counts})
+                            draw_scores.append(draw_score)
+                            random_availability.append(counts)
+                        average = average_draw_scores(draw_scores)
+                        if score['n'] != average['n']:
+                            raise ValueError('channel policies changed target denominator')
+                        availability = {}
+                        for policy in active_policies:
+                            observed = np.isfinite(panel_values[policy][valid])
+                            availability.update({policy + '_observed_cells': int(observed.sum()), policy + '_complete_rows': int(observed.all(axis=1).sum()), policy + '_partial_rows': int((observed.sum(axis=1) == 1).sum()), policy + '_fallback_rows': int((~observed.all(axis=1)).sum())})
+                        for name in random_availability[0]:
+                            availability['random_' + name] = float(np.mean([row[name] for row in random_availability]))
+                        records.append({**edge_key, 'domain': domain, 'scope': scope, **score, **{'random_' + name: value for name, value in average.items() if name.endswith('_sse')}, **availability, 'controls_same_reference': target.controls_same_reference, 'target_mask_sha256': hashlib.sha256(tests[valid].astype('<i8').tobytes()).hexdigest()})
+            audits.append(audit)
+        scored_rows += len(records)
+        for batch, rows in zip(batches, (records, draws, audits, all649, diagnostics)):
+            batch.append(pd.DataFrame(rows))
+            rows.clear()
+        print(f'CHANNELS {screen} fold_rows={scored_rows} seconds={time.monotonic() - start:.1f}', flush=True)
+    return tuple((pd.concat(batch, ignore_index=True) for batch in batches))
+
+def select_headline(headline, **extra):
+    mask = headline.domain.eq('strict_641') & headline.weighting.eq('context_balanced') & headline.macro.eq('family_macro')
+    for name, value in extra.items():
+        mask &= headline[name].eq(value)
+    return headline[mask]
+
+def plot_figure(coverage, screens, headline):
+    fig, axes = plt.subplots(2, 2, figsize=(15, 11), constrained_layout=True)
+    colors = {'semantic': '#287d78', 'different_other': '#bd5a4a', 'different_any': '#7b74a1', 'random': '#777777'}
+    labels = {'semantic': 'Same swap', 'different_other': 'Different swap / other context', 'different_any': 'Different swap / any context', 'random': 'Random'}
+    head = select_headline(headline, split='pair', fraction=1.0, scope='all_panels_complete').iloc[0]
+    positions = np.arange(3)
+    for offset, policy in zip((-0.24, -0.08, 0.08, 0.24), POLICIES):
+        values = [10000.0 * head[f'{policy}_full_optimal_{channel}_raw_mse'] for channel in CHANNELS]
+        axes[0, 0].scatter(positions + offset, values, color=colors[policy], label=labels[policy], s=34)
+    axes[0, 0].set(xticks=positions, xticklabels=['Mean S', 'Difference D', 'Both SD'], ylabel='Family-macro MSE (pp squared)', title='A  TRAIN-optimal channels; common complete rows')
+    axes[0, 0].legend(frameon=False, fontsize=8)
+    categories = np.arange(4)
+    for family, offset, marker in (('optimal', -0.1, 'o'), ('frozen', 0.1, 's')):
+        values = [10000.0 * head[f'{policy}_full_{family}_d_given_s_raw_mse'] for policy in POLICIES]
+        axes[0, 1].scatter(values, categories + offset, marker=marker, color='#287d78' if family == 'optimal' else '#b47d39', s=34, label=family)
+    axes[0, 1].set(yticks=categories, yticklabels=[labels[p] for p in POLICIES], xlabel='MSE(S) - MSE(SD) (pp squared)', title='B  Difference information beyond endpoint mean')
+    axes[0, 1].invert_yaxis()
+    axes[0, 1].axvline(0, color='#777777', lw=0.8)
+    axes[0, 1].legend(frameon=False, fontsize=8)
+    one = screens[screens.domain.eq('strict_641') & screens.scope.eq('all_panels_complete') & screens.weighting.eq('context_balanced') & screens.split.eq('pair') & screens.fraction.eq(1.0)].sort_values('screen')
+    y = np.arange(len(one))
+    short = lambda s: s.replace('Buchwald-Hartwig(CMC)', 'BH(CMC)').replace('Buchwald-Hartwig', 'BH').replace('C-O competitive reactions', 'C-O')
+    axes[1, 0].barh(y, 10000.0 * one.other_full_optimal_d_given_s_specificity_raw_mse, color='#287d78')
+    axes[1, 0].set(yticks=y, yticklabels=[short(s) for s in one.screen], xlabel='Same-swap gain - different-swap gain (pp squared)', title='C  All supported screens; context-balanced')
+    axes[1, 0].invert_yaxis()
+    axes[1, 0].axvline(0, color='#777777', lw=0.8)
+    complete = select_headline(headline, scope='all_panels_complete')
+    split_colors = {'pair': '#287d78', 'role1': '#bd5a4a', 'role2': '#7b74a1'}
+    for split in split_colors:
+        values = complete[complete.split.eq(split)].sort_values('fraction')
+        axes[1, 1].plot(values.fraction, 10000.0 * values.other_full_optimal_d_given_s_specificity_raw_mse, color=split_colors[split], marker='o', label=split)
+    axes[1, 1].set(xticks=[0.25, 1.0], xticklabels=['Quarter', 'Full'], ylabel='Incremental specificity C (pp squared)', title='D  Historical amount and identity split')
+    axes[1, 1].axhline(0, color='#777777', lw=0.8)
+    axes[1, 1].legend(frameon=False, fontsize=8)
+    for ax in axes.flat:
+        ax.spines[['top', 'right']].set_visible(False)
+        ax.grid(axis='x', alpha=0.15)
+    fig.suptitle('Mean and difference channels of frozen two-cell chemical observations', fontsize=15)
+    fig.savefig(FIGURE, dpi=180)
+    plt.close(fig)
+
+def write_report(headline, screens, coverage, availability, audits, bridge63, bridge65, evaluation_seconds):
+    head = select_headline(headline, split='pair', fraction=1.0, scope='all_panels_complete').iloc[0]
+    c = 10000.0 * head.other_full_optimal_d_given_s_specificity_raw_mse
+    eligible_screens = screens[screens.domain.eq('strict_641') & screens.scope.eq('all_panels_complete') & screens.weighting.eq('context_balanced') & screens.split.eq('pair') & screens.fraction.eq(1.0)]
+    positive = int(eligible_screens.other_full_optimal_d_given_s_specificity_raw_mse.gt(0).sum())
+    lines = ['# 66. 化学观测的均值与差值通道', '', '日期：2026-10-17。现有矩阵分析；承接63与65的冻结面板。', '', '## 核心结果', '', f'在严格641条边、完整11面板共同身份、full历史/pair留出、full LW和TRAIN最优线性预测下，同swap面板加入差值D后的风险改善为{10000.0 * head.semantic_full_optimal_d_given_s_raw_mse:.3f} pp²；不同swap异context对照为{10000.0 * head.different_other_full_optimal_d_given_s_raw_mse:.3f} pp²。两者的增量特异性C为{c:.3f} pp²，在{positive}/{len(eligible_screens)}个screen为正。', '', '| 面板 | S-only MSE | D-only MSE | SD MSE | D在S之上的增量 | S在D之上的增量 |', '|---|---:|---:|---:|---:|---:|']
+    labels = {'semantic': '同swap', 'different_any': '不同swap任意context', 'different_other': '不同swap异context', 'random': '8随机面板均值'}
+    for policy in POLICIES:
+        values = [head[f'{policy}_full_optimal_{channel}_raw_mse'] for channel in CHANNELS]
+        values += [head[f'{policy}_full_optimal_d_given_s_raw_mse'], head[f'{policy}_full_optimal_s_given_d_raw_mse']]
+        lines.append('| ' + labels[policy] + ' | ' + ' | '.join((f'{10000.0 * value:.3f}' for value in values)) + ' |')
+    lines += ['', '数值均为等edge→context→screen→merged family宏平均raw MSE，单位pp²。C比较各政策内部加入D的风险改善，再取同swap与异context不同swap之差；它直接回答同swap面板的价值是否超出两个参考端点的均值信息。', '', '## 固定设计与估计量', '', '完整继承65的1,808条/384context/18screen登记、649个同swap参考、不同swap任意/异context参考及8个随机两格面板。严格共同域641条，松弛域643条；严格域覆盖203context、16screen/14个合并家族；无同swap参考的1,159条继续登记。两类不同swap控制在严格域550条选中相同参考，属于同一个固定政策比较中的重合。', '', '先以同一TRAIN均值中心化两个参考端点，定义S=(v_a+v_b)/2，D=r(v_a-v_b)。化学参考使用自己的冻结方向r；随机使用r=+1。目标是自身方向的端点差。所有S、D、SD模式都计划测两格，并且只有两格均有限时使用通道；否则回到相同target marginal。', '', '分别在full LW与rank1+diagonal协方差下计算两组映射。frozen组先联合估计SD系数，再分别保留S或D系数；optimal组在相同TRAIN协方差内分别估计S-only、D-only、SD最优线性映射。SD在两组完全相同。仅原720次TRAIN拟合与原均值插补提供响应信息；不按TEST选择通道或参数。', '', 'raw以预测的两个目标端点差评分。clip敏感性先按所选通道重建两端点预测，再分别截到[0,1]后取有向差；不是直接截差值。frozen的贡献相加仅对raw预测成立，风险差和clip均不构成机制分解。', '', '主比较固定为strict641/full历史/pair/full LW/optimal/raw/all_panels_complete/context-balanced family-macro。primary仍对所有目标两端点有限者评分；完整mask要求严格11个或松弛10个面板均两格有限，各政策和通道共同使用。完整mask条件于可用性，主比较的效应描述该选中身份群体。', '', '## 全部设置', '', '| Scope | Split | TRAIN | 同swap ΔD given S | 异context对照 ΔD given S | C optimal | C frozen | C rank1 optimal | C optimal clip |', '|---|---|---:|---:|---:|---:|---:|---:|---:|']
+    for row in select_headline(headline).sort_values(['scope', 'split', 'fraction']).itertuples(index=False):
+        values = [row.semantic_full_optimal_d_given_s_raw_mse, row.different_other_full_optimal_d_given_s_raw_mse, row.other_full_optimal_d_given_s_specificity_raw_mse, row.other_full_frozen_d_given_s_specificity_raw_mse, row.other_rank1_optimal_d_given_s_specificity_raw_mse, row.other_full_optimal_d_given_s_specificity_clip_mse]
+        lines.append(f'| {row.scope} | {row.split} | {row.fraction:g} | ' + ' | '.join((f'{10000.0 * value:.3f}' for value in values)) + ' |')
+    lines += ['', '上表完整保留正负结果；各screen、family、任意context对照、随机面板、松弛643域和swap-balanced结果在机器表中。相同TRAIN协方差下的最优预测并不保证held-out风险单调改善，因此负增量按原值报告。', '', '## 可用性与原模型桥接', '', '| Domain | Split | TRAIN | primary目标评分数 | 完整mask评分数 | 完整mask有评分边 |', '|---|---|---:|---:|---:|---:|']
+    h = headline[headline.macro.eq('family_macro') & headline.weighting.eq('context_balanced')]
+    for row in h[h.scope.eq('primary')].sort_values(['domain', 'split', 'fraction']).itertuples(index=False):
+        complete = h[h.domain.eq(row.domain) & h.scope.eq('all_panels_complete') & h.split.eq(row.split) & h.fraction.eq(row.fraction)].iloc[0]
+        lines.append(f'| {row.domain} | {row.split} | {row.fraction:g} | {row.target_score_count} | {complete.target_score_count} | {complete.n_scored_edges}/{complete.n_edges} |')
+    partial = availability[availability.domain.eq('strict_641') & availability.scope.eq('primary') & availability.split.eq('pair') & availability.fraction.eq(1.0)]
+    lines += ['', f'严格域full/pair主mask中，同swap面板有{int(partial.semantic_partial_rows.sum())}个仅一格有限的目标评分；新通道模型在这些身份上回退marginal，原模型仍可使用单格锚点。因此原65模型仅作为bridge单列。完整mask上SD与原模型逐预测一致，最大绝对差{audits.maximum_complete_sd_prediction_error.max():.3g}。', '', f'原649域的{len(bridge63):,}条fold-target风险和目标mask重新计算，与63原输出最大SSE差{bridge63.max_absolute_risk_difference.max():.3g}；严格/松弛两mask共{len(bridge65):,}条评分与65原bridge最大SSE差{bridge65.max_absolute_sse_difference.max():.3g}。quarter/full目标mask完全相同。', '', '## 科学解释', '', 'S包含两个参考条件共享的响应水平，D包含该参考替换的有向响应。这里检验的是固定两格观测中，加入D能给目标替换预测带来多少额外信息，以及该增量是否偏向同一个swap。S与D可能相关；frozen消融也会保留联合映射的共线性依赖。结果不把两通道称为独立化学因素。', '', '固定参考来自相同screen和规定配方语义，背景context可同时变化多个字段。边、参考、fold及随机draw存在复用；不对边数或draw数进行伪独立显著性推断。本分析提供现有矩阵内的通道价值和可重复估计量，不把数值拆分解释为因果机制或前瞻实验收益。', '', '## 文件与核验', '', f'producer为`{PREFIX}.py`；针对性测试`test_{PREFIX}.py`。训练拟合{len(audits)}次；完整重算耗时{evaluation_seconds:.1f}秒。新增表和data均以`{PREFIX}_`开头；图52为`figures/{FIGURE.name}`。manifest保存设计、依赖与冻结65注册表SHA256、TRAIN审计、输入不变及原63/65桥接误差。raw/clip、两模型、两拟合方式、三通道、两domain、两scope、两历史比例、三split与两权重均保留。', '']
+    REPORT.write_text('\n'.join(lines), encoding='utf-8')
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--register-only', action='store_true')
+    parser.add_argument('--summaries-only', action='store_true')
+    args = parser.parse_args()
+    start = time.monotonic()
+    inputs = [TABLES / 'chemical_observation_specificity_target_registry.csv', TABLES / 'chemical_observation_specificity_panel_registry.csv', TABLES / 'chemical_observation_specificity_fold_scores.csv.gz', TABLES / 'chemically_aligned_measurements_fold_scores.csv.gz', TABLES / 'chemical_mode_training_sample_registry.csv', DATA / 'cv_fold_registry.csv', FROZEN_DESIGN, HERE / 'chemical_observation_specificity.py', HERE / 'chemically_aligned_measurements.py', HERE / 'chemical_mode_recovery.py', HERE / 'chemical_response_structure.py', HERE / 'response_mode_ablation.py', HERE / 'shrinkage_covariance_analysis.py', HERE / 'training_size_intervention.py']
+    inputs += sorted(DATA.glob('matrix_*.npz'))
+    if not FROZEN_DESIGN.exists():
+        raise ValueError('channel design must be frozen before registration or scoring')
+    source_hashes = {path.relative_to(HERE).as_posix(): digest(path) for path in inputs}
+    registry, inherited_panels = (pd.read_csv(inputs[0], keep_default_na=False), pd.read_csv(inputs[1], keep_default_na=False))
+    panels, coverage = (channel_panel_registry(registry, inherited_panels), build_coverage(registry))
+    if (len(registry), registry.screen.nunique(), int(registry.eligible.sum()), int(registry.strict_eligible.sum()), int(registry.relaxed_eligible.sum()), len(panels)) != (1846, 19, 663, 655, 657, 7279):
+        raise ValueError('inherited65 support changed')
+    pd.testing.assert_frame_equal(panels[inherited_panels.columns], inherited_panels)
+    registry_output, coverage_output, panel_output = [PREFIX + suffix for suffix in ('_target_registry.csv', '_coverage.csv', '_panel_registry.csv')]
+    (TABLES / registry_output).write_bytes(inputs[0].read_bytes())
+    coverage.to_csv(TABLES / coverage_output, index=False, encoding='utf-8-sig')
+    panels.to_csv(TABLES / panel_output, index=False, encoding='utf-8-sig')
+    registry_hashes = {name: digest(TABLES / name) for name in (registry_output, coverage_output, panel_output)}
+    design_path = DATA / (PREFIX + '_design.json')
+    design_path.write_text(json.dumps(dict(date='2026-10-17', design=DESIGN, source_hashes=source_hashes, registry_hashes=registry_hashes), indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    if args.register_only:
+        print(json.dumps(dict(all_edges=1808, strict=641, relaxed=643, panels=len(panels), registry_hashes=registry_hashes), indent=2))
+        return
+    cache_names = [PREFIX + suffix for suffix in ('_fold_scores.csv.gz', '_random_draw_scores.csv.gz', '_fit_audit.csv', '_all649_baseline_check.csv.gz', '_report65_bridge_check.csv.gz', '_training_diagnostics.csv.gz')]
+    if args.summaries_only:
+        prior = json.loads((DATA / (PREFIX + '_manifest.json')).read_text(encoding='utf-8'))
+        if prior['source_hashes'] != source_hashes or prior['registry_hashes'] != registry_hashes:
+            raise ValueError('cached inputs or policies changed')
+        for name in cache_names:
+            if digest(TABLES / name) != prior['output_hashes'][name]:
+                raise ValueError('cached score bytes changed')
+        folds, draws, audits, bridge63, bridge65, diagnostics = [pd.read_csv(TABLES / name) for name in cache_names]
+        evaluation_seconds = prior['evaluation_seconds']
+    else:
+        folds, draws, audits, baselines, diagnostics = evaluate(registry, panels, pd.read_csv(inputs[4]), pd.read_csv(inputs[5]))
+        bridge63 = check_original_baselines(baselines, pd.read_csv(inputs[3]))
+        bridge65 = bridge_baseline_check(folds, pd.read_csv(inputs[2]))
+        evaluation_seconds = time.monotonic() - start
+    if (len(folds), len(draws), len(audits), len(bridge63), len(bridge65)) != (104960, 839680, 760, 26520, 104960):
+        raise ValueError('inherited evaluation denominator changed')
+    if len(diagnostics) != 582320 or diagnostics.duplicated(FOLD_KEYS + ['edge_id', 'policy', 'draw', 'model']).any():
+        raise ValueError('TRAIN-only panel diagnostic domain changed')
+    paired = folds.pivot(index=FOLD_KEYS[:-1] + ['edge_id', 'domain', 'scope'], columns='fraction', values=['n', 'target_mask_sha256'])
+    if not paired['n', 0.25].eq(paired['n', 1.0]).all() or not paired['target_mask_sha256', 0.25].eq(paired['target_mask_sha256', 1.0]).all():
+        raise ValueError('historical amount changed target mask')
+    edge, context, screen, family, headline = aggregate_domains(folds)
+    availability = availability_summary(folds)
+    outputs = dict(zip(cache_names, (folds, draws, audits, bridge63, bridge65, diagnostics)))
+    outputs.update({PREFIX + suffix: frame for suffix, frame in (('_edge_scores.csv', edge), ('_context_scores.csv', context), ('_screen_scores.csv', screen), ('_family_scores.csv', family), ('_headline.csv', headline), ('_availability.csv', availability))})
+    for name, frame in outputs.items():
+        if not (args.summaries_only and name in cache_names):
+            frame.to_csv(TABLES / name, index=False, encoding='utf-8-sig')
+    plot_figure(coverage, screen, headline)
+    write_report(headline, screen, coverage, availability, audits, bridge63, bridge65, evaluation_seconds)
+    if source_hashes != {path.relative_to(HERE).as_posix(): digest(path) for path in inputs}:
+        raise ValueError('source files changed during report66')
+    if registry_hashes != {name: digest(TABLES / name) for name in registry_hashes}:
+        raise ValueError('frozen panel registry changed')
+    output_hashes = {name: digest(TABLES / name) for name in outputs}
+    output_hashes.update(registry_hashes)
+    manifest = dict(date='2026-10-17', python=platform.python_version(), design=DESIGN, source_hashes=source_hashes, registry_hashes=registry_hashes, inputs_unchanged=True, inherited65_registry_bytes_identical=digest(TABLES / registry_output) == digest(inputs[0]), inherited65_panel_fields_identical=True, code_sha256=digest(Path(__file__)), test_code_sha256=digest(HERE / ('test_' + PREFIX + '.py')), report_sha256=digest(REPORT), figure_sha256=digest(FIGURE), design_sha256=digest(design_path), output_hashes=output_hashes, all_edges=1808, all_screens=18, original_eligible=649, strict_edges=641, relaxed_edges=643, original_unsupported=1159, strict_controls_same_reference=550, training_fits=720, panel_predictions=285000, fold_score_rows=len(folds), random_draw_score_rows=len(draws), training_diagnostic_rows=len(diagnostics), training_diagnostics_include_test_values=False, all649_baseline_rows=len(bridge63), all649_maximum_sse_difference=float(bridge63.max_absolute_risk_difference.max()), report65_bridge_rows=len(bridge65), report65_maximum_sse_difference=float(bridge65.max_absolute_sse_difference.max()), maximum_complete_sd_prediction_error=float(audits.maximum_complete_sd_prediction_error.max()), joint_pinv_count=int(audits.n_joint_pinv.sum()), zero_s_variance_count=int(audits.n_zero_s_variance.sum()), zero_d_variance_count=int(audits.n_zero_d_variance.sum()), target_mask_equal_across_history=True, target_count_equal_across_policies_and_modes=True, all_channels_require_two_finite_cells=True, evaluation_seconds=evaluation_seconds, elapsed_seconds=time.monotonic() - start, cached_score_reuse=args.summaries_only)
+    (DATA / (PREFIX + '_manifest.json')).write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    print(json.dumps({name: manifest[name] for name in ('strict_edges', 'relaxed_edges', 'training_fits', 'fold_score_rows', 'random_draw_score_rows', 'maximum_complete_sd_prediction_error', 'all649_maximum_sse_difference', 'report65_maximum_sse_difference', 'evaluation_seconds', 'elapsed_seconds')}, indent=2))
+if __name__ == '__main__':
+    with threadpool_limits(limits=1):
+        main()

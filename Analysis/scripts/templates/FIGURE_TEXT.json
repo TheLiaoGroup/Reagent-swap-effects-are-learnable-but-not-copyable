@@ -1,0 +1,50 @@
+{
+  "Figure_1": {
+    "title": "A measured reagent swap can reverse with substrate or background",
+    "legend": "The same PdCl₂(dtbpf) → PdCl₂(PPh₃)₂ substitution raises the 6-bromoquinoline Suzuki yield from 4.98% to 93.36% but lowers the 5-bromo-1H-indazole yield from 83.86% to 11.55%, with 4-methoxyphenylboronic acid and the remaining recipe fixed. The 2-bromo-3-methoxypyridine card illustrates copying using measured yields: 51.04% → 22.66% under Cs₂CO₃ and 18.44% → 52.31% under K₂CO₃. Copying the observed reference change of approximately −28 points predicts the opposite direction to the measured target change of approximately +34 points. No individual learned prediction is shown. Aggregate error and direction results come from the separate held-out target comparisons in Figure 3; direction rates include measured absolute changes of at least 20 yield percentage points. Blue and red denote positive and negative changes; orange denotes copying and teal learning. The reaction scheme shows the common boronic acid and conditions once."
+  },
+  "Figure_2": {
+    "title": "Substitution responses depend jointly on substrate and recipe background",
+    "legend": "**a**, Responses to PdCl₂(dtbpf) → PdCl₂(PPh₃)₂ for 412 substrate pairs measured under both Cs₂CO₃ and K₂CO₃; 145 have opposite signs (Pearson r = 0.55). Numbered cards identify the illustrated pairs. Their three negative responses and one positive response cannot all be reproduced by multiplying one sign per substrate pair by one sign per background. **b**, Complete response distributions for one exact substitution in each of six transformations. The Suzuki distribution contains 448 substrate pairs for the flagship substitution. Every point is a measured pair; blue and red denote positive and negative changes. **c**, Fractions and conflicting/testable counts for each of nineteen arrays, using all nonzero changes (circles) or changes of at least 20 points (diamonds). Totals are 271/283 and 143/212. A swap is testable when its observed pair-background graph contains a cycle."
+  },
+  "Figure_3": {
+    "title": "Historical relationships make the same reference measurements useful",
+    "legend": "**a**, Two reference wells for the same substrate pair inform the target substitution in another background. Prediction-error changes relative to history alone for seventeen screens and the hierarchical group average (Overall). Orange denotes copying and teal learning; screens are ordered by learned error change. Overall changes are +42.4% and −13.7%. The arrow marks a copied-error value beyond the plotted range. Missed or wrong directions fall from 18.6 to 13.6 per hundred among 21,997 measured changes of at least 20 points; zero predictions count as missed directions. **b**, Reference and target responses for 452 training pairs in a pentafluorophenol → N-hydroxyphthalimide substitution. The orange line copies at unit slope; the teal line shows the learned predictor at mean reference activity. **c**, Error removed by an aligned reference relative to its matched control. Grey points denote screens and teal points hierarchical group averages. Rows specify the held-out object and fraction of historical training data (25% or 100%)."
+  },
+  "Figure_4": {
+    "title": "Measured alternatives and local profiles guide the next reagent choice",
+    "legend": "**a**, Moving methylthio from meta to para lowers the HBTU/no-HOBt amide yield from 91.34% to 0.00%; TPTU without HOBt gives 92.79% for the para isomer. The network joins recipes differing in one slot, with DIPEA, DMF, 25 °C and 2 h fixed. **b**, Twelve Suzuki yields before and after boronic-acid methyl relocation. Under K₃PO₄, PdCl₂(PCy₃)₂ falls from 47.62% to 0.00%; SPhos Pd G3 gives 92.48% after relocation. Cells cited in the text or legend show two decimals; other cells show integers. Halos mark relocated groups; red outlines denote failure and blue outlines measured alternatives. **c**, Shared-scope conflicts resolved by measured alternatives: 285 of 542, with 257 unresolved. Within the resolved subset, 266, 16 and 3 views require one, two and three additional options, respectively. **d**, Error change from adding history to the same local profiles for 24,221 queries. Profile counts and endpoint-well ranges are shown on the horizontal axis. Eight profiles (48–240 endpoint wells here) give a 9.7% improvement over profiles alone."
+  },
+  "Extended_Data_Figure_1": {
+    "title": "Exact substitutions span nineteen reaction arrays",
+    "legend": "Bars give exact substitution counts for nineteen non-Finkelstein arrays. Bar-end numbers count substitutions; the right column counts distinct substrate pairs within each array. Counts of pairs are not additive across arrays. The retained source corpus contains 410,587 records in twenty tables after 396 exclusions; the nineteen arrays shown contain 406,909 records."
+  },
+  "Extended_Data_Figure_2": {
+    "title": "The larger local budget retains a fixed sixteen-profile population",
+    "legend": "Original local-update curves for the separate fixed population of 22,963 queries supporting sixteen local profiles. Budgets are 0, 1, 2, 4, 8 and 16 profiles; points are ordered categories labelled with the minimum–maximum number of distinct condition cells. The curves use equal-group, edge-balanced weighting and the history-only reference. One complete profile contains two reagent endpoints in each included recipe background. Values show changes relative to history alone, without refitting the models."
+  },
+  "Extended_Data_Figure_3": {
+    "title": "Calibration between libraries usually worsens the target-only baseline",
+    "legend": "**a**, All seventeen fixed-support, scored transfers between libraries. Each line follows one direction from target-only prediction to calibrated transfer and the source-identity reassignment control. Errors are normalized to the target-only error for that direction. Calibration worsens fifteen directions (red) and improves two (teal). The source difference channel, budget of 192 and fixed target support follow the original cross-library analysis."
+  },
+  "Extended_Data_Figure_4": {
+    "title": "Structure-based prediction primarily recovers each pair's own response level",
+    "legend": "This structure-only task excludes both partner molecules from training and is distinct from the two-reference-well learning task in Figure 3. **a**, Two measured response vectors from the substitution with the most supported complete vectors in the three-group decomposition; the displayed pairs have the minimum and maximum own mean response within that population. Solid lines show responses across backgrounds; dashed lines show each pair's own mean. **b**, Error removed within each layer, divided by that layer's centroid-baseline error, for the three-group, group-and-edge-balanced comparison. Approximately 5.0% of pair-level error and 0.22% of background-fluctuation error are removed. **c**, Pair-level (blue) and fluctuation (teal) contributions to net total improvement for two or three groups and three weightings. Each pair's own level accounts for 91.1–96.6% of net improvement. This share uses a different denominator from panel b."
+  },
+  "Extended_Data_Figure_5": {
+    "title": "A representative matched-reference comparison illustrates direction and magnitude separately",
+    "legend": "**a**, Replacing PdCl₂(dtbpf) with XPhos Pd G3 gives opposite responses in the K₃PO₄ reference and Cs₂CO₃ target backgrounds of the same substrate pair. Target wells were withheld from prediction. **b**, Copying predicts −10.5 percentage points, learning +5.6 points and the measured target change is +34.4 points. Learning identifies the direction but underestimates its magnitude. The predeclared rule requires a reference change of at least 10 points, a measured target change of at least 20 points, an incorrect copied sign and a correct learned sign, plus four retained measured endpoints. The nested eligible pools contain zero flagship-catalyst, 136 Suzuki and 529 total comparisons. The selected Suzuki comparison is nearest the median absolute learned error; lexical identities resolve ties."
+  },
+  "Extended_Data_Figure_6": {
+    "title": "Additional molecular changes reshape reagent preferences",
+    "legend": "**a**, All sixteen measured yields for acid fluorination and two anilines. Activator and additive are each 1.5 equiv in DMF at 25 °C for 2 h, without base. **b**, FDPP-to-TOTU response contrasts between primary aryl and primary alkyl amines within 42 common acid partners; the red line marks their mean of 33.87 pp. **c**, NMM-to-DIPEA difference-in-differences: the response for 4-methoxybenzylamine minus that for benzylamine over the same eight acids. Points are acids and red ticks their means."
+  },
+  "Extended_Data_Figure_7": {
+    "title": "Measured response differences and local information contribute differently",
+    "legend": "**a**, Information added by the observed reference difference D beyond mean reference activity S, expressed as the intended-swap improvement minus the matched different-swap improvement in each screen. The pair-held-out, full-history, context-balanced complete-panel population is retained. **b**, Fixed-operator label-content contrasts for Buchwald–Hartwig and Ullmann reactions separate local level and fluctuation information. Negative changes reduce error; the Ullmann fluctuation contrast is near zero."
+  },
+  "Extended_Data_Figure_8": {
+    "title": "Combining reaction scopes can require a yield sacrifice",
+    "legend": "**a**, Best measured route bottlenecks for two Suzuki scopes separately and after combining them on identical native support. The bracket marks the 13.48 pp yield sacrifice. **b**, Exact Pareto frontier between amide source-scope sacrifice and target-scope bottleneck. The dashed line marks 20% target yield; a source-scope sacrifice of at least 5.00 pp is required to reach it. Displayed values use two decimals; sacrifices are calculated before rounding. The routes use measured recipes."
+  }
+}

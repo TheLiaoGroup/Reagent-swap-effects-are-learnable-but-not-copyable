@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "native_units_per_cdxml_point": 20,
+  "css_pixels_per_point": 1.3333333333333333,
+  "export_matrix_scale": 0.133333,
+  "normalization_factor": 0.5000012500031249,
+  "existing_layout_scale": 0.75,
+  "raw_viewbox": [
+    0.0,
+    0.0,
+    243.0,
+    87.0
+  ],
+  "normalized_viewbox": [
+    0.0,
+    0.0,
+    121.50030375075934,
+    43.50010875027186
+  ],
+  "cdxml_bond_lengths_pt": [
+    10.792145291831478,
+    10.804536084441564,
+    10.798393399020048,
+    10.79457734235111,
+    10.805415309001319,
+    10.794577342351142,
+    10.796337341895166,
+    10.795489798985502,
+    10.806562820804816,
+    10.795489798985502,
+    10.798393399020064,
+    10.80541530900133,
+    10.794577342351113,
+    10.798393399020112,
+    10.794577342351113,
+    10.798393399020048,
+    10.804536084441558,
+    10.801226782176187,
+    10.798393399020032,
+    10.796337341895137
+  ],
+  "max_carbon_endpoint_error_pt": 0.33580537518035164,
+  "verified_line_cross_sections": 21,
+  "final_bond_length_pt": 10.8,
+  "final_label_size_pt": 5.999999999999999,
+  "final_text_sizes_pt": [
+    5.999999999999999
+  ],
+  "final_line_width_pt": 0.5999999999999999,
+  "rendered_pdf_fonts": [
+    "NimbusSans-Regular"
+  ],
+  "content_within_viewport": true,
+  "raw_svg_sha256": "24cbd6d14bcc36fb0ea29d3eb7638d3648007af8c12c28b609025064db34530a",
+  "normalized_svg_sha256": "ef15639185d598a620496014853ea9135b2f38cfabdeb2ae2c5a501a25ef6f41",
+  "cdxml_sha256": "5a26bffaab738d8931fa32598a24ca8b8de89000ed6853bc5da9dde4211ec6f8"
+}

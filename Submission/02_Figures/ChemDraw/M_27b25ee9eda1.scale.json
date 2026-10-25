@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "native_units_per_cdxml_point": 20,
+  "css_pixels_per_point": 1.3333333333333333,
+  "export_matrix_scale": 0.0833333,
+  "normalization_factor": 0.800000320000128,
+  "existing_layout_scale": 0.75,
+  "raw_viewbox": [
+    0.0,
+    0.0,
+    87.0,
+    60.0
+  ],
+  "normalized_viewbox": [
+    0.0,
+    0.0,
+    69.60002784001114,
+    48.00001920000768
+  ],
+  "cdxml_bond_lengths_pt": [
+    10.79733763480605,
+    10.800000000000011,
+    10.79733763480605,
+    10.80000000000004,
+    10.79733763480605,
+    10.7973376348061,
+    10.805998334258618,
+    10.80000000000004,
+    10.7973376348061
+  ],
+  "max_carbon_endpoint_error_pt": 0.3355804672503973,
+  "verified_line_cross_sections": 10,
+  "final_bond_length_pt": 10.8,
+  "final_label_size_pt": 5.999999999999999,
+  "final_text_sizes_pt": [
+    4.5,
+    5.999999999999999
+  ],
+  "final_line_width_pt": 0.6,
+  "rendered_pdf_fonts": [
+    "NimbusSans-Regular"
+  ],
+  "content_within_viewport": true,
+  "raw_svg_sha256": "86bdd4a18860ade3c34b76b5bd03395042b494cef201f297f191e18c8ad9da6a",
+  "normalized_svg_sha256": "911ddb4419747c3ec05749ddef34345d482b1d6adce63abce5069410df97a917",
+  "cdxml_sha256": "1a5f4f9104d51e017a2fc65eb3688272e08497bbbb4f06c95bcb7653e43b9f84"
+}

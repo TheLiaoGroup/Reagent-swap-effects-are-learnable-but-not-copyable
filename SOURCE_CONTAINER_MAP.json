@@ -1,0 +1,1963 @@
+{
+  "schema": "m1-public-csv-provenance-map-v1",
+  "status": "verified_provenance_map_not_scientific_acceptance",
+  "authority": {
+    "path": "CODEX_PROMPT_V11_SUPPORT_20261024.md",
+    "sha256": "7cf719cda44fa18c710d923b9364a51cdd78320a2a13c42656b378a62ce3054d",
+    "bytes": 3977
+  },
+  "build_evidence": {
+    "path": "full_support_data_evidence.json",
+    "sha256": "3652539431152be22dc811a5a4c32809f5e386838d1d7f5ae2e10c5ffb619b2e",
+    "bytes": 272351
+  },
+  "source_manifest": {
+    "path": "tables.json",
+    "sha256": "146775426a5f124ec80c82cc251c6e27c6dd30ec1a7fe5b08f91556013aa227a",
+    "bytes": 53213
+  },
+  "sources": [
+    {
+      "logical_source": "0_Compound ID_260810.xlsx",
+      "kind": "compounds",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "0_Compound ID_260810.xlsx",
+            "sha256": "0beeefbaeaf9a4e88fc958ab050b282be5c99a6e06fd7eceb96627b42230fa9e",
+            "bytes": 35999
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "0_Compound ID_260810.xlsx",
+            "sha256": "0beeefbaeaf9a4e88fc958ab050b282be5c99a6e06fd7eceb96627b42230fa9e",
+            "bytes": 35999
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_00_sheet_00.csv",
+          "sha256": "a3e40c771960663bc95f0a2d8cea97ad5000f61716d1f259cacf223936f3da2d",
+          "bytes": 22537
+        },
+        {
+          "path": "original/source_00_sheet_00.rows.csv",
+          "sha256": "cf4f339691609c868645e5806c66758d615367e63107fefe1f70612048fd3873",
+          "bytes": 5099
+        },
+        {
+          "path": "original/source_00_sheet_00.types.csv",
+          "sha256": "1354e8d49b8536de5027151c320cd4875d3ad717bff4afc3bb08c3cc36fcdc6a",
+          "bytes": 6644
+        }
+      ],
+      "csv_aggregate_sha256": "334e7ee5bd09bd360c2f90cb57aef6fb130c2376b27a841b73ecfb3df47030ba",
+      "csv_aggregate_bytes": 34280,
+      "source_schema": {
+        "logical_source": "0_Compound ID_260810.xlsx",
+        "kind": "compounds",
+        "format": "excel",
+        "original_sha256": "0beeefbaeaf9a4e88fc958ab050b282be5c99a6e06fd7eceb96627b42230fa9e",
+        "original_bytes": 35999,
+        "sheets": [
+          {
+            "name": "Sheet1",
+            "original_rows": 660,
+            "rows": 660,
+            "columns": [
+              "cas",
+              "Standardized Name",
+              "Compound ID",
+              "Note",
+              "Date"
+            ],
+            "csv": "original/source_00_sheet_00.csv",
+            "types": "original/source_00_sheet_00.types.csv",
+            "row_map": "original/source_00_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "0_total condition_260810.xlsx",
+      "kind": "conditions",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "0_total condition_260810.xlsx",
+            "sha256": "8cd865ca3d4763dd93a09ee60d73c63b3006f8fff3b7a5c8b81b4f4ba768d319",
+            "bytes": 203068
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "0_total condition_260810.xlsx",
+            "sha256": "8cd865ca3d4763dd93a09ee60d73c63b3006f8fff3b7a5c8b81b4f4ba768d319",
+            "bytes": 203068
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_01_sheet_00.csv",
+          "sha256": "511c291fe2af6c84fd0b724eb8373b85ef16011f8d9e866d66d0725740766c55",
+          "bytes": 319336
+        },
+        {
+          "path": "original/source_01_sheet_00.rows.csv",
+          "sha256": "4607a8cf8ec34f58b561d8ad04753c15ae7d1369630510214cdba3168369b3e6",
+          "bytes": 21463
+        },
+        {
+          "path": "original/source_01_sheet_00.types.csv",
+          "sha256": "6c7934d01ac908517d9af503191766b9f64bd078a0c889815e97d2773a95e4a9",
+          "bytes": 147095
+        }
+      ],
+      "csv_aggregate_sha256": "9285826c2faacc683e274cf19070cb976b56b73c15f28c998c95eaec6f1daec2",
+      "csv_aggregate_bytes": 487894,
+      "source_schema": {
+        "logical_source": "0_total condition_260810.xlsx",
+        "kind": "conditions",
+        "format": "excel",
+        "original_sha256": "8cd865ca3d4763dd93a09ee60d73c63b3006f8fff3b7a5c8b81b4f4ba768d319",
+        "original_bytes": 203068,
+        "sheets": [
+          {
+            "name": "Sheet2",
+            "original_rows": 2364,
+            "rows": 2364,
+            "columns": [
+              "note",
+              "reaction_type",
+              "condition_id",
+              "Reagent1_HTE_CAS",
+              "Reagent1_HTE_Equiv",
+              "Reagent1_Standardized Name",
+              "Reagent1_id",
+              "Reagent2_HTE_CAS",
+              "Reagent2_HTE_Equiv",
+              "Reagent2_Standardized Name",
+              "Reagent2_id",
+              "Reagent3_HTE_CAS",
+              "Reagent3_HTE_Equiv",
+              "Reagent3_Standardized Name",
+              "Reagent3_id",
+              "Reagent4_HTE_CAS",
+              "Reagent4_HTE_Equiv",
+              "Reagent4_Standardized Name",
+              "Reagent4_id",
+              "Reagent5_HTE_CAS",
+              "Reagent5_HTE_Equiv",
+              "Reagent5_Standardized Name",
+              "Reagent5_id",
+              "Reagent6_HTE_CAS",
+              "Reagent6_HTE_Equiv",
+              "Reagent6_Standardized Name",
+              "Reagent6_id",
+              "Standardized Name",
+              "solvent_id",
+              "temp_id",
+              "time_id"
+            ],
+            "csv": "original/source_01_sheet_00.csv",
+            "types": "original/source_01_sheet_00.types.csv",
+            "row_map": "original/source_01_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Acylation_260805.xlsx",
+      "kind": "reaction",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Acylation_260805.xlsx",
+            "sha256": "20bdd0d5965da6713eeab2e8d06b6754671439c1ec506ee66451c432d84702c4",
+            "bytes": 17237628
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Acylation_260805.xlsx",
+            "sha256": "5c7fe4bfb951f89493aab9b2d0d531e4fbb73373253ab83c7fc06318ac60cfeb",
+            "bytes": 14952739
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_02_sheet_00.csv",
+          "sha256": "46a105ebccf9e30af64bc187f64e5bccfebb13f47c0b39e96ca91dc865804454",
+          "bytes": 35729678
+        },
+        {
+          "path": "original/source_02_sheet_00.rows.csv",
+          "sha256": "3ac7a85edbec59d50bd6685ae08e7c045261c44345792085d048518f2fdeb926",
+          "bytes": 1389637
+        },
+        {
+          "path": "original/source_02_sheet_00.types.csv",
+          "sha256": "9ee5d53b45f419c7553de6984e34013196a74615220977a66133744c0748fc00",
+          "bytes": 5986990
+        },
+        {
+          "path": "original/source_02_sheet_01.csv",
+          "sha256": "f18bdffdcf7a32315220dda532583781ad08bf937fc9af35ed20c28b2e600966",
+          "bytes": 10447604
+        },
+        {
+          "path": "original/source_02_sheet_01.rows.csv",
+          "sha256": "2a23aa60744487c6989f19a5a3010445c3e12f007d027d17017282cffac67392",
+          "bytes": 1392311
+        },
+        {
+          "path": "original/source_02_sheet_01.types.csv",
+          "sha256": "4918435ca79e7b8ea1bf852ce1d706dc80a3238817324ab7a6c2ee9980689377",
+          "bytes": 3459769
+        }
+      ],
+      "csv_aggregate_sha256": "76d1971018d97fe336339e46e22d0a746de36186550605ab6eac17d4606d0140",
+      "csv_aggregate_bytes": 58405989,
+      "source_schema": {
+        "logical_source": "Acylation_260805.xlsx",
+        "kind": "reaction",
+        "format": "excel",
+        "original_sha256": "20bdd0d5965da6713eeab2e8d06b6754671439c1ec506ee66451c432d84702c4",
+        "original_bytes": 17237628,
+        "sheets": [
+          {
+            "name": "Sheet1",
+            "original_rows": 115129,
+            "rows": 115129,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_02_sheet_00.csv",
+            "types": "original/source_02_sheet_00.types.csv",
+            "row_map": "original/source_02_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          },
+          {
+            "name": "Sheet2",
+            "original_rows": 115320,
+            "rows": 115320,
+            "columns": [
+              "Unnamed: 0",
+              "Unnamed: 1",
+              "Unnamed: 2",
+              "Unnamed: 3",
+              "Unnamed: 4",
+              "sub_1_cas",
+              "Unnamed: 6",
+              "Unnamed: 7",
+              "sub_1_cas.1",
+              "sub_2_cas",
+              "Unnamed: 10",
+              "Unnamed: 11",
+              "sub_2_cas.1",
+              "Unnamed: 13",
+              "sub_2_cas.2"
+            ],
+            "csv": "original/source_02_sheet_01.csv",
+            "types": "original/source_02_sheet_01.types.csv",
+            "row_map": "original/source_02_sheet_01.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Allylic-substitution_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Allylic-substitution_260731.csv",
+            "sha256": "2bb0d0ebee3567b2d0207d6019cca999447a5f928f6b846c3fa84f09f07934d7",
+            "bytes": 1723947
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Allylic-substitution_260731.csv",
+            "sha256": "45edcd6962056eb0c3146225f4b85a817a76666739d7ca80e3150f9b140489ed",
+            "bytes": 1724033
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_03_sheet_00.csv",
+          "sha256": "2bb0d0ebee3567b2d0207d6019cca999447a5f928f6b846c3fa84f09f07934d7",
+          "bytes": 1723947
+        },
+        {
+          "path": "original/source_03_sheet_00.rows.csv",
+          "sha256": "19b3a9683d78e65ecce18f2666427a4798db214b7c81a2fe74d5dbc22431e88f",
+          "bytes": 55563
+        }
+      ],
+      "csv_aggregate_sha256": "03a3f3f684656cb9786a6b4afd767ceb7cb4bb587d98515bea878ca94ec0ff49",
+      "csv_aggregate_bytes": 1779510,
+      "source_schema": {
+        "logical_source": "Allylic-substitution_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "2bb0d0ebee3567b2d0207d6019cca999447a5f928f6b846c3fa84f09f07934d7",
+        "original_bytes": 1723947,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 5774,
+            "rows": 5774,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_03_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_03_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Buchwald-Hartwig(CMC)_260805.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Buchwald-Hartwig(CMC)_260805.csv",
+            "sha256": "22e5cad096a958eb4ad3e492156c78868ab313cfabb2f72eab1e8d14b24b3fdf",
+            "bytes": 5178650
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Buchwald-Hartwig(CMC)_260805.csv",
+            "sha256": "f5a446411d52d95d06723498cddbbc10b258d84abe95db71bbadbf3f4d240a1c",
+            "bytes": 5178706
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_04_sheet_00.csv",
+          "sha256": "22e5cad096a958eb4ad3e492156c78868ab313cfabb2f72eab1e8d14b24b3fdf",
+          "bytes": 5178650
+        },
+        {
+          "path": "original/source_04_sheet_00.rows.csv",
+          "sha256": "a05d40308557377271f030eefaf5fb47022ba36a2ce91a17ab09223962d62977",
+          "bytes": 191643
+        }
+      ],
+      "csv_aggregate_sha256": "7c36f31a16a7a75e65b791b7b7b6891b82794d69b2e322f60488e9e860662cfb",
+      "csv_aggregate_bytes": 5370293,
+      "source_schema": {
+        "logical_source": "Buchwald-Hartwig(CMC)_260805.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "22e5cad096a958eb4ad3e492156c78868ab313cfabb2f72eab1e8d14b24b3fdf",
+        "original_bytes": 5178650,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 17818,
+            "rows": 17818,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_04_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_04_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Buchwald-Hartwig_260805.xlsx",
+      "kind": "reaction",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Buchwald-Hartwig_260805.xlsx",
+            "sha256": "5835ea09c7fbcab8670d47613cff4679bba4235b7256a88a9041dc03aec37662",
+            "bytes": 5889417
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Buchwald-Hartwig_260805.xlsx",
+            "sha256": "59e6b429c5844f90afd3b3e37f27bd6057fb0cb013058e27afacbb23a71db70a",
+            "bytes": 5029851
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_05_sheet_00.csv",
+          "sha256": "c2594b57a8db19b425e24c9a4cb3d1a06556ffee18c9e7cf4b966911b6bf047e",
+          "bytes": 15763059
+        },
+        {
+          "path": "original/source_05_sheet_00.rows.csv",
+          "sha256": "73b3b98395fb8235a9532b9dd5f34922a34ad00254591e8811197a8cb755ee36",
+          "bytes": 620019
+        },
+        {
+          "path": "original/source_05_sheet_00.types.csv",
+          "sha256": "0c860a48f415729377a9d11f47eef4d5d832c813701ca4a97875a8768e43beaa",
+          "bytes": 2783114
+        }
+      ],
+      "csv_aggregate_sha256": "bbb5fc8182cdf5db0db9eb88237fedd5abc0c9c15c6e7715005367027029edcc",
+      "csv_aggregate_bytes": 19166192,
+      "source_schema": {
+        "logical_source": "Buchwald-Hartwig_260805.xlsx",
+        "kind": "reaction",
+        "format": "excel",
+        "original_sha256": "5835ea09c7fbcab8670d47613cff4679bba4235b7256a88a9041dc03aec37662",
+        "original_bytes": 5889417,
+        "sheets": [
+          {
+            "name": "Sheet1",
+            "original_rows": 53516,
+            "rows": 53516,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_05_sheet_00.csv",
+            "types": "original/source_05_sheet_00.types.csv",
+            "row_map": "original/source_05_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "C-O competitive reactions_230730.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "C-O competitive reactions_230730.csv",
+            "sha256": "bdafc04d85a75dc527267a1c8d4340c7bd90ea5dc3b8fad053807e65714eb1dd",
+            "bytes": 3045158
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "C-O competitive reactions_230730.csv",
+            "sha256": "dd13a88f8e742f42ffa339062f34c18730dd6b1b76ff2d175d8a92b2ddd2ed4f",
+            "bytes": 3046069
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_06_sheet_00.csv",
+          "sha256": "bdafc04d85a75dc527267a1c8d4340c7bd90ea5dc3b8fad053807e65714eb1dd",
+          "bytes": 3045158
+        },
+        {
+          "path": "original/source_06_sheet_00.rows.csv",
+          "sha256": "030908d3993f9b742ba6622eb1700c40c7c9d4bba996f2a3aa043cbd59f250f9",
+          "bytes": 106251
+        }
+      ],
+      "csv_aggregate_sha256": "e29ac0bcb62ef3fd99b27401da445f335a993fc876afe7f596fc76d6c2368f6c",
+      "csv_aggregate_bytes": 3151409,
+      "source_schema": {
+        "logical_source": "C-O competitive reactions_230730.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "bdafc04d85a75dc527267a1c8d4340c7bd90ea5dc3b8fad053807e65714eb1dd",
+        "original_bytes": 3045158,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 10702,
+            "rows": 10702,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_06_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_06_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Chan-Lam_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Chan-Lam_260731.csv",
+            "sha256": "1661058cba527a33d9cf54889443effb24dc4953ddd187011b5096bbf8de8173",
+            "bytes": 4017207
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Chan-Lam_260731.csv",
+            "sha256": "b367b24cdb7b6a40c15b49483b12e713790473eab644a032452928e1772a75e9",
+            "bytes": 4017456
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_07_sheet_00.csv",
+          "sha256": "1661058cba527a33d9cf54889443effb24dc4953ddd187011b5096bbf8de8173",
+          "bytes": 4017207
+        },
+        {
+          "path": "original/source_07_sheet_00.rows.csv",
+          "sha256": "b99381aa6761d007dc70fdb0861c754b88ffee4c80ae362447e0be78084969e1",
+          "bytes": 146799
+        }
+      ],
+      "csv_aggregate_sha256": "299446c66182c9c1211e1fd4f1a090866f7578ef19aa8c56b8a639eb2eb7ccbc",
+      "csv_aggregate_bytes": 4164006,
+      "source_schema": {
+        "logical_source": "Chan-Lam_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "1661058cba527a33d9cf54889443effb24dc4953ddd187011b5096bbf8de8173",
+        "original_bytes": 4017207,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 14081,
+            "rows": 14081,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_07_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_07_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Esterification_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Esterification_260731.csv",
+            "sha256": "d3fe98ff4df655942894047ff9378ab91a021252ee81a87ad44689448f3b204c",
+            "bytes": 1893855
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Esterification_260731.csv",
+            "sha256": "d3fe98ff4df655942894047ff9378ab91a021252ee81a87ad44689448f3b204c",
+            "bytes": 1893855
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_08_sheet_00.csv",
+          "sha256": "d3fe98ff4df655942894047ff9378ab91a021252ee81a87ad44689448f3b204c",
+          "bytes": 1893855
+        },
+        {
+          "path": "original/source_08_sheet_00.rows.csv",
+          "sha256": "6e7e0eee96ada64e5dec699cf3f7c0595215b84b5e34ef6caf68228343a68161",
+          "bytes": 60313
+        }
+      ],
+      "csv_aggregate_sha256": "cc1f571dbcf6a644ad47cd5c20e6657935e4b4dcb012a9a196e3b83dbd6a3b3f",
+      "csv_aggregate_bytes": 1954168,
+      "source_schema": {
+        "logical_source": "Esterification_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "d3fe98ff4df655942894047ff9378ab91a021252ee81a87ad44689448f3b204c",
+        "original_bytes": 1893855,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 6249,
+            "rows": 6249,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_08_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_08_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Finkelstein_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Finkelstein_260731.csv",
+            "sha256": "698a802d4dd5b128a1bccfdb673cc9b99d16bbde2adde20ebd3838c8327d7d6c",
+            "bytes": 689725
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Finkelstein_260731.csv",
+            "sha256": "2bec9f616163ea223b2507588d1edb382aaf313fca75ab128a874363a5e83caa",
+            "bytes": 690665
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_09_sheet_00.csv",
+          "sha256": "698a802d4dd5b128a1bccfdb673cc9b99d16bbde2adde20ebd3838c8327d7d6c",
+          "bytes": 689725
+        },
+        {
+          "path": "original/source_09_sheet_00.rows.csv",
+          "sha256": "9ffab31aeadd968eefff3c0ae4a002c9be8504c7687d65e958372c1974cca739",
+          "bytes": 34603
+        }
+      ],
+      "csv_aggregate_sha256": "d39653085448da900fdbf9122cb303436b5c5d0f9e540f10b3d0608f82574489",
+      "csv_aggregate_bytes": 724328,
+      "source_schema": {
+        "logical_source": "Finkelstein_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "698a802d4dd5b128a1bccfdb673cc9b99d16bbde2adde20ebd3838c8327d7d6c",
+        "original_bytes": 689725,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 3678,
+            "rows": 3678,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_1_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_09_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_09_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Grignard_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Grignard_260731.csv",
+            "sha256": "b9aee115784887205e8751b69d971e038d7fa1f9baabc57e397d93419d2311ad",
+            "bytes": 1582932
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Grignard_260731.csv",
+            "sha256": "490ebc6a6f4ec0381b9624053fa12cc12973e8f6af3f307c8a9d6b3ce8a59f14",
+            "bytes": 1582992
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_10_sheet_00.csv",
+          "sha256": "b9aee115784887205e8751b69d971e038d7fa1f9baabc57e397d93419d2311ad",
+          "bytes": 1582932
+        },
+        {
+          "path": "original/source_10_sheet_00.rows.csv",
+          "sha256": "25fee96dbf596f0c4c9408f81082aad604e5c82df14c325cacb06216665b8264",
+          "bytes": 55753
+        }
+      ],
+      "csv_aggregate_sha256": "adfd3f21afd83d3a55226cabe8921730fa95abcf18ad8e500a389014868e8618",
+      "csv_aggregate_bytes": 1638685,
+      "source_schema": {
+        "logical_source": "Grignard_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "b9aee115784887205e8751b69d971e038d7fa1f9baabc57e397d93419d2311ad",
+        "original_bytes": 1582932,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 5793,
+            "rows": 5793,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_10_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_10_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Heck_260810.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Heck_260810.csv",
+            "sha256": "6034d156690fc08b28dbc46f197713c5b27ee67a13c3be8b75cfbc64a41c27ef",
+            "bytes": 8360712
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Heck_260810.csv",
+            "sha256": "d6429e271dabe2313e220e9ab1bab66c7cb0b1caaae4f6bf23e964146cc71c69",
+            "bytes": 8364737
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_11_sheet_00.csv",
+          "sha256": "6034d156690fc08b28dbc46f197713c5b27ee67a13c3be8b75cfbc64a41c27ef",
+          "bytes": 8360712
+        },
+        {
+          "path": "original/source_11_sheet_00.rows.csv",
+          "sha256": "4bd093545ddc70ccb1fd116b84909701d94cbc8ca986214e136d8ada43c1ed88",
+          "bytes": 333207
+        }
+      ],
+      "csv_aggregate_sha256": "ba7210cfdd8b7bce9f7a56fbbb6ea29a0c9802d3969af42892544194b0b44f54",
+      "csv_aggregate_bytes": 8693919,
+      "source_schema": {
+        "logical_source": "Heck_260810.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "6034d156690fc08b28dbc46f197713c5b27ee67a13c3be8b75cfbc64a41c27ef",
+        "original_bytes": 8360712,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 29615,
+            "rows": 29615,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_11_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_11_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Hiyama_260729.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Hiyama_260729.csv",
+            "sha256": "c67cd05fa4811081754e94d71199dbefa3d70bc4304c538b622aa14c4bca8c58",
+            "bytes": 3365882
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Hiyama_260729.csv",
+            "sha256": "51fbc1486e37aae62ff7fda4624cb656e06e1a47b2d5ec476e1edcdc91e8b388",
+            "bytes": 3365968
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_12_sheet_00.csv",
+          "sha256": "c67cd05fa4811081754e94d71199dbefa3d70bc4304c538b622aa14c4bca8c58",
+          "bytes": 3365882
+        },
+        {
+          "path": "original/source_12_sheet_00.rows.csv",
+          "sha256": "12b05c6e6c79698b293a94ee48604a948e6eefebb7255057ef311412560e6303",
+          "bytes": 131331
+        }
+      ],
+      "csv_aggregate_sha256": "9dc1e5a6189539fba3ae6bda54be8045cb701806621c47b6117c9e925c897c9d",
+      "csv_aggregate_bytes": 3497213,
+      "source_schema": {
+        "logical_source": "Hiyama_260729.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "c67cd05fa4811081754e94d71199dbefa3d70bc4304c538b622aa14c4bca8c58",
+        "original_bytes": 3365882,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 12792,
+            "rows": 12792,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_12_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_12_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Kumada_.xlsx",
+      "kind": "reaction",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Kumada_.xlsx",
+            "sha256": "b096a4556556b1d307f772af31953a260ef789d6941b5a22028f85a0d652470c",
+            "bytes": 1875008
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Kumada_.xlsx",
+            "sha256": "2b8f03a41ab610994ebd8669939c0e72423bc69fcb4871a1be9bded8a050154e",
+            "bytes": 1609094
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_13_sheet_00.csv",
+          "sha256": "8de1402405b31b4d664d28d48afcf18adf6247c2dfff0e79f5c25b1f8fe9aab9",
+          "bytes": 5000867
+        },
+        {
+          "path": "original/source_13_sheet_00.rows.csv",
+          "sha256": "4e1e79f05ac45efcd07145677cebe9a155bd05de53fdf07f205f2b6960775a70",
+          "bytes": 195687
+        },
+        {
+          "path": "original/source_13_sheet_00.types.csv",
+          "sha256": "55b9559fde3feee44b4d2dfb609f24a3c3c149cfff285cad6d4c107297af435b",
+          "bytes": 944342
+        }
+      ],
+      "csv_aggregate_sha256": "d432140b7906895f3945e98f134ffd791920e367e45e938a53f16c8e0c3183b8",
+      "csv_aggregate_bytes": 6140896,
+      "source_schema": {
+        "logical_source": "Kumada_.xlsx",
+        "kind": "reaction",
+        "format": "excel",
+        "original_sha256": "b096a4556556b1d307f772af31953a260ef789d6941b5a22028f85a0d652470c",
+        "original_bytes": 1875008,
+        "sheets": [
+          {
+            "name": "Kumada_full_processed_\u5220\u6389\u4e86C55+C5",
+            "original_rows": 18155,
+            "rows": 18155,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_13_sheet_00.csv",
+            "types": "original/source_13_sheet_00.types.csv",
+            "row_map": "original/source_13_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Minisci_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Minisci_260731.csv",
+            "sha256": "1bcd2c46e81cbee125325b7073e28f2cbcfa3c08328e8adbd2c410eed83bdfd3",
+            "bytes": 331056
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Minisci_260731.csv",
+            "sha256": "1bcd2c46e81cbee125325b7073e28f2cbcfa3c08328e8adbd2c410eed83bdfd3",
+            "bytes": 331056
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_14_sheet_00.csv",
+          "sha256": "1bcd2c46e81cbee125325b7073e28f2cbcfa3c08328e8adbd2c410eed83bdfd3",
+          "bytes": 331056
+        },
+        {
+          "path": "original/source_14_sheet_00.rows.csv",
+          "sha256": "1f70928a4f1df753c5310e47f7c8bc176f905d5d4f6627dbf818d021415c1b24",
+          "bytes": 9343
+        }
+      ],
+      "csv_aggregate_sha256": "ab3efc61fc1cf16cd747e16e2adb90dd81eeb308bd69611ab8520b9115572366",
+      "csv_aggregate_bytes": 340399,
+      "source_schema": {
+        "logical_source": "Minisci_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "1bcd2c46e81cbee125325b7073e28f2cbcfa3c08328e8adbd2c410eed83bdfd3",
+        "original_bytes": 331056,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 1152,
+            "rows": 1152,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_14_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_14_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Pd-carbonylation_260731.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Pd-carbonylation_260731.csv",
+            "sha256": "d38ec42bae5b1f263a6a8093b0d372f601bc9b2ea78a280f8b35e66465972178",
+            "bytes": 983046
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Pd-carbonylation_260731.csv",
+            "sha256": "d38ec42bae5b1f263a6a8093b0d372f601bc9b2ea78a280f8b35e66465972178",
+            "bytes": 983046
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_15_sheet_00.csv",
+          "sha256": "d38ec42bae5b1f263a6a8093b0d372f601bc9b2ea78a280f8b35e66465972178",
+          "bytes": 983046
+        },
+        {
+          "path": "original/source_15_sheet_00.rows.csv",
+          "sha256": "4b4fd0ebc237aefad3474f288d8f89b0c8be5607a3a605434042be85ea6a1696",
+          "bytes": 32853
+        }
+      ],
+      "csv_aggregate_sha256": "c17605993297e6d7fb7eec93913fafd1e53c3f48af6f903fa802ddd054574428",
+      "csv_aggregate_bytes": 1015899,
+      "source_schema": {
+        "logical_source": "Pd-carbonylation_260731.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "d38ec42bae5b1f263a6a8093b0d372f601bc9b2ea78a280f8b35e66465972178",
+        "original_bytes": 983046,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 3503,
+            "rows": 3503,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_15_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_15_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Reductive-amination_260729.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Reductive-amination_260729.csv",
+            "sha256": "945ef4b0a5d102d392c0303be8d11d0ef68b0cf571c06e04542603cad0f80b07",
+            "bytes": 2608153
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Reductive-amination_260729.csv",
+            "sha256": "945ef4b0a5d102d392c0303be8d11d0ef68b0cf571c06e04542603cad0f80b07",
+            "bytes": 2608153
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_16_sheet_00.csv",
+          "sha256": "945ef4b0a5d102d392c0303be8d11d0ef68b0cf571c06e04542603cad0f80b07",
+          "bytes": 2608153
+        },
+        {
+          "path": "original/source_16_sheet_00.rows.csv",
+          "sha256": "415838d2989b5e9f471d5b9110fad822dc6cd75301f6611c1b8070c689a00882",
+          "bytes": 86403
+        }
+      ],
+      "csv_aggregate_sha256": "c997e6ef056fc38af92fb115ece6774bfc2deab484d996a74b1a64a7afdd2038",
+      "csv_aggregate_bytes": 2694556,
+      "source_schema": {
+        "logical_source": "Reductive-amination_260729.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "945ef4b0a5d102d392c0303be8d11d0ef68b0cf571c06e04542603cad0f80b07",
+        "original_bytes": 2608153,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 8858,
+            "rows": 8858,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_16_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_16_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "SNAr_260729.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "SNAr_260729.csv",
+            "sha256": "a5c17fd81dea8dbf40b992ee8d497d415b8e0e99b176b5ecb85e9c35f13792d7",
+            "bytes": 4986688
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "SNAr_260729.csv",
+            "sha256": "bd44876236fd1154aebca9bafe79075d74720e651dda83e8e23d20d61a7be443",
+            "bytes": 4988794
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_17_sheet_00.csv",
+          "sha256": "a5c17fd81dea8dbf40b992ee8d497d415b8e0e99b176b5ecb85e9c35f13792d7",
+          "bytes": 4986688
+        },
+        {
+          "path": "original/source_17_sheet_00.rows.csv",
+          "sha256": "f974dd16b54794814088c81b62b0362079222a67979c6e142df628c1679d2553",
+          "bytes": 225039
+        }
+      ],
+      "csv_aggregate_sha256": "3e3b9dc40fd88c386244ef3f07780c82f18258c4d4b618ceb25e54cde651d5bc",
+      "csv_aggregate_bytes": 5211727,
+      "source_schema": {
+        "logical_source": "SNAr_260729.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "a5c17fd81dea8dbf40b992ee8d497d415b8e0e99b176b5ecb85e9c35f13792d7",
+        "original_bytes": 4986688,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 20601,
+            "rows": 20601,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_17_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_17_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Sonogashira_260729.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Sonogashira_260729.csv",
+            "sha256": "0591725a4e6b877d8848ac77fd56da37156c414f89229e1d95f053311051c578",
+            "bytes": 4180477
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Sonogashira_260729.csv",
+            "sha256": "d63656f0c15a5371f690c97efc2f2e131436dc43d2935e63fbab6723680f0480",
+            "bytes": 4180585
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_18_sheet_00.csv",
+          "sha256": "0591725a4e6b877d8848ac77fd56da37156c414f89229e1d95f053311051c578",
+          "bytes": 4180477
+        },
+        {
+          "path": "original/source_18_sheet_00.rows.csv",
+          "sha256": "5cae65df92a38466644e46531a835e5fddbdf9c7f31726a5dd830b4ce007de4c",
+          "bytes": 154119
+        }
+      ],
+      "csv_aggregate_sha256": "a8f6f578553e449379c225cac255dc31d4b4835bd007d893c0c946c4c8ea07c4",
+      "csv_aggregate_bytes": 4334596,
+      "source_schema": {
+        "logical_source": "Sonogashira_260729.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "0591725a4e6b877d8848ac77fd56da37156c414f89229e1d95f053311051c578",
+        "original_bytes": 4180477,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 14691,
+            "rows": 14691,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_18_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_18_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Suzuki Bpin_260806.csv",
+      "kind": "reaction",
+      "format": "csv",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Suzuki Bpin_260806.csv",
+            "sha256": "b654ab575678eb6838f0446590cc02ec43c964eeb9218bf78674a1f6e80f82f2",
+            "bytes": 2104523
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Suzuki Bpin_260806.csv",
+            "sha256": "183ca51f8d34aa4b87a7bc36045f22eff720e5df7ef18322f70fe49c047cd9f7",
+            "bytes": 2104524
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_19_sheet_00.csv",
+          "sha256": "b654ab575678eb6838f0446590cc02ec43c964eeb9218bf78674a1f6e80f82f2",
+          "bytes": 2104523
+        },
+        {
+          "path": "original/source_19_sheet_00.rows.csv",
+          "sha256": "4b1a7178de4562912ee59b8793b3f55cf5f1ec9eb07e55437fcfa2fec4c98fad",
+          "bytes": 64543
+        }
+      ],
+      "csv_aggregate_sha256": "cc07a1bd9b545712ee4593fae1eaa75b7fc0c1d7d75f51b275f3e5a8fb8bc49a",
+      "csv_aggregate_bytes": 2169066,
+      "source_schema": {
+        "logical_source": "Suzuki Bpin_260806.csv",
+        "kind": "reaction",
+        "format": "csv",
+        "original_sha256": "b654ab575678eb6838f0446590cc02ec43c964eeb9218bf78674a1f6e80f82f2",
+        "original_bytes": 2104523,
+        "sheets": [
+          {
+            "name": "CSV",
+            "original_rows": 6672,
+            "rows": 6672,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_19_sheet_00.csv",
+            "types": null,
+            "row_map": "original/source_19_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Suzuki_260806.xlsx",
+      "kind": "reaction",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Suzuki_260806.xlsx",
+            "sha256": "1b0bbd4bf99852fe550fde7af6835eee3544ae9999bbbe2bd79e1b92bdc31f4b",
+            "bytes": 4671122
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Suzuki_260806.xlsx",
+            "sha256": "3842850c7be0e7c55e097dca0b45c52ea09d2fdeb82dc358aea1e189ce883b10",
+            "bytes": 3968831
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_20_sheet_00.csv",
+          "sha256": "acc30321ccebea9e8dc8aab94ca4d2a87a85ff83ee8d6b11583474ef03941f18",
+          "bytes": 11552244
+        },
+        {
+          "path": "original/source_20_sheet_00.rows.csv",
+          "sha256": "4eda288d7484ef0aea8523b54111c04d1f909061e8ca26722260a9e50b855f9f",
+          "bytes": 472707
+        },
+        {
+          "path": "original/source_20_sheet_00.types.csv",
+          "sha256": "d9b50a14c4d6febd05cb60b25ec19e98fb9c15995092cbd03fdd34025aa79f95",
+          "bytes": 2144762
+        }
+      ],
+      "csv_aggregate_sha256": "07e6678db14322a87ada12fcc24b0d073bb42dc1a96a39d84806376b64e3f863",
+      "csv_aggregate_bytes": 14169713,
+      "source_schema": {
+        "logical_source": "Suzuki_260806.xlsx",
+        "kind": "reaction",
+        "format": "excel",
+        "original_sha256": "1b0bbd4bf99852fe550fde7af6835eee3544ae9999bbbe2bd79e1b92bdc31f4b",
+        "original_bytes": 4671122,
+        "sheets": [
+          {
+            "name": "Sheet1",
+            "original_rows": 41240,
+            "rows": 41240,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_20_sheet_00.csv",
+            "types": "original/source_20_sheet_00.types.csv",
+            "row_map": "original/source_20_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    },
+    {
+      "logical_source": "Ullmann.xlsx",
+      "kind": "reaction",
+      "format": "excel",
+      "profiles": {
+        "original": {
+          "carrier": {
+            "path": "Ullmann.xlsx",
+            "sha256": "602f7816bb34fdf95d6853e0f714f3fbe02aa7146a9cfc05d6ce191abb72c11f",
+            "bytes": 2257581
+          },
+          "reader_profile": "original"
+        },
+        "analysis": {
+          "carrier": {
+            "path": "Ullmann.xlsx",
+            "sha256": "2ba49158f2880bd75354045eecdabb934093e3a64b4ceac19850cb668663b11b",
+            "bytes": 1930623
+          },
+          "reader_profile": "analysis"
+        }
+      },
+      "csv_members": [
+        {
+          "path": "original/source_21_sheet_00.csv",
+          "sha256": "c50409aba3a63946d7928cae9118193c105467847dd8aceabdee0982345499ba",
+          "bytes": 5635107
+        },
+        {
+          "path": "original/source_21_sheet_00.rows.csv",
+          "sha256": "c4554b116c7057aa1805779750133a74dc2a7b1d515f9af7a808ba86239b381e",
+          "bytes": 229395
+        },
+        {
+          "path": "original/source_21_sheet_00.types.csv",
+          "sha256": "e1deafd4d9210cab1b6e89e03c2b98eb6fb70685122ea3dd9bc5352ded57e440",
+          "bytes": 1090410
+        }
+      ],
+      "csv_aggregate_sha256": "a4633ea555ea85172d7eca90613873c1b3a25fe7801d46d3235b60453350305a",
+      "csv_aggregate_bytes": 6954912,
+      "source_schema": {
+        "logical_source": "Ullmann.xlsx",
+        "kind": "reaction",
+        "format": "excel",
+        "original_sha256": "602f7816bb34fdf95d6853e0f714f3fbe02aa7146a9cfc05d6ce191abb72c11f",
+        "original_bytes": 2257581,
+        "sheets": [
+          {
+            "name": "Ullmann_full_processed",
+            "original_rows": 20964,
+            "rows": 20964,
+            "columns": [
+              "idx",
+              "condition_id",
+              "sub_1_smiles",
+              "sub_2_smiles",
+              "product_smiles",
+              "reagent1_id",
+              "reagent2_id",
+              "reagent3_id",
+              "reagent4_id",
+              "reagent5_id",
+              "reagent6_id",
+              "solvent_id",
+              "temp_id",
+              "time_id",
+              "yield_clf",
+              "yield",
+              "name0",
+              "archive",
+              "sub_1_cas",
+              "sub_2_cas",
+              "sub_1_FG",
+              "sub_2_FG",
+              "check_passed",
+              "rc_reaction_name",
+              "rc_template",
+              "rc_interchange"
+            ],
+            "csv": "original/source_21_sheet_00.csv",
+            "types": "original/source_21_sheet_00.types.csv",
+            "row_map": "original/source_21_sheet_00.rows.csv",
+            "excluded_rows": 0,
+            "zero_by_rule": 0
+          }
+        ]
+      }
+    }
+  ],
+  "runtime_support": [
+    {
+      "path": "excluded_wells.csv",
+      "sha256": "236b9ab8558e8f708e845912e4c95acb287c67b5ed6fab2f2ae315cc5088d5db",
+      "bytes": 41044
+    }
+  ],
+  "hash_definition": "sha256 of UTF-8 canonical JSON [{path,sha256}], keys sorted, compact separators; members sorted by path",
+  "runtime_profiles": {
+    "original": "All physical original source rows; no exclusions or zero rule applied.",
+    "analysis": "Original CSV closure; ingestion applies declared excluded_wells and blank-yield zero rule at runtime."
+  },
+  "workbook_exception": {
+    "workbook": "Source_Data_Supplementary.xlsx",
+    "sheet": "S5_source_well_audit",
+    "field": "direct_workbook_match",
+    "cells": [
+      "AF2",
+      "AF3",
+      "AF4",
+      "AF5"
+    ],
+    "main_values": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "reader_values": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "reason": "CSV transport cannot directly match an absent original workbook; reader cells stay False."
+  }
+}

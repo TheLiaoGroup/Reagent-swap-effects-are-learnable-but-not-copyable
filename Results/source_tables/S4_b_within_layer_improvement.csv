@@ -1,0 +1,4 @@
+layer,baseline_error_pp2,removed_error_pp2,within_layer_error_removed_pct,unit,provenance_source_file,source_filter
+Pair's own level,104.7323207832316,5.234621132193047,4.998095232728909,within-layer error removed percent,scripts/response_learning/Response_Information_Decomposition_E63/results/e63_summary.csv; scripts/response_learning/Response_Information_Decomposition_E63/results/e63_paired_component_summary.csv,Group/edge-balanced k3; removed MSE divided by same-layer centroid MSE
+Background fluctuation,84.0716810152852,0.1865886050800123,0.22193990036441444,within-layer error removed percent,scripts/response_learning/Response_Information_Decomposition_E63/results/e63_summary.csv; scripts/response_learning/Response_Information_Decomposition_E63/results/e63_paired_component_summary.csv,Group/edge-balanced k3; removed MSE divided by same-layer centroid MSE
+

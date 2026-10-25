@@ -1,0 +1,6 @@
+label,value,unit,source,selector,observation_id,reactant1_smiles,reactant2_smiles,recipe,provenance_source_file,source_filter
+extra options: 1,266.0,conflict views,scripts/recipe_options/Analysis/round29/component_options/minimum_option_distribution.csv,endpoint_corner_stratum=all,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4b; source and selector columns retain original provenance
+extra options: 2,16.0,conflict views,scripts/recipe_options/Analysis/round29/component_options/minimum_option_distribution.csv,endpoint_corner_stratum=all,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4b; source and selector columns retain original provenance
+extra options: 3,3.0,conflict views,scripts/recipe_options/Analysis/round29/component_options/minimum_option_distribution.csv,endpoint_corner_stratum=all,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4b; source and selector columns retain original provenance
+extra options: unrecoverable,257.0,conflict views,scripts/recipe_options/Analysis/round29/option_scope_domains/all_collective_conflict_domains.csv,full_graph_rescues20=False,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 4b; source and selector columns retain original provenance
+
