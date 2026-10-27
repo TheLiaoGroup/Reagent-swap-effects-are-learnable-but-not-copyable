@@ -21,11 +21,11 @@
   },
   "Extended_Data_Figure_2": {
     "title": "The larger local budget retains a fixed sixteen-profile population",
-    "legend": "Original local-update curves for the separate fixed population of 22,963 queries supporting sixteen local profiles. Budgets are 0, 1, 2, 4, 8 and 16 profiles; points are ordered categories labelled with the minimum–maximum number of distinct condition cells. The curves use equal-group, edge-balanced weighting and the history-only reference. One complete profile contains two reagent endpoints in each included recipe background. Values show changes relative to history alone, without refitting the models."
+    "legend": "Original local-update curves for the separate fixed population of 22,963 queries supporting sixteen local profiles. Budgets are 0, 1, 2, 4, 8 and 16 profiles; the horizontal axis gives the profile count and, below it, the minimum–maximum number of endpoint wells. The curves use equal-group, edge-balanced weighting and the history-only reference. One complete profile contains two reagent endpoints in each included recipe background. Values show changes relative to history alone, without refitting the models."
   },
   "Extended_Data_Figure_3": {
     "title": "Calibration between libraries usually worsens the target-only baseline",
-    "legend": "**a**, All seventeen fixed-support, scored transfers between libraries. Each line follows one direction from target-only prediction to calibrated transfer and the source-identity reassignment control. Errors are normalized to the target-only error for that direction. Calibration worsens fifteen directions (red) and improves two (teal). The source difference channel, budget of 192 and fixed target support follow the original cross-library analysis."
+    "legend": "All seventeen fixed-support, scored transfers between libraries. Each line follows one direction from target-only prediction to calibrated transfer and the source-identity reassignment control. Errors are normalized to the target-only error for that direction. Calibration worsens fifteen directions (red) and improves two (teal). The source difference channel, budget of 192 and fixed target support follow the original cross-library analysis."
   },
   "Extended_Data_Figure_4": {
     "title": "Structure-based prediction primarily recovers each pair's own response level",

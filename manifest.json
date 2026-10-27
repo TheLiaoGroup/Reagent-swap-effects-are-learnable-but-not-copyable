@@ -24,116 +24,6 @@
       "bytes": 18935,
       "kind": "release_asset"
     },
-    "Analysis/out/final_figures/chemistry_work/M_0ccc119f7de3_readback.mol": {
-      "sha256": "be138f66df4bdce1d9bcd7e0f3507c8fbde2c2ffaf2d5ef2aad3d1ffd771118e",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_1dbe6a380bfa_readback.mol": {
-      "sha256": "3750af909d9b93bb1f897fa4e295c5bde52710d69f046c21d638b8fa9ddbc6d5",
-      "bytes": 1205,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_246e19880c5d_readback.mol": {
-      "sha256": "8afc9ed2292b3eac8c623a1ec8f6e48da83306d8ad5bd15cdd31a666c4c1b213",
-      "bytes": 1040,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_27b25ee9eda1_readback.mol": {
-      "sha256": "49f9d8cffa7bd1ded9ad8de028f0297a11f10300a7a4867d4b793a39e23ddebb",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_3b47ee35cd25_readback.mol": {
-      "sha256": "763f3098cca3bea268512879606e6962e1cce2054cb2d4d4e72ed1eb53672eb3",
-      "bytes": 1134,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_4e1f4fb615b7_readback.mol": {
-      "sha256": "2bfa7a907158dcfd791af9c5649ce27c1833805ab5dbf956897c3e5d3ce3fd6d",
-      "bytes": 1017,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_58e074c62f1e_readback.mol": {
-      "sha256": "bc2e407acfb5c2439e74ffdd79d604021d9e7cafe2652d9e27a70f1024ca193f",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_6a1ecce1082c_readback.mol": {
-      "sha256": "78a55fecb731baf2a7e8353852d281dc772edfa9984abe434598da444000008c",
-      "bytes": 1228,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_70e5e4aea9fc_readback.mol": {
-      "sha256": "95894fecbee71aebc68bdd505408031794a545507553e6810ff505a109df6e4a",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_7672cf3b6f80_readback.mol": {
-      "sha256": "94774399fad947b18934dadac89c4ae949a95387961b6ad870996b4c9922ad80",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_7eebb68b45f9_readback.mol": {
-      "sha256": "ffa21a930942294b507058f45f516538be1d3cd344a6bd66b5596badfc19d173",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_8a4b44d15b9b_readback.mol": {
-      "sha256": "2524f2909c1eb31c9f65e1d7901670f8ef961e3d80e715556858fe0188e9a1bc",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_9358d952fea7_readback.mol": {
-      "sha256": "e74fb3de37b552db421850c1e421a6f5da63384e56bb5ac6652757d860d92f13",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_a1d06fb43ba6_readback.mol": {
-      "sha256": "84605c641885392b5ea3e3b38c8697e4d949a4737ac12b09d7be0ba58b9413b7",
-      "bytes": 1721,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_a3fcc6deacbe_readback.mol": {
-      "sha256": "ddd9054472959e012af0fd5e652eb37cb84faa8cfc83259a5d7b53772748380c",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_b6e8201e5c31_readback.mol": {
-      "sha256": "5e12a410a48ffa245b0add31c4a58a48a628d5034a6b17c7bdad1cab641f375a",
-      "bytes": 1815,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_c1f58a07152b_readback.mol": {
-      "sha256": "234bb60b10e8b26ba84fb27d9889a5e5f12fed0ffbb926cac0f518cbc43aacd6",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_c9af3eff032a_readback.mol": {
-      "sha256": "9fe82815f08706040125d250e2c6c813537dbb35176c25af10866ecb1b00aad0",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_e9a662cecc2c_readback.mol": {
-      "sha256": "9741743c5b962f8713b0ec0cbd0b1be29a592a1868bc09973b4889da3608ab80",
-      "bytes": 1111,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_ec8b4fbad0e1_readback.mol": {
-      "sha256": "d7aa2043d0335ab1fc68960fc7703015d7198dc9bc62516ceebeb10f9566f9cd",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_edbe2e2f2792_readback.mol": {
-      "sha256": "5b6b2cba8f6579d5bb6e4b7e5174c2409684fd8a58982f0cabae2d994a5f184d",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
-    "Analysis/out/final_figures/chemistry_work/M_f6e7fce16a29_readback.mol": {
-      "sha256": "fcc712b4899142de2d2649c23e1fbed4e885f7af8f03223bdcbc922dc9d8ad4d",
-      "bytes": 923,
-      "kind": "release_asset"
-    },
     "Analysis/scripts/apply_zero_rule.py": {
       "sha256": "838eab3b85b9cc0ade6331e5f2c4726213814d18c1fdc88918891e105ee3f95e",
       "bytes": 12827,
@@ -145,8 +35,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/m1_chemistry.py": {
-      "sha256": "074185e561d03070a58b366ae756bb49bcdf5dbfc8b8ef56b93a3e0b89b679d1",
-      "bytes": 22277,
+      "sha256": "9f2197450d7da5e770dff035995b208b5d3f205e3ec4a161af58226d872ad56f",
+      "bytes": 24455,
       "kind": "scientific_source"
     },
     "Analysis/scripts/m1_corpus_reconciliation.py": {
@@ -165,8 +55,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/m1_figures.py": {
-      "sha256": "e262dac965e4dad9c33c0af523285bdbcea045c632401ae7c403b19712510f2f",
-      "bytes": 32712,
+      "sha256": "676fa873bd9e4ba62972aeb158ba155f9097989df9b3e5ae5264de6403498c2f",
+      "bytes": 32977,
       "kind": "scientific_source"
     },
     "Analysis/scripts/m1_native_export.py": {
@@ -225,13 +115,13 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/build.py": {
-      "sha256": "69d9eb92172277382f8cc1876e0c30f547d682c0f2749f4675840b670b39eaae",
-      "bytes": 14641,
+      "sha256": "3b6215f47dae72f8a2285adfc40320909d4a8fc1ab3074d80e8d67ea0d831703",
+      "bytes": 14711,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/common.py": {
-      "sha256": "c56f144df74465be74b84b953dcd3610ae646a0f1cc2030b9eec43b672dec972",
-      "bytes": 16578,
+      "sha256": "f4e946741fb60a5742968a044e6dad33a1a4cbb21acb1168b4c74e95757e5c2c",
+      "bytes": 17333,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/direction_accuracy.py": {
@@ -255,18 +145,18 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/figures23.py": {
-      "sha256": "bf54658f8c19dccf5b7dd4371a4b6370eb288471e483de1fc77ca9852425d21e",
-      "bytes": 40792,
+      "sha256": "215616a593a692e06c63ad2e7bb60aee275adcc081c6fbb19d6e83b13ed26519",
+      "bytes": 41139,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figure1.py": {
-      "sha256": "8efaf469cafd4b059b9595a3a6365573461bd7e1062d3b7264f1357032a7d36a",
-      "bytes": 16118,
+      "sha256": "4ef52b1034c0772f143f5e2e8dda7a5b1e58c4719993e22f4d6e212918f7d520",
+      "bytes": 16206,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
-      "sha256": "ae2d815685e6635fc2e5c8d08ed3b413e6a9e32e05d4a483a2a8357a153d4272",
-      "bytes": 36080,
+      "sha256": "1307aece890ea69ac201864c9bd583a5ea18f4330faf59da8d61e991443284cf",
+      "bytes": 36558,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/select_fig1_example.py": {
@@ -970,8 +860,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/templates/FIGURE_TEXT.json": {
-      "sha256": "b61f088a0836f26b1dfe28b532d2d06bcfa26dffea89bc8e3f031dc9930b2d5c",
-      "bytes": 10144,
+      "sha256": "adc9b34090b5cbaba9ea2a314479a7cdc95403732d8dff1af2c1a3db228a821a",
+      "bytes": 10142,
       "kind": "release_asset"
     },
     "DATA_LICENSE": {
@@ -1714,666 +1604,6 @@
       "sha256": "bbb304ccee4274a83d5be4791e7e36a46405c65409bbc1316ecf6fa79fd96986",
       "bytes": 63958
     },
-    "Submission/02_Figures/ChemDraw/M_0ccc119f7de3.cdx": {
-      "sha256": "810193df29293da49e4745c591a04117a2f6c52751ab6528e12387a81a374d60",
-      "bytes": 2760,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_0ccc119f7de3.cdxml": {
-      "sha256": "88768e4384979ef4c6331d4cfc3be4497b59d0f8eaa965fbab47d95c8227355d",
-      "bytes": 6300,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_0ccc119f7de3.native.svg": {
-      "sha256": "ff29d4a56d1d9e6381db2cebb6527d41fab48484b60b3b23e270e0a4d9077f41",
-      "bytes": 3889,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_0ccc119f7de3.pdf": {
-      "sha256": "7c437bdd112784cb9c63ab6ee9a30865ebea9cbaa101a9b6dd76e0cbc80e2108",
-      "bytes": 33985,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_0ccc119f7de3.scale.json": {
-      "sha256": "d1bfcb5c25ab3bf2261859bec16c31435db872fbc8bd79c361b5fc9f63b2b942",
-      "bytes": 1325,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_0ccc119f7de3.svg": {
-      "sha256": "00a0a13f0866b697b48d9242e67b0a89f629fd08f5c379d8bc44845fa137bc01",
-      "bytes": 3783,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_1dbe6a380bfa.cdx": {
-      "sha256": "feb8187cbe255094b7bd736881a711f7cac3b981cb1783edee6b423a1b474cbe",
-      "bytes": 3172,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_1dbe6a380bfa.cdxml": {
-      "sha256": "a36a8ea100de9e18da2629c2f365af81b25e3c82d896ae7150fbf8d450154a51",
-      "bytes": 7107,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_1dbe6a380bfa.native.svg": {
-      "sha256": "0d81ac6ff403a6badedfefcbea294417c7f3bcf5e3a5ac37c6f4c1d99d48f9c0",
-      "bytes": 4540,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_1dbe6a380bfa.pdf": {
-      "sha256": "3617f375e57e0a46e636ea93e7eb3ecda91b3556bd3b1afe5920e90a5e5e5aad",
-      "bytes": 34003,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_1dbe6a380bfa.scale.json": {
-      "sha256": "6d097231e7af0ba29e4b6209afaee9fad631f036b31ea30a05633d69d1ba500a",
-      "bytes": 1367,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_1dbe6a380bfa.svg": {
-      "sha256": "5e904641c33e82ec5d987f524d0b5f77778f42795d5ad539bc9938398f235b33",
-      "bytes": 4429,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_246e19880c5d.cdx": {
-      "sha256": "0c0afcb83c11dec6670841ccd9e58f3ea78a6eb77558b9879981171a9d54a54e",
-      "bytes": 2754,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_246e19880c5d.cdxml": {
-      "sha256": "dd2f226aa48a410d4a3aa894d0964979d87d490502595542a72e20521bdac470",
-      "bytes": 6278,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_246e19880c5d.native.svg": {
-      "sha256": "4b12dfb7fcd1ab8945ec86dbb1b176615aa5aa46063756d5f8d5c86455cb2aa7",
-      "bytes": 3890,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_246e19880c5d.pdf": {
-      "sha256": "fa56e65fb474239e5377c3b11d4d6fb5158e149ec2af0ba68e06d3dd1715f433",
-      "bytes": 34047,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_246e19880c5d.scale.json": {
-      "sha256": "c1fe275920a8034008c6fdaec2fcd43b730df2dcc3de6105601e427aa36c8233",
-      "bytes": 1344,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_246e19880c5d.svg": {
-      "sha256": "f91d58444d87881771964c40acc531a3916ed66d0c1954ab29504538066ebfdf",
-      "bytes": 3777,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_27b25ee9eda1.cdx": {
-      "sha256": "3897cb1068cddfb057869a8919d75cfab46de1e2d02232d372558997cb127645",
-      "bytes": 2415,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_27b25ee9eda1.cdxml": {
-      "sha256": "1a5f4f9104d51e017a2fc65eb3688272e08497bbbb4f06c95bcb7653e43b9f84",
-      "bytes": 5590,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_27b25ee9eda1.native.svg": {
-      "sha256": "86bdd4a18860ade3c34b76b5bd03395042b494cef201f297f191e18c8ad9da6a",
-      "bytes": 3459,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_27b25ee9eda1.pdf": {
-      "sha256": "550abd17661759460595affc608a82389d733982a79fff9ff8b5f33f72f87d61",
-      "bytes": 33900,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_27b25ee9eda1.scale.json": {
-      "sha256": "51e024498816c38deea20ded35ea9e1dfae548b49a1db3509971089f3262984c",
-      "bytes": 1278,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_27b25ee9eda1.svg": {
-      "sha256": "911ddb4419747c3ec05749ddef34345d482b1d6adce63abce5069410df97a917",
-      "bytes": 3351,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_3b47ee35cd25.cdx": {
-      "sha256": "6d1a180bd44e43fa5c4d1b51795fa852c7c9396a412d7052d4a429b355f98135",
-      "bytes": 2798,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_3b47ee35cd25.cdxml": {
-      "sha256": "b97db09d9852bf9adef5dc75b384bcc3047bca34ca3f30be9eb3b5d737458992",
-      "bytes": 6334,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_3b47ee35cd25.native.svg": {
-      "sha256": "2b823b96e279e58031cb615d4bd37e77a0560a790a381e8070d83a2fb06067ae",
-      "bytes": 4081,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_3b47ee35cd25.pdf": {
-      "sha256": "a33ead5ef989f30639f9bfcd471a3daf1ae4b6b4ca0996a876eea07e3dbb6fdb",
-      "bytes": 34074,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_3b47ee35cd25.scale.json": {
-      "sha256": "d2f56d37f877fd09747cbf8ba07ec82304184731cc0aefddc5ece1e5d3f37333",
-      "bytes": 1367,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_3b47ee35cd25.svg": {
-      "sha256": "3a6a8af88ad96018ac9b15ffbd64ed015cc6185e69de18ae1663d5ea1924ffa6",
-      "bytes": 3967,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_4e1f4fb615b7.cdx": {
-      "sha256": "5182ac536d595cd7d3d90317b28aa7ffd985ed53ecd3fad8f9b3d4d0a817613d",
-      "bytes": 2539,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_4e1f4fb615b7.cdxml": {
-      "sha256": "73da1705ae84696a20aa78f6e8550707d6c17f35fcf76ba0123d09aa9ca1120e",
-      "bytes": 5850,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_4e1f4fb615b7.native.svg": {
-      "sha256": "cc0a875af0872519a82ac271646071526f3bd6c461ba46503f063ddce9efb528",
-      "bytes": 3442,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_4e1f4fb615b7.pdf": {
-      "sha256": "57fc1e6414c95e19772a40bde33127ff6d1e707f4a61d89f31a85fe0b60a9904",
-      "bytes": 33918,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_4e1f4fb615b7.scale.json": {
-      "sha256": "523f466147d268d0f10a7634bc94fb48ab889b70be8a61050d89ae38543b096e",
-      "bytes": 1301,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_4e1f4fb615b7.svg": {
-      "sha256": "3bc80f51dbf324bb94a4795c2bfe4188f699296c44bddbb60d6fb3e1141f6482",
-      "bytes": 3340,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_58e074c62f1e.cdx": {
-      "sha256": "815fb9289627105bcaa93ba5578ebf4ca63054834c8c815bffc2c8641b50daa6",
-      "bytes": 2756,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_58e074c62f1e.cdxml": {
-      "sha256": "1276d7ba360f42b15e93c56327ece2b8d0299a430f95c2d3623aa70f2b84d067",
-      "bytes": 6275,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_58e074c62f1e.native.svg": {
-      "sha256": "f728edca249cb74c40449760aa8f66eb584f4e048c8c66eb104386d700680111",
-      "bytes": 3690,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_58e074c62f1e.pdf": {
-      "sha256": "7b6df51b56034b95c73abb4ac760ab3cf19bf29501a4104a2b3e828ea0085611",
-      "bytes": 34021,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_58e074c62f1e.scale.json": {
-      "sha256": "755a65bb4a12a41699213d8931b755956bab398cea16f461822896b30d75a866",
-      "bytes": 1341,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_58e074c62f1e.svg": {
-      "sha256": "7caa318767427824dc25b3996430acc6d14b6d894aa499b97b956370bcee2955",
-      "bytes": 3591,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_6a1ecce1082c.cdx": {
-      "sha256": "d6e557cb91f304dbe113f9e5ea5d80bc40fc0a48f63e1cc984439f3cabb99256",
-      "bytes": 3068,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_6a1ecce1082c.cdxml": {
-      "sha256": "732b6478869f8c01f7a37285bd4d4b40bfb51a04e347c6361a03c0cff39936d8",
-      "bytes": 6922,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_6a1ecce1082c.native.svg": {
-      "sha256": "7c0d70cf6339ad2cf4453ddc2268553d7ccc8f11356a5ee5edd614e25d5f7532",
-      "bytes": 4536,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_6a1ecce1082c.pdf": {
-      "sha256": "0bccda649da3b8ba0afadece502f6bff27f28b68538b63367d9abb11cf24829c",
-      "bytes": 34080,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_6a1ecce1082c.scale.json": {
-      "sha256": "39e4b3a5e71f24796387ae4cc946a1499720bc9b155e3e5f3a7439d26a9109af",
-      "bytes": 1396,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_6a1ecce1082c.svg": {
-      "sha256": "0d452037d640c26f8b2b6bc6f31f89fceaaee0d74a3a19a17b6496bf532562a2",
-      "bytes": 4428,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_70e5e4aea9fc.cdx": {
-      "sha256": "db22f7c75a7367c33781a6eae8f076f9268f1dcc50e6180f29b5f5b9721399db",
-      "bytes": 2410,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_70e5e4aea9fc.cdxml": {
-      "sha256": "9be9403a010e2a32dd62616d2f9100b41f0f34e90acaded074a9eb926cf1a4c3",
-      "bytes": 5567,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_70e5e4aea9fc.native.svg": {
-      "sha256": "cfdb8a886c103ca5e0f07566034d20adaf297b0f611af960bf19998926976a1e",
-      "bytes": 3286,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_70e5e4aea9fc.pdf": {
-      "sha256": "946c4bf079fe0878347f6615fd4a3dfa3dc6bd9feea658d9c4763d4f3475d95f",
-      "bytes": 33938,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_70e5e4aea9fc.scale.json": {
-      "sha256": "a7224fe45ff0be2af55cbd9526f8095dca1d7ac307762a7d87405d63b622f17a",
-      "bytes": 1287,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_70e5e4aea9fc.svg": {
-      "sha256": "40b1bf511c3ede49487c669540e67261ee427f6287a9f381ddc742ac75980669",
-      "bytes": 3181,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7672cf3b6f80.cdx": {
-      "sha256": "c08aaeaee2f07102eda2de2ab1571d9950bc8c51a1880cb578476650ab2bb052",
-      "bytes": 2857,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7672cf3b6f80.cdxml": {
-      "sha256": "2332a47b4d206da3b1cc0c7c014ee690118e9c0705ae7be4c7e3dff1ad73fff3",
-      "bytes": 6466,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7672cf3b6f80.native.svg": {
-      "sha256": "9a7472d57194c62c09de6d70bdd7d0eeac3d951d54422e97d7ca97744c154ee6",
-      "bytes": 3874,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7672cf3b6f80.pdf": {
-      "sha256": "d2f633aba03ef822d9c8b4ccff52a645787d5e56e454db0b67225778fa2d1c66",
-      "bytes": 34030,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7672cf3b6f80.scale.json": {
-      "sha256": "3b17aad57357a334a36f2e07569535da9b71b47d9f0d1f940d2c353ff03a80a8",
-      "bytes": 1340,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7672cf3b6f80.svg": {
-      "sha256": "dc142299096ad0c4f1033c720aa352bfed69ee04a6b3c86cd4df2a28e3c4cf34",
-      "bytes": 3757,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7eebb68b45f9.cdx": {
-      "sha256": "4b6324200262cdb62d841ff67b39caf135715aaa6db04d03804a3f9fe9816676",
-      "bytes": 2875,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7eebb68b45f9.cdxml": {
-      "sha256": "10128c9c4190754def8f2cf07ee63ac33c1f8d0952de52b037752c0aec250442",
-      "bytes": 6556,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7eebb68b45f9.native.svg": {
-      "sha256": "e356b25c0072d750cec3506d03d572e875fc5ff9c82b4a54f7d0c5653493fca5",
-      "bytes": 3827,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7eebb68b45f9.pdf": {
-      "sha256": "0108ced1c1da1017088bd8eb816d2c2de650c44cda5df1719ecc8ed859c2b0f7",
-      "bytes": 33973,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7eebb68b45f9.scale.json": {
-      "sha256": "193dcf78f00192107f403a790ac2a6c9331c2b77d43e668778abea2f69669ff3",
-      "bytes": 1323,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_7eebb68b45f9.svg": {
-      "sha256": "801c69c930baf18d02ea49a9aa351a665dcfb8c5d86080850ce8cf37466b2a3c",
-      "bytes": 3717,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_8a4b44d15b9b.cdx": {
-      "sha256": "3217691453bafa59d977cb68b2e1942eb0974cf29a81b53195ae65a567af1fb4",
-      "bytes": 2760,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_8a4b44d15b9b.cdxml": {
-      "sha256": "08380d7cd83554a12eb29bb239694591e10f97d146c80ed97b6b4088a2426746",
-      "bytes": 6298,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_8a4b44d15b9b.native.svg": {
-      "sha256": "fc271557d5719da43cf2d4b4786b65195f61c49df9ff69509fe98fb0a0cf0ba7",
-      "bytes": 3809,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_8a4b44d15b9b.pdf": {
-      "sha256": "2288ae39ae111bfb266aed9b93468bbb9f23a80bb04891f46fa3e1f55e78542e",
-      "bytes": 34010,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_8a4b44d15b9b.scale.json": {
-      "sha256": "73779073a3b06b8435d3f7f09c72ad3e78f25ebeb654cf5a633553fb8808c56d",
-      "bytes": 1326,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_8a4b44d15b9b.svg": {
-      "sha256": "66af6db4d79f3bb1ad4ba79af5bfa3b282cfedfa5364c8563fc24053eaa27694",
-      "bytes": 3699,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_9358d952fea7.cdx": {
-      "sha256": "bedc67badad937beb2edffce4eb8507b712593cf793622dbd391b8b538f50e59",
-      "bytes": 2434,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_9358d952fea7.cdxml": {
-      "sha256": "a99f7444d11cb7d3e451b4853c76338e0cd6e65de6e545635f0b5fb80580111a",
-      "bytes": 5628,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_9358d952fea7.native.svg": {
-      "sha256": "35700eebd3036201aec3eb3263a9b55a7070a41db147eda531255ee2535481b8",
-      "bytes": 3260,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_9358d952fea7.pdf": {
-      "sha256": "4aa6181819cda611b1d2311020f0377c0751029ddacb32bb07988e4bc5122ae6",
-      "bytes": 33915,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_9358d952fea7.scale.json": {
-      "sha256": "6db4182843ad2014c1d3cac0ca77e3380b1cf6bcd995aeb01547681defdc85f7",
-      "bytes": 1285,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_9358d952fea7.svg": {
-      "sha256": "a9531976c37b0ab94077e2deb598175c78afdb30534420b31668fcff60443ab2",
-      "bytes": 3155,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a1d06fb43ba6.cdx": {
-      "sha256": "5cabea164f52b04886298a62b24d98305b6dad53e98d1b0c9681b5532d70ba14",
-      "bytes": 3764,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a1d06fb43ba6.cdxml": {
-      "sha256": "6f1ce74296f847854e49d9870e64f150e961a9fd755db6fe6dac85a53de9f030",
-      "bytes": 8294,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a1d06fb43ba6.native.svg": {
-      "sha256": "6a8818121142c294545a7e6e0dff591518b52a146338cd9907caa869b7f9de78",
-      "bytes": 6000,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a1d06fb43ba6.pdf": {
-      "sha256": "c951d4c9a60bed7f4cc60a76deb0ac02ca74157faa10d9e53718ea7f8edde761",
-      "bytes": 34394,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a1d06fb43ba6.scale.json": {
-      "sha256": "4d47bc2cb7c773cd51fba47379e62fbcb02e29308370bb2ac2211169b0394bd5",
-      "bytes": 1533,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a1d06fb43ba6.svg": {
-      "sha256": "b943b267a7c6cfaf872f8a5712f6179f22240bf62050e971a14ecfcc5f8113c7",
-      "bytes": 5889,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a3fcc6deacbe.cdx": {
-      "sha256": "4bb42e84d6f36d75fe2a5a92eccbabe4158b50f5e35ff057421acf71140a3f95",
-      "bytes": 2875,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a3fcc6deacbe.cdxml": {
-      "sha256": "7f3204dfdee101b91dde8305db8eaf731ea0bac71ce61f54658ad8ebaa35b597",
-      "bytes": 6539,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a3fcc6deacbe.native.svg": {
-      "sha256": "94132114a90f92700b84cf750ddf42df0f088638bcf525d74d50747581081169",
-      "bytes": 3878,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a3fcc6deacbe.pdf": {
-      "sha256": "dc9a06e137b2192c4066ebdfd9eb727f44fe287a4abcf72f60c2a47143eaa1cf",
-      "bytes": 33981,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a3fcc6deacbe.scale.json": {
-      "sha256": "516ef95b9a25e1a80e56e61df8fb670471def3d1b64b559dcc54ff53a888c8cc",
-      "bytes": 1342,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_a3fcc6deacbe.svg": {
-      "sha256": "3313027b3c4e4ff85e80af5319d93ed6ea3eb1bfcdf3ab2d27325ba5a48ab4b3",
-      "bytes": 3763,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_b6e8201e5c31.cdx": {
-      "sha256": "0df0cade9204ea9a0f56525d526c5eea629292a30a8829f2105abb815795213b",
-      "bytes": 3803,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_b6e8201e5c31.cdxml": {
-      "sha256": "5a26bffaab738d8931fa32598a24ca8b8de89000ed6853bc5da9dde4211ec6f8",
-      "bytes": 8335,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_b6e8201e5c31.native.svg": {
-      "sha256": "24cbd6d14bcc36fb0ea29d3eb7638d3648007af8c12c28b609025064db34530a",
-      "bytes": 6157,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_b6e8201e5c31.pdf": {
-      "sha256": "a945e703e2444c09c1c2c0355a905fdf4d71a6122609e60ea3ba7a040b28bb68",
-      "bytes": 34415,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_b6e8201e5c31.scale.json": {
-      "sha256": "e37502f6a11e43d75f91697dee869e97ec26d870019132289b89e15a207acd15",
-      "bytes": 1568,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_b6e8201e5c31.svg": {
-      "sha256": "ef15639185d598a620496014853ea9135b2f38cfabdeb2ae2c5a501a25ef6f41",
-      "bytes": 6047,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c1f58a07152b.cdx": {
-      "sha256": "d8836dc6340247c21bd9b386084bfc3739a01547d8e7d6db0398025d390d9721",
-      "bytes": 2875,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c1f58a07152b.cdxml": {
-      "sha256": "474728d21b241f8833e9e8c69149c1cedbb10d0ef731545caf9b4b991a1d4d39",
-      "bytes": 6556,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c1f58a07152b.native.svg": {
-      "sha256": "cb15a9374502572bff1504c63974d652fa6afdaaf4b7aec0107fa4617e29be65",
-      "bytes": 3829,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c1f58a07152b.pdf": {
-      "sha256": "cffe919ae9e2f6c877a27e4a1d9b01323f7087beb608d9eb375557424dc72196",
-      "bytes": 33991,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c1f58a07152b.scale.json": {
-      "sha256": "177db0225986ff0ffaecd6771f409fecf62ec5e41108fbd9fe0187ad7b6e7d4c",
-      "bytes": 1328,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c1f58a07152b.svg": {
-      "sha256": "3eb1f793c49492362d80bb9d9695ca4f1e54b602314dd595836c786e7f67159d",
-      "bytes": 3721,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c9af3eff032a.cdx": {
-      "sha256": "f81b3bb3ed0bc395c72244d75202dc68beb2c4cc34673fa42b9047282e189018",
-      "bytes": 2314,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c9af3eff032a.cdxml": {
-      "sha256": "3ffd3b65da24f79dc4794678657bec388ceed12a9b3575c5bc3abadc19ab248a",
-      "bytes": 5385,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c9af3eff032a.native.svg": {
-      "sha256": "d42ecc75731def9c14731516044939d94767204d41f387984589bdb4a84b12e9",
-      "bytes": 3236,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c9af3eff032a.pdf": {
-      "sha256": "a1e13a3345f526a71ba36657e159e1bee641f4c0589234fd1ccbc275ceec47e8",
-      "bytes": 33868,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c9af3eff032a.scale.json": {
-      "sha256": "09a2b3481570b76e701b582ba737050a981380741bfb0c0d086f13422d8a5501",
-      "bytes": 1287,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_c9af3eff032a.svg": {
-      "sha256": "47370ce2d8350ee485986ac933e7fdf076d19e935e08f25f5bcfed107d6f8ace",
-      "bytes": 3131,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_e9a662cecc2c.cdx": {
-      "sha256": "f0a5fc6c4f016da1e427407ba0b00a06fc59cac8e05049298363a0f82d80c33d",
-      "bytes": 2875,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_e9a662cecc2c.cdxml": {
-      "sha256": "f8bd659f0a2460c7f1b7524e1318d5447c243d2f839af5a4d6a8a2580c928d1a",
-      "bytes": 6540,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_e9a662cecc2c.native.svg": {
-      "sha256": "fcefaf9138731bbc5f7499e0e5e9e1bb188c495c1de4b3f8270aeb51346d5333",
-      "bytes": 3893,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_e9a662cecc2c.pdf": {
-      "sha256": "e01fb2bbb6d452b899f8d4eba5e3718f281e2247f9d56d3c41e02c4f453f4e47",
-      "bytes": 33980,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_e9a662cecc2c.scale.json": {
-      "sha256": "90c7764f7b9550c5b2b6bae1bcdfe60b3f2234f755508f96a96c093d8a5a97f0",
-      "bytes": 1342,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_e9a662cecc2c.svg": {
-      "sha256": "dc2eee78c2028a6015d31aed20ac3d47c18b031f02718a861476b3bb77bc59bf",
-      "bytes": 3778,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_ec8b4fbad0e1.cdx": {
-      "sha256": "b142437872c168ef6b7118619d41b5392ce9de23351c13ccc9c65f1725080f18",
-      "bytes": 2434,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_ec8b4fbad0e1.cdxml": {
-      "sha256": "d14f97f81b3678ab00afa6a48e5c1f4b2839b31ac3b7f9f303df515fadc2ed43",
-      "bytes": 5649,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_ec8b4fbad0e1.native.svg": {
-      "sha256": "d7909da6fd33eea81f82d201013b8e65bd4332d296d2f473aea24f08ee215004",
-      "bytes": 3202,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_ec8b4fbad0e1.pdf": {
-      "sha256": "2e1125a01e9eedf208f81e8a9e29e1f915d5006d824899980a127fc84f496b76",
-      "bytes": 33887,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_ec8b4fbad0e1.scale.json": {
-      "sha256": "afd6bddc14795dc2ca4f57fe3e11c455dd5f49806cb4722ec87ab7272d92fc3f",
-      "bytes": 1286,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_ec8b4fbad0e1.svg": {
-      "sha256": "6b09e9c792bb66fa422067779400ec0fa9fecc459bfdc4be8d854e87cb96d824",
-      "bytes": 3093,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_edbe2e2f2792.cdx": {
-      "sha256": "aa12ea38a6ad5500f9d0fe784e901fcd1f8d77d86c4b9aa70c93b7419d11a83a",
-      "bytes": 2514,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_edbe2e2f2792.cdxml": {
-      "sha256": "1776a038f82d6d0ca32d9f0122e8fd95fe779964748a6aecdf9a7e39acc56aa4",
-      "bytes": 5790,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_edbe2e2f2792.native.svg": {
-      "sha256": "70b5a5df65c28b3f984c7d8c771c8699db33c24190410af2b66645b928a3d1da",
-      "bytes": 3276,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_edbe2e2f2792.pdf": {
-      "sha256": "dd803e614ef35e94401934e500628bf701c04e3d9ca5e626883945897af169f4",
-      "bytes": 33957,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_edbe2e2f2792.scale.json": {
-      "sha256": "43779d720e14f5d1d23486f316dd8f00118adb23622983f9485d47a169d7c79c",
-      "bytes": 1276,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_edbe2e2f2792.svg": {
-      "sha256": "ecb4c96c431a7ba1f3c8e8f9b1137ef4c97d7b11216990dbe555e900c87d834d",
-      "bytes": 3173,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_f6e7fce16a29.cdx": {
-      "sha256": "a2950fc69e108381f23705e5c1a774209c87a4adc2ffbb7a77a5f0f0a4ea1096",
-      "bytes": 2410,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_f6e7fce16a29.cdxml": {
-      "sha256": "79accf85506e8b70dcda7a97e9ebe6d38dd374bfcad1a444703e5b9e03d1258c",
-      "bytes": 5559,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_f6e7fce16a29.native.svg": {
-      "sha256": "513ed6466b22a045465d037ff9f2aa5578bf6f530a2429c75795943dcc5402b3",
-      "bytes": 3254,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_f6e7fce16a29.pdf": {
-      "sha256": "6c967cb5115a3a57a73cad943c18141c1d8325c52f617c63e590220c247ee0fd",
-      "bytes": 33952,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_f6e7fce16a29.scale.json": {
-      "sha256": "d35a4a8b89df20e94145488a1644c39f833e67ca81340d2f1182c9c95d4e01c6",
-      "bytes": 1315,
-      "kind": "release_asset"
-    },
-    "Submission/02_Figures/ChemDraw/M_f6e7fce16a29.svg": {
-      "sha256": "86a8bc6f1adade276bc4e97bdbd94ccd4e62f38bc45ea6a1762633f1c53dfdb1",
-      "bytes": 3157,
-      "kind": "release_asset"
-    },
     "data/excluded_wells.csv": {
       "sha256": "236b9ab8558e8f708e845912e4c95acb287c67b5ed6fab2f2ae315cc5088d5db",
       "bytes": 41044,
@@ -2658,6 +1888,601 @@
       "sha256": "12b5c5cd28d6a443cfb0668e3cd4d6e8fd4f7c9653199b09fef986db7203c71c",
       "bytes": 274,
       "kind": "release_asset"
+    },
+    "Submission/02_Figures/ChemDraw/M_0954476be183.cdx": {
+      "kind": "release_asset",
+      "sha256": "4ca379dccae064e8b407614a2e4a87bba5a3c03a1d63c806ba4222613d966621",
+      "bytes": 2514
+    },
+    "Submission/02_Figures/ChemDraw/M_0954476be183.cdxml": {
+      "kind": "release_asset",
+      "sha256": "5c567e99ac8d96d3fed0b27999132e7ecc0cc5f9ad182c5875e18a63f596b82b",
+      "bytes": 5782
+    },
+    "Submission/02_Figures/ChemDraw/M_0954476be183.native.svg": {
+      "kind": "release_asset",
+      "sha256": "5de507c9b419b1096b09ea9fdbcecdab6694579bc0e90f540d1b1af903287ccf",
+      "bytes": 3239
+    },
+    "Submission/02_Figures/ChemDraw/M_0954476be183.pdf": {
+      "kind": "release_asset",
+      "sha256": "ed57887ced76a3a52a6bae073cd06a6e52ecb5cf4f740681ba9a1e40bc20f755",
+      "bytes": 33894
+    },
+    "Submission/02_Figures/ChemDraw/M_0954476be183.scale.json": {
+      "kind": "release_asset",
+      "sha256": "60d41f8d9d842043913dd7800ef7780344451fe5b17c7fbf98e6cf6f766b4513",
+      "bytes": 1287
+    },
+    "Submission/02_Figures/ChemDraw/M_0954476be183.svg": {
+      "kind": "release_asset",
+      "sha256": "4424b84d3fc1f3fcf87ea8f9939a3f6554c5e80e15283c96ce5eb380e09fdbbd",
+      "bytes": 3142
+    },
+    "Submission/02_Figures/ChemDraw/M_1258c83c1286.cdx": {
+      "kind": "release_asset",
+      "sha256": "478392a655ffe1f5c7c15ae215ad4dcc96560e3e68c151f0654da6b62ba1a7e8",
+      "bytes": 2857
+    },
+    "Submission/02_Figures/ChemDraw/M_1258c83c1286.cdxml": {
+      "kind": "release_asset",
+      "sha256": "9c5bb93275c89c4f8c9040c9c7e8b78c0595767bfe498e29912ef9ea35d1a8bf",
+      "bytes": 6479
+    },
+    "Submission/02_Figures/ChemDraw/M_1258c83c1286.native.svg": {
+      "kind": "release_asset",
+      "sha256": "b3652deb32dbc7a6b83f96072ac66ca92b481c34d788e20b96145fa53f42bf96",
+      "bytes": 3744
+    },
+    "Submission/02_Figures/ChemDraw/M_1258c83c1286.pdf": {
+      "kind": "release_asset",
+      "sha256": "cf371e273cd2be77c0d35470fec580d3ee8cbce9ab2127e024d19afe72ffa098",
+      "bytes": 33948
+    },
+    "Submission/02_Figures/ChemDraw/M_1258c83c1286.scale.json": {
+      "kind": "release_asset",
+      "sha256": "eb1c291bb20fae75b505cec9f495abf9011b20021d2b4c216528ee24e6831e79",
+      "bytes": 1340
+    },
+    "Submission/02_Figures/ChemDraw/M_1258c83c1286.svg": {
+      "kind": "release_asset",
+      "sha256": "897688ddffb7ea973d21bfef1c9786d83251522f59b7ccdbcd1ebb9f596e74f5",
+      "bytes": 3642
+    },
+    "Submission/02_Figures/ChemDraw/M_17b9aa57506d.cdx": {
+      "kind": "release_asset",
+      "sha256": "a358f774586bfd51f0c3468587aa32944ffb04bbb7884e31a537e8f315b495c4",
+      "bytes": 2798
+    },
+    "Submission/02_Figures/ChemDraw/M_17b9aa57506d.cdxml": {
+      "kind": "release_asset",
+      "sha256": "69f95ae53a80d74ea11572ab4fde882a150df731bedade5cc9ece8caab128ff6",
+      "bytes": 6344
+    },
+    "Submission/02_Figures/ChemDraw/M_17b9aa57506d.native.svg": {
+      "kind": "release_asset",
+      "sha256": "439e1d3a58783d16627aebc832da056e7c1732a6114726f430701b89b4805749",
+      "bytes": 4000
+    },
+    "Submission/02_Figures/ChemDraw/M_17b9aa57506d.pdf": {
+      "kind": "release_asset",
+      "sha256": "b993917bd5b49a12b1db9b73e7170bdbdcb2f8d38fff63f01e12f9a780415a2b",
+      "bytes": 33985
+    },
+    "Submission/02_Figures/ChemDraw/M_17b9aa57506d.scale.json": {
+      "kind": "release_asset",
+      "sha256": "b888db4fbf05b9409ab80366ddb13a1b24c30f7e3f7a15c1ee690476a5565a6d",
+      "bytes": 1368
+    },
+    "Submission/02_Figures/ChemDraw/M_17b9aa57506d.svg": {
+      "kind": "release_asset",
+      "sha256": "b2d4d13560d145dad013ec674d3deb4ee5e64076ec69bae1174c144a3b50f10a",
+      "bytes": 3901
+    },
+    "Submission/02_Figures/ChemDraw/M_4abb14d3b558.cdx": {
+      "kind": "release_asset",
+      "sha256": "e8c8ec310219641f0014b2c9c52897e1180d0d5f37e55cf9b52beb5bdf71101f",
+      "bytes": 2756
+    },
+    "Submission/02_Figures/ChemDraw/M_4abb14d3b558.cdxml": {
+      "kind": "release_asset",
+      "sha256": "c10be40c07630586a4322c71e3fd49169816bfc82e222e3d8e9a49e55a2df1c5",
+      "bytes": 6278
+    },
+    "Submission/02_Figures/ChemDraw/M_4abb14d3b558.native.svg": {
+      "kind": "release_asset",
+      "sha256": "40e8653a43b0ea526e6f6228a8aa357aa610c1eab136982788e1bd9f055b24ca",
+      "bytes": 3574
+    },
+    "Submission/02_Figures/ChemDraw/M_4abb14d3b558.pdf": {
+      "kind": "release_asset",
+      "sha256": "030f98c644ffcbec7cf83da6e2df95dffdda2d13ebd4e2bbf4033ffdeafbbfcf",
+      "bytes": 33939
+    },
+    "Submission/02_Figures/ChemDraw/M_4abb14d3b558.scale.json": {
+      "kind": "release_asset",
+      "sha256": "a18afe7360c662195d59e80fef521c26e35e1d66fc4b44e95d023b0e0d09f696",
+      "bytes": 1338
+    },
+    "Submission/02_Figures/ChemDraw/M_4abb14d3b558.svg": {
+      "kind": "release_asset",
+      "sha256": "494aa11026801a05e7838cf32fa0bbe256484ca8da7552121a8a73ae90ec226e",
+      "bytes": 3473
+    },
+    "Submission/02_Figures/ChemDraw/M_6621a7e0a376.cdx": {
+      "kind": "release_asset",
+      "sha256": "e9cba4829659d07c7ba591b0aab25b41fc80f8216786ce20655d460ba69685e0",
+      "bytes": 2760
+    },
+    "Submission/02_Figures/ChemDraw/M_6621a7e0a376.cdxml": {
+      "kind": "release_asset",
+      "sha256": "a4f53f9afb8e3c4fe7352dbd753b59cb29faacc3fa733f5292aa0f282a147762",
+      "bytes": 6292
+    },
+    "Submission/02_Figures/ChemDraw/M_6621a7e0a376.native.svg": {
+      "kind": "release_asset",
+      "sha256": "7df0eaadca8f138c06693ceb7acbd29b66869120bf9f0e995f86e0b85b1a243e",
+      "bytes": 3808
+    },
+    "Submission/02_Figures/ChemDraw/M_6621a7e0a376.pdf": {
+      "kind": "release_asset",
+      "sha256": "84ab9689c9b4facf7f6a7fbeb14813438ac89eb8948b7bca36438fad014bb1c5",
+      "bytes": 33970
+    },
+    "Submission/02_Figures/ChemDraw/M_6621a7e0a376.scale.json": {
+      "kind": "release_asset",
+      "sha256": "51a8adeb5df491bf84ec123c52c1f23bd50d9c73699b248628d439c363372329",
+      "bytes": 1342
+    },
+    "Submission/02_Figures/ChemDraw/M_6621a7e0a376.svg": {
+      "kind": "release_asset",
+      "sha256": "0b2b11826b1a37952bf8b91b22b3e78dfc04d46ce84d5486e45e3e4b19dedd45",
+      "bytes": 3706
+    },
+    "Submission/02_Figures/ChemDraw/M_68854495b915.cdx": {
+      "kind": "release_asset",
+      "sha256": "c747f1df211deff6dcef6a276beda8fa913be48e74920f998647beec91d6dd52",
+      "bytes": 2410
+    },
+    "Submission/02_Figures/ChemDraw/M_68854495b915.cdxml": {
+      "kind": "release_asset",
+      "sha256": "e53c510ae70150a7b6f0a3c375d20dc8dafef8e10b7bc68d1c47184f762d209a",
+      "bytes": 5559
+    },
+    "Submission/02_Figures/ChemDraw/M_68854495b915.native.svg": {
+      "kind": "release_asset",
+      "sha256": "f93ed3c3af91c88d494258fd32b1181780ce064385a7c10c4bcd453933379734",
+      "bytes": 3221
+    },
+    "Submission/02_Figures/ChemDraw/M_68854495b915.pdf": {
+      "kind": "release_asset",
+      "sha256": "7ef3f0e6dd7d94ef4b88a400d86dc1a3d299fee003622e70da08ddd3df72cd9a",
+      "bytes": 33870
+    },
+    "Submission/02_Figures/ChemDraw/M_68854495b915.scale.json": {
+      "kind": "release_asset",
+      "sha256": "a9de1d032160b15f135c683c6005f9e32b2d13a9e93d1a260583ba8cac639d7f",
+      "bytes": 1310
+    },
+    "Submission/02_Figures/ChemDraw/M_68854495b915.svg": {
+      "kind": "release_asset",
+      "sha256": "e20605c1471adcfd82040562ed0beb207ba01c04556c996e8491fa66bd3292a3",
+      "bytes": 3124
+    },
+    "Submission/02_Figures/ChemDraw/M_6ecdf141a68c.cdx": {
+      "kind": "release_asset",
+      "sha256": "72d0f241bd99c2c4104387fc6894700c2d7f0b776c1787065597ea6d8ad75c63",
+      "bytes": 2314
+    },
+    "Submission/02_Figures/ChemDraw/M_6ecdf141a68c.cdxml": {
+      "kind": "release_asset",
+      "sha256": "ca3f52a288a45783ae078d17355a332619e37bdfbabc56826bf74efbe5896e34",
+      "bytes": 5383
+    },
+    "Submission/02_Figures/ChemDraw/M_6ecdf141a68c.native.svg": {
+      "kind": "release_asset",
+      "sha256": "c5611ec09848b2c41b8a9c6ef08e292c69f3dee1e35e72ed67b203e41ecfce16",
+      "bytes": 3274
+    },
+    "Submission/02_Figures/ChemDraw/M_6ecdf141a68c.pdf": {
+      "kind": "release_asset",
+      "sha256": "629a249906de529e3b1e6855a190bb048c9f091c9a8235aac8ba8268a4cacc24",
+      "bytes": 33872
+    },
+    "Submission/02_Figures/ChemDraw/M_6ecdf141a68c.scale.json": {
+      "kind": "release_asset",
+      "sha256": "9d3f17bd14ac1f0297f8c296656fcabbbc429277ee7d6de8956cdd62b97671dc",
+      "bytes": 1316
+    },
+    "Submission/02_Figures/ChemDraw/M_6ecdf141a68c.svg": {
+      "kind": "release_asset",
+      "sha256": "8cb524f738292ebd41094da4151f4f08773f63c9bb6857ae78ab9629160c11d3",
+      "bytes": 3177
+    },
+    "Submission/02_Figures/ChemDraw/M_72932bc06bea.cdx": {
+      "kind": "release_asset",
+      "sha256": "9e303bbafc8a168d6201fcaa84dda6ccd1f205913e2cbab7dbf2edae3ef55c43",
+      "bytes": 3068
+    },
+    "Submission/02_Figures/ChemDraw/M_72932bc06bea.cdxml": {
+      "kind": "release_asset",
+      "sha256": "4fce2d43edd8fa32012b92130355e390b169eba7fa4565327d44d908f71bf4b8",
+      "bytes": 6922
+    },
+    "Submission/02_Figures/ChemDraw/M_72932bc06bea.native.svg": {
+      "kind": "release_asset",
+      "sha256": "7c0d70cf6339ad2cf4453ddc2268553d7ccc8f11356a5ee5edd614e25d5f7532",
+      "bytes": 4536
+    },
+    "Submission/02_Figures/ChemDraw/M_72932bc06bea.pdf": {
+      "kind": "release_asset",
+      "sha256": "81cd9cc9469403a84fe110a9aa4273cfc6e151b8c7dcc56237dba583ca5c48c4",
+      "bytes": 34080
+    },
+    "Submission/02_Figures/ChemDraw/M_72932bc06bea.scale.json": {
+      "kind": "release_asset",
+      "sha256": "1ee69a60bd56dc43c9eda3fd3872d9bea6932001f5a94e58c3814f9f7b504598",
+      "bytes": 1396
+    },
+    "Submission/02_Figures/ChemDraw/M_72932bc06bea.svg": {
+      "kind": "release_asset",
+      "sha256": "0d452037d640c26f8b2b6bc6f31f89fceaaee0d74a3a19a17b6496bf532562a2",
+      "bytes": 4428
+    },
+    "Submission/02_Figures/ChemDraw/M_76db7b57afb4.cdx": {
+      "kind": "release_asset",
+      "sha256": "98a8991df0b6589969e27fbc2397d7a10cbc0cd2d6836c7a9da6f93077ddea1e",
+      "bytes": 2415
+    },
+    "Submission/02_Figures/ChemDraw/M_76db7b57afb4.cdxml": {
+      "kind": "release_asset",
+      "sha256": "9a6ea4667c5fab3099c8d30a169a0a9edee3baa21ed634b9c022541c015ef530",
+      "bytes": 5585
+    },
+    "Submission/02_Figures/ChemDraw/M_76db7b57afb4.native.svg": {
+      "kind": "release_asset",
+      "sha256": "e6155a90e8a22572c8eb27a3235f203105540b2f22e75dec7f5569556a070749",
+      "bytes": 3432
+    },
+    "Submission/02_Figures/ChemDraw/M_76db7b57afb4.pdf": {
+      "kind": "release_asset",
+      "sha256": "3a6f597d2af5f0282cf38566dc0c4fed7cc3da051ac030568bb4eb636b5c7bab",
+      "bytes": 33899
+    },
+    "Submission/02_Figures/ChemDraw/M_76db7b57afb4.scale.json": {
+      "kind": "release_asset",
+      "sha256": "997fde2ac4992c146a557b2fd026d2c16d2d433d12af455ed28161efdf112fdd",
+      "bytes": 1314
+    },
+    "Submission/02_Figures/ChemDraw/M_76db7b57afb4.svg": {
+      "kind": "release_asset",
+      "sha256": "93c21c2da31cfcf06225482e7b4f9d6910b1f807d31479d7e87175d180e6b3fa",
+      "bytes": 3332
+    },
+    "Submission/02_Figures/ChemDraw/M_952b881a060a.cdx": {
+      "kind": "release_asset",
+      "sha256": "c262c81b9605e78a901747ce688dfa3792a5e570fd436271d59b80d5e4f787f8",
+      "bytes": 2875
+    },
+    "Submission/02_Figures/ChemDraw/M_952b881a060a.cdxml": {
+      "kind": "release_asset",
+      "sha256": "d3cb22699ec0ffe24f93bc83450061738a29949db79cd0c8e5b37db77da597f1",
+      "bytes": 6548
+    },
+    "Submission/02_Figures/ChemDraw/M_952b881a060a.native.svg": {
+      "kind": "release_asset",
+      "sha256": "10f2a5f654bc4255ec302beded744de0eb20fdc0d066e67fd98fec5ccc022be9",
+      "bytes": 3749
+    },
+    "Submission/02_Figures/ChemDraw/M_952b881a060a.pdf": {
+      "kind": "release_asset",
+      "sha256": "e800def7b894de2fb00161aad560f5e1cd4de1ef2025b724066c4683b768c577",
+      "bytes": 33980
+    },
+    "Submission/02_Figures/ChemDraw/M_952b881a060a.scale.json": {
+      "kind": "release_asset",
+      "sha256": "65f1d258525f5d0357627a8937797afbfae3c9402e4b3ed82529e2c055dd714d",
+      "bytes": 1340
+    },
+    "Submission/02_Figures/ChemDraw/M_952b881a060a.svg": {
+      "kind": "release_asset",
+      "sha256": "33daa3afb88ecc2b82e8fc3ebfa3d6a17cb011e1eb0c5ba2959bdfc81a4fc183",
+      "bytes": 3645
+    },
+    "Submission/02_Figures/ChemDraw/M_9b620c68316d.cdx": {
+      "kind": "release_asset",
+      "sha256": "95c2340246473a0638aabc01b41cf949190671aea98e4af76e971e232d6cb869",
+      "bytes": 2410
+    },
+    "Submission/02_Figures/ChemDraw/M_9b620c68316d.cdxml": {
+      "kind": "release_asset",
+      "sha256": "1c4b5369d710bf9e82d9c3c77f0bb71426c411312044ca76a7b6cbfeb722d7ab",
+      "bytes": 5559
+    },
+    "Submission/02_Figures/ChemDraw/M_9b620c68316d.native.svg": {
+      "kind": "release_asset",
+      "sha256": "e1d527184f7e658cf3361a1b17383b64606a0d20571179df32af3774cc78512f",
+      "bytes": 3236
+    },
+    "Submission/02_Figures/ChemDraw/M_9b620c68316d.pdf": {
+      "kind": "release_asset",
+      "sha256": "c5c4cce49ada588ddec4a0064b65f0a10363dcc632a82c4067330e8b60ab60b8",
+      "bytes": 33895
+    },
+    "Submission/02_Figures/ChemDraw/M_9b620c68316d.scale.json": {
+      "kind": "release_asset",
+      "sha256": "443ebf9bb4b093d7bb0a6b7982e0f207e284ab0a1fc9663e6b5d27ecfa76d292",
+      "bytes": 1310
+    },
+    "Submission/02_Figures/ChemDraw/M_9b620c68316d.svg": {
+      "kind": "release_asset",
+      "sha256": "a62e32de94eb0964dfdbd1f644a94bba67045010f8ec7dafeb45c8397b83e5f8",
+      "bytes": 3139
+    },
+    "Submission/02_Figures/ChemDraw/M_aa8111f392a2.cdx": {
+      "kind": "release_asset",
+      "sha256": "2a939b58b344cd954b4aa1d39b5238b547e66bd442e3f674f2a22b1069d49dcf",
+      "bytes": 2539
+    },
+    "Submission/02_Figures/ChemDraw/M_aa8111f392a2.cdxml": {
+      "kind": "release_asset",
+      "sha256": "1f2909bac3b3a0d6899dc18d4a55a85f49c6efe8ceb129f25bd39e8ff5fd8e36",
+      "bytes": 5842
+    },
+    "Submission/02_Figures/ChemDraw/M_aa8111f392a2.native.svg": {
+      "kind": "release_asset",
+      "sha256": "278a8d14c6fdea000d13f8307a8981de9865dcc16e85caee67df00d4a7eda624",
+      "bytes": 3379
+    },
+    "Submission/02_Figures/ChemDraw/M_aa8111f392a2.pdf": {
+      "kind": "release_asset",
+      "sha256": "e010fd90b85dfbc391ef7a152edac8db965485de07a3613f3e8166c78e9cf361",
+      "bytes": 33915
+    },
+    "Submission/02_Figures/ChemDraw/M_aa8111f392a2.scale.json": {
+      "kind": "release_asset",
+      "sha256": "d3a0c2b4220d9dd094bd28145d502ded74675458bae39f2e5b5030a2770f4baf",
+      "bytes": 1315
+    },
+    "Submission/02_Figures/ChemDraw/M_aa8111f392a2.svg": {
+      "kind": "release_asset",
+      "sha256": "3926340e36af9f1c452bfd19a7274496b315ab3e054c043c7abd915ed56a4c32",
+      "bytes": 3283
+    },
+    "Submission/02_Figures/ChemDraw/M_b513554ee2e6.cdx": {
+      "kind": "release_asset",
+      "sha256": "7b02a77e4f208f4c512f85a51e987e7f4658339a12dde71d3293fc4fe2a4c6f2",
+      "bytes": 2759
+    },
+    "Submission/02_Figures/ChemDraw/M_b513554ee2e6.cdxml": {
+      "kind": "release_asset",
+      "sha256": "a750ea48f9c3ecc150e7f814a3efbdcc20858409bc842d8afb37887c2a0b8cde",
+      "bytes": 6271
+    },
+    "Submission/02_Figures/ChemDraw/M_b513554ee2e6.native.svg": {
+      "kind": "release_asset",
+      "sha256": "c38d936dedffc62f73b2ed5f033c3952f2b9d0deab3b4b2d03efbce36c07aef6",
+      "bytes": 4027
+    },
+    "Submission/02_Figures/ChemDraw/M_b513554ee2e6.pdf": {
+      "kind": "release_asset",
+      "sha256": "af27fd5966ad811f0aa9925f4c9914a8564fa74ba408c68c927482f485886746",
+      "bytes": 34022
+    },
+    "Submission/02_Figures/ChemDraw/M_b513554ee2e6.scale.json": {
+      "kind": "release_asset",
+      "sha256": "e8f41c6186b1caf529f00fcb84c577e4ad39a20e4183e8f8cf9311d2d81331c8",
+      "bytes": 1336
+    },
+    "Submission/02_Figures/ChemDraw/M_b513554ee2e6.svg": {
+      "kind": "release_asset",
+      "sha256": "c70436df8426704ae8f67cd878794d0eab2145c67bf97b8b05794a3d8bad1b23",
+      "bytes": 3924
+    },
+    "Submission/02_Figures/ChemDraw/M_da36cbeec489.cdx": {
+      "kind": "release_asset",
+      "sha256": "47f70af2eedf3ba0a4520e86f675f5980a7dbc624ab96a3129ab8533caef034e",
+      "bytes": 2875
+    },
+    "Submission/02_Figures/ChemDraw/M_da36cbeec489.cdxml": {
+      "kind": "release_asset",
+      "sha256": "2e5360c0f725bca1f75d4ba99d651610d4c81347b9ddbb90289b8a1850d26f60",
+      "bytes": 6548
+    },
+    "Submission/02_Figures/ChemDraw/M_da36cbeec489.native.svg": {
+      "kind": "release_asset",
+      "sha256": "6c04f781d850f84b1b5b9cff46bbebbc94d5b4082f94d6a94eeb5eaa347caccf",
+      "bytes": 3743
+    },
+    "Submission/02_Figures/ChemDraw/M_da36cbeec489.pdf": {
+      "kind": "release_asset",
+      "sha256": "ec4c2a9228c9e000ffa71065002d42983c98432bda86430419bb0923c47bcd24",
+      "bytes": 33967
+    },
+    "Submission/02_Figures/ChemDraw/M_da36cbeec489.scale.json": {
+      "kind": "release_asset",
+      "sha256": "be669833a12592d0aafce306769566cdc5c92b23b2ea06f78dce4b310b2add18",
+      "bytes": 1340
+    },
+    "Submission/02_Figures/ChemDraw/M_da36cbeec489.svg": {
+      "kind": "release_asset",
+      "sha256": "496156566c6b4a18e2fb06ccb42f68a1ed676878e70c62f617cf1585fbafe681",
+      "bytes": 3641
+    },
+    "Submission/02_Figures/ChemDraw/M_dbc439c213e1.cdx": {
+      "kind": "release_asset",
+      "sha256": "4ad4fe4873d26f1fd4a9254216b2f89c015be7cb697817b1dcad9a5c17a0b5ee",
+      "bytes": 3172
+    },
+    "Submission/02_Figures/ChemDraw/M_dbc439c213e1.cdxml": {
+      "kind": "release_asset",
+      "sha256": "962b92b624b6a6060b720ca55e2bbdee712f3cde58d19e2e60c932132fd40f35",
+      "bytes": 7107
+    },
+    "Submission/02_Figures/ChemDraw/M_dbc439c213e1.native.svg": {
+      "kind": "release_asset",
+      "sha256": "0d81ac6ff403a6badedfefcbea294417c7f3bcf5e3a5ac37c6f4c1d99d48f9c0",
+      "bytes": 4540
+    },
+    "Submission/02_Figures/ChemDraw/M_dbc439c213e1.pdf": {
+      "kind": "release_asset",
+      "sha256": "c60253b7e870417b57834b2502dd2fbe8c66f3b5d4c0be34a5f964c43127a7d7",
+      "bytes": 34003
+    },
+    "Submission/02_Figures/ChemDraw/M_dbc439c213e1.scale.json": {
+      "kind": "release_asset",
+      "sha256": "465f771b40b50ac051ff337f324cec658c08c202f156f90ca8de71ac9377c06a",
+      "bytes": 1367
+    },
+    "Submission/02_Figures/ChemDraw/M_dbc439c213e1.svg": {
+      "kind": "release_asset",
+      "sha256": "5e904641c33e82ec5d987f524d0b5f77778f42795d5ad539bc9938398f235b33",
+      "bytes": 4429
+    },
+    "Submission/02_Figures/ChemDraw/M_f27722e5391e.cdx": {
+      "kind": "release_asset",
+      "sha256": "3ae75b276f8357beef22f3fe7649825a603129c6318131dbbf53a664f922d8dc",
+      "bytes": 2875
+    },
+    "Submission/02_Figures/ChemDraw/M_f27722e5391e.cdxml": {
+      "kind": "release_asset",
+      "sha256": "6bfaa6f677d03ea9ec09377bf8872275cfceee754153500d663b1b3a313f1a83",
+      "bytes": 6549
+    },
+    "Submission/02_Figures/ChemDraw/M_f27722e5391e.native.svg": {
+      "kind": "release_asset",
+      "sha256": "1da1324203384b02f1ffb44b5b164ce60be3f20da90e98b15a3300ca0f3f94b4",
+      "bytes": 3844
+    },
+    "Submission/02_Figures/ChemDraw/M_f27722e5391e.pdf": {
+      "kind": "release_asset",
+      "sha256": "8d1db1e82294eaeb8a9e28d8a29d633c92dea5a2b3d99bec966b18bd224b5228",
+      "bytes": 33971
+    },
+    "Submission/02_Figures/ChemDraw/M_f27722e5391e.scale.json": {
+      "kind": "release_asset",
+      "sha256": "5ee2182130a67a1064385de219f28d2f2ffe4659bb08bea4ae8ed65904dc0a7b",
+      "bytes": 1340
+    },
+    "Submission/02_Figures/ChemDraw/M_f27722e5391e.svg": {
+      "kind": "release_asset",
+      "sha256": "04504df552c8e243616a7190dec0962b06cfc1b5cff11a1fbebbdf56defe27ff",
+      "bytes": 3742
+    },
+    "Submission/02_Figures/ChemDraw/M_f80a4f2a0465.cdx": {
+      "kind": "release_asset",
+      "sha256": "a5285c291f29db4670758f355134fc7ba9f9183846cd35e886dfd259c1a4bf04",
+      "bytes": 2875
+    },
+    "Submission/02_Figures/ChemDraw/M_f80a4f2a0465.cdxml": {
+      "kind": "release_asset",
+      "sha256": "1c0eabe822e54a2323b56501444ca12b5b9c178688ca35e27b127085ef9ff18a",
+      "bytes": 6550
+    },
+    "Submission/02_Figures/ChemDraw/M_f80a4f2a0465.native.svg": {
+      "kind": "release_asset",
+      "sha256": "397be3e8306141a4d09d6946700c3c0077cce6e29ee78405f41b950abcef58a5",
+      "bytes": 3831
+    },
+    "Submission/02_Figures/ChemDraw/M_f80a4f2a0465.pdf": {
+      "kind": "release_asset",
+      "sha256": "07742b1f2aa64c915c92ba6653b1dac0389606640de299662cbe87f954e89862",
+      "bytes": 33973
+    },
+    "Submission/02_Figures/ChemDraw/M_f80a4f2a0465.scale.json": {
+      "kind": "release_asset",
+      "sha256": "4a26a31586c4d60a3451e1ed71ae58a3417fcc4e0f35e8c0ae77ff257ca92b1b",
+      "bytes": 1339
+    },
+    "Submission/02_Figures/ChemDraw/M_f80a4f2a0465.svg": {
+      "kind": "release_asset",
+      "sha256": "52a00bac83cd4afd3cc967f41f700fb2ae43b615071a9b451351fd05a58c3ee9",
+      "bytes": 3729
+    },
+    "Analysis/out/final_figures/chemistry_work/M_0954476be183_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "a3325697a920f753fcf7d02e907873dcda33dd8f7e3b50c52a5f44188d658f70",
+      "bytes": 923
+    },
+    "Analysis/out/final_figures/chemistry_work/M_1258c83c1286_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "ec738ae7abee007c163424558a3f82ce3fac45290b7deb0f08da791c6fbbdbba",
+      "bytes": 1111
+    },
+    "Analysis/out/final_figures/chemistry_work/M_17b9aa57506d_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "b3ebcb9b42ece2cd9ce4fd1ea5057d7207aa88a05952efd43d338f808c5aaf0c",
+      "bytes": 1134
+    },
+    "Analysis/out/final_figures/chemistry_work/M_4abb14d3b558_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "6dfef55ecebd14f25b17ffd1d5898991cfa16c469e001aaec935e8e9d9d60afb",
+      "bytes": 1111
+    },
+    "Analysis/out/final_figures/chemistry_work/M_6621a7e0a376_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "8c7ceb1c7141797dd4b7cd93e0e3197421cbdb9a4555e8b507848f82c8761e0b",
+      "bytes": 1111
+    },
+    "Analysis/out/final_figures/chemistry_work/M_68854495b915_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "ad3995eacf31bc8941b2240bc4c876b8402c50dbe910df49007c556b6fd1faec",
+      "bytes": 923
+    },
+    "Analysis/out/final_figures/chemistry_work/M_6ecdf141a68c_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "5812f6971ddd5a703b65940c2e73692d8db04954c315e6fa3fd3146d1f21a109",
+      "bytes": 923
+    },
+    "Analysis/out/final_figures/chemistry_work/M_72932bc06bea_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "5655260102cc81e51ca58093f75b2f3b67368ba74ff50d319510b10d647a76fb",
+      "bytes": 1228
+    },
+    "Analysis/out/final_figures/chemistry_work/M_76db7b57afb4_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "d60bd8c90ad75ca9a7bb07ad0f4b76748662332420af586e2d40b931b13455c7",
+      "bytes": 923
+    },
+    "Analysis/out/final_figures/chemistry_work/M_952b881a060a_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "f22292920a7e6e5eab00b3da423c00c60fde936c7c1e110b1ce1d4accc56f074",
+      "bytes": 1111
+    },
+    "Analysis/out/final_figures/chemistry_work/M_9b620c68316d_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "eed9e6b0e096fd1ab4193e2a9baef7bcf4cdf018cef71e7a5196599471abf5d1",
+      "bytes": 923
+    },
+    "Analysis/out/final_figures/chemistry_work/M_aa8111f392a2_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "6b4db0c33f4c513c3a5377bfed4ecde09f6a359344bbebaa2ef214a808b6e63f",
+      "bytes": 1017
+    },
+    "Analysis/out/final_figures/chemistry_work/M_b513554ee2e6_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "6a6b17b91593c5107b7d3387a151d2a68a459340785624923861c5efcbad5a26",
+      "bytes": 1040
+    },
+    "Analysis/out/final_figures/chemistry_work/M_da36cbeec489_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "b4756ee14d7725cc448457a34c0d0dbb293e8f2f8c3f267160b144d2ce64d6bb",
+      "bytes": 1111
+    },
+    "Analysis/out/final_figures/chemistry_work/M_dbc439c213e1_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "9566df6d1549f16c271459a2d12bfed07ade2020b3831d0647219ffcf838ef85",
+      "bytes": 1205
+    },
+    "Analysis/out/final_figures/chemistry_work/M_f27722e5391e_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "188f38066b47f8a748273ffa7796e481b3045b3ae2fcf86173e4a728d24e3693",
+      "bytes": 1111
+    },
+    "Analysis/out/final_figures/chemistry_work/M_f80a4f2a0465_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "0546b89ae5c873e43029ff5d4a3626dc33a1e677b10cfd357b8837d066fd0db6",
+      "bytes": 1111
     }
   }
 }

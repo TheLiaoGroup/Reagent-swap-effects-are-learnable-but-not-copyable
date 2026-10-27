@@ -174,6 +174,56 @@ def verified_cached_native_pdf(stem, svg):
         cached.close()
         raise
 
+ORIENTATION_VERSION = 'lattice-v1'
+
+
+def _orient_to_lattice(mol, free=True):
+    """Rotate 2D coordinates so six-membered ring edges lie on the 30-degree lattice.
+
+    Every hexagon then has vertical or horizontal sides. With free=True the molecule is
+    turned (in 30-degree steps on that lattice) to put its long axis horizontal; with
+    free=False only the smallest lattice correction is applied, so template-matched
+    series keep a common orientation.
+    """
+    import math
+    conf = mol.GetConformer()
+    rings = [r for r in mol.GetRingInfo().AtomRings() if len(r) == 6]
+    pts = [(conf.GetAtomPosition(i).x, conf.GetAtomPosition(i).y) for i in range(mol.GetNumAtoms())]
+    if not pts:
+        return
+    cx, cy = sum(x for x, _ in pts) / len(pts), sum(y for _, y in pts) / len(pts)
+
+    def rotated(deg):
+        r = math.radians(deg)
+        c, s = math.cos(r), math.sin(r)
+        return [((x - cx) * c - (y - cy) * s, (x - cx) * s + (y - cy) * c) for x, y in pts]
+
+    base = 0.0
+    if rings:
+        ring = max(rings, key=lambda r: (all(mol.GetAtomWithIdx(i).GetIsAromatic() for i in r),
+                                         sum(mol.GetAtomWithIdx(i).GetSymbol() == 'C' for i in r)))
+        sx = sy = 0.0
+        for a, b in zip(ring, ring[1:] + ring[:1]):
+            ang = math.atan2(pts[b][1] - pts[a][1], pts[b][0] - pts[a][0]) * 6.0  # period 60 deg -> 360
+            sx += math.cos(ang)
+            sy += math.sin(ang)
+        e = (math.degrees(math.atan2(sy, sx)) / 6.0) % 30.0  # edge offset from the 30-degree lattice
+        base = -e if e < 15.0 else 30.0 - e
+    candidates = [base] if (not free or not rings) else [base + 30.0 * k for k in range(12)]
+    if not free and not rings:
+        return
+
+    def score(deg):
+        q = rotated(deg)
+        w = max(x for x, _ in q) - min(x for x, _ in q)
+        h = max(y for _, y in q) - min(y for _, y in q)
+        return (round(w - h, 3), -abs(((deg + 180) % 360) - 180))
+
+    best = max(candidates, key=score)
+    for i, (x, y) in enumerate(rotated(best)):
+        conf.SetAtomPosition(i, (x + cx, y + cy, 0.0))
+
+
 class Chemistry:
 
     def __init__(self, directory: Path, work: Path):
@@ -246,7 +296,8 @@ class Chemistry:
             core = Chem.MolFromSmiles(template)
             rdDepictor.Compute2DCoords(core)
             rdDepictor.GenerateDepictionMatching2DStructure(mol, core)
-        stem = self.directory / ('M_' + hashlib.sha256(repr(key).encode()).hexdigest()[:12])
+        _orient_to_lattice(mol, free=not template)
+        stem = self.directory / ('M_' + hashlib.sha256(repr((key, ORIENTATION_VERSION)).encode()).hexdigest()[:12])
         readback_path = self.work / (stem.name + '_readback.mol')
         expected_key = Chem.MolToInchiKey(mol)
         if all((stem.with_name(stem.name + suffix).is_file() for suffix in ('.cdx', '.cdxml', '.svg'))) and readback_path.is_file():

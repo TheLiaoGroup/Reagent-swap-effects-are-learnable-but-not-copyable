@@ -153,6 +153,18 @@ def molecule(fig, rect, smiles, highlight_methyl=False, template=None, halo=Fals
         circle = ET.Element('{http://www.w3.org/2000/svg}circle', {'cx': str(cx), 'cy': str(cy), 'r': '4.2', 'fill': '#BA4852', 'fill-opacity': '.24'})
         if halo:
             root.insert(0, circle)
+            vx, vy, vw, vh = map(float, root.get('viewBox').split())
+            r = 4.2 + 0.6
+            nx, ny = min(vx, cx - r), min(vy, cy - r)
+            nw, nh = max(vx + vw, cx + r) - nx, max(vy + vh, cy + r) - ny
+            if (nx, ny, nw, nh) != (vx, vy, vw, vh):
+                for attr, old_size, new_size in (('width', vw, nw), ('height', vh, nh)):
+                    value = root.get(attr)
+                    if value:
+                        number = float(''.join(ch for ch in value if ch.isdigit() or ch in '.-'))
+                        unit = ''.join(ch for ch in value if ch.isalpha())
+                        root.set(attr, f'{number * new_size / old_size:.4f}{unit}')
+                root.set('viewBox', f'{nx} {ny} {nw} {nh}')
         svg = ET.tostring(root, encoding='unicode')
     work = OUT / 'render_work'
     work.mkdir(parents=True, exist_ok=True)

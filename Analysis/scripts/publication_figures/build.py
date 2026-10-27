@@ -25,6 +25,7 @@ def extended_inventory():
     c.source('S1_array_inventory', data, [support_path, corpus_path], 'All non-Finkelstein arrays; unique within-array substrate pairs supporting exact responses', 'counts')
     fig = c.newfig(140)
     ax = c.panel(fig, [0.33, 0.13, 0.59, 0.78], 'a', 'Reaction arrays')
+    ax._draft_panel_letter.set_text('')
     y = np.arange(len(data))
     ax.barh(y, data.strict_swaps, height=0.65, color=c.BLUE)
     ax.set_yticks(y, data.reaction_type.map(c.class_label))
@@ -59,16 +60,17 @@ def extended_budgets():
     c.source('S2_measurement_cost', costs, scope_path, 'common16; distinct condition cells=2*backgrounds*profiles', 'condition cells')
     fig = c.newfig(95)
     ax = c.panel(fig, [0.14, 0.22, 0.78, 0.65], 'a', 'Local measurement budgets')
+    ax._draft_panel_letter.set_text('')
     for learner, label, color in [('calibration_only', 'Local only', c.RED), ('joint', 'History + local', c.TEAL)]:
         rows = data.loc[data.learner.eq(learner)].sort_values('n_vectors')
         ax.plot([budgets.index(n) for n in rows.n_vectors], rows.error_change_pct, 'o-', color=color, ms=3, label=label)
     ax.axhline(0, color=c.BLUE, lw=0.7, label='History only')
-    labels = ['0' if n == 0 else f"{costs.loc[costs.n_vectors.eq(n), 'local_wells'].min()}–{costs.loc[costs.n_vectors.eq(n), 'local_wells'].max()}" for n in budgets]
+    labels = ['0\n0' if n == 0 else f"{n}\n{costs.loc[costs.n_vectors.eq(n), 'local_wells'].min()}–{costs.loc[costs.n_vectors.eq(n), 'local_wells'].max()}" for n in budgets]
     ax.set_xticks(range(len(budgets)), labels)
     ax.set_xlim(-0.1, 5.45)
     ax.set_ylim(-8, 90)
     ax.set_yticks([0, 40, 80])
-    c.clean(ax, 'Local condition cells (ordered budget categories)', 'Error change relative to history (%)')
+    c.clean(ax, 'Local profiles (endpoint wells)', 'Error change relative to history (%)')
     ax.legend(frameon=False, loc='upper right')
     ax.text(0.02, 0.96, '22,963 query vectors', transform=ax.transAxes, va='top', fontsize=5.5)
     return c.save(fig, 'Extended_Data_Figure_2', 'The larger local budget retains a fixed sixteen-profile population')

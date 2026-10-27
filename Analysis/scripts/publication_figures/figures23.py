@@ -350,6 +350,7 @@ def extended_cross(stem='Extended_Data_Figure_3'):
     rows = cross_data()
     fig = c.newfig(100)
     ax = c.panel(fig, [0.12, 0.18, 0.8, 0.65], 'a', 'Transfer between libraries')
+    ax._draft_panel_letter.set_text('')
     fields = ['target_mean_mse_relative_pct', 'real_mse_relative_pct', 'test_permuted_exact_mse_relative_pct']
     for row in rows.itertuples():
         color = c.RED if row.calibrated_worse_than_target_only else c.TEAL
@@ -430,6 +431,9 @@ def extended_structure(stem='Extended_Data_Figure_4'):
     ax.set_yticks(range(len(gains)), [f'k={int(r.nominal_k)}; {weights[r.weighting]}' for r in gains.itertuples()], fontsize=5)
     ax.set(xlim=(0, 100), ylim=(len(gains) - 0.5, -0.5), xticks=[0, 50, 100])
     c.clean(ax, 'Net improvement (%)')
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(facecolor=c.BLUE, label="Pair's own level"), Patch(facecolor=c.TEAL, label='Background fluctuation')],
+              loc='upper left', bbox_to_anchor=(0.0, -0.32), ncol=2, frameon=False, fontsize=5.5, handlelength=1.0, handleheight=0.8)
     c.save(fig, stem, "Structure-based prediction primarily recovers each pair's own response level")
 
 def extended_reference(stem='Extended_Data_Figure_5'):

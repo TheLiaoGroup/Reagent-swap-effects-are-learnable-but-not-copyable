@@ -97,7 +97,7 @@ class Map:
             node(group, 'polygon', points=' '.join((f'{x},{y}' for x, y in points)), fill=color)
             self.arrows.append({'id': identity, 'start_mm': list(start), 'end_mm': list(end), 'length_mm': float(np.linalg.norm(delta)), 'color': color})
 
-    def chemical(self, group, smiles, cx, cy, name):
+    def chemical(self, group, smiles, cx, cy, name, left=None):
         entry = c.CHEM.get(smiles)
         if not entry['native'] or entry['inchi_key'] != entry['roundtrip_inchi_key']:
             raise ValueError('Figure 1 requires an identity-checked native chemical vector')
@@ -108,6 +108,8 @@ class Map:
         box = list(map(float, root.get('viewBox').split()))
         scale = 25.4 / 96
         width, height = (box[2] * scale, box[3] * scale)
+        if left is not None:
+            cx = left + width / 2
         fragment = node(group, 'g', id=f'chem-{name}', transform=f'translate({cx - width / 2} {cy - height / 2}) scale({scale})')
         for child in root:
             fragment.append(copy.deepcopy(child))
@@ -120,12 +122,12 @@ class Map:
     def pair(self, group, x, y, values):
         delta = values[1] - values[0]
         color = BLUE if delta > 0 else RED
-        for offset, label, value in ((0, 'X', values[0]), (28, 'Y', values[1])):
-            node(group, 'rect', x=x + offset, y=y, width=13, height=8, fill='white', stroke=GRAY, stroke_width=0.18)
-            self.text(group, x + offset + 6.5, y + 5, f'{value:.2f}%', anchor='middle')
-            self.text(group, x + offset + 6.5, y - 1.6, label, color=GRAY, anchor='middle', size=5.5)
-        self.line(group, (x + 14, y + 4), (x + 27, y + 4), color, 0.28, True)
-        self.text(group, x + 20.5, y + 1.1, f'Δ {delta:+.0f} pp', size=6.5, color=color, bold=True, anchor='middle')
+        for offset, label, value in ((0, 'X', values[0]), (26, 'Y', values[1])):
+            node(group, 'rect', x=x + offset, y=y, width=12, height=8, fill='white', stroke=GRAY, stroke_width=0.18)
+            self.text(group, x + offset + 6, y + 5, f'{value:.2f}%', anchor='middle')
+            self.text(group, x + offset + 6, y - 1.6, label, color=GRAY, anchor='middle', size=5.5)
+        self.line(group, (x + 13, y + 4), (x + 25, y + 4), color, 0.28, True)
+        self.text(group, x + 19, y + 1.1, f'Δ {delta:+.0f} pp', size=6.5, color=color, bold=True, anchor='middle')
 
 def references():
     return {'recommendation': [16, 17], 'general': [22, 23], 'transfer': [19], 'prediction': [20]}
@@ -191,24 +193,24 @@ def figure1():
     m.line(rules, (63, 23.5), (63, 99.5), '#D7DADC', 0.15)
     m.line(rules, (1, 63), (61, 63), '#D7DADC', 0.15)
     for smiles, name, cy in ((figures14.QUINOLINE, '6-bromoquinoline', 41), (figures14.INDAZOLE, '5-bromo-1H-indazole', 78)):
-        m.chemical(left, smiles, 11, cy - 1, name)
+        m.chemical(left, smiles, 11, cy - 1, name, left=0.5)
         m.text(left, 1, cy + 11, name)
         m.text(left, 1, cy + 16, 'Cs₂CO₃', color=GRAY)
         values = records.loc[records.substrate_smiles.eq(smiles)].sort_values('endpoint').yield_percent.tolist()
-        m.pair(left, 21, cy - 4, values)
+        m.pair(left, 23, cy - 4, values)
     m.chemical(middle, PYRIDINE, 94, 35, 'methoxybromopyridine')
     m.text(middle, 94, 46, '2-bromo-3-methoxypyridine', anchor='middle')
     m.text(middle, 66, 51, 'Cs₂CO₃ reference', color=GRAY, size=5.5)
     m.pair(middle, 73, 55, backgrounds['Cs'])
-    m.text(middle, 66, 87, 'K₂CO₃ target', color=GRAY, size=5.5)
-    m.pair(middle, 73, 91, backgrounds['K'])
+    m.text(middle, 66, 84.5, 'K₂CO₃ target', color=GRAY, size=5.5)
+    m.pair(middle, 73, 88.5, backgrounds['K'])
     routes = m.layer('05-short-reference-to-target-routes')
-    m.line(routes, (84, 65), (84, 83), ORANGE, 0.3, True, 'copy-reference-to-target')
+    m.line(routes, (84, 65), (84, 80.5), ORANGE, 0.3, True, 'copy-reference-to-target')
     m.text(routes, 66, 72, 'copy: −28', size=5.5, color=ORANGE, bold=True)
     m.line(routes, (78, 75), (80, 77), ORANGE, 0.4)
     m.line(routes, (78, 77), (80, 75), ORANGE, 0.4)
-    m.text(routes, 66, 81, 'measured +34', size=5, color=GRAY)
-    m.line(routes, (96, 65), (96, 83), TEAL, 0.3, True, 'learn-reference-to-target')
+    m.text(routes, 66, 79.5, 'measured +34', size=5, color=GRAY)
+    m.line(routes, (96, 65), (96, 80.5), TEAL, 0.3, True, 'learn-reference-to-target')
     m.text(routes, 99, 71, 'learn from history', size=5.5, color=TEAL, bold=True)
     tag(routes, 99, 76, 'transfer learning', refs['transfer'])
     tag(routes, 99, 80, 'yield-change prediction', refs['prediction'])

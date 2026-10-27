@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="153px" height="127px" viewBox="0 0 153 127" style="background-color: #ffffff00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
+<text x="0" y="0" stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 54.0973 120.893)" font-style="normal" font-weight="normal" font-size="120px" font-family="Arial" >
+O</text>
+<text x="0" y="0" stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 54.0973 19.5066)" font-style="normal" font-weight="normal" font-size="120px" font-family="Arial" >
+O</text>
+<text x="0" y="0" stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 46.516 70.2)" font-style="normal" font-weight="normal" font-size="120px" font-family="Arial" >
+N</text>
+<text x="0" y="0" stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 5.71598 70.2)" font-style="normal" font-weight="normal" font-size="120px" font-family="Arial" >
+HO</text>
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 4989.09,7126 L 4977.68,7122.3 L 5029.17,6963.49 L 5040.59,6967.19 L 4989.09,7126 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5026.07,7137.99 L 5014.65,7134.29 L 5066.13,6975.52 L 5077.55,6979.22 L 5026.07,7137.99 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5046.47,6992.21 L 5051.06,6978.06 L 5248.63,6913.81 L 5254.4,6918 L 5253.73,6924.37 L 5046.47,6992.21 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5253.73,6924.37 L 5254.4,6918 L 5260.21,6914.64 L 5441.6,7019.29 L 5441.6,7033.16 L 5253.73,6924.37 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5290.3,6900.73 L 5296.3,6890.33 L 5444.59,6975.89 L 5438.59,6986.28 L 5290.3,6900.73 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5441.6,7033.16 L 5441.6,7019.29 L 5622.79,6914.64 L 5634.8,6921.58 L 5441.6,7033.16 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5634.8,6921.58 L 5622.79,6914.64 L 5622.79,6705.36 L 5634.8,6698.42 L 5634.8,6921.58 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5595.72,6895.56 L 5583.72,6895.56 L 5583.72,6724.44 L 5595.72,6724.44 L 5595.72,6895.56 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5634.8,6698.42 L 5622.79,6705.36 L 5441.6,6600.71 L 5441.6,6586.84 L 5634.8,6698.42 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5441.6,6586.84 L 5441.6,6600.71 L 5260.21,6705.36 L 5254.4,6702 L 5253.73,6695.63 L 5441.6,6586.84 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5438.59,6633.72 L 5444.59,6644.11 L 5296.3,6729.67 L 5290.3,6719.27 L 5438.59,6633.72 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5253.73,6695.63 L 5254.4,6702 L 5248.63,6706.19 L 5051.08,6641.95 L 5046.49,6627.8 L 5253.73,6695.63 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5040.59,6652.81 L 5029.17,6656.51 L 4980.7,6507.02 L 4992.12,6503.32 L 5040.59,6652.81 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5077.55,6640.78 L 5066.13,6644.48 L 5017.67,6495.03 L 5029.09,6491.33 L 5077.55,6640.78 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5046.49,6627.8 L 5051.08,6641.95 L 4969.8,6754.6 L 4960.09,6747.55 L 5046.49,6627.8 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 4865.07,6804 L 4865.07,6816 L 4770.67,6816 L 4770.67,6804 L 4865.07,6804 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 4964.52,6878.57 L 4974.24,6871.52 L 5051.06,6978.06 L 5046.47,6992.21 L 4964.52,6878.57 Z " />
+<path stroke="none" fill="#000000" transform="matrix(0.133333 0 0 0.133333 -604 -844)" d="M 5248.63,6706.19 L 5254.4,6702 L 5260.21,6705.36 L 5260.21,6914.64 L 5254.4,6918 L 5248.63,6913.81 L 5248.63,6706.19 Z " />
+</svg>

@@ -349,7 +349,9 @@ def si_information():
     ax.axvline(0, color=sb.GRAY, lw=0.5)
     ax.invert_yaxis()
     sb.clean(ax, xlabel='Change in prediction error (pp²)')
-    fig.text(0.69, 0.36, 'Blue: local level labels\nTeal: local modulation labels\nNegative values reduce error', fontsize=10, linespacing=1.6)
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(facecolor=sb.BLUE, label='Local level labels'), Patch(facecolor=sb.TEAL, label='Local modulation labels')],
+              loc='upper left', bbox_to_anchor=(-0.05, -0.28), frameon=False, fontsize=8, handlelength=1.0, handleheight=0.8)
     return (fig, title)
 
 def si_routes():
@@ -364,8 +366,9 @@ def si_routes():
         path = witness_path.parent / filename
         add_table('S3_a_' + suffix, frame(path), path, 'complete identical-support Suzuki witness', 'yield fields: fraction; other fields identify routes and records')
     sb.label(fig, 0.045, 0.89, 'a', 'A common Suzuki route lowers the scope bottleneck')
-    for smi, x in ((wit['focal_molecule_a'], 0.08), (wit['focal_molecule_b'], 0.28)):
+    for smi, x, scope in ((wit['focal_molecule_a'], 0.08, 'Scope 1'), (wit['focal_molecule_b'], 0.28, 'Scope 2')):
         molecule(fig, [x, 0.64, 0.16, 0.15], smi, True, 'OB(O)c1ccccc1')
+        fig.text(x + 0.08, 0.615, scope, ha='center', va='top', fontsize=9)
     ax = fig.add_axes([0.16, 0.22, 0.29, 0.34])
     values = [100 * wit[k] for k in ('B_context_a', 'B_context_b', 'B_union')]
     ax.barh(range(len(values)), values, color=[sb.BLUE, sb.BLUE, sb.RED])

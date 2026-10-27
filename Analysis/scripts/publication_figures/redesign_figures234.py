@@ -171,7 +171,7 @@ def figure2():
     for i, (smiles, y) in enumerate([('Brc1ccc2[nH]ncc2c1', 0.835), ('COc1cccnc1Br', 0.72)]):
         molecule(fig, [0.79, y, 0.15, 0.09], smiles)
         fig.text(0.755, y + 0.04, str(i + 1), fontsize=6, weight='bold')
-    conflict = panel(fig, [0.86, 0.24, 0.06, 0.425], 'c', 'Conflicts across 19 arrays', title_x=0.77, title_y=0.7)
+    conflict = panel(fig, [0.868, 0.24, 0.056, 0.425], 'c', 'Conflicts across 19 arrays', title_x=0.77, title_y=0.7)
     order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
     for i, name in enumerate(order):
         rows = signs.loc[signs.stratum.eq(name)].set_index('threshold_pp')
@@ -186,12 +186,11 @@ def figure2():
         if not np.isfinite(values).any():
             conflict.text(3, i, 'No cycles', fontsize=4.2, va='center', color=GRAY)
     names = [old23.CLASSES.get(x, x) for x in order]
-    names = [x.replace(' (CMC)', '\nCMC') for x in names]
     conflict.set_yticks(range(len(order)), names, fontsize=5)
-    conflict.set(xlim=(-3, 103), ylim=(len(order) - 0.5, -0.5), xticks=[0, 50, 100])
+    conflict.set(xlim=(-3, 103), ylim=(len(order) - 0.5, -0.5), xticks=[0, 100])
     c.clean(conflict, 'Conflicts (%)')
     conflict.legend(handles=[Line2D([], [], marker='o', ls='', color=INK, label='0 pp', markersize=3), Line2D([], [], marker='D', ls='', color=INK, markerfacecolor='white', label='20 pp', markersize=3)], loc='lower right', bbox_to_anchor=(1.12, 1.0), frameon=False, ncol=2, handletextpad=0.3, columnspacing=0.6, fontsize=5)
-    fig.text(0.963, 0.667, '0 | 20 pp', ha='center', fontsize=4.5)
+    fig.text(0.966, 0.667, '0 | 20 pp', ha='center', fontsize=4.5)
     strips = panel(fig, [0.075, 0.038, 0.855, 0.101], 'b', 'Response directions across transformations', title_y=0.157)
     strips.axis('off')
     equations = {'suzuki': 'ArBr + ArB(OH)₂ → ArAr', 'acylation': 'RCO₂H + RNH₂ → RCONHR', 'buchwald-hartwig': 'ArBr + RNH₂ → ArNHR', 'snar': 'ArF + HNu → ArNu', 'ullmann': 'ArBr + ROH → ArOR', 'kumada': 'ArBr + RMgBr → ArR'}
@@ -257,7 +256,7 @@ def figure3():
             ax.scatter(copy, i, color=ORANGE, s=18 if i == 0 else 9, zorder=3)
     ax.axvline(0, color=GRAY, ls='--', lw=0.5)
     ax.set(xlim=(-45, 80), ylim=(len(shown) - 0.5, -0.8), xticks=[-40, 0, 40, 80])
-    ax.set_yticks(range(len(shown)), [old23.screen_label(s).replace(' (CMC)', ' CMC') for s in shown.screen], fontsize=5.5)
+    ax.set_yticks(range(len(shown)), [old23.screen_label(s) for s in shown.screen], fontsize=5.5)
     ax.get_yticklabels()[0].set_weight('bold')
     c.clean(ax, 'Error change vs history alone\n(no reference) (%)')
     for value, color, align in [(shown.iloc[0].semantic_full_raw_relative_pct, TEAL, 'right'), (shown.iloc[0].direct_raw_relative_pct, ORANGE, 'left')]:
@@ -356,7 +355,7 @@ def suzuki_example(fig, cells, rect):
         molecule(fig, [x - 0.01, ymap(0.827), 0.13, hmap(0.1)], rows.reactant2_smiles.iloc[0], highlight_methyl=True, template='OB(O)c1ccccc1', halo=True)
         fig.text(x + 0.055, ymap(0.805), '3-methyl' if j == 0 else '2-methyl', ha='center', fontsize=5.5)
         ax = fig.add_axes([x, ymap(0.575), 0.115, hmap(0.19)])
-        image = ax.pcolormesh(np.arange(3) - 0.5, np.arange(4) - 0.5, values, cmap=plt.get_cmap('Greys'), vmin=-15, vmax=135, rasterized=False)
+        image = ax.pcolormesh(np.arange(3) - 0.5, np.arange(4) - 0.5, values, cmap=__import__('matplotlib.colors', fromlist=['ListedColormap']).ListedColormap(plt.get_cmap('Greys')(np.linspace(15 / 150, 115 / 150, 256))), vmin=0, vmax=100, rasterized=False)
         images.append(image)
         ax.set(xlim=(-0.5, 1.5), ylim=(2.5, -0.5))
         ax.set_xticks([0, 1], ['Cs2CO3', 'K3PO4'], fontsize=5)
@@ -437,7 +436,11 @@ def figure4():
     scope.axis('off')
     fig.text(0.075, 25 / height, '285/542 resolved', fontsize=6)
     fig.text(0.6, 25 / height, '257/542 unresolved', ha='right', fontsize=6)
-    fig.text(0.075, 13 / height, 'Extra options: 1 (266); 2 (16); 3 (3)', fontsize=5.5)
+    from matplotlib.patches import Patch
+    keys = [f'{k} extra option{"s" if k > 1 else ""} ({n})' for k, n in zip((1, 2, 3), partition.n.iloc[:3])] + [f'unresolved ({partition.n.iloc[3]})']
+    fig.legend(handles=[Patch(facecolor=col, edgecolor='none', label=lab) for col, lab in zip(['#718089', '#A3ADB3', '#C6CDD1', '#E3E6E8'], keys)],
+               loc='upper left', bbox_to_anchor=(0.07, 16.5 / height), ncol=4, frameon=False, fontsize=5.5,
+               handlelength=1.0, handleheight=0.8, handletextpad=0.4, columnspacing=1.2)
     curve = panel(fig, [0.72, 12 / height, 0.23, 17.5 / height], 'd', 'History adds to local profiles', title_x=0.65, title_y=heading_y)
     x = np.arange(len(values))
     curve.plot(x, values.error_change_pct, 'o-', color=TEAL, lw=1.1, ms=3)
