@@ -156,89 +156,167 @@ def measurements():
     c.source('Fig1_measured_reference', witness, path, 'Suzuki catalyst CMP0092|CMP0097; methoxybromopyridine and common anisylboronic acid; both carbonate backgrounds', 'yield percent and change pp')
     return (records, corpus, backgrounds)
 
-def figure1():
-    records, _corpus, backgrounds = measurements()
-    refs = references()
-    m = Map()
-    title = 'A measured reagent swap can reverse with substrate or background'
-    node(m.root, 'title').text = title
-    node(m.root, 'desc').text = 'Copying uses measured reference and target changes. Learning is shown only as an aggregate held-out result, without an individual learned prediction.'
-    top = m.layer('01-reaction-and-condition-slot')
-    m.text(top, 2, 11, 'Ar–Br', size=7)
-    m.text(top, 13, 11, '+', size=7)
-    m.chemical(top, figures14.BORONIC, 33, 10, 'anisylboronic-acid')
-    m.line(top, (49, 11), (125, 11), width=0.25, arrow=True)
-    m.text(top, 87, 8.7, 'X: PdCl₂(dtbpf) → Y: PdCl₂(PPh₃)₂', size=6.5, bold=True, anchor='middle')
-    m.text(top, 87, 14.5, 'Cs₂CO₃ or K₂CO₃, 1,4-dioxane/H₂O,', anchor='middle', size=5.5)
-    m.text(top, 87, 17, '100 °C, 12 h', size=5.5, anchor='middle')
-    m.text(top, 130, 11, 'Ar–Ar′', size=7)
-    m.text(top, 180, 4, '19 arrays', anchor='end', color=GRAY)
-    m.text(top, 180, 9, '17 transformations', anchor='end', color=GRAY)
-    m.text(top, 180, 14, '406,909 reactions', anchor='end', color=GRAY)
+def curve(m, group, start, control, end, color, width=0.35, identity=None):
+    """Quadratic route with an arrowhead aligned to the final tangent."""
+    node(group, 'path', d=f'M {start[0]} {start[1]} Q {control[0]} {control[1]} {end[0]} {end[1]}', fill='none', stroke=color, stroke_width=width, id=identity or '')
+    tangent = np.array(end, float) - np.array(control, float)
+    unit = tangent / np.linalg.norm(tangent)
+    back = np.array(end) - 1.6 * unit
+    perp = 0.6 * np.array([-unit[1], unit[0]])
+    node(group, 'polygon', points=' '.join(f'{x},{y}' for x, y in [end, back + perp, back - perp]), fill=color)
+    m.arrows.append({'id': identity, 'start_mm': list(start), 'end_mm': list(end), 'color': color})
 
-    def tag(group, x, y, label, numbers):
-        m.text(group, x, y, label, size=5, color=GRAY)
+
+def plate(m, group, x, y, w=21, h=13.5, shade=1.0):
+    """Outline of a well plate: rounded frame and a 4 x 6 grid of wells."""
+    stroke = GRAY if shade == 1.0 else '#B8BEC2'
+    node(group, 'rect', x=x, y=y, width=w, height=h, rx=1.2, fill='white', stroke=stroke, stroke_width=0.22)
+    for r in range(4):
+        for k in range(6):
+            node(group, 'circle', cx=x + 2.4 + k * (w - 4.8) / 5, cy=y + 2.3 + r * (h - 4.6) / 3, r=0.75, fill='none', stroke=stroke, stroke_width=0.15)
+
+
+def headline_numbers():
+    """Corpus-wide numbers shown on the map, read from the same outputs as Figs. 2C and 3A."""
+    original = c.source
+    renames = {'Fig2_c_array_conflicts': 'Fig1_array_conflicts', 'Fig3_a_screen_comparison': 'Fig1_overall_error_change'}
+
+    def source(name, *args, **kwargs):
+        return original(renames.get(name, name), *args, **kwargs)
+    c.source = source
+    try:
+        signs = figures23.sign_data()
+        shown = figures23.main_screen_data()
+    finally:
+        c.source = original
+    zero = signs.loc[signs.threshold_pp.eq(0)]
+    conflicts, testable = int(zero.n_conflicting_edges.sum()), int(zero.n_cycle_edges.sum())
+    overall = shown.iloc[0]
+    if overall.screen != 'Overall':
+        raise ValueError('The first comparison row must be the overall group average')
+    return conflicts, testable, float(overall.direct_raw_relative_pct), float(overall.semantic_full_raw_relative_pct)
+
+
+def figure1():
+    original_source = c.source
+
+    def source(name, *args, **kwargs):
+        return original_source(name.replace('Fig1_a_', 'Fig1_', 1), *args, **kwargs)
+    c.source = source
+    try:
+        records, corpus = figures14.flagship_data()
+    finally:
+        c.source = original_source
+    conflicts, testable, copy_pct, learn_pct = headline_numbers()
+    refs = references()
+    global H
+    H = 94
+    m = Map()
+    m.root.set('height', f'{H}mm')
+    m.root.set('viewBox', f'0 0 {W} {H}')
+    title = 'A measured reagent swap must be learned, not copied'
+    node(m.root, 'title').text = title
+    yields = {s: records.loc[records.substrate_smiles.eq(s)].sort_values('endpoint').yield_percent.tolist() for s in (figures14.QUINOLINE, figures14.INDAZOLE)}
+
+    top = m.layer('01-reaction')
+    m.text(top, 2, 12, 'Ar–Br', size=7)
+    m.text(top, 13.5, 12, '+', size=7)
+    m.chemical(top, figures14.BORONIC, 33, 11, 'anisylboronic-acid')
+    m.line(top, (52, 12), (120, 12), width=0.25, arrow=True)
+    m.text(top, 86, 9.6, 'X: PdCl₂(dtbpf) → Y: PdCl₂(PPh₃)₂', size=6.5, bold=True, anchor='middle')
+    m.text(top, 86, 15.6, 'Cs₂CO₃, 1,4-dioxane/H₂O, 100 °C, 12 h', anchor='middle', size=5.5, color=GRAY)
+    m.text(top, 123, 12.6, 'Ar–Ar′', size=7)
+    m.line(top, (0, 22.5), (W, 22.5), '#D7DADC', 0.15)
+
+    source_layer = m.layer('02-measured-swap')
+    m.text(source_layer, 1, 29, 'Measured swap', size=6.5, bold=True)
+    m.chemical(source_layer, figures14.QUINOLINE, 15, 41, '6-bromoquinoline', left=2)
+    m.text(source_layer, 2, 53, '6-bromoquinoline', size=6)
+    m.pair(source_layer, 2, 62, yields[figures14.QUINOLINE])
+
+    routes = m.layer('03-two-uses')
+
+    def tag(group, x, y, label, numbers, color=GRAY):
+        m.text(group, x, y, label, size=5, color=color)
         width = pymupdf.get_text_length(label, fontname='helv', fontsize=5) * PT
-        m.text(group, x + width + 0.4, y - 1, ','.join((str(number) for number in numbers)), size=4.5, color=GRAY)
-    tag(top, 49, 3.1, 'condition recommendation', refs['recommendation'])
-    tag(top, 91, 3.1, 'general conditions', refs['general'])
-    left = m.layer('02-related-substrates')
-    middle = m.layer('03-reference-and-target')
-    rules = m.layer('04-measured-well-grid')
-    m.text(left, 1, 20.5, 'Related substrates, same base', size=6.5, bold=True)
-    m.text(middle, 65, 20.5, 'Same pair, other base', size=6.5, bold=True)
-    for lo, hi in ((0, 62), (64, 125)):
-        m.line(rules, (lo, 23.5), (hi, 23.5), GRAY, 0.18)
-        m.line(rules, (lo, 99.5), (hi, 99.5), GRAY, 0.18)
-    m.line(rules, (63, 23.5), (63, 99.5), '#D7DADC', 0.15)
-    m.line(rules, (1, 63), (61, 63), '#D7DADC', 0.15)
-    for smiles, name, cy in ((figures14.QUINOLINE, '6-bromoquinoline', 41), (figures14.INDAZOLE, '5-bromo-1H-indazole', 78)):
-        m.chemical(left, smiles, 11, cy - 1, name, left=0.5)
-        m.text(left, 1, cy + 11, name)
-        m.text(left, 1, cy + 16, 'Cs₂CO₃', color=GRAY)
-        values = records.loc[records.substrate_smiles.eq(smiles)].sort_values('endpoint').yield_percent.tolist()
-        m.pair(left, 23, cy - 4, values)
-    m.chemical(middle, PYRIDINE, 94, 35, 'methoxybromopyridine')
-    m.text(middle, 94, 46, '2-bromo-3-methoxypyridine', anchor='middle')
-    m.text(middle, 66, 51, 'Cs₂CO₃ reference', color=GRAY, size=5.5)
-    m.pair(middle, 73, 55, backgrounds['Cs'])
-    m.text(middle, 66, 84.5, 'K₂CO₃ target', color=GRAY, size=5.5)
-    m.pair(middle, 73, 88.5, backgrounds['K'])
-    routes = m.layer('05-short-reference-to-target-routes')
-    m.line(routes, (84, 65), (84, 80.5), ORANGE, 0.3, True, 'copy-reference-to-target')
-    m.text(routes, 66, 72, 'copy: −28', size=5.5, color=ORANGE, bold=True)
-    m.line(routes, (78, 75), (80, 77), ORANGE, 0.4)
-    m.line(routes, (78, 77), (80, 75), ORANGE, 0.4)
-    m.text(routes, 66, 79.5, 'measured +34', size=5, color=GRAY)
-    m.line(routes, (96, 65), (96, 80.5), TEAL, 0.3, True, 'learn-reference-to-target')
-    m.text(routes, 99, 71, 'learn from history', size=5.5, color=TEAL, bold=True)
-    tag(routes, 99, 76, 'transfer learning', refs['transfer'])
-    tag(routes, 99, 80, 'yield-change prediction', refs['prediction'])
-    results = m.layer('06-held-out-aggregate')
-    m.text(results, 130, 21, 'Using the same reference', size=6.5, bold=True)
-    m.text(results, 130, 40, '17 screens, held-out pairs', color=GRAY)
-    m.text(results, 130, 48, 'Error vs no reference', size=6)
-    m.text(results, 130, 57, 'copy', color=ORANGE)
-    m.text(results, 151, 57, '+42.4%', color=ORANGE, bold=True, size=7)
-    m.text(results, 130, 65, 'learn', color=TEAL)
-    m.text(results, 151, 65, '−13.7%', color=TEAL, bold=True, size=7)
-    m.text(results, 130, 79, 'Missed or wrong directions', size=6)
-    m.text(results, 130, 87, '18.6 → 13.6 per 100', size=7)
+        m.text(group, x + width + 0.4, y - 1, ','.join(str(n) for n in numbers), size=4.5, color=color)
+
+    curve(m, routes, (42, 63.5), (48, 35), (124, 36.5), ORANGE, 0.45, 'copy-route')
+    m.text(routes, 76, 34.5, 'copy Δ', size=6.5, color=ORANGE, bold=True)
+    tag(routes, 58, 28.5, 'condition recommendation', refs['recommendation'])
+    tag(routes, 92, 28.5, 'general conditions', refs['general'])
+
+    strip = m.layer('03b-all-pairs')
+    deltas = corpus.display_delta_pp.to_numpy(float)
+    sx0, sx1, sy = 62, 118, 52
+    sp = lambda value: sx0 + (value + 100) * (sx1 - sx0) / 200
+    jitter = (np.arange(len(deltas)) * 0.61803398875 % 1 - 0.5) * 5.0
+    for value, dy in zip(deltas, jitter):
+        node(strip, 'circle', cx=sp(value), cy=sy + dy, r=0.42, fill=BLUE if value > 0 else RED, fill_opacity=0.55)
+    for smiles in (figures14.QUINOLINE, figures14.INDAZOLE):
+        lo_y, hi_y = yields[smiles]
+        node(strip, 'circle', cx=sp(hi_y - lo_y), cy=sy, r=1.0, fill='none', stroke=INK, stroke_width=0.3)
+    m.line(strip, (sx0, sy + 4), (sx1, sy + 4), INK, 0.2)
+    for tick in (-100, 0, 100):
+        m.line(strip, (sp(tick), sy + 4), (sp(tick), sy + 4.9), INK, 0.2)
+        m.text(strip, sp(tick), sy + 7.4, f'{tick:+d}' if tick else '0', size=5, anchor='middle')
+    node(strip, 'path', d=f'M {sp(0)} {sy - 3.4} L {sp(0)} {sy + 4}', stroke=GRAY, stroke_width=0.2, fill='none')
+    m.text(strip, (sx0 + sx1) / 2, sy - 4.6, f'same swap, {len(deltas)} substrate pairs', size=5.5, color=INK, anchor='middle')
+    m.text(strip, (sx0 + sx1) / 2, sy + 10.4, 'yield change (pp)', size=5, color=GRAY, anchor='middle')
+    curve(m, routes, (42, 67), (50, 75.5), (60, 75.5), TEAL, 0.45, 'learn-route-in')
+    history = m.layer('04-history')
+    for k, shade in ((2, 0.6), (1, 0.8), (0, 1.0)):
+        plate(m, history, 62 + 1.6 * k, 69 - 1.6 * k, shade=shade)
+    m.text(history, 74, 88.5, '19 arrays · 17 transformations', size=5.2, color=GRAY, anchor='middle')
+    m.text(history, 74, 91.7, '406,909 reactions', size=5.2, color=GRAY, anchor='middle')
+    curve(m, routes, (88, 76), (106, 76), (124, 76), TEAL, 0.45, 'learn-route-out')
+    m.text(routes, 90, 72.5, 'learn from history', size=6.5, color=TEAL, bold=True)
+    tag(routes, 90, 81.5, 'transfer learning', refs['transfer'])
+    tag(routes, 90, 86, 'yield-change prediction', refs['prediction'])
+
+    related = m.layer('05-related-substrate')
+    m.text(related, 127, 29, 'Related substrate', size=6.5, bold=True)
+    m.chemical(related, figures14.INDAZOLE, 140, 39, '5-bromo-1H-indazole', left=127)
+    m.text(related, 127, 50.5, '5-bromo-1H-indazole', size=6)
+    m.pair(related, 127, 58, yields[figures14.INDAZOLE])
+    m.text(related, 171, 36, 'copy predicts +88 pp', size=5.5, color=ORANGE, bold=True, anchor='middle')
+    m.line(related, (169, 39), (173, 43), ORANGE, 0.45)
+    m.line(related, (169, 43), (173, 39), ORANGE, 0.45)
+    m.text(related, 127, 71.5, f'Direction set jointly: {conflicts}/{testable} swaps', size=5.5, color=GRAY)
+
+    result = m.layer('06-held-out-result')
+    m.text(result, 127, 78.5, 'Same pair, new recipe', size=6.5, bold=True)
+    lo, hi, x0, x1, axis_y = -20, 50, 130, 180, 87.5
+    scale = (x1 - x0) / (hi - lo)
+    px = lambda value: x0 + (value - lo) * scale
+    m.line(result, (x0, axis_y), (x1, axis_y), INK, 0.2)
+    for tick in (-20, 0, 20, 40):
+        m.line(result, (px(tick), axis_y), (px(tick), axis_y + 0.9), INK, 0.2)
+        m.text(result, px(tick), axis_y + 3.4, f'{tick:+d}' if tick else '0', size=5, anchor='middle')
+    node(result, 'path', d=f'M {px(0)} 84 L {px(0)} {axis_y}', stroke=GRAY, stroke_width=0.2, stroke_dasharray='0.8 0.6', fill='none')
+    m.line(result, (px(learn_pct), 84), (px(copy_pct), 84), GRAY, 0.3)
+    node(result, 'circle', cx=px(learn_pct), cy=84, r=1.1, fill=TEAL)
+    node(result, 'circle', cx=px(copy_pct), cy=84, r=1.1, fill=ORANGE)
+    m.text(result, px(learn_pct) - 1.5, 81.6, f'learn {c.numeric_minus(f"{learn_pct:.1f}")}%', size=5.5, color=TEAL, bold=True)
+    m.text(result, px(copy_pct) + 1.5, 81.6, f'copy +{copy_pct:.1f}%', size=5.5, color=ORANGE, bold=True, anchor='end')
+    m.text(result, (x0 + x1) / 2, 93.6, 'error vs history alone (%)', size=5, color=GRAY, anchor='middle')
+
+    shown_numbers = pd.DataFrame([
+        dict(quantity='conflicting swaps', value=conflicts, denominator=testable, definition='Swaps whose observed signs contradict one sign per substrate pair times one sign per background; all nonzero changes; nineteen arrays'),
+        dict(quantity='copy error change vs history alone (%)', value=copy_pct, denominator=None, definition='Overall hierarchical group average, held-out targets, two-well reference copied'),
+        dict(quantity='learned error change vs history alone (%)', value=learn_pct, denominator=None, definition='Overall hierarchical group average, held-out targets, learned reference relationship'),
+    ])
+    c.source('Fig1_map_numbers', shown_numbers, figures23.EDM / 'sparse_sign_feasibility_summary.csv', 'Numbers printed on the map; populations as in Figs. 2C and 3A', 'count or percent')
+
+    for i, a in enumerate(m.labels):
+        for b in m.labels[i + 1:]:
+            ax0, ay0, aw, ah = a['bounds_mm']
+            bx0, by0, bw, bh = b['bounds_mm']
+            if min(ax0 + aw, bx0 + bw) - max(ax0, bx0) > 0.2 and min(ay0 + ah, by0 + bh) - max(ay0, by0) > 0.2:
+                raise ValueError(f"Figure 1 labels overlap: {a['text']} / {b['text']}")
     c.FIG.mkdir(parents=True, exist_ok=True)
     svg_path = c.FIG / 'Figure_1.svg'
     ET.ElementTree(m.root).write(svg_path, encoding='utf-8', xml_declaration=True)
-    grid_root = copy.deepcopy(m.root)
-    for child in list(grid_root):
-        if child.tag.endswith('}g') and child.get('id', '')[:2] not in {'02', '03', '04'}:
-            grid_root.remove(child)
-    with pymupdf.open(stream=ET.tostring(grid_root), filetype='svg') as vector:
-        with pymupdf.open('pdf', vector.convert_to_pdf()) as pdf:
-            raster = pdf[0].get_pixmap(dpi=300, alpha=False)
-            marks = np.min(np.frombuffer(raster.samples, np.uint8).reshape(raster.height, raster.width, 3), axis=2) < 225
-            yy, xx = np.where(marks)
-            grid_fraction = (int(xx.max()) - int(xx.min()) + 1) * (int(yy.max()) - int(yy.min()) + 1) / marks.size
-    if not 0.55 <= grid_fraction <= 0.65:
-        raise ValueError(f'Measured well-grid bounds occupy {grid_fraction:.3%} of Figure 1')
     with pymupdf.open(stream=ET.tostring(m.root), filetype='svg') as svg:
         with pymupdf.open('pdf', svg.convert_to_pdf()) as pdf:
             pdf.set_metadata({'title': title, 'creator': 'M1'})
@@ -251,13 +329,13 @@ def figure1():
             distance = distance_transform_cdt(np.pad(~ink, 1, constant_values=False), metric='chessboard')
             blank_mm = (2 * int(distance.max()) - 1) * 25.4 / 300
             if blank_mm > W / 6:
-                raise ValueError('Figure 1 has an excessive blank region')
+                raise ValueError(f'Figure 1 has an excessive blank region ({blank_mm:.1f} mm)')
             for label in m.labels:
                 x, y, width, height = label['bounds_mm']
                 if min(x, y) < -0.1 or x + width > W + 0.1 or y + height > H + 0.1:
                     raise ValueError(f"Figure 1 text outside canvas: {label['text']}")
             chemical_boxes = [dict(zip(('x_pt', 'y_pt', 'width_pt', 'height_pt'), [v / PT for v in item['bounds_mm']])) for item in m.chemistry]
-            report = {'figure': 'Figure_1', 'title': title, 'title_visible': False, 'draft': False, 'width_mm': W, 'height_mm': H, 'panels': [], 'single_composite': True, 'png_width': pix.width, 'png_height': pix.height, 'png_dpi': 300, 'pixel_bounds_pass': True, 'raster_images': len(page.get_images()), 'vector_paths': len(page.get_drawings()), 'editable_svg': str(svg_path), 'svg_sha256': hashlib.sha256(svg_path.read_bytes()).hexdigest(), 'chemical_boxes': chemical_boxes, 'chemistry': m.chemistry, 'text_bounds': m.labels, 'arrows': m.arrows, 'largest_empty_square_mm': blank_mm, 'grid_bounds_mm': [0, 18.5, 125, 99.5], 'grid_allocation_fraction': 125 * 81 / (W * H), 'grid_measured_bounds_fraction': grid_fraction, 'source_tables': list(c.TABLES)}
+            report = {'figure': 'Figure_1', 'title': title, 'title_visible': False, 'draft': False, 'width_mm': W, 'height_mm': H, 'panels': [], 'single_composite': True, 'png_width': pix.width, 'png_height': pix.height, 'png_dpi': 300, 'pixel_bounds_pass': True, 'raster_images': len(page.get_images()), 'vector_paths': len(page.get_drawings()), 'editable_svg': str(svg_path), 'svg_sha256': hashlib.sha256(svg_path.read_bytes()).hexdigest(), 'chemical_boxes': chemical_boxes, 'chemistry': m.chemistry, 'text_bounds': m.labels, 'arrows': m.arrows, 'largest_empty_square_mm': blank_mm, 'source_tables': list(c.TABLES)}
     (c.OUT / 'Figure_1_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     c.QA.append(report)
     return report

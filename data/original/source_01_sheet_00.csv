@@ -7,7 +7,7 @@ note,reaction_type,condition_id,Reagent1_HTE_CAS,Reagent1_HTE_Equiv,Reagent1_Sta
 ,heck,C6,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘6163-58-2,0.2,P(o-tolyl)3,CMP0216,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,DMF,CMP0552,100,16
 ,heck,C7,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘998-40-3,0.2,PBu3,CMP0229,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,DMF,CMP0552,100,16
 ,heck,C8,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘6163-58-2,0.2,P(o-tolyl)3,CMP0216,‘298-14-6,2,KHCO3,CMP0336,‘1643-19-2,2,Bu4NBr,CMP0374,,,,,,,,,DMF,CMP0552,100,16
-C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C9,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,DMF,CMP0552,100,16
+"C9, C62, C82 and C90: no data collected because the glass beads were difficult to prepare",heck,C9,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,DMF,CMP0552,100,16
 ,heck,C10,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘6163-58-2,0.1,P(o-tolyl)3,CMP0216,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,DMF,CMP0552,100,16
 ,heck,C11,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,‘584-08-7,2,K2CO3,CMP0334,‘1643-19-2,2,Bu4NBr,CMP0374,,,,,,,,,DMF,CMP0552,100,16
 ,heck,C12,‘14588-08-0,0.05,Pd(OAc)2(PPh3)2,CMP0074,,,,,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,DMF,CMP0552,100,16
@@ -60,7 +60,7 @@ C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C9,‘3375-3
 ,heck,C59,‘32005-36-0,0.05,Pd(dba)2,CMP0069,‘223655-16-1,0.1,di-tert-butylphosphinoferrocene,CMP0226,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,16
 ,heck,C60,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘13716-12-6,0.1,P(tBu)3,CMP0203,,,,,,,,,,,,,,,,,"propane-1,2,3-triol/TEA (1:1)",CMP0655,100,16
 ,heck,C61,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘213697-53-1,0.1,DavePhos,CMP0196,‘51012-12-5,2,TBAE,CMP0376,,,,,,,,,,,,,THF,CMP0569,100,16
-C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C62,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘603-35-0,0.2,PPh3,CMP0200,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,THF,CMP0569,100,16
+"C9, C62, C82 and C90: no data collected because the glass beads were difficult to prepare",heck,C62,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘603-35-0,0.2,PPh3,CMP0200,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,THF,CMP0569,100,16
 ,heck,C63,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,‘534-17-8,2,Cs2CO3,CMP0333,‘1643-19-2,2,Bu4NBr,CMP0374,,,,,,,,,MeCN/H2O (10:1),CMP0594,100,16
 ,heck,C64,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,‘534-17-8,2,Cs2CO3,CMP0333,‘32503-27-8,2,Bu4NHSO4,CMP0432,,,,,,,,,MeCN/H2O (10:1),CMP0594,100,16
 ,heck,C65,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘13716-12-6,0.1,P(tBu)3,CMP0203,‘7087-68-5,2,DIPEA,CMP0369,,,,,,,,,,,,,NMP,CMP0316,100,16
@@ -80,7 +80,7 @@ C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C62,‘3375-
 ,heck,C79,‘14220-64-5,0.05,PdCl2(PhCN)2,CMP0096,‘1118-68-9,0.1,"N,N-dimethylglycine",CMP0264,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,DMA,CMP0550,100,16
 ,heck,C80,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘1118-68-9,0.1,"N,N-dimethylglycine",CMP0264,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,DMA,CMP0550,100,16
 ,heck,C81,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘603-35-0,0.2,PPh3,CMP0200,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,MeCN,CMP0558,100,16
-C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C82,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,MeCN,CMP0558,100,16
+"C9, C62, C82 and C90: no data collected because the glass beads were difficult to prepare",heck,C82,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,MeCN,CMP0558,100,16
 ,heck,C83,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘7447-41-8,0.1,LiCl,CMP0350,‘298-14-6,2,KHCO3,CMP0336,‘1643-19-2,2,Bu4NBr,CMP0374,,,,,,,,,MeCN,CMP0558,100,16
 ,heck,C84,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,MeCN,CMP0558,100,16
 ,heck,C85,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘6163-58-2,0.1,P(o-tolyl)3,CMP0216,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,MeCN,CMP0558,100,16
@@ -88,14 +88,14 @@ C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C82,‘3375-
 ,heck,C87,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,,,,,,,,,,,,,,,,,EG/TEA (1:1),CMP0591,100,16
 ,heck,C88,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘6163-58-2,0.2,P(o-tolyl)3,CMP0216,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,HMPA,CMP0326,100,16
 ,heck,C89,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘6163-58-2,0.2,P(o-tolyl)3,CMP0216,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,p-xylene,CMP0565,100,16
-C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C90,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,DMSO,CMP0527,100,16
+"C9, C62, C82 and C90: no data collected because the glass beads were difficult to prepare",heck,C90,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,,,,,‘7784-09-0,2,Ag3PO4,CMP0390,,,,,,,,,DMSO,CMP0527,100,16
 ,heck,C91,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘6163-58-2,0.1,P(o-tolyl)3,CMP0216,,,,,,,,,,,,,,,,,iPr2NH,CMP0373,100,16
 ,heck,C92,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘6163-58-2,0.1,P(o-tolyl)3,CMP0216,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,xylene,CMP0571,100,16
 ,heck,C93,‘32005-36-0,0.1,Pd(dba)2,CMP0069,‘12150-46-8,0.2,dppf,CMP0211,‘7560-83-0,2,Cy2NMe,CMP0379,,,,,,,,,,,,,benzotrifluoride,CMP0546,100,16
 ,heck,C94,‘7440-05-3,0.05,Pd/C,CMP0079,,,,,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,100,16
 ,heck,C95,‘7647-10-1,0.05,PdCl2,CMP0087,,,,,‘127-08-2,2,KOAc,CMP0354,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,100,16
-标准孔,heck,C96,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘564483-18-7,0.1,XPhos,CMP0165,‘51012-12-5,2,TBAE,CMP0376,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,100,16
-标准孔,ullmann,C1,‘7787-70-4,0.02,CuBr,CMP0032,‘56-87-1,0.02,lysine,CMP0299,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,130,16
+Standard well,heck,C96,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘564483-18-7,0.1,XPhos,CMP0165,‘51012-12-5,2,TBAE,CMP0376,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,100,16
+Standard well,ullmann,C1,‘7787-70-4,0.02,CuBr,CMP0032,‘56-87-1,0.02,lysine,CMP0299,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,130,16
 ,ullmann,C2,‘7705-08-0,0.1,FeCl3,CMP0048,‘1118-68-9,0.2,"N,N-dimethylglycine",CMP0264,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,130,16
 ,ullmann,C3,‘7705-08-0,0.1,FeCl3,CMP0048,‘1118-71-4,0.2,dipivaloylmethane,CMP0167,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,130,16
 ,ullmann,C4,‘7681-65-4,0.05,CuI,CMP0038,‘1137-68-4,0.05,2-(2-pyridyl)benzimidazole,CMP0282,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,130,16
@@ -191,24 +191,24 @@ C9+62+82+90由于玻璃珠难以配制原因，数据未收集,heck,C90,‘3375-
 ,ullmann,C94,‘7681-65-4,0.2,CuI,CMP0038,‘13811-71-7,0.2,diethyl D-tartrate,CMP0285,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,MeCN,CMP0558,130,16
 ,ullmann,C95,‘42196-31-6,0.1,Pd(TFA)2,CMP0077,‘17217-57-1,0.2,"4,4'-dimethoxy-2,2'-bipyridine",CMP0289,‘2966-50-9,2,AgTFA,CMP0130,,,,,,,,,,,,,benzotrifluoride,CMP0546,130,16
 ,ullmann,C96,‘42196-31-6,0.1,Pd(TFA)2,CMP0077,‘92149-07-0,0.2,"4,7-dimethoxy-1,10-phenanthroline",CMP0305,‘2966-50-9,2,AgTFA,CMP0130,,,,,,,,,,,,,benzotrifluoride,CMP0546,130,16
-标准孔,kumada,C1,‘14264-16-5,0.1,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
-C2和C55条件一致，只保留C2,kumada,C2,‘95464-05-4,0.1,Pd(dppf)Cl2·CH2Cl2,CMP0091,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
+Standard well,kumada,C1,‘14264-16-5,0.1,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
+C2 and C55 identical conditions; only C2 kept,kumada,C2,‘95464-05-4,0.1,Pd(dppf)Cl2·CH2Cl2,CMP0091,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C3,‘15629-92-2,0.05,NiCl2(dppp),CMP0057,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C4,‘14024-18-1,0.1,Fe(acac)3,CMP0047,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C5,‘72287-26-4,0.1,PdCl2(dppf),CMP0090,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C6,‘3375-31-3,0.1,Pd(OAc)2,CMP0073,‘603-35-0,0.2,PPh3,CMP0200,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C7,‘14647-23-5,0.1,NiCl2(dppe),CMP0056,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C8,‘14221-01-3,0.05,Pd(PPh3)4,CMP0075,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
-NMP当量不同,kumada,C9,‘14024-18-1,0.1,Fe(acac)3,CMP0047,‘872-50-4,2,NMP,CMP0316,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
+Different NMP equivalents,kumada,C9,‘14024-18-1,0.1,Fe(acac)3,CMP0047,‘872-50-4,2,NMP,CMP0316,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C10,‘14024-18-1,0.1,Fe(acac)3,CMP0047,‘110-18-9,2,TMEDA,CMP0221,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C11,‘14024-18-1,0.1,Fe(acac)3,CMP0047,‘3470-98-2,2,NBP,CMP0310,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C12,‘3264-82-2,0.05,Ni(acac)2,CMP0051,‘110-18-9,0.1,TMEDA,CMP0221,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
-NMP当量不同,kumada,C13,‘14024-18-1,0.1,Fe(acac)3,CMP0047,,,,,‘872-50-4,0.5,NMP,CMP0316,,,,,,,,,,,,,THF,CMP0569,25,2
+Different NMP equivalents,kumada,C13,‘14024-18-1,0.1,Fe(acac)3,CMP0047,,,,,‘872-50-4,0.5,NMP,CMP0316,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C14,‘7718-54-9,0.1,NiCl2,CMP0055,,,,,‘106-99-0,0.2,butadiene,CMP0488,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C15,‘1033772-47-2,0.1,Bis[(2-dimethylamino)phenyl]amine nickel(II) chloride,CMP0123,,,,,,,,,,,,,,,,,,,,,THF/DMA (1:1),CMP0618,25,2
 ,kumada,C16,‘1033772-47-2,0.1,Bis[(2-dimethylamino)phenyl]amine nickel(II) chloride,CMP0123,‘110-18-9,0.1,TMEDA,CMP0221,,,,,,,,,,,,,,,,,THF/DMA (1:1),CMP0618,25,2
 ,kumada,C17,‘72287-26-4,0.05,PdCl2(dppf),CMP0090,,,,,‘7646-85-7,1,ZnCl2,CMP0429,,,,,,,,,,,,,THF,CMP0569,25,2
-C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
+C18 and C56 identical; only C18 kept,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C19,‘72287-26-4,0.1,PdCl2(dppf),CMP0090,,,,,‘7699-45-8,1.2,ZnBr2,CMP0490,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C20,‘14024-18-1,0.1,Fe(acac)3,CMP0047,‘7226-23-5,2,DMPU,CMP0311,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C21,‘3264-82-2,0.1,Ni(acac)2,CMP0051,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
@@ -245,8 +245,8 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,kumada,C52,‘14024-18-1,0.1,Fe(acac)3,CMP0047,‘80-73-9,2,DMI,CMP0318,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C53,‘7705-08-0,0.1,FeCl3,CMP0048,‘632-22-4,2,TMU,CMP0314,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C54,‘13965-03-2,0.1,PdCl2(PPh3)2,CMP0097,,,,,‘7646-85-7,1,ZnCl2,CMP0429,,,,,,,,,,,,,THF,CMP0569,25,2
-作废：C2和C55条件一致，只保留C2,kumada,C55,‘95464-05-4,0.1,Pd(dppf)Cl2·CH2Cl2,CMP0091,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
-作废：C18和C56一致，只保留C18,kumada,C56,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
+Void: C2 and C55 identical conditions; only C2 kept,kumada,C55,‘95464-05-4,0.1,Pd(dppf)Cl2·CH2Cl2,CMP0091,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
+Void: C18 and C56 identical; only C18 kept,kumada,C56,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
 ,kumada,C57,‘1445085-55-1,0.1,XPhos Pd G3,CMP0117,,,,,,,,,,,,,,,,,,,,,Et2O,CMP0554,25,2
 ,kumada,C58,‘29046-78-4,0.05,NiCl2-glyme,CMP0061,‘72914-19-3,0.05,DTBPY,CMP0315,‘13446-34-9,0.2,MnCl2,CMP0492,,,,,,,,,,,,,Et2O,CMP0554,25,2
 ,kumada,C59,‘95408-45-0,0.05,PdCl2(dtbpf),CMP0092,‘110-18-9,2,TMEDA,CMP0221,,,,,,,,,,,,,,,,,THF,CMP0569,25,2
@@ -287,7 +287,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,kumada,C94,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059,,,,,,,,,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,kumada,C95,‘14024-18-1,0.1,Fe(acac)3,CMP0047,,,,,,,,,,,,,,,,,,,,,NMP,CMP0316,25,2
 ,kumada,C96,‘15629-92-2,0.05,NiCl2(dppp),CMP0057,,,,,,,,,,,,,,,,,,,,,THF/Et2O (1:1),CMP0620,25,2
-标准孔,arylation-ketone,C1,‘32005-36-0,0.05,Pd(dba)2,CMP0069,‘84680-95-5,0.1,dtbpf,CMP0168,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,THF,CMP0569,80,16
+Standard well,arylation-ketone,C1,‘32005-36-0,0.05,Pd(dba)2,CMP0069,‘84680-95-5,0.1,dtbpf,CMP0168,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,THF,CMP0569,80,16
 ,arylation-ketone,C2,‘51364-51-3,0.05,Pd2(dba)3,CMP0080,‘13716-12-6,0.1,P(tBu)3,CMP0203,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,THF,CMP0569,80,16
 ,arylation-ketone,C3,‘32005-36-0,0.1,Pd(dba)2,CMP0069,‘12150-46-8,0.2,dppf,CMP0211,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,THF,CMP0569,80,16
 ,arylation-ketone,C4,‘32005-36-0,0.05,Pd(dba)2,CMP0069,‘84680-95-5,0.1,dtbpf,CMP0168,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,THF,CMP0569,80,16
@@ -351,7 +351,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,arylation-ketone,C62,‘95408-45-0,0.1,PdCl2(dtbpf),CMP0092,,,,,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,p-xylene,CMP0565,80,16
 ,arylation-ketone,C63,‘40691-33-6,0.1,PdCl2[P(o-tolyl)3]2,CMP0098,,,,,,,,,,,,,,,,,,,,,p-xylene,CMP0565,80,16
 ,arylation-ketone,C64,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,p-xylene,CMP0565,80,16
-无有效数据舍弃,arylation-ketone,C65,‘32005-36-0,0.05,Pd(dba)2,CMP0069,,,,,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,p-xylene,CMP0565,80,16
+Discarded: no valid data,arylation-ketone,C65,‘32005-36-0,0.05,Pd(dba)2,CMP0069,,,,,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,p-xylene,CMP0565,80,16
 ,arylation-ketone,C66,‘51364-51-3,0.05,Pd2(dba)3,CMP0080,‘161265-03-8,0.3,XantPhos,CMP0180,‘534-17-8,2.5,Cs2CO3,CMP0333,,,,,,,,,,,,,p-xylene,CMP0565,80,16
 ,arylation-ketone,C67,‘51364-51-3,0.05,Pd2(dba)3,CMP0080,‘213697-53-1,0.2,DavePhos,CMP0196,‘865-48-5,2.5,NaOtBu,CMP0348,‘108-95-2,0.2,phenol,CMP0533,,,,,,,,,p-xylene,CMP0565,80,16
 ,arylation-ketone,C68,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘224311-51-7,0.11,JohnPhos,CMP0178,‘865-48-5,2.5,NaOtBu,CMP0348,,,,,,,,,,,,,p-xylene,CMP0565,80,16
@@ -383,19 +383,19 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,arylation-ketone,C94,‘32005-36-0,0.05,Pd(dba)2,CMP0069,‘321921-71-5,0.1,CataCXiumA,CMP0166,‘7778-53-2,2.5,K3PO4,CMP0338,,,,,,,,,,,,,"1,4-dioxane",CMP0543,80,16
 ,arylation-ketone,C95,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,‘534-17-8,2.5,Cs2CO3,CMP0333,‘1643-19-2,0.1,Bu4NBr,CMP0374,,,,,,,,,H2O,CMP0556,80,16
 ,arylation-ketone,C96,‘95408-45-0,0.05,PdCl2(dtbpf),CMP0092,,,,,‘1310-73-2,2.5,NaOH,CMP0341,,,,,,,,,,,,,"1,4-dioxane/H2O (1:1)",CMP0580,80,16
-标准孔,snar,C1,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMSO,CMP0527,100,16
-"DP220901-(1-12)条件C2与C8重复,DP220901-13起更换DIPEA为NaOtAm，DP-13起数据可用",snar,C2,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMSO,CMP0527,100,16
-从实验号13开始无数据,snar,C3,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,DMSO,CMP0527,100,16
+Standard well,snar,C1,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMSO,CMP0527,100,16
+DP220901-(1-12): condition C2 duplicated C8; from DP220901-13 DIPEA was replaced by NaOtAm; data usable from DP-13 onward,snar,C2,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMSO,CMP0527,100,16
+No data from experiment 13 onward,snar,C3,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,DMSO,CMP0527,100,16
 ,snar,C4,,,,,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMSO,CMP0527,100,16
 ,snar,C5,,,,,,,,,,,,,,,,,,,,,,,,,DMSO,CMP0527,100,16
 ,snar,C6,,,,,,,,,‘865-47-4,2,KOtBu,CMP0347,,,,,,,,,,,,,DMSO,CMP0527,100,16
 ,snar,C7,,,,,,,,,‘1310-58-3,2,KOH,CMP0342,,,,,,,,,,,,,DMSO,CMP0527,100,16
 ,snar,C8,,,,,,,,,‘7087-68-5,2,DIPEA,CMP0369,,,,,,,,,,,,,DMSO,CMP0527,100,16
 ,snar,C9,,,,,,,,,‘7087-68-5,2,DIPEA,CMP0369,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
-从实验号13开始无数据,snar,C10,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,THF,CMP0569,100,16
+No data from experiment 13 onward,snar,C10,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,THF,CMP0569,100,16
 ,snar,C11,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,THF,CMP0569,100,16
 ,snar,C12,,,,,,,,,‘865-47-4,2,KOtBu,CMP0347,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
-从实验号13开始无数据,snar,C13,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
+No data from experiment 13 onward,snar,C13,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
 ,snar,C14,,,,,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
 ,snar,C15,,,,,,,,,‘865-47-4,2,KOtBu,CMP0347,,,,,,,,,,,,,THF,CMP0569,100,16
 ,snar,C16,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
@@ -407,7 +407,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,snar,C22,,,,,,,,,‘104-15-4,1.5,PTSA,CMP0364,,,,,,,,,,,,,NMP,CMP0316,100,16
 ,snar,C23,,,,,,,,,‘76-05-1,1.5,TFA,CMP0363,,,,,,,,,,,,,NMP,CMP0316,100,16
 ,snar,C24,,,,,,,,,‘64-19-7,1.5,AcOH,CMP0361,,,,,,,,,,,,,NMP,CMP0316,100,16
-从实验号13开始无数据,snar,C25,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,NMP,CMP0316,100,16
+No data from experiment 13 onward,snar,C25,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,NMP,CMP0316,100,16
 ,snar,C26,,,,,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,NMP,CMP0316,100,16
 ,snar,C27,,,,,,,,,‘865-47-4,2,KOtBu,CMP0347,,,,,,,,,,,,,NMP,CMP0316,100,16
 ,snar,C28,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,NMP,CMP0316,100,16
@@ -420,7 +420,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,snar,C35,,,,,,,,,‘110-86-1,2,Py,CMP0141,,,,,,,,,,,,,CPME,CMP0547,100,16
 ,snar,C36,,,,,,,,,‘6674-22-2,2,DBU,CMP0372,,,,,,,,,,,,,CPME,CMP0547,100,16
 ,snar,C37,,,,,,,,,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,CPME,CMP0547,100,16
-从实验号13开始无数据,snar,C38,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,CPME,CMP0547,100,16
+No data from experiment 13 onward,snar,C38,,,,,,,,,‘144-55-8,2,NaHCO3,CMP0337,,,,,,,,,,,,,CPME,CMP0547,100,16
 ,snar,C39,,,,,,,,,‘127-08-2,2,KOAc,CMP0354,,,,,,,,,,,,,CPME,CMP0547,100,16
 ,snar,C40,,,,,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,CPME,CMP0547,100,16
 ,snar,C41,,,,,,,,,‘7087-68-5,2,DIPEA,CMP0369,,,,,,,,,,,,,MeCN,CMP0558,100,16
@@ -436,7 +436,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,snar,C51,,,,,,,,,‘298-14-6,2,KHCO3,CMP0336,,,,,,,,,,,,,t-AmOH,CMP0566,100,16
 ,snar,C52,,,,,,,,,‘298-14-6,2,KHCO3,CMP0336,,,,,,,,,,,,,NMP,CMP0316,100,16
 ,snar,C53,,,,,,,,,‘298-14-6,2,KHCO3,CMP0336,,,,,,,,,,,,,CPME,CMP0547,100,16
-标准孔,sonogashira,C1,‘13965-03-2,0.03,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘7087-68-5,3.2,DIPEA,CMP0369,,,,,,,,,DMF,CMP0552,80,12
+Standard well,sonogashira,C1,‘13965-03-2,0.03,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘7087-68-5,3.2,DIPEA,CMP0369,,,,,,,,,DMF,CMP0552,80,12
 ,sonogashira,C2,‘13965-03-2,0.03,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘7087-68-5,3.2,DIPEA,CMP0369,,,,,,,,,DMF,CMP0552,80,12
 ,sonogashira,C3,‘7647-10-1,0.01,PdCl2,CMP0087,,,,,‘321921-71-5,0.01,CataCXiumA,CMP0166,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,DMF,CMP0552,80,12
 ,sonogashira,C4,‘3375-31-3,0.01,Pd(OAc)2,CMP0073,‘7681-65-4,0.01,CuI,CMP0038,‘161265-03-8,0.01,XantPhos,CMP0180,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,DMF,CMP0552,80,12
@@ -532,7 +532,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,sonogashira,C94,‘13965-03-2,0.02,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.02,CuI,CMP0038,,,,,,,,,,,,,,,,,DMSO/TEA (16:13),CMP0617,80,12
 ,sonogashira,C95,‘13965-03-2,0.1,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.1,CuI,CMP0038,,,,,‘121-44-8,2,TEA,CMP0269,,,,,,,,,DCE,CMP0548,80,12
 ,sonogashira,C96,‘7647-10-1,0.01,PdCl2,CMP0087,‘7681-65-4,0.01,CuI,CMP0038,‘161265-03-8,0.01,XantPhos,CMP0180,‘534-17-8,3,Cs2CO3,CMP0333,,,,,,,,,DMF,CMP0552,80,12
-标准孔,sonogashira,C97,‘13965-03-2,0.03,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘7087-68-5,3.2,DIPEA,CMP0369,,,,,,,,,DMF,CMP0552,25,16
+Standard well,sonogashira,C97,‘13965-03-2,0.03,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘7087-68-5,3.2,DIPEA,CMP0369,,,,,,,,,DMF,CMP0552,25,16
 ,sonogashira,C98,‘13965-03-2,0.03,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘7087-68-5,3.2,DIPEA,CMP0369,,,,,,,,,DMF,CMP0552,25,16
 ,sonogashira,C99,‘7647-10-1,0.01,PdCl2,CMP0087,,,,,‘321921-71-5,0.01,CataCXiumA,CMP0166,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,DMF,CMP0552,25,16
 ,sonogashira,C100,‘3375-31-3,0.01,Pd(OAc)2,CMP0073,‘7681-65-4,0.01,CuI,CMP0038,‘161265-03-8,0.01,XantPhos,CMP0180,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,DMF,CMP0552,25,16
@@ -628,7 +628,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,sonogashira,C190,‘13965-03-2,0.02,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.02,CuI,CMP0038,,,,,,,,,,,,,,,,,DMSO/TEA (16:13),CMP0617,25,16
 ,sonogashira,C191,‘13965-03-2,0.1,PdCl2(PPh3)2,CMP0097,‘7681-65-4,0.1,CuI,CMP0038,,,,,‘121-44-8,2,TEA,CMP0269,,,,,,,,,DCE,CMP0548,25,16
 ,sonogashira,C192,‘7647-10-1,0.01,PdCl2,CMP0087,‘7681-65-4,0.01,CuI,CMP0038,‘161265-03-8,0.01,XantPhos,CMP0180,‘534-17-8,3,Cs2CO3,CMP0333,,,,,,,,,DMF,CMP0552,25,16
-标准孔,hiyama,C1,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘280-57-9,0.06,DABCO,CMP0271,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,"1,4-dioxane",CMP0543,100,12
+Standard well,hiyama,C1,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘280-57-9,0.06,DABCO,CMP0271,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,"1,4-dioxane",CMP0543,100,12
 ,hiyama,C2,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘280-57-9,0.06,DABCO,CMP0271,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,"1,4-dioxane",CMP0543,100,12
 ,hiyama,C3,‘29046-78-4,0.05,NiCl2-glyme,CMP0061,,,,,‘865-47-4,2,KOtBu,CMP0347,‘17455-13-9,0.1,18-crown-6-ether,CMP0420,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C4,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,‘7087-68-5,0.1,DIPEA,CMP0369,‘16961-83-4,2,H2SiF6,CMP0388,,,,,,,,,H2O,CMP0556,100,12
@@ -636,8 +636,8 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,hiyama,C6,‘13444-94-5,0.05,PdBr2,CMP0084,‘6002-40-0,0.1,P(tBu)2Me,CMP0275,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C7,‘14221-01-3,0.05,Pd(PPh3)4,CMP0075,,,,,‘121-44-8,2,TEA,CMP0269,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C8,‘52522-40-4,0.05,Pd2(dba)3.CHCl3,CMP0081,,,,,‘865-48-5,2,NaOtBu,CMP0348,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
-无效,hiyama,C9,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘23743-26-2,0.1,dcype,CMP0270,‘1310-73-2,2,NaOH,CMP0341,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,12
-无效,hiyama,C10,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘23743-26-2,0.1,dcype,CMP0270,‘1310-73-2,2,NaOH,CMP0341,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,12
+Invalid,hiyama,C9,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘23743-26-2,0.1,dcype,CMP0270,‘1310-73-2,2,NaOH,CMP0341,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,12
+Invalid,hiyama,C10,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘23743-26-2,0.1,dcype,CMP0270,‘1310-73-2,2,NaOH,CMP0341,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,12
 ,hiyama,C11,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘280-57-9,0.1,DABCO,CMP0271,,,,,‘13400-13-0,2,CsF,CMP0353,,,,,,,,,"1,4-dioxane",CMP0543,100,12
 ,hiyama,C12,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘161265-03-8,0.1,XantPhos,CMP0180,‘1310-58-3,2,KOH,CMP0342,,,,,,,,,,,,,p-xylene,CMP0565,100,12
 ,hiyama,C13,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,‘124-41-4,2,NaOMe,CMP0346,,,,,,,,,,,,,p-xylene,CMP0565,100,12
@@ -660,7 +660,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,hiyama,C30,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,‘584-08-7,2,K2CO3,CMP0334,‘7775-41-9,2,AgF,CMP0387,,,,,,,,,MeCN,CMP0558,100,12
 ,hiyama,C31,‘95464-05-4,0.05,Pd(dppf)Cl2·CH2Cl2,CMP0091,,,,,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C32,‘28425-04-9,0.05,PdCl2(PEt3)2,CMP0095,,,,,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
-无效,hiyama,C33,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘23743-26-2,0.1,dcype,CMP0270,‘10519-96-7,2,KOSiMe3,CMP0382,,,,,,,,,,,,,THF,CMP0569,100,12
+Invalid,hiyama,C33,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘23743-26-2,0.1,dcype,CMP0270,‘10519-96-7,2,KOSiMe3,CMP0382,,,,,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C34,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,‘1310-73-2,2,NaOH,CMP0341,,,,,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C35,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C36,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘7688-25-7,0.1,dppb,CMP0236,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,MeCN,CMP0558,100,12
@@ -692,7 +692,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,hiyama,C62,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘564483-18-7,0.1,XPhos,CMP0165,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C63,‘32005-36-0,0.05,Pd(dba)2,CMP0069,,,,,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C64,‘14220-64-5,0.05,PdCl2(PhCN)2,CMP0096,,,,,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,THF,CMP0569,100,12
-"不符,已改正",hiyama,C65,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,‘121-44-8,2,TEA,CMP0269,‘1112-67-0,0.1,TBAC,CMP0384,,,,,,,,,THF,CMP0569,100,12
+Inconsistent; corrected,hiyama,C65,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,‘121-44-8,2,TEA,CMP0269,‘1112-67-0,0.1,TBAC,CMP0384,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C66,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,‘584-08-7,2,K2CO3,CMP0334,‘7775-41-9,2,AgF,CMP0387,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C67,‘53199-31-8,0.05,Pd[P(tBu3)]2,CMP0083,,,,,,,,,‘7775-41-9,2,AgF,CMP0387,,,,,,,,,THF,CMP0569,100,12
 ,hiyama,C68,‘32005-36-0,0.05,Pd(dba)2,CMP0069,‘564483-18-7,0.1,XPhos,CMP0165,‘1310-58-3,2,KOH,CMP0342,,,,,,,,,,,,,MeOH,CMP0559,100,12
@@ -708,7 +708,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,hiyama,C78,‘32005-36-0,0.05,Pd(dba)2,CMP0069,,,,,‘298-14-6,2,KHCO3,CMP0336,‘7775-41-9,2,AgF,CMP0387,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C79,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,,,,,,,,,,,,,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C80,‘31277-98-2,0.05,Pd(dppe)2,CMP0071,‘366-18-7,0.1,"2,2-bipyridine",CMP0223,,,,,‘7789-19-7,2,CuF2,CMP0389,,,,,,,,,DMF,CMP0552,100,12
-"不符,已改正",hiyama,C81,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,‘121-44-8,2,TEA,CMP0269,‘1112-67-0,0.1,TBAC,CMP0384,,,,,,,,,DMF,CMP0552,100,12
+Inconsistent; corrected,hiyama,C81,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,,,,,‘121-44-8,2,TEA,CMP0269,‘1112-67-0,0.1,TBAC,CMP0384,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C82,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,,,,,‘13400-13-0,2,CsF,CMP0353,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C83,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.1,PPh3,CMP0200,,,,,‘7789-23-3,2,KF,CMP0351,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C84,‘7647-10-1,0.05,PdCl2,CMP0087,‘2622-14-2,0.1,PCy3,CMP0192,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,DMSO/H2O (10:1),CMP0589,100,12
@@ -724,7 +724,7 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,hiyama,C94,‘14024-61-4,0.05,Pd(acac)2,CMP0065,,,,,,,,,‘7789-23-3,2,KF,CMP0351,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C95,‘14221-01-3,0.05,Pd(PPh3)4,CMP0075,,,,,,,,,‘429-41-4,2,TBAF,CMP0383,,,,,,,,,DMF,CMP0552,100,12
 ,hiyama,C96,‘14221-01-3,0.05,Pd(PPh3)4,CMP0075,,,,,‘127-08-2,2,KOAc,CMP0354,,,,,,,,,,,,,DMF,CMP0552,100,12
-标准孔,reductive-amination,C1,,,,,,,,,‘16940-66-2,1.5,NaBH4,CMP0413,‘64-19-7,10,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
+Standard well,reductive-amination,C1,,,,,,,,,‘16940-66-2,1.5,NaBH4,CMP0413,‘64-19-7,10,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C2,‘546-68-9,1.75,Ti(OiPr)4,CMP0147,,,,,‘16940-66-2,1.5,NaBH4,CMP0413,,,,,,,,,,,,,EtOH,CMP0555,25,12
 ,reductive-amination,C3,,,,,,,,,‘16940-66-2,1.5,NaBH4,CMP0413,‘10043-35-3,1,H3BO3,CMP0140,,,,,,,,,EtOH,CMP0555,25,12
 ,reductive-amination,C4,‘3087-36-3,2,Ti(OEt)4,CMP0422,,,,,‘16940-66-2,1.5,NaBH4,CMP0413,,,,,,,,,,,,,THF,CMP0569,25,12
@@ -756,14 +756,14 @@ C18和C56一致，只保留C18,kumada,C18,‘14264-16-5,0.2,NiCl2(PPh3)2,CMP0059
 ,reductive-amination,C30,‘63295-48-7,0.01,Fe(OTf)3,CMP0423,,,,,‘63148-57-2,2,PMHS,CMP0417,,,,,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C31,,,,,,,,,‘63148-57-2,2,PMHS,CMP0417,‘10043-35-3,1,H3BO3,CMP0140,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C32,‘10025-69-1,0.2,SnCl2·2H2O,CMP0421,,,,,‘63148-57-2,2,PMHS,CMP0417,,,,,,,,,,,,,MeOH,CMP0559,25,12
-AcOH当量不同,reductive-amination,C33,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘64-19-7,10,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
+Different AcOH equivalents,reductive-amination,C33,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘64-19-7,10,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C34,‘546-68-9,1.75,Ti(OiPr)4,CMP0147,,,,,‘3999-38-0,1,pic-BH3,CMP0415,,,,,,,,,,,,,EtOH,CMP0555,25,12
 ,reductive-amination,C35,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘10043-35-3,1,H3BO3,CMP0140,,,,,,,,,EtOH,CMP0555,25,12
 ,reductive-amination,C36,‘3087-36-3,2,Ti(OEt)4,CMP0422,,,,,‘3999-38-0,1,pic-BH3,CMP0415,,,,,,,,,,,,,THF,CMP0569,25,12
 ,reductive-amination,C37,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘64-19-7,2,AcOH,CMP0361,,,,,,,,,DCE,CMP0548,25,12
 ,reductive-amination,C38,‘63295-48-7,0.01,Fe(OTf)3,CMP0423,,,,,‘3999-38-0,1,pic-BH3,CMP0415,,,,,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C39,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘10043-35-3,1,H3BO3,CMP0140,,,,,,,,,MeOH,CMP0559,25,12
-AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘64-19-7,12.5,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
+Different AcOH equivalents,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,‘64-19-7,12.5,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C41,,,,,,,,,‘56553-60-7,1.2,NaBH(OAc)3,CMP0416,‘64-19-7,10,AcOH,CMP0361,,,,,,,,,MeOH,CMP0559,25,12
 ,reductive-amination,C42,‘546-68-9,1.75,Ti(OiPr)4,CMP0147,,,,,‘56553-60-7,1.2,NaBH(OAc)3,CMP0416,,,,,,,,,,,,,EtOH,CMP0555,25,12
 ,reductive-amination,C43,,,,,,,,,‘56553-60-7,1.2,NaBH(OAc)3,CMP0416,‘10043-35-3,1,H3BO3,CMP0140,,,,,,,,,EtOH,CMP0555,25,12
@@ -867,8 +867,8 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,C-N or C-O competitive reactions,C93,‘3375-31-3,0.2,Pd(OAc)2,CMP0073,‘857356-94-6,0.3,Me4tBuXPhos,CMP0184,‘7778-53-2,2,K3PO4,CMP0338,,,,,,,,,,,,,xylene,CMP0571,100,16
 ,C-N or C-O competitive reactions,C94,‘3375-31-3,0.02,Pd(OAc)2,CMP0073,‘564483-19-8,0.03,tBuXphos,CMP0187,‘7778-53-2,2,K3PO4,CMP0338,,,,,,,,,,,,,xylene,CMP0571,100,16
 ,C-N or C-O competitive reactions,C95,‘3375-31-3,0.02,Pd(OAc)2,CMP0073,‘213697-53-1,0.03,DavePhos,CMP0196,‘7778-53-2,2,K3PO4,CMP0338,,,,,,,,,,,,,xylene,CMP0571,100,16
-标准孔,C-N or C-O competitive reactions,C96,‘1536473-72-9,0.01,tBuBrettPhos Pd G3,CMP0108,,,,,‘865-48-5,1.2,NaOtBu,CMP0348,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,16
-标准孔,chan-lam,C1,‘142-71-2,1.5,Cu(OAc)2,CMP0026,,,,,‘7087-68-5,2,DIPEA,CMP0369,,,,,,,,,,,,,DCE,CMP0548,25,16
+Standard well,C-N or C-O competitive reactions,C96,‘1536473-72-9,0.01,tBuBrettPhos Pd G3,CMP0108,,,,,‘865-48-5,1.2,NaOtBu,CMP0348,,,,,,,,,,,,,"1,4-dioxane",CMP0543,100,16
+Standard well,chan-lam,C1,‘142-71-2,1.5,Cu(OAc)2,CMP0026,,,,,‘7087-68-5,2,DIPEA,CMP0369,,,,,,,,,,,,,DCE,CMP0548,25,16
 ,chan-lam,C2,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘110-18-9,0.4,TMEDA,CMP0221,‘110-86-1,2,Py,CMP0141,,,,,,,,,,,,,"1,4-dioxane",CMP0543,25,16
 ,chan-lam,C3,‘7447-39-4,0.2,CuCl2,CMP0036,‘110-18-9,0.4,TMEDA,CMP0221,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,DCE,CMP0548,25,16
 ,chan-lam,C4,‘7447-39-4,0.2,CuCl2,CMP0036,‘110-70-3,0.4,DMEDA,CMP0308,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,DCE,CMP0548,25,16
@@ -891,7 +891,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,chan-lam,C21,‘13778-31-9,0.2,Cu(NO3)2·5H2O,CMP0025,‘110-18-9,0.4,TMEDA,CMP0221,‘102-71-6,2,triethanolamine,CMP0378,,,,,,,,,,,,,MeCN,CMP0558,25,16
 ,chan-lam,C22,‘34946-82-2,0.2,Cu(OTf)2,CMP0028,‘110-18-9,0.4,TMEDA,CMP0221,‘102-71-6,2,triethanolamine,CMP0378,,,,,,,,,,,,,MeCN,CMP0558,25,16
 ,chan-lam,C23,‘34946-82-2,0.2,Cu(OTf)2,CMP0028,‘110-18-9,0.4,TMEDA,CMP0221,,,,,,,,,,,,,,,,,MeCN,CMP0558,25,16
-无效,chan-lam,C24,‘142-71-2,1.5,Cu(OAc)2,CMP0026,,,,,‘110-86-1,2,Py,CMP0141,,,,,,,,,,,,,DCE,CMP0548,25,16
+Invalid,chan-lam,C24,‘142-71-2,1.5,Cu(OAc)2,CMP0026,,,,,‘110-86-1,2,Py,CMP0141,,,,,,,,,,,,,DCE,CMP0548,25,16
 ,chan-lam,C25,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘102-71-6,2,triethanolamine,CMP0378,‘2564-83-2,0.2,TEMPO,CMP0435,,,,,,,,,DMF,CMP0552,25,16
 ,chan-lam,C26,‘3251-23-8,0.2,Cu(NO3)2,CMP0024,‘110-70-3,0.4,DMEDA,CMP0308,,,,,,,,,,,,,,,,,MeOH,CMP0559,25,16
 ,chan-lam,C27,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘110-86-1,2,Py,CMP0141,‘2564-83-2,0.2,TEMPO,CMP0435,,,,,,,,,DMF,CMP0552,25,16
@@ -916,7 +916,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,chan-lam,C46,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘584-08-7,2,K2CO3,CMP0334,‘1313-13-9,0.2,MnO2,CMP0437,,,,,,,,,DCE,CMP0548,25,16
 ,chan-lam,C47,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘108-48-5,2,"2,6-lutidine",CMP0157,‘334-48-5,0.2,decanoic acid,CMP0438,,,,,,,,,toluene,CMP0570,25,16
 ,chan-lam,C48,‘7791-20-0,0.2,NiCl2.6H2O,CMP0060,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘6674-22-2,2,DBU,CMP0372,,,,,,,,,,,,,toluene,CMP0570,25,16
-标准孔,chan-lam,C49,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘7087-68-5,2,DIPEA,CMP0369,‘109-52-4,0.2,valeric acid,CMP0439,,,,,,,,,DMSO,CMP0527,70,16
+Standard well,chan-lam,C49,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘7087-68-5,2,DIPEA,CMP0369,‘109-52-4,0.2,valeric acid,CMP0439,,,,,,,,,DMSO,CMP0527,70,16
 ,chan-lam,C50,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘7087-68-5,2,DIPEA,CMP0369,‘109-52-4,0.2,valeric acid,CMP0439,,,,,,,,,DMSO,CMP0527,70,16
 ,chan-lam,C51,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘121-44-8,2,TEA,CMP0269,,,,,,,,,,,,,DMSO,CMP0527,70,16
 ,chan-lam,C52,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DMSO,CMP0527,70,16
@@ -930,12 +930,12 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,chan-lam,C60,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘110-86-1,2,Py,CMP0141,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C61,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘110-86-1,3,Py,CMP0141,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C62,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘110-86-1,0.4,Py,CMP0141,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
-无效,chan-lam,C63,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘3248-05-3,0.4,4Me2Phen,CMP0224,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
+Invalid,chan-lam,C63,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘3248-05-3,0.4,4Me2Phen,CMP0224,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C64,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘110-18-9,0.4,TMEDA,CMP0221,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C65,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘66-71-7,0.4,"1,10-Phen",CMP0222,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C66,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,3,"2,2-bipyridine",CMP0223,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C67,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
-建议删掉C68的数据：HTE条件表是NaHCO3，AI条件表KHCO3，但是实际碱分装的时候既没有加KHCO3也没有加NaHCO3，疑似加的Cs2CO3；,chan-lam,C68,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘298-14-6,2,KHCO3,CMP0336,,,,,,,,,,,,,DCE,CMP0548,70,16
+"C68 data should be deleted: the HTE condition table lists NaHCO3 and the AI condition table KHCO3, but neither was added when the base was dispensed; Cs2CO3 was probably added instead.",chan-lam,C68,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘298-14-6,2,KHCO3,CMP0336,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C69,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘7778-53-2,2,K3PO4,CMP0338,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C70,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C71,‘7447-39-4,0.2,CuCl2,CMP0036,,,,,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
@@ -948,23 +948,23 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,chan-lam,C78,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,MeCN,CMP0558,70,16
 ,chan-lam,C79,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,MeCN,CMP0558,70,16
 ,chan-lam,C80,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,MeCN,CMP0558,70,16
-无效,chan-lam,C81,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMF,CMP0552,70,16
+Invalid,chan-lam,C81,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C82,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,70,16
-无效,chan-lam,C83,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,70,16
+Invalid,chan-lam,C83,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C84,‘7447-39-4,0.2,CuCl2,CMP0036,‘366-18-7,0.4,"2,2-bipyridine",CMP0223,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C85,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C86,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C87,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘127-09-3,2,NaOAc,CMP0355,,,,,,,,,,,,,DMF,CMP0552,70,16
-无效,chan-lam,C88,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘865-47-4,2,KOtBu,CMP0347,,,,,,,,,,,,,DMF,CMP0552,70,16
-无效,chan-lam,C89,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMF,CMP0552,70,16
-无效,chan-lam,C90,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘20442-70-0,2,CsOPiv,CMP0658,,,,,,,,,,,,,DMF,CMP0552,70,16
+Invalid,chan-lam,C88,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘865-47-4,2,KOtBu,CMP0347,,,,,,,,,,,,,DMF,CMP0552,70,16
+Invalid,chan-lam,C89,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘14593-46-5,2,NaOtAm,CMP0357,,,,,,,,,,,,,DMF,CMP0552,70,16
+Invalid,chan-lam,C90,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘20442-70-0,2,CsOPiv,CMP0658,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C91,‘7447-39-4,0.2,CuCl2,CMP0036,‘1122-58-3,0.2,DMAP,CMP0136,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,70,16
-无效,chan-lam,C92,‘142-71-2,0.1,Cu(OAc)2,CMP0026,,,,,‘18027-10-6,2,NaOSiMe3,CMP0397,‘110-05-4,0.2,DTBP,CMP0440,,,,,,,,,t-BuOH,CMP0567,70,16
+Invalid,chan-lam,C92,‘142-71-2,0.1,Cu(OAc)2,CMP0026,,,,,‘18027-10-6,2,NaOSiMe3,CMP0397,‘110-05-4,0.2,DTBP,CMP0440,,,,,,,,,t-BuOH,CMP0567,70,16
 ,chan-lam,C93,‘7787-70-4,0.1,CuBr,CMP0032,,,,,‘18027-10-6,2,NaOSiMe3,CMP0397,‘110-05-4,0.2,DTBP,CMP0440,,,,,,,,,t-BuOH,CMP0567,70,16
 ,chan-lam,C94,‘7447-39-4,0.2,CuCl2,CMP0036,,,,,‘108-48-5,2,"2,6-lutidine",CMP0157,,,,,,,,,,,,,t-BuOH,CMP0567,70,16
 ,chan-lam,C95,‘7447-39-4,0.2,CuCl2,CMP0036,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,NMP,CMP0316,70,16
 ,chan-lam,C96,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,,,,,‘110-05-4,0.2,DTBP,CMP0440,,,,,,,,,toluene,CMP0570,70,16
-标准孔,chan-lam,C97,‘7758-89-6,0.4,CuCl,CMP0035,,,,,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,"1,4-dioxane",CMP0543,25,16
+Standard well,chan-lam,C97,‘7758-89-6,0.4,CuCl,CMP0035,,,,,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,"1,4-dioxane",CMP0543,25,16
 ,chan-lam,C98,‘7758-89-6,0.4,CuCl,CMP0035,,,,,‘102-71-6,2,triethanolamine,CMP0378,,,,,,,,,,,,,"1,4-dioxane",CMP0543,25,16
 ,chan-lam,C99,‘7758-89-6,0.4,CuCl,CMP0035,,,,,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,"1,4-dioxane",CMP0543,25,16
 ,chan-lam,C100,‘30698-64-7,0.2,[Cu(OH)TMEDA]2Cl2,CMP0006,,,,,,,,,,,,,,,,,,,,,DCE,CMP0548,25,16
@@ -980,7 +980,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,chan-lam,C110,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘13991-08-7,0.4,dppbz,CMP0225,‘1907-33-1,2,LiOtBu,CMP0349,,,,,,,,,,,,,THF,CMP0569,25,16
 ,chan-lam,C111,‘142-71-2,0.2,Cu(OAc)2,CMP0026,‘13991-08-7,0.4,dppbz,CMP0225,‘110-86-1,2,Py,CMP0141,,,,,,,,,,,,,THF,CMP0569,25,16
 ,chan-lam,C112,‘68986-76-5,0.2,CuTC,CMP0043,,,,,‘108-48-5,2,"2,6-lutidine",CMP0157,,,,,,,,,,,,,DMF,CMP0552,25,16
-标准孔,chan-lam,C113,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘584-08-7,2,K2CO3,CMP0334,‘1313-13-9,0.2,MnO2,CMP0437,,,,,,,,,DCE,CMP0548,70,16
+Standard well,chan-lam,C113,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘584-08-7,2,K2CO3,CMP0334,‘1313-13-9,0.2,MnO2,CMP0437,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C114,‘142-71-2,0.2,Cu(OAc)2,CMP0026,,,,,‘584-08-7,2,K2CO3,CMP0334,‘1313-13-9,0.2,MnO2,CMP0437,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C115,‘7758-98-7,0.2,CuSO4,CMP0041,,,,,‘584-08-7,2,K2CO3,CMP0334,,,,,,,,,,,,,DCE,CMP0548,70,16
 ,chan-lam,C116,‘7758-98-7,0.2,CuSO4,CMP0041,,,,,‘497-19-8,2,Na2CO3,CMP0335,,,,,,,,,,,,,DCE,CMP0548,70,16
@@ -995,7 +995,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,chan-lam,C125,‘7681-65-4,0.1,CuI,CMP0038,‘1122-58-3,0.2,DMAP,CMP0136,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,70,16
 ,chan-lam,C126,‘7789-45-9,0.2,CuBr2,CMP0034,,,,,‘108-48-5,2,"2,6-lutidine",CMP0157,,,,,,,,,,,,,t-BuOH,CMP0567,70,16
 ,chan-lam,C127,‘7681-65-4,0.1,CuI,CMP0038,,,,,‘534-17-8,2,Cs2CO3,CMP0333,,,,,,,,,,,,,NMP,CMP0316,70,16
-标准孔,esterification,C1,,,,,,,,,,,,,,,,,,,,,,,,,DMF,CMP0552,25,4
+Standard well,esterification,C1,,,,,,,,,,,,,,,,,,,,,,,,,DMF,CMP0552,25,4
 ,esterification,C2,‘1122-58-3,2,DMAP,CMP0136,,,,,,,,,‘25952-53-8,2.5,EDC-HCl,CMP0455,,,,,,,,,DMF,CMP0552,25,4
 ,esterification,C3,‘1122-58-3,0.2,DMAP,CMP0136,,,,,,,,,‘538-75-0,1.3,DCC,CMP0410,,,,,,,,,DMF,CMP0552,25,4
 ,esterification,C4,,,,,,,,,,,,,‘538-75-0,3,DCC,CMP0410,,,,,,,,,DMF,CMP0552,25,4
@@ -1091,7 +1091,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,esterification,C94,‘110-86-1,3,Py,CMP0141,,,,,,,,,,,,,,,,,,,,,benzene,CMP0545,25,4
 ,esterification,C95,‘109-06-8,0.1,2-Picoline,CMP0155,,,,,,,,,‘1948-33-0,2,TBHQ,CMP0243,,,,,,,,,DMA,CMP0550,25,4
 ,esterification,C96,‘7647-01-0,2,HCl,CMP0143,,,,,,,,,,,,,,,,,,,,,"1,4-dioxane",CMP0543,25,4
-标准孔,grignard,C1,,,,,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,3
+Standard well,grignard,C1,,,,,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,3
 ,grignard,C2,,,,,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,3
 ,grignard,C3,‘66-71-7,0.055,"1,10-Phen",CMP0222,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,3
 ,grignard,C4,‘101003-65-0,0.1,"(2,2:6,2-Terpyridin)-4-ol",CMP0495,,,,,,,,,,,,,,,,,,,,,THF,CMP0569,25,3
@@ -1139,7 +1139,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,grignard,C46,,,,,,,,,,,,,,,,,,,,,,,,,hexane,CMP0572,25,3
 ,grignard,C47,,,,,,,,,,,,,,,,,,,,,,,,,DEM/THF (1:1),CMP0624,25,3
 ,grignard,C48,,,,,,,,,,,,,,,,,,,,,,,,,DME,CMP0551,25,3
-标准孔,allylic-substitution,C1,,,,,,,,,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,DMF,CMP0552,25,16
+Standard well,allylic-substitution,C1,,,,,,,,,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,DMF,CMP0552,25,16
 ,allylic-substitution,C2,,,,,,,,,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,DMF,CMP0552,25,16
 ,allylic-substitution,C3,,,,,,,,,‘7646-69-7,1.8,NaH,CMP0405,,,,,,,,,,,,,DMF,CMP0552,25,16
 ,allylic-substitution,C4,,,,,,,,,‘534-17-8,3,Cs2CO3,CMP0333,,,,,,,,,,,,,DMF,CMP0552,25,16
@@ -1259,7 +1259,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,allylic-substitution,C118,‘7681-65-4,0.05,CuI,CMP0038,,,,,‘108-18-9,3,iPr2NH,CMP0373,‘109-72-8,2,n-Butyllithium,CMP0412,,,,,,,,,THF,CMP0569,25,16
 ,allylic-substitution,C119,‘51364-51-3,0.05,Pd2(dba)3,CMP0080,‘603-35-0,0.1,PPh3,CMP0200,‘7646-69-7,1.8,NaH,CMP0405,,,,,,,,,,,,,THF,CMP0569,25,16
 ,allylic-substitution,C120,‘52522-40-4,0.05,Pd2(dba)3.CHCl3,CMP0081,,,,,‘7646-69-7,1.8,NaH,CMP0405,,,,,,,,,,,,,THF,CMP0569,25,16
-标准孔,pd-carbonylation,C1,‘14220-64-5,0.05,PdCl2(PhCN)2,CMP0096,,,,,‘161265-03-8,0.05,XantPhos,CMP0180,‘121-44-8,2,TEA,CMP0269,,,,,,,,,DMF,CMP0552,100,16
+Standard well,pd-carbonylation,C1,‘14220-64-5,0.05,PdCl2(PhCN)2,CMP0096,,,,,‘161265-03-8,0.05,XantPhos,CMP0180,‘121-44-8,2,TEA,CMP0269,,,,,,,,,DMF,CMP0552,100,16
 ,pd-carbonylation,C2,‘3375-31-3,0.03,Pd(OAc)2,CMP0073,,,,,‘131274-22-1,0.12,P(tBu)3.HBF4,CMP0195,‘6674-22-2,2,DBU,CMP0372,,,,,,,,,o-xylene,CMP0563,100,16
 ,pd-carbonylation,C3,‘3375-31-3,0.03,Pd(OAc)2,CMP0073,,,,,‘161265-03-8,0.06,XantPhos,CMP0180,‘121-44-8,2,TEA,CMP0269,,,,,‘538-75-0,2,DCC,CMP0410,DMF,CMP0552,100,16
 ,pd-carbonylation,C4,‘14220-64-5,0.05,PdCl2(PhCN)2,CMP0096,,,,,‘161265-03-8,0.05,XantPhos,CMP0180,‘121-44-8,2,TEA,CMP0269,,,,,,,,,DMF,CMP0552,100,16
@@ -1355,7 +1355,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,pd-carbonylation,C94,‘3375-31-3,0.03,Pd(OAc)2,CMP0073,,,,,‘161265-03-8,0.06,XantPhos,CMP0180,‘121-44-8,2,TEA,CMP0269,,,,,,,,,"1,4-dioxane",CMP0543,100,16
 ,pd-carbonylation,C95,‘14220-64-5,0.05,PdCl2(PhCN)2,CMP0096,,,,,‘161265-03-8,0.05,XantPhos,CMP0180,‘6674-22-2,2,DBU,CMP0372,,,,,,,,,"1,4-dioxane",CMP0543,100,16
 ,pd-carbonylation,C96,‘3375-31-3,0.03,Pd(OAc)2,CMP0073,,,,,‘161265-03-8,0.06,XantPhos,CMP0180,‘6674-22-2,2,DBU,CMP0372,,,,,,,,,benzotrifluoride,CMP0546,100,16
-标准孔,finkelstein,C1,‘7681-65-4,0.1,CuI,CMP0038,‘110-70-3,0.2,DMEDA,CMP0308,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,"1,4-dioxane",CMP0543,110,16
+Standard well,finkelstein,C1,‘7681-65-4,0.1,CuI,CMP0038,‘110-70-3,0.2,DMEDA,CMP0308,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,"1,4-dioxane",CMP0543,110,16
 ,finkelstein,C2,‘7681-65-4,0.1,CuI,CMP0038,‘110-70-3,0.2,DMEDA,CMP0308,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,"1,4-dioxane",CMP0543,110,16
 ,finkelstein,C3,‘7681-65-4,0.1,CuI,CMP0038,‘67579-81-1,0.2,"trans-1,2-Cy-(NHMe)2",CMP0173,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,"1,4-dioxane",CMP0543,110,16
 ,finkelstein,C4,‘1295-35-8,0.1,Ni(cod)2,CMP0052,‘72914-19-3,0.2,DTBPY,CMP0315,‘5614-37-9,0.1,CPME,CMP0547,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,"1,4-dioxane",CMP0543,110,16
@@ -1451,7 +1451,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,finkelstein,C94,‘7440-02-0,0.1,Ni,CMP0133,,,,,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,MeCN,CMP0558,110,16
 ,finkelstein,C95,‘7758-98-7,0.1,CuSO4,CMP0041,,,,,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,"1,4-dioxane",CMP0543,110,16
 ,finkelstein,C96,‘7758-98-7,0.1,CuSO4,CMP0041,,,,,,,,,‘7681-82-5,2,NaI,CMP0489,,,,,,,,,MeCN,CMP0558,110,16
-标准孔,minisci,C1,‘7761-88-8,0.2,AgNO3,CMP0125,‘7727-54-0,3,APS,CMP0522,‘76-05-1,1,TFA,CMP0363,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,60,4
+Standard well,minisci,C1,‘7761-88-8,0.2,AgNO3,CMP0125,‘7727-54-0,3,APS,CMP0522,‘76-05-1,1,TFA,CMP0363,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,60,4
 ,minisci,C2,‘7761-88-8,0.2,AgNO3,CMP0125,‘7727-54-0,3,APS,CMP0522,‘76-05-1,1,TFA,CMP0363,,,,,,,,,,,,,PhCl/H2O (1:1),CMP0639,60,4
 ,minisci,C3,‘7761-88-8,0.2,AgNO3,CMP0125,‘7727-54-0,3,APS,CMP0522,‘76-05-1,1,TFA,CMP0363,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,60,4
 ,minisci,C4,‘7761-88-8,0.2,AgNO3,CMP0125,‘7727-54-0,3,APS,CMP0522,,,,,,,,,,,,,,,,,MeCN/H2O (1:1),CMP0595,60,4
@@ -1499,7 +1499,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,minisci,C46,,,,,‘7727-21-1,3,K2S2O8,CMP0523,,,,,,,,,,,,,,,,,DMSO,CMP0527,60,4
 ,minisci,C47,,,,,‘7727-21-1,3,K2S2O8,CMP0523,,,,,‘14586-35-7,1,choline acetate,CMP0532,,,,,,,,,DMSO,CMP0527,60,4
 ,minisci,C48,,,,,‘7775-27-1,3,Na2S2O8,CMP0524,,,,,,,,,,,,,,,,,DMSO,CMP0527,60,4
-标准孔,Mitsunobu,C1,‘603-35-0,1,PPh3,CMP0200,‘2446-83-5,1,DIAD,CMP0509,,,,,,,,,,,,,,,,,THF,CMP0569,25,12
+Standard well,Mitsunobu,C1,‘603-35-0,1,PPh3,CMP0200,‘2446-83-5,1,DIAD,CMP0509,,,,,,,,,,,,,,,,,THF,CMP0569,25,12
 ,Mitsunobu,C2,‘603-35-0,1,PPh3,CMP0200,‘2446-83-5,1,DIAD,CMP0509,,,,,,,,,,,,,,,,,THF,CMP0569,25,12
 ,Mitsunobu,C3,‘603-35-0,1,PPh3,CMP0200,‘1972-28-7,1,DEAD,CMP0510,,,,,,,,,,,,,,,,,THF,CMP0569,25,12
 ,Mitsunobu,C4,‘603-35-0,1,PPh3,CMP0200,‘2449-05-0,1,DBAD,CMP0511,,,,,,,,,,,,,,,,,THF,CMP0569,25,12
@@ -1595,7 +1595,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,Mitsunobu,C94,‘603-35-0,1,PPh3,CMP0200,‘1972-28-7,1,DEAD,CMP0510,,,,,,,,,,,,,,,,,hexane,CMP0572,25,12
 ,Mitsunobu,C95,‘998-40-3,1,PBu3,CMP0229,‘10465-81-3,1,ADDP,CMP0515,,,,,,,,,,,,,,,,,2-MeTHF,CMP0544,25,12
 ,Mitsunobu,C96,‘603-35-0,1,PPh3,CMP0200,‘1972-28-7,1,DEAD,CMP0510,,,,,,,,,,,,,,,,,Py,CMP0141,25,12
-重复孔,acylation,C1,‘148893-10-1,1.5,HATU,CMP0139,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
+Replicate well,acylation,C1,‘148893-10-1,1.5,HATU,CMP0139,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C2,‘164298-23-1,1.5,TFFH,CMP0474,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C3,‘164298-25-3,1.5,BTFFH,CMP0444,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C4,‘3638-04-8,1.5,DCMT,CMP0441,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
@@ -1603,7 +1603,7 @@ AcOH当量不同,reductive-amination,C40,,,,,,,,,‘3999-38-0,1,pic-BH3,CMP0415,
 ,acylation,C6,‘125700-67-6,1.5,TBTU,CMP0156,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C7,‘1082951-62-9,1.5,HDMC,CMP0461,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C8,‘330641-16-2,1.5,TCTU,CMP0473,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
-C75同C9重复,acylation,C9,‘125700-69-8,1.5,TDBTU,CMP0464,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
+C75 duplicates C9,acylation,C9,‘125700-69-8,1.5,TDBTU,CMP0464,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C10,‘125700-73-4,1.5,TNTU,CMP0475,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C11,‘125700-71-2,1.5,TPTU,CMP0477,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C12,‘105832-38-0,1.5,TSTU,CMP0478,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
@@ -1669,7 +1669,7 @@ C75同C9重复,acylation,C9,‘125700-69-8,1.5,TDBTU,CMP0464,,,,,‘7087-68-5,3,
 ,acylation,C72,‘543-27-1,1,IBCF,CMP0462,,,,,‘109-02-4,3,NMM,CMP0398,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C73,‘538-75-0,1.5,DCC,CMP0410,‘524-38-9,1.5,NHPI,CMP0484,‘121-44-8,3,TEA,CMP0269,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C74,‘25952-53-8,1.5,EDC-HCl,CMP0455,‘2592-95-2,1.5,HOBt,CMP0479,‘121-44-8,3,TEA,CMP0269,,,,,,,,,,,,,DMF,CMP0552,25,2
-C75同C9重复,acylation,C75,‘125700-69-8,1.5,TDBTU,CMP0464,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
+C75 duplicates C9,acylation,C75,‘125700-69-8,1.5,TDBTU,CMP0464,,,,,‘7087-68-5,3,DIPEA,CMP0369,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C76,‘94790-35-9,1.5,TCFH,CMP0472,,,,,‘616-47-7,3,NMI,CMP0399,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C77,‘538-75-0,1.5,DCC,CMP0410,,,,,,,,,,,,,,,,,,,,,DMF,CMP0552,25,2
 ,acylation,C78,‘538-75-0,1.5,DCC,CMP0410,‘3849-21-6,1.5,ethyl cyanoglyoxylate-2-oxime,CMP0486,,,,,,,,,,,,,,,,,DMF,CMP0552,25,2
@@ -1956,10 +1956,10 @@ C75同C9重复,acylation,C75,‘125700-69-8,1.5,TDBTU,CMP0464,,,,,‘7087-68-5,3
 ,suzuki,C71,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.2,PPh3,CMP0200,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,THF/H2O (4:1),CMP0602,100,12
 ,suzuki,C72,‘13965-03-2,0.05,PdCl2(PPh3)2,CMP0097,‘603-35-0,0.1,PPh3,CMP0200,‘497-19-8,3,Na2CO3,CMP0335,,,,,,,,,,,,,THF/H2O (4:1),CMP0602,100,12
 ,suzuki,C73,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘250285-32-6,0.1,IPr.HCl,CMP0198,‘7778-53-2,3,K3PO4,CMP0338,,,,,,,,,,,,,THF/H2O (4:1),CMP0602,100,12
-C77与C74一致，只保留C74,suzuki,C74,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘657408-07-6,0.1,SPhos,CMP0199,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
+C77 identical to C74; only C74 kept,suzuki,C74,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘657408-07-6,0.1,SPhos,CMP0199,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
 ,suzuki,C75,‘887919-35-9,0.05,Pd(AmPhos)Cl2,CMP0067,,,,,‘127-08-2,3,KOAc,CMP0354,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
 ,suzuki,C76,‘887919-35-9,0.05,Pd(AmPhos)Cl2,CMP0067,,,,,‘13400-13-0,3,CsF,CMP0353,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
-C77与C74一致，只保留C74,suzuki,C77,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘657408-07-6,0.1,SPhos,CMP0199,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
+C77 identical to C74; only C74 kept,suzuki,C77,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘657408-07-6,0.1,SPhos,CMP0199,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
 ,suzuki,C78,‘3375-31-3,0.05,Pd(OAc)2,CMP0073,‘603-35-0,0.175,PPh3,CMP0200,‘584-08-7,3,K2CO3,CMP0334,,,,,,,,,,,,,MeCN/H2O (3:1),CMP0596,100,12
 ,suzuki,C79,‘60748-47-2,0.05,Pd2(dba)3,CMP0080,,,,,‘7789-23-3,3,KF,CMP0351,,,,,,,,,,,,,DME/H2O (4:1),CMP0585,100,12
 ,suzuki,C80,‘95408-45-0,0.05,PdCl2(dtbpf),CMP0092,,,,,‘7778-53-2,3,K3PO4,CMP0338,,,,,,,,,,,,,DME/H2O (4:1),CMP0585,100,12

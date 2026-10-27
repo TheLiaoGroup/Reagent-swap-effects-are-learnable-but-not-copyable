@@ -1,6 +1,0 @@
-label,value,unit,source,selector,observation_id,reactant1_smiles,reactant2_smiles,recipe,provenance_source_file,source_filter
-marginal,160.01795812237697,MSE pp2,scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv,level=headline; model=marginal,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 3a; source and selector columns retain original provenance
-direct_raw,227.80196025388997,MSE pp2,scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv,level=headline; model=direct_raw,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 3a; source and selector columns retain original provenance
-offset_raw,225.11289109225044,MSE pp2,scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv,level=headline; model=offset_raw,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 3a; source and selector columns retain original provenance
-semantic_full_raw,138.07314987494868,MSE pp2,scripts/reference_learning/Analysis/Nature_Manuscript/source_data/Matched_copy_comparison.csv,level=headline; model=semantic_full_raw,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 3a; source and selector columns retain original provenance
-

@@ -28,4 +28,3 @@ Sign conflicts,all raw tables; observed sparse support,conflicting,148.0,typed c
 Structure gain from the pair's own mean response,full structure panel,min,91.11666443779283,%,,,scripts/response_learning/Response_Information_Decomposition_E63/results/e63_paired_component_summary.csv,comparison=centroid_minus_codebook_continuous; min(100*offset_difference_pp2/mse_difference_pp2)
 Structure gain from the pair's own mean response,full structure panel,max,96.55817402161851,%,,,scripts/response_learning/Response_Information_Decomposition_E63/results/e63_paired_component_summary.csv,comparison=centroid_minus_codebook_continuous; max(100*offset_difference_pp2/mse_difference_pp2)
 Shared-scope conflicts,full enumerated support,all views,542.0,conflict views,,,scripts/recipe_options/Analysis/round29/option_scope_domains/all_collective_conflict_domains.csv,all rows
-

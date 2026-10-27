@@ -1,5 +1,0 @@
-label,value,unit,source,selector,observation_id,reactant1_smiles,reactant2_smiles,recipe,provenance_source_file,source_filter
-target_mean_mse,122.989249595844,MSE pp2,scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv,b24_fixed; cross_family; direction_macro; d; budget=192,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 2c; source and selector columns retain original provenance
-real_mse,140.29774130569,MSE pp2,scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv,b24_fixed; cross_family; direction_macro; d; budget=192,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 2c; source and selector columns retain original provenance
-test_permuted_exact_mse,131.63531623718998,MSE pp2,scripts/reference_learning/Analysis/tables/cross_library_source_channels_headline.csv,b24_fixed; cross_family; direction_macro; d; budget=192,,,,,scripts/m1_storyboard.py,M1 source selection for Figure 2c; source and selector columns retain original provenance
-

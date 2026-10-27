@@ -1,4 +1,0 @@
-compound_id,registry_name,display_name,cas,smiles,inchikey,identity_source,unit,provenance_source_file,source_filter
-CMP0482,pentafluorophenol,Pentafluorophenol,771-61-9,Oc1c(F)c(F)c(F)c(F)c1F,XBNGYFFABRKICK-UHFFFAOYSA-N,https://pubchem.ncbi.nlm.nih.gov/compound/13041,chemical identities,scripts/reference_learning/Analysis/data/raw_compound_table.csv,CAS-linked identities checked2026-10-22; actual substituted reagents CMP0482/CMP0484
-CMP0484,NHPI,N-Hydroxyphthalimide,524-38-9,O=C1c2ccccc2C(=O)N1O,CFMZSMGAMPBRBE-UHFFFAOYSA-N,https://pubchem.ncbi.nlm.nih.gov/compound/10665,chemical identities,scripts/reference_learning/Analysis/data/raw_compound_table.csv,CAS-linked identities checked2026-10-22; actual substituted reagents CMP0482/CMP0484
-

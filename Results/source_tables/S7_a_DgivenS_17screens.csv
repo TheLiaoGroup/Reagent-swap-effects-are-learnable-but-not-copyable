@@ -16,4 +16,3 @@ SNAr|1,SNAr,7.471173825268,0.4793524888285338,6.991821336439,MSE pp2,scripts/ref
 Sonogashira|1,Sonogashira,4.385525092982,-2.303172023788,6.68869711677,MSE pp2,scripts/reference_learning/Analysis/tables/chemical_observation_channels_screen_scores.csv,strict_641; all_panels_complete; pair; fraction=1; context_balanced
 Suzuki|1,Suzuki,23.847982056175,2.533129308165,21.31485274801,MSE pp2,scripts/reference_learning/Analysis/tables/chemical_observation_channels_screen_scores.csv,strict_641; all_panels_complete; pair; fraction=1; context_balanced
 Ullmann|1,Ullmann,7.860966409435,-3.590008942659,11.450975352094002,MSE pp2,scripts/reference_learning/Analysis/tables/chemical_observation_channels_screen_scores.csv,strict_641; all_panels_complete; pair; fraction=1; context_balanced
-

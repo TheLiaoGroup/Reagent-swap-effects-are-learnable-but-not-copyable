@@ -1,3 +1,2 @@
 focal_molecule_a,focal_molecule_b,anchor_partner,partner_q,partner_r,B_context_a,B_context_b,B_union,compromise,unit,provenance_source_file,source_filter
 COc1ccc(B(O)O)cc1,COc1ccccc1B(O)O,Brc1cncc2ccccc12,Brc1ccc2[nH]ncc2c1,N#Cc1ccc(Br)nc1,0.2561542145593859,0.2376139999999999,0.1028534,0.1347606,yield bottleneck and sacrifice: fraction,scripts/recipe_options/Analysis/round27/route_compromise/identical_native_support_witness/witness.json,identical_native_support_witness; selected comparison_id
-

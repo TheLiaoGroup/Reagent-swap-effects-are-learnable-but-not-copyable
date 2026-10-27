@@ -368,7 +368,7 @@ cleanup,excluded fraction of source corpus percent,0.09635435042325352,0.1,True,
 cleanup,retained acylation measurement IDs,114733.0,114733,True,out\zhang_2025_overlap.json,retained_measurement_ids
 cleanup,published Zhang measurement IDs,47015.0,47015,True,out\zhang_2025_overlap.json,published_measurement_ids
 cleanup,published Zhang overlapping measurement IDs,45546.0,45546,True,out\zhang_2025_overlap.json,overlapping_measurement_ids
-corpus,20 reaction tables in 01_原始数据,410587.0,410587,True,,
+corpus,20 reaction tables in 01_raw_data,410587.0,410587,True,,
 corpus,records with a finite yield,381688.0,381688,True,,
 corpus,"strictly eligible records (recipe matched, yield in [0,1])",380910.0,380910,True,,
 corpus,"eligible for exact matching (complete, consistent recipe)",381686.0,381686,True,,
@@ -377,7 +377,7 @@ corpus,complete response vectors for the structure model,25956.0,25956,True,,
 corpus,local-update queries (common8),24221.0,24221,True,,
 corpus,analysis-partition wells in 19 qualified screens (Finkelstein excluded),196491.0,196491,True,,
 corpus,substrate-pair rows in those screens,2454.0,2454,True,,
-corpus,20 reaction tables in 01_原始数据 classes or screens,20.0,20,True,,
+corpus,20 reaction tables in 01_raw_data classes or screens,20.0,20,True,,
 corpus,"canonical yield-difference records over 2,135 exact swaps classes or screens",20.0,20,True,,
 corpus,complete response vectors for the structure model classes or screens,14.0,14,True,,
 corpus,local-update queries (common8) classes or screens,14.0,14,True,,
@@ -1101,4 +1101,3 @@ final,Extended Data 1 suzuki-bpin substrate pairs,134.0,134,True,scripts\respons
 final,Extended Data 1 ullmann exact substitutions,89.0,89,True,scripts\response_learning\Full_Edge_Corpus_E59\results\full_edge_corpus_class_support_20.csv,non-Finkelstein; array=ullmann
 final,Extended Data 1 ullmann substrate pairs,259.0,259,True,scripts\response_learning\Full_Edge_Corpus_E59\results\full_edge_response_corpus.parquet,unique substrate_pair_key within reaction_type=ullmann
 corpus,coupling-transformation count,17.0,17,True,scripts/response_learning/Existing_Data_Mining_2026-10-16/processed/observations.parquet,non-Finkelstein arrays; BH(CMC)=BH; Suzuki Bpin=Suzuki; Ullmann and C-O competition separate
-

@@ -1,4 +1,0 @@
-model,threshold_pp,aggregation,accuracy,n_targets,n_correct,n_zero_predictions,n_edges,n_contexts,n_screens,n_families,wrong_per_100,n_wrong,unit,provenance_source_file,source_filter
-direct_raw,20.0,pooled,0.813747329181252,21997,17900,486,615,195,16,14,18.625267081874796,4097,errors per100 and target counts,out/direction_metrics/direction_accuracy_summary.csv,Pooled unique repeat0 targets with measured absolute change at least20pp; zero predictions count as errors
-semantic_full_raw,20.0,pooled,0.864436059462654,21997,19015,0,615,195,16,14,13.5563940537346,2982,errors per100 and target counts,out/direction_metrics/direction_accuracy_summary.csv,Pooled unique repeat0 targets with measured absolute change at least20pp; zero predictions count as errors
-

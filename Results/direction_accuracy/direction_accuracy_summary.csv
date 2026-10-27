@@ -23,4 +23,3 @@ threshold_pp,model,aggregation,accuracy,n_targets,n_correct,n_zero_predictions,n
 30.0,offset_raw,context_screen_family_macro,0.7043771399138483,15116,13097,0,573,174,16,14
 30.0,semantic_full_raw,pooled,0.892233395078063,15116,13487,0,573,174,16,14
 30.0,semantic_full_raw,context_screen_family_macro,0.7418151274559726,15116,13487,0,573,174,16,14
-

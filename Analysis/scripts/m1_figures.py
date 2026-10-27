@@ -58,7 +58,7 @@ def add_table(name, data, source, selector, unit, note=''):
             path = Path(value).resolve()
             if not Path(value).is_absolute() or not path.is_relative_to(derived) or path.parent != derived or (not reader_tables.is_source(path)) or (not reader_tables.source_is_file(path)) or ('source_file' in data and data.loc[data.source_absolute_path.eq(value), 'source_file'].ne(path.name).any()):
                 raise ValueError(f'Source pointer outside the generated raw corpus: {value}')
-            pointers.append((Path('data/raw_zero_rule/01_原始数据') / path.relative_to(derived)).as_posix())
+            pointers.append((Path('data/raw_zero_rule/01_raw_data') / path.relative_to(derived)).as_posix())
         data = data.rename(columns={'source_absolute_path': 'source_analysis_relative_path'})
         data['source_analysis_relative_path'] = pointers
     if 'unit' not in data:

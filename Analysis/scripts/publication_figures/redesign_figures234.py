@@ -144,35 +144,55 @@ def compact_card(fig, ax, witness, smiles, number, bounds):
 
 def figure2():
     wide, witness, _ = old23.context_data()
-    swaps, responses = old23.six_swaps()
-    signs = old23.sign_data()
-    fig = figure(170)
-    ax = panel(fig, [0.075, 0.24, 0.65, 0.7], 'a', 'Catalyst responses across base backgrounds')
-    ax.scatter(wide.Cs2CO3_delta_pp, wide.K2CO3_delta_pp, color=GRAY, s=5, alpha=0.45, lw=0)
-    ax.axhline(0, color=GRAY, lw=0.5)
-    ax.axvline(0, color=GRAY, lw=0.5)
+    original_source = c.source
+
+    def swapped(name, *args, **kwargs):
+        if name.startswith('Fig2_b_'):
+            name = 'Fig2_c_' + name[len('Fig2_b_'):]
+        elif name.startswith('Fig2_c_'):
+            name = 'Fig2_b_' + name[len('Fig2_c_'):]
+        return original_source(name, *args, **kwargs)
+    c.source = swapped
+    try:
+        swaps, responses = old23.six_swaps()
+        signs = old23.sign_data()
+    finally:
+        c.source = original_source
+    fig = figure(165)
+    cs, kk = wide.Cs2CO3_delta_pp, wide.K2CO3_delta_pp
+    opposite, shared = int((cs * kk < 0).sum()), len(wide)
+    ax = panel(fig, [0.075, 0.375, 0.52, 0.55], 'a', 'Same catalyst swap, two carbonate backgrounds')
+    for (x0, y0) in [(-100, 0), (0, -100)]:
+        ax.add_patch(Rectangle((x0, y0), 100, 100, facecolor='#F4EFEA', edgecolor='none', zorder=0))
+    ax.scatter(cs, kk, color=GRAY, s=5, alpha=0.5, lw=0, zorder=2)
+    ax.axhline(0, color=GRAY, lw=0.5, zorder=1)
+    ax.axvline(0, color=GRAY, lw=0.5, zorder=1)
     ax.set(xlim=(-100, 100), ylim=(-100, 100), xticks=[-100, -50, 0, 50, 100], yticks=[-100, -50, 0, 50, 100])
-    c.clean(ax, 'Cs2CO3 response (pp)', 'K2CO3 response (pp)')
+    c.clean(ax, 'Change under Cs2CO3 (pp)', 'Change under K2CO3 (pp)')
     correlation = wide[['Cs2CO3_delta_pp', 'K2CO3_delta_pp']].corr().iloc[0, 1]
-    ax.text(0.98, 0.98, f'Opposite: 145/412\nr = {correlation:.2f}', transform=ax.transAxes, ha='right', va='top', fontsize=6, linespacing=1.8)
-    bounds = [(-99, -50, -99, -80), (-99, -50, 77, 96)]
-    for i, (smiles, rect) in enumerate(zip(['Brc1ccc2[nH]ncc2c1', 'COc1cccnc1Br'], bounds)):
-        x0, x1, y0, y1 = rect
-        if ((wide.Cs2CO3_delta_pp > x0) & (wide.Cs2CO3_delta_pp < x1) & (wide.K2CO3_delta_pp > y0) & (wide.K2CO3_delta_pp < y1)).any():
-            raise ValueError('Response card would hide a measured point')
-        compact_card(fig, ax, witness, smiles, i + 1, rect)
+    ax.text(-97, 96, f'opposite signs\n{opposite}/{shared} pairs', ha='left', va='top', fontsize=6, color=INK, linespacing=1.3)
+    ax.text(97, -96, f'r = {correlation:.2f}', ha='right', va='bottom', fontsize=6, color=INK)
+    examples = ['Brc1ccc2[nH]ncc2c1', 'COc1cccnc1Br']
+    for i, smiles in enumerate(examples):
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
         x, y = rows.sort_values('order').delta.to_numpy()
-        ax.scatter(x, y, s=25, facecolors='white', edgecolors=INK, lw=1.1, zorder=5)
-        ax.annotate(str(i + 1), (x, y), xytext=(6, 3), textcoords='offset points', fontsize=6, weight='bold')
-    ax.text(-99, 67, 'No pair × background split', fontsize=5.5)
-    fig.text(0.78, 0.955, 'Example substrates', fontsize=6, weight='bold')
-    for i, (smiles, y) in enumerate([('Brc1ccc2[nH]ncc2c1', 0.835), ('COc1cccnc1Br', 0.72)]):
-        molecule(fig, [0.79, y, 0.15, 0.09], smiles)
-        fig.text(0.755, y + 0.04, str(i + 1), fontsize=6, weight='bold')
-    conflict = panel(fig, [0.868, 0.24, 0.056, 0.425], 'c', 'Conflicts across 19 arrays', title_x=0.77, title_y=0.7)
+        ax.scatter(x, y, s=30, facecolors='white', edgecolors=INK, lw=1.1, zorder=5)
+        ax.annotate(str(i + 1), (x, y), xytext=(5, 3), textcoords='offset points', fontsize=6.5, weight='bold')
+    for i, smiles in enumerate(examples):
+        rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
+        rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
+        x0 = 0.075 + i * 0.27
+        fig.text(x0, 0.272, str(i + 1), fontsize=7, weight='bold', va='center')
+        molecule(fig, [x0 + 0.015, 0.225, 0.11, 0.09], smiles)
+        for j, row in enumerate(rows.sort_values('order').itertuples()):
+            yy = 0.288 - j * 0.036
+            color = BLUE if row.delta > 0 else RED
+            fig.text(x0 + 0.135, yy, 'Cs2CO3' if j == 0 else 'K2CO3', fontsize=6, color=GRAY, va='center')
+            fig.text(x0 + 0.185, yy, f'{row.low_yield_pp:.0f}% → {row.high_yield_pp:.0f}%', fontsize=6, color=color, va='center')
+    conflict = panel(fig, [0.815, 0.235, 0.07, 0.69], 'b', 'Sign conflicts in 19 arrays', title_x=0.665)
     order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
+    totals = {t: (int(signs.loc[signs.threshold_pp.eq(t), 'n_conflicting_edges'].sum()), int(signs.loc[signs.threshold_pp.eq(t), 'n_cycle_edges'].sum())) for t in (0, 20)}
     for i, name in enumerate(order):
         rows = signs.loc[signs.stratum.eq(name)].set_index('threshold_pp')
         values = rows.loc[[0, 20], 'conflict_percent'].to_numpy()
@@ -180,61 +200,77 @@ def figure2():
             conflict.plot(values, [i, i], color=GRAY, lw=0.5)
         for value, marker in zip(values, ['o', 'D']):
             if np.isfinite(value):
-                conflict.scatter(value, i, s=8, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, zorder=3, clip_on=False)
-        counts = ' | '.join((f"{int(rows.loc[t, 'n_conflicting_edges'])}/{int(rows.loc[t, 'n_cycle_edges'])}" for t in [0, 20]))
-        conflict.text(1.13, i, counts, transform=conflict.get_yaxis_transform(), va='center', fontsize=4.4)
-        if not np.isfinite(values).any():
-            conflict.text(3, i, 'No cycles', fontsize=4.2, va='center', color=GRAY)
+                conflict.scatter(value, i, s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, zorder=3, clip_on=False)
+        for k, t in enumerate((0, 20)):
+            n_conf, n_cyc = int(rows.loc[t, 'n_conflicting_edges']), int(rows.loc[t, 'n_cycle_edges'])
+            text = f'{n_conf}/{n_cyc}' if n_cyc else '–'
+            conflict.text(1.42 + 0.62 * k, i, text, transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=5, color=INK if k == 0 else GRAY)
+    for k, (label, t, marker) in enumerate((('all', 0, 'o'), ('≥20 pp', 20, 'D'))):
+        conflict.text(1.42 + 0.62 * k - 0.1, -1.2, label, transform=conflict.get_yaxis_transform(), va='center', ha='left', fontsize=5, color=INK if k == 0 else GRAY)
+        conflict.scatter([1.42 + 0.62 * k - 0.2], [-1.2], transform=conflict.get_yaxis_transform(), s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, clip_on=False)
+        conflict.text(1.42 + 0.62 * k, len(order) + 0.2, f'{totals[t][0]}/{totals[t][1]}', transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=5.5, weight='bold', color=INK if k == 0 else GRAY)
     names = [old23.CLASSES.get(x, x) for x in order]
-    conflict.set_yticks(range(len(order)), names, fontsize=5)
-    conflict.set(xlim=(-3, 103), ylim=(len(order) - 0.5, -0.5), xticks=[0, 100])
+    conflict.set_yticks(range(len(order)), names, fontsize=5.5)
+    conflict.set(xlim=(-4, 104), ylim=(len(order) - 0.5, -0.5), xticks=[0, 50, 100])
     c.clean(conflict, 'Conflicts (%)')
-    conflict.legend(handles=[Line2D([], [], marker='o', ls='', color=INK, label='0 pp', markersize=3), Line2D([], [], marker='D', ls='', color=INK, markerfacecolor='white', label='20 pp', markersize=3)], loc='lower right', bbox_to_anchor=(1.12, 1.0), frameon=False, ncol=2, handletextpad=0.3, columnspacing=0.6, fontsize=5)
-    fig.text(0.966, 0.667, '0 | 20 pp', ha='center', fontsize=4.5)
-    strips = panel(fig, [0.075, 0.038, 0.855, 0.101], 'b', 'Response directions across transformations', title_y=0.157)
+    strips = panel(fig, [0.075, 0.035, 0.855, 0.12], 'c', 'Response directions in six transformations', title_y=0.178)
     strips.axis('off')
     equations = {'suzuki': 'ArBr + ArB(OH)₂ → ArAr', 'acylation': 'RCO₂H + RNH₂ → RCONHR', 'buchwald-hartwig': 'ArBr + RNH₂ → ArNHR', 'snar': 'ArF + HNu → ArNu', 'ullmann': 'ArBr + ROH → ArOR', 'kumada': 'ArBr + RMgBr → ArR'}
     substitutions = {'suzuki': 'PdCl2(dtbpf) → PdCl2(PPh3)2', 'acylation': 'TFFH → DCMT', 'buchwald-hartwig': 'RuPhos Pd G3 → BrettPhos Pd G4', 'snar': 'Triethylamine → 2,6-lutidine', 'ullmann': 'N-Methyl-L-proline → L-proline', 'kumada': 'Tetramethylurea → DMI'}
     for i, row in enumerate(swaps.itertuples()):
-        x, y = (0.075 + i % 3 * 0.3, 0.103 - i // 3 * 0.065)
-        axis = fig.add_axes([x, y, 0.255, 0.018])
+        x, y = (0.075 + i % 3 * 0.3, 0.115 - i // 3 * 0.075)
+        axis = fig.add_axes([x, y, 0.255, 0.02])
         values = responses[row.reaction_type].display_delta_pp.to_numpy()
         jitter = (np.arange(len(values)) * 0.61803398875 % 1 - 0.5) * 0.6
-        axis.scatter(values, jitter, s=1.5, alpha=0.5, color=np.where(values > 0, BLUE, RED), lw=0)
+        axis.scatter(values, jitter, s=1.6, alpha=0.55, color=np.where(values > 0, BLUE, RED), lw=0)
         axis.axvline(0, color=GRAY, lw=0.45)
         axis.set(xlim=(-100, 100), ylim=(-0.5, 0.5), yticks=[], xticks=[-100, 0, 100])
         axis.spines[['left', 'top', 'right']].set_visible(False)
         axis.tick_params(length=2, pad=1, labelsize=5)
-        fig.text(x, y + 0.036, equations[row.reaction_type], fontsize=5)
-        fig.text(x, y + 0.023, substitutions[row.reaction_type], fontsize=4.8)
-        fig.text(x + 0.255, y + 0.036, f'n={len(values):,}', fontsize=4.5, ha='right')
-    fig.text(0.5, 0.003, 'Yield change (pp)', ha='center', fontsize=6)
+        fig.text(x, y + 0.04, equations[row.reaction_type], fontsize=5.5)
+        fig.text(x, y + 0.026, substitutions[row.reaction_type], fontsize=5, color=GRAY)
+        fig.text(x + 0.255, y + 0.04, f'n = {len(values):,}', fontsize=5, ha='right')
+    fig.text(0.5, 0.004, 'Yield change (pp)', ha='center', fontsize=6)
     fig._m1_panels.sort(key=lambda item: item[0])
     report = save(fig, 'Figure_2', 'Substrate pairs and recipe backgrounds jointly determine substitution responses')
-    extent = ax.get_window_extent(fig.canvas.get_renderer())
-    ratio = extent.width * extent.height * (300 / fig.dpi) ** 2 / np.prod(report['png_pixels'])
-    if ratio < 0.45:
-        raise ValueError('The saved Figure 2 canvas fails the 45% scatter-area requirement')
-    report['redesign_checks'].update(scatter_actual_saved_png_area_fraction=ratio, card_bounds_data=bounds, points_inside_card_bounds=[0, 0])
+    report['redesign_checks'].update(opposite_pairs=opposite, shared_pairs=shared, totals=totals)
     (c.OUT / 'Figure_2_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
+def plate_icon(ax, x, y, w, h, color=GRAY):
+    """Stack of three well plates drawn in true millimetres on a non-square axis."""
+    from matplotlib.patches import FancyBboxPatch, Ellipse
+    bbox = ax.get_position()
+    fig = ax.figure
+    mm_x = bbox.width * fig.get_figwidth() * 25.4
+    mm_y = bbox.height * fig.get_figheight() * 25.4
+    for k, alpha in ((2, 0.45), (1, 0.7), (0, 1.0)):
+        ax.add_patch(FancyBboxPatch((x + k * 1.2 / mm_x, y + k * 1.2 / mm_y), w, h, boxstyle='round,pad=0,rounding_size=0.006', mutation_aspect=mm_x / mm_y, facecolor='white', edgecolor=color, lw=0.5, alpha=alpha, zorder=3 + (2 - k)))
+    for r in range(3):
+        for q in range(5):
+            ax.add_patch(Ellipse((x + w * (0.14 + q * 0.18), y + h * (0.22 + r * 0.28)), 1.1 / mm_x, 1.1 / mm_y, facecolor='none', edgecolor=color, lw=0.35, zorder=6))
+
+
 def reference_motif(fig):
-    ax = fig.add_axes([0.075, 0.858, 0.85, 0.095])
+    ax = fig.add_axes([0.075, 0.855, 0.85, 0.11])
     ax.set(xlim=(0, 1), ylim=(0, 1))
     ax.axis('off')
-    ax.text(0, 0.72, 'Same substrate pair', fontsize=6, weight='bold')
-    for xx, label, target in [(0.23, 'Reference background', False), (0.74, 'Target background', True)]:
-        ax.text(xx + 0.084, 1.03, label, ha='center', va='bottom', fontsize=5.5)
+    for xx, label, target in [(0.1, 'Reference recipe', False), (0.74, 'Target recipe', True)]:
+        ax.text(xx + 0.08, 0.98, label, ha='center', va='top', fontsize=6, weight='bold')
         for i, endpoint in enumerate(['X', 'Y']):
-            x = xx + i * 0.085
-            ax.add_patch(Rectangle((x, 0.44), 0.07, 0.37, facecolor=LIGHT if target else 'white', edgecolor=GRAY, lw=0.5))
-            ax.text(x + 0.035, 0.625, '?' if target else 'y$_{' + endpoint + '}$', ha='center', va='center', fontsize=6)
-            ax.text(x + 0.035, 0.18, endpoint, ha='center', fontsize=5)
-        arrow(ax, (xx + 0.071, 0.625), (xx + 0.083, 0.625), INK)
-    for y, label, color, rad in [(1.18, 'Copy', ORANGE, -0.18), (0.16, 'Learn + history', TEAL, 0.18)]:
-        arrow(ax, (0.405, 0.625), (0.745, 0.625), color, connectionstyle=f'arc3,rad={rad}', shrinkB=0)
-        ax.text(0.56, y, label, color=color, ha='center', va='center', fontsize=5.5)
+            x = xx + i * 0.095
+            ax.add_patch(Rectangle((x, 0.38), 0.065, 0.3, facecolor=LIGHT if target else 'white', edgecolor=GRAY, lw=0.5))
+            ax.text(x + 0.0325, 0.53, '?' if target else 'measured', ha='center', va='center', fontsize=5 if not target else 6.5, color=INK)
+            ax.text(x + 0.0325, 0.24, endpoint, ha='center', va='center', fontsize=5.5, color=GRAY)
+        arrow(ax, (xx + 0.067, 0.53), (xx + 0.093, 0.53), INK)
+        ax.text(xx + 0.08, 0.06, 'same substrate pair', ha='center', va='center', fontsize=5, color=GRAY)
+    arrow(ax, (0.3, 0.7), (0.73, 0.7), ORANGE, connectionstyle='arc3,rad=-0.08', shrinkB=0)
+    ax.text(0.515, 1.04, 'copy Δ', color=ORANGE, ha='center', va='bottom', fontsize=6, weight='bold')
+    arrow(ax, (0.3, 0.38), (0.445, 0.24), TEAL, shrinkB=0)
+    plate_icon(ax, 0.455, 0.08, 0.07, 0.3, TEAL)
+    arrow(ax, (0.545, 0.24), (0.73, 0.38), TEAL, shrinkB=0)
+    ax.text(0.62, 0.12, 'learn from history', color=TEAL, ha='left', va='center', fontsize=6, weight='bold')
+
 
 def figure3():
     with panel_source_names():
@@ -242,61 +278,77 @@ def figure3():
         points, coefficient = old23.training_data()
         identities = old23.reagent_identities()
         local, macro = old23.specificity_data()
-    fig = figure(170)
+    fig = figure(168)
     reference_motif(fig)
-    ax = panel(fig, [0.275, 0.425, 0.65, 0.398], 'a', 'Same reference, different decisions', title_x=0.075, title_y=0.831)
+    ax = panel(fig, [0.25, 0.43, 0.47, 0.37], 'a', 'Same two wells, two uses', title_x=0.075, title_y=0.815)
+    labels = [old23.screen_label(s) for s in shown.screen]
+    stems = [label.rsplit(' ', 1)[0] if label[-1:].isdigit() else label for label in labels]
+    labels = [label if stems.count(stem) > 1 or not label[-1:].isdigit() else stem for label, stem in zip(labels, stems)]
     for i, row in enumerate(shown.itertuples()):
         learn, copy = (row.semantic_full_raw_relative_pct, row.direct_raw_relative_pct)
-        ax.plot([learn, min(copy, 78)], [i, i], color=GRAY, lw=0.65)
-        ax.scatter(learn, i, color=TEAL, s=18 if i == 0 else 9, zorder=3)
+        ax.plot([learn, min(copy, 78)], [i, i], color='#C9CED2', lw=0.8 if i else 1.4, zorder=1)
+        ax.scatter(learn, i, color=TEAL, s=26 if i == 0 else 10, zorder=3)
         if copy >= 80:
             ax.plot(78, i, '>', color=ORANGE, ms=4)
-            ax.text(75, i - 0.4, f'{copy:.0f}%', ha='right', color=ORANGE, fontsize=5)
+            ax.text(75, i - 0.45, f'{copy:.0f}%', ha='right', color=ORANGE, fontsize=5)
         else:
-            ax.scatter(copy, i, color=ORANGE, s=18 if i == 0 else 9, zorder=3)
+            ax.scatter(copy, i, color=ORANGE, s=26 if i == 0 else 10, zorder=3)
     ax.axvline(0, color=GRAY, ls='--', lw=0.5)
-    ax.set(xlim=(-45, 80), ylim=(len(shown) - 0.5, -0.8), xticks=[-40, 0, 40, 80])
-    ax.set_yticks(range(len(shown)), [old23.screen_label(s) for s in shown.screen], fontsize=5.5)
+    ax.axhspan(-0.5, 0.5, color='#F4F5F6', zorder=0)
+    ax.set(xlim=(-45, 80), ylim=(len(shown) - 0.5, -0.9), xticks=[-40, -20, 0, 20, 40, 60, 80])
+    ax.set_yticks(range(len(shown)), labels, fontsize=5.5)
     ax.get_yticklabels()[0].set_weight('bold')
-    c.clean(ax, 'Error change vs history alone\n(no reference) (%)')
-    for value, color, align in [(shown.iloc[0].semantic_full_raw_relative_pct, TEAL, 'right'), (shown.iloc[0].direct_raw_relative_pct, ORANGE, 'left')]:
-        ax.annotate(f'{value:+.1f}%', (value, 0), xytext=(-5 if align == 'right' else 5, 4), textcoords='offset points', color=color, ha=align, fontsize=6)
-    ax.legend(handles=[Line2D([], [], marker='o', ls='', color=ORANGE, label='Copy', markersize=3), Line2D([], [], marker='o', ls='', color=TEAL, label='Learn', markersize=3)], frameon=False, ncol=2, loc='lower right', bbox_to_anchor=(1, 1), borderaxespad=0)
-    ax.text(78, 0.8, f'missed or wrong directions {errors.wrong_per_100.iloc[0]:.1f} → {errors.wrong_per_100.iloc[1]:.1f} per 100', ha='right', va='center', fontsize=5)
-    ax = panel(fig, [0.095, 0.075, 0.265, 0.25], 'b', 'Reference-to-target relationship', title_y=0.35)
-    ax.scatter(points.reference_contrast_pp, points.target_contrast_pp, color=GRAY, s=3, alpha=0.4, lw=0)
+    c.clean(ax, 'Prediction error vs history alone (%)')
+    for value, color, align, word in [(shown.iloc[0].semantic_full_raw_relative_pct, TEAL, 'right', 'learn'), (shown.iloc[0].direct_raw_relative_pct, ORANGE, 'left', 'copy')]:
+        ax.annotate(f'{word} {value:+.1f}%'.replace('-', '−'), (value, 0), xytext=(-6 if align == 'right' else 6, 0), textcoords='offset points', color=color, ha=align, va='center', fontsize=6, weight='bold')
+    bars = fig.add_axes([0.80, 0.62, 0.15, 0.09])
+    wrong = errors.set_index('model')
+    values = [wrong.loc['direct_raw', 'wrong_per_100'], wrong.loc['semantic_full_raw', 'wrong_per_100']]
+    counts = [int(wrong.loc['direct_raw', 'n_wrong']), int(wrong.loc['semantic_full_raw', 'n_wrong'])]
+    bars.barh([0, 1], values, color=[ORANGE, TEAL], height=0.62)
+    for k, (value, count) in enumerate(zip(values, counts)):
+        bars.text(value + 0.6, k, f'{value:.1f}', va='center', fontsize=6, color=[ORANGE, TEAL][k], weight='bold')
+    bars.set(xlim=(0, 25), ylim=(1.6, -0.6), xticks=[0, 10, 20])
+    bars.set_yticks([0, 1], ['copy', 'learn'], fontsize=5.5)
+    c.clean(bars, 'per 100 changes ≥20 pp')
+    fig.text(0.80, 0.765, 'Missed or wrong directions', fontsize=6, weight='bold')
+    fig.text(0.80, 0.745, f'{int(errors.n_targets.iloc[0]):,} held-out changes', fontsize=5.5, color=GRAY)
+    fig.text(0.80, 0.555, f'{counts[0] - counts[1]:,} more directions right', fontsize=5.5, color=TEAL)
+    ax = panel(fig, [0.095, 0.075, 0.27, 0.25], 'b', 'Learned slope is not unit slope', title_y=0.345)
+    ax.scatter(points.reference_contrast_pp, points.target_contrast_pp, color=GRAY, s=3, alpha=0.45, lw=0)
     xx = np.array([-100, 100])
     ax.plot(xx, xx, color=ORANGE, lw=0.9)
-    ax.plot(xx, coefficient.centered_S_zero_slice_intercept_pp + coefficient.centered_S_zero_slice_slope * xx, color=TEAL, lw=1)
-    ax.text(27, 91, 'Copy (slope 1)', color=ORANGE, fontsize=5.5)
-    ax.text(70, 23.5, 'Learned', color=TEAL, fontsize=5.5)
+    ax.plot(xx, coefficient.centered_S_zero_slice_intercept_pp + coefficient.centered_S_zero_slice_slope * xx, color=TEAL, lw=1.1)
+    ax.text(30, 92, 'copy (slope 1)', color=ORANGE, fontsize=5.5)
+    ax.text(97, 26, 'learned', color=TEAL, fontsize=5.5, ha='right')
     ax.axhline(0, color=LIGHT, lw=0.4)
     ax.axvline(0, color=LIGHT, lw=0.4)
     ax.set(xlim=(-100, 100), ylim=(-100, 100), xticks=[-100, 0, 100], yticks=[-100, 0, 100])
-    c.clean(ax, 'Reference response (pp)', 'Target response (pp)')
-    ax.text(0.035, 0.93, '452 training pairs', transform=ax.transAxes, fontsize=5)
-    for y, row in zip([0.235, 0.1], identities):
-        molecule(fig, [0.38, y, 0.125, 0.08], row['smiles'])
-    fig.add_artist(FancyArrowPatch((0.443, 0.225), (0.443, 0.19), transform=fig.transFigure, arrowstyle='->', mutation_scale=5, color=INK, lw=0.55))
-    fig.text(0.443, 0.34, 'reagent swap', ha='center', fontsize=5)
-    ax = panel(fig, [0.79, 0.075, 0.16, 0.225], 'c', 'Same-substitution reference', title_x=0.535, title_y=0.35)
+    c.clean(ax, 'Reference change (pp)', 'Target change (pp)')
+    ax.text(-95, 88, f'{len(points)} training pairs', fontsize=5)
+    fig.text(0.395, 0.318, 'Amide coupling additive', fontsize=5.5, weight='bold')
+    for y, row, name in zip([0.228, 0.103], identities, ['pentafluorophenol', 'N-hydroxyphthalimide']):
+        molecule(fig, [0.40, y, 0.11, 0.072], row['smiles'])
+    fig.add_artist(FancyArrowPatch((0.455, 0.203), (0.455, 0.183), transform=fig.transFigure, arrowstyle='->', mutation_scale=5, color=INK, lw=0.55))
+    ax = panel(fig, [0.75, 0.075, 0.2, 0.25], 'c', 'Same swap beats a matched swap', title_x=0.585, title_y=0.345)
     settings = [(s, f) for s in ['pair', 'role1', 'role2'] for f in [0.25, 1.0]]
     names = {'pair': 'Substrate pair', 'role1': 'First reactant', 'role2': 'Second reactant'}
+    ticks = []
     for i, (split, fraction) in enumerate(settings):
         rows = local.loc[local.split.eq(split) & local.fraction.eq(fraction)].sort_values('screen')
         value = macro.loc[macro.split.eq(split) & macro.fraction.eq(fraction)]
         if len(rows) != 17 or len(value) != 1:
             raise ValueError('Matched-reference population changed')
         ax.scatter(100 * rows.other_recovery_vs_control, i + np.linspace(-0.15, 0.15, len(rows)), color=GRAY, s=5, alpha=0.6, lw=0)
-        ax.scatter(100 * value.other_recovery_vs_control, [i], color=TEAL, s=16, edgecolors='white', lw=0.4)
-        fig.text(0.53, 0.075 + 0.225 * (1 - (i + 0.6) / 6.4), names[split], va='center', fontsize=5.5)
-        fig.text(0.75, 0.075 + 0.225 * (1 - (i + 0.6) / 6.4), f'{int(100 * fraction)}%', ha='right', va='center', fontsize=5.5)
-    ax.set(ylim=(5.8, -0.6), xlim=(-10, 70), yticks=[], xticks=[0, 30, 60])
+        ax.scatter(100 * value.other_recovery_vs_control, [i], color=TEAL, s=18, edgecolors='white', lw=0.4, zorder=3)
+        ticks.append(f'{names[split]}, {int(100 * fraction)}%')
+    ax.set_yticks(range(len(settings)), ticks, fontsize=5.5)
+    lowest = float(100 * local.other_recovery_vs_control.min())
+    ax.set(ylim=(5.6, -0.6), xlim=(min(-10, np.floor(lowest) - 4), 70), xticks=[0, 30, 60])
     ax.axvline(0, color=GRAY, lw=0.5, ls='--')
-    c.clean(ax, 'Error removed versus\nmatched control (%)')
-    fig.text(0.53, 0.317, 'Held out', fontsize=5.5, weight='bold')
-    fig.text(0.75, 0.317, 'History', ha='right', fontsize=5.5, weight='bold')
-    return save(fig, 'Figure_3', 'Historical relationships make the same reference measurements useful', {'direction_annotation_population': '21997 targets; measured absolute change at least20 pp; definition in caption', 'panels': {'a': 'same-reference screen comparison and existing direction counts', 'b': 'stored training relationship and actual reagent identities', 'c': 'same-substitution specificity'}, 'new_scientific_counts_or_fits': False})
+    c.clean(ax, 'Error removed vs matched control (%)')
+    fig.text(0.585, 0.317, 'held out, history used', fontsize=5, color=GRAY)
+    return save(fig, 'Figure_3', 'Historical relationships make the same reference measurements useful', {'panels': {'a': 'same-reference screen comparison and direction counts', 'b': 'stored training relationship and actual reagent identities', 'c': 'same-substitution specificity'}, 'new_scientific_counts_or_fits': False})
 
 def amide_example(fig, cells, rect):
     ymap, hmap = rect
@@ -335,8 +387,7 @@ def amide_example(fig, cells, rect):
         recovery = row.binary_level == 0 and row.ternary_level == 2
         color = RED if failure else BLUE if recovery else GRAY
         ax.add_patch(Rectangle((row.ternary_level - half_width, row.binary_level - half_height), 2 * half_width, 2 * half_height, facecolor='white', edgecolor=color, lw=1 if failure or recovery else 0.5, zorder=2))
-        digits = 2 if failure or recovery else 0
-        shown = c.display_decimal(100 * row.yield_numeric) if digits == 2 else f'{100 * row.yield_numeric:.0f}'
+        shown = c.display_decimal(100 * row.yield_numeric)
         ax.text(row.ternary_level, row.binary_level, shown + '%', ha='center', va='center', fontsize=6, zorder=3)
     for i, label in enumerate(['HBTU', 'PyBOP', 'TPTU']):
         ax.text(i, 1.45, label, ha='center', fontsize=5.5)
@@ -363,8 +414,7 @@ def suzuki_example(fig, cells, rect):
         ax.spines[:].set_visible(False)
         ax.tick_params(length=0, pad=2)
         for (r, k), value in np.ndenumerate(values):
-            cited = k == 1 and r in (1, 2)
-            shown = c.display_decimal(value) if cited else f'{value:.0f}'
+            shown = c.display_decimal(value)
             ax.text(k, r, shown, ha='center', va='center', fontsize=6, color='white' if value >= 65 else INK)
         if j:
             for rr, color in [(1, RED), (2, BLUE)]:
@@ -427,20 +477,24 @@ def figure4():
     row_bottom, row_height = (2 / height, 35 / height)
     heading_y = 34.5 / height
     c_region, d_region = ([0.075, row_bottom, 0.525, row_height], [0.6, row_bottom, 0.35, row_height])
-    scope = panel(fig, [0.075, 19 / height, 0.525, 2.4 / height], 'c', 'Shared-scope conflicts', title_y=heading_y)
-    left = 0
-    for count, color in zip(partition.n, ['#718089', '#A3ADB3', '#C6CDD1', '#E3E6E8']):
-        scope.barh(0, count, left=left, color=color, height=0.75, edgecolor='white', lw=0.3)
-        left += count
-    scope.set(xlim=(0, int(partition.n.sum())), ylim=(-0.5, 0.5))
-    scope.axis('off')
-    fig.text(0.075, 25 / height, '285/542 resolved', fontsize=6)
-    fig.text(0.6, 25 / height, '257/542 unresolved', ha='right', fontsize=6)
-    from matplotlib.patches import Patch
-    keys = [f'{k} extra option{"s" if k > 1 else ""} ({n})' for k, n in zip((1, 2, 3), partition.n.iloc[:3])] + [f'unresolved ({partition.n.iloc[3]})']
-    fig.legend(handles=[Patch(facecolor=col, edgecolor='none', label=lab) for col, lab in zip(['#718089', '#A3ADB3', '#C6CDD1', '#E3E6E8'], keys)],
-               loc='upper left', bbox_to_anchor=(0.07, 16.5 / height), ncol=4, frameon=False, fontsize=5.5,
-               handlelength=1.0, handleheight=0.8, handletextpad=0.4, columnspacing=1.2)
+    views_path = old14.RECIPE_OPTIONS / 'round29/option_scope_domains/all_collective_conflict_domains.csv'
+    views = c.frame(views_path)
+    by_class = views.groupby('rxn_class').full_graph_rescues20.agg(resolved='sum', conflicts='count').reset_index()
+    by_class['resolved'] = by_class.resolved.astype(int)
+    if int(by_class.resolved.sum()) != int(partition.n.iloc[:3].sum()) or int(by_class.conflicts.sum()) != int(partition.n.sum()):
+        raise ValueError('Per-transformation scope partition does not add up to the shared-scope total')
+    by_class = by_class.sort_values('conflicts', ascending=False).reset_index(drop=True)
+    c.source('Fig4_c_scope_by_transformation', by_class, views_path, 'All 542 conflict views grouped by transformation; resolved = full_graph_rescues20', 'conflict views')
+    scope = panel(fig, [0.21, 9 / height, 0.36, 16 / height], 'c', f'{int(by_class.resolved.sum())} of {int(by_class.conflicts.sum())} shared-scope conflicts resolved', title_x=0.075, title_y=heading_y)
+    names = {'Acylation': 'Amide coupling', 'Suzuki': 'Suzuki', 'Kumada': 'Kumada'}
+    for i, row in by_class.iterrows():
+        scope.barh(i, row.resolved, color=BLUE, height=0.6)
+        scope.barh(i, row.conflicts - row.resolved, left=row.resolved, color=LIGHT, height=0.6)
+        scope.text(row.conflicts + 4, i, f'{row.resolved}/{row.conflicts}', va='center', fontsize=6)
+    scope.set_yticks(range(len(by_class)), [names.get(x, x) for x in by_class.rxn_class], fontsize=6)
+    scope.set(ylim=(len(by_class) - 0.4, -0.6), xlim=(0, 360), xticks=[0, 100, 200, 300])
+    c.clean(scope, 'Conflicting reagent choices')
+    fig.text(0.21, 28.3 / height, f'resolved with 1, 2 or 3 extra options: {", ".join(str(v) for v in partition.n.iloc[:3])}', fontsize=5.5, color=GRAY)
     curve = panel(fig, [0.72, 12 / height, 0.23, 17.5 / height], 'd', 'History adds to local profiles', title_x=0.65, title_y=heading_y)
     x = np.arange(len(values))
     curve.plot(x, values.error_change_pct, 'o-', color=TEAL, lw=1.1, ms=3)

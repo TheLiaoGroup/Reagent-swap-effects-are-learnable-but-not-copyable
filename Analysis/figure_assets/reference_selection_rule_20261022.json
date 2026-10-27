@@ -234,7 +234,7 @@
         ],
         "sources": [
           {
-            "path": "Analysis\\data\\raw_zero_rule\\01_\u539f\u59cb\u6570\u636e\\Suzuki_260806.xlsx",
+            "path": "Analysis\\data\\raw_zero_rule\\01_raw_data\\Suzuki_260806.xlsx",
             "sha256": "3842850c7be0e7c55e097dca0b45c52ea09d2fdeb82dc358aea1e189ce883b10"
           },
           {

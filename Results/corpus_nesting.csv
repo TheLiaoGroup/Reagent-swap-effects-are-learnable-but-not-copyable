@@ -1,5 +1,5 @@
 analysis,support,n_records,n_classes_or_screens
-corpus,20 reaction tables in 01_原始数据,410587,20.0
+corpus,20 reaction tables in 01_raw_data,410587,20.0
 corpus,records with a finite yield,381688,
 RECIPE_OPTIONS,"strictly eligible records (recipe matched, yield in [0,1])",380910,
 RESPONSE_LEARNING,"eligible for exact matching (complete, consistent recipe)",381686,
@@ -8,4 +8,3 @@ RESPONSE_LEARNING,complete response vectors for the structure model,25956,14.0
 RESPONSE_LEARNING,local-update queries (common8),24221,14.0
 REFERENCE_LEARNING,analysis-partition wells in 19 qualified screens (Finkelstein excluded),196491,19.0
 REFERENCE_LEARNING,substrate-pair rows in those screens,2454,19.0
-

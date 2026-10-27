@@ -97,7 +97,7 @@ def source_pointer(path):
     if path == load_exclusions().source_path.resolve():
         return 'external-input:M1_EXCLUDE_CSV'
     elif original_path.is_absolute() and path.parent == reader_tables.data_dir().resolve() and reader_tables.is_source(path) and reader_tables.source_is_file(path):
-        return (Path('data/raw_zero_rule/01_原始数据') / path.name).as_posix()
+        return (Path('data/raw_zero_rule/01_raw_data') / path.name).as_posix()
     raise ValueError(f'Unregistered external Source Data input: {path}')
 
 def source(name, data, path, selector, unit='', note=''):

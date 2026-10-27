@@ -115,7 +115,7 @@ def solvent_features(name):
 
 def note_flags(note):
     flags = []
-    patterns = {'explicit_duplicate_note': ('重复', '一致', '一样'), 'invalid_or_uncollected_note': ('无效', '作废', '无有效', '无数据', '未收集'), 'historical_change_or_correction_note': ('更换', '改正'), 'amount_difference_note': ('当量不同',), 'uncertain_dispensed_identity_note': ('疑似',), 'standard_control_note': ('标准孔',)}
+    patterns = {'explicit_duplicate_note': ('duplicate', 'identical', 'Replicate'), 'invalid_or_uncollected_note': ('Invalid', 'Void', 'no valid data', 'No data', 'no data collected'), 'historical_change_or_correction_note': ('replaced', 'corrected'), 'amount_difference_note': ('equivalents',), 'uncertain_dispensed_identity_note': ('probably',), 'standard_control_note': ('Standard well',)}
     for label, words in patterns.items():
         if any((word in note for word in words)):
             flags.append(label)

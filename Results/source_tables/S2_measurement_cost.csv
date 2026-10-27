@@ -47,4 +47,3 @@ n_vectors,n_backgrounds,local_wells,n_query_vectors,unit,provenance_source_file,
 16,9,288,208,condition cells,scripts/response_learning/Family_Information_Recovery_E66/results/e66_scope_vectors.parquet,common16; distinct condition cells=2*backgrounds*profiles
 16,13,416,578,condition cells,scripts/response_learning/Family_Information_Recovery_E66/results/e66_scope_vectors.parquet,common16; distinct condition cells=2*backgrounds*profiles
 16,15,480,529,condition cells,scripts/response_learning/Family_Information_Recovery_E66/results/e66_scope_vectors.parquet,common16; distinct condition cells=2*backgrounds*profiles
-

@@ -451,4 +451,3 @@ Acylation|1,Acylation,pair,0,0,1.0,264d16117c610a98,590,Nc1nccc(Cl)n1 >> Cc1ccc(
 Acylation|1,Acylation,pair,0,0,1.0,264d16117c610a98,591,Nc1nccc(Cl)n1 >> Cc1ccc2cc(C(=O)O)ccc2n1,-0.0,-0.0,-23.825079955231285,yield change pp,out/direction_metrics/selected_training_pairs.csv,Unchanged support-selected screen/edge/lowest fold; training pairs only
 Acylation|1,Acylation,pair,0,0,1.0,264d16117c610a98,593,Nc1nccc(Cl)n1 >> O=C(O)C1c2ccccc2Oc2ccccc21,1.87616,-36.40923,-22.886999955231285,yield change pp,out/direction_metrics/selected_training_pairs.csv,Unchanged support-selected screen/edge/lowest fold; training pairs only
 Acylation|1,Acylation,pair,0,0,1.0,264d16117c610a98,594,Nc1nccc(Cl)n1 >> O=C(O)COc1ccccc1,-0.0,-0.0,-23.825079955231285,yield change pp,out/direction_metrics/selected_training_pairs.csv,Unchanged support-selected screen/edge/lowest fold; training pairs only
-

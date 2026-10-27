@@ -443,4 +443,3 @@ positive_source_compromise,b_7af16c60cc01b633ab,15,2,False,b,70,r_f88508cfb323ba
 positive_source_compromise,b_7af16c60cc01b633ab,15,2,False,b,71,r_fbdd9b6e5b955237,0.8960922,yield fields: fraction; other fields identify routes and records,scripts/recipe_options/Analysis/round29/source_compromise/measured_cases_complete_node_yields.csv,case=positive_source_compromise
 positive_source_compromise,b_7af16c60cc01b633ab,15,2,False,b,72,r_fd18c63bc9378efa,0.199071,yield fields: fraction; other fields identify routes and records,scripts/recipe_options/Analysis/round29/source_compromise/measured_cases_complete_node_yields.csv,case=positive_source_compromise
 positive_source_compromise,b_7af16c60cc01b633ab,15,2,False,b,73,r_fe4cbb1dcfd0366e,0.0,yield fields: fraction; other fields identify routes and records,scripts/recipe_options/Analysis/round29/source_compromise/measured_cases_complete_node_yields.csv,case=positive_source_compromise
-

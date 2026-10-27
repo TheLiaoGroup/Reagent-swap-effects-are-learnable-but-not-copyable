@@ -629,7 +629,7 @@
       "original_bytes": 1875008,
       "sheets": [
         {
-          "name": "Kumada_full_processed_\u5220\u6389\u4e86C55+C5",
+          "name": "Kumada_full_processed_C55_C5_removed",
           "original_rows": 18155,
           "rows": 18155,
           "columns": [
@@ -1068,8 +1068,8 @@
     },
     {
       "path": "original/source_01_sheet_00.csv",
-      "sha256": "511c291fe2af6c84fd0b724eb8373b85ef16011f8d9e866d66d0725740766c55",
-      "bytes": 319336
+      "sha256": "c272e71a557281a259e0a5519beff0f3b456e5798af33c3dd5ae35a7652af73d",
+      "bytes": 319723
     },
     {
       "path": "original/source_01_sheet_00.rows.csv",

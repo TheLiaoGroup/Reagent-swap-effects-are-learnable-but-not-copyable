@@ -9,6 +9,8 @@ Source Data's source_analysis_relative_path column retains original logical
 provenance aliases; these identify sources rather than bundled workbooks.
 Resolve each alias's filename through data/tables.json.
 Input/EXCLUDE_wells.csv lists the excluded measurement identifiers.
+Free-text notes in the condition table and one worksheet name were
+translated from Chinese to English; no measured value was changed.
 Analysis/scripts/ contains the three analyses and figure generation code.
 Results/ contains numerical summaries and figure source tables.
 Submission/02_Figures/ChemDraw/ contains chemical drawing assets.

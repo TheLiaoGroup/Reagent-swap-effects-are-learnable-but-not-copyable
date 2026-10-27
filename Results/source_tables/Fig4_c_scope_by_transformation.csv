@@ -1,0 +1,4 @@
+rxn_class,resolved,conflicts,unit,provenance_source_file,source_filter
+Suzuki,163,313,conflict views,scripts/recipe_options/Analysis/round29/option_scope_domains/all_collective_conflict_domains.csv,All 542 conflict views grouped by transformation; resolved = full_graph_rescues20
+Acylation,122,219,conflict views,scripts/recipe_options/Analysis/round29/option_scope_domains/all_collective_conflict_domains.csv,All 542 conflict views grouped by transformation; resolved = full_graph_rescues20
+Kumada,0,10,conflict views,scripts/recipe_options/Analysis/round29/option_scope_domains/all_collective_conflict_domains.csv,All 542 conflict views grouped by transformation; resolved = full_graph_rescues20
