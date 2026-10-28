@@ -860,8 +860,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/templates/FIGURE_TEXT.json": {
-      "sha256": "e0e585f91163abab3223fd5f9afdb6c61aa59d528350d27412aa7209e2679d3c",
-      "bytes": 10921,
+      "sha256": "40fe8deddd8287e65204009efedeec70780173eb5b1b3bc6d92b5f46f6f37159",
+      "bytes": 10880,
       "kind": "release_asset"
     },
     "DATA_LICENSE": {
