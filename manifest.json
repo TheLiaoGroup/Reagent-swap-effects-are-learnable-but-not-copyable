@@ -245,8 +245,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figure1.py": {
-      "sha256": "34d35e489a9227411a9ecfe2868f43b870046d0875dd95f9f2d4d53080b26fd3",
-      "bytes": 26153,
+      "sha256": "8b718c0b6b098260c4d64dd4234f1da17c27a016bed7fae81a05a508162b2858",
+      "bytes": 26143,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
@@ -965,8 +965,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/templates/FIGURE_TEXT.json": {
-      "sha256": "8f986669ee6c49d8724461436d32fba4d757bde59b5e071297607ac227ed2438",
-      "bytes": 10697,
+      "sha256": "b294df31123d0e361b8defd0e6f96f4259eadd3746f7c6e0edb210245cbca797",
+      "bytes": 11129,
       "kind": "release_asset"
     },
     "DATA_LICENSE": {
@@ -2056,7 +2056,7 @@
     },
     "Submission/02_Figures/ChemDraw/chemistry_assets.json": {
       "kind": "release_asset",
-      "sha256": "f324ef074aea6a2d99fa1cad9f97ac68b87c87f27c396b53cb238f1b4f2e6169",
+      "sha256": "02cbb3b09a422323c09e870c8c2e747fc690a282dd45588897b38ce959393636",
       "bytes": 14649
     },
     "data/excluded_wells.csv": {

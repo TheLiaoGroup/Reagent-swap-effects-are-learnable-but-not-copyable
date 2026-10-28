@@ -20,7 +20,7 @@ INKSCAPE = 'http://www.inkscape.org/namespaces/inkscape'
 ET.register_namespace('', SVG)
 ET.register_namespace('xlink', 'http://www.w3.org/1999/xlink')
 ET.register_namespace('inkscape', INKSCAPE)
-W, H, PT = 183, 100, 25.4 / 72
+W, H, PT = 183, 115, 25.4 / 72
 BLUE, RED, ORANGE, TEAL = '#2F6F9F', '#B8434E', '#D9822B', '#0E7C74'
 INK, GRAY = '#25292C', '#7D858B'
 
@@ -41,11 +41,11 @@ class Map:
         group.set(f'{{{INKSCAPE}}}label', name)
         return group
 
-    def text(self, group, x, y, text, size=7, color=INK, anchor='start', bold=False, citation=False):
+    def text(self, group, x, y, text, size=8, color=INK, anchor='start', bold=False, citation=False):
         text = c.numeric_minus(text)
         if len(text.split()) > 6:
             raise ValueError(f'Figure 1 label exceeds six words: {text}')
-        if size < (6 if citation else 7):
+        if size < (6 if citation else 8):
             raise ValueError(f'Figure 1 label too small: {text}')
         runs = []
         for part in re.split('([\u2080-\u2089]+)', text):
@@ -109,7 +109,7 @@ class Map:
 
     def tag(self, group, x, y, label, numbers):
         self.text(group, x, y, label, color=GRAY)
-        width = pymupdf.Font('helv').text_length(label, fontsize=7) * PT
+        width = pymupdf.Font('helv').text_length(label, fontsize=8) * PT
         self.text(group, x + width + 0.5, y - 1.2, ','.join(str(number) for number in numbers), size=6, color=GRAY, citation=True)
 
     def curve(self, group, start, controls, end, color, identity):
@@ -126,12 +126,12 @@ class Map:
 
     def wells(self, group, left, top, target=False):
         for i, label in enumerate(('X', 'Y')):
-            x = left + i * 16
-            node(group, 'rect', x=x, y=top, width=12, height=7, fill='#E9EDEF' if target else 'white',
+            x = left + i * 18
+            node(group, 'rect', x=x, y=top, width=14, height=9, fill='#E9EDEF' if target else 'white',
                  stroke=GRAY, stroke_width=0.2)
-            self.text(group, x + 6, top + 4.7, '?' if target else 'measured', anchor='middle')
-            self.text(group, x + 6, top + 11, label, anchor='middle', color=GRAY)
-        self.line(group, (left + 12.8, top + 3.5), (left + 15.2, top + 3.5), arrow=True)
+            self.text(group, x + 7, top + 5.7, '?' if target else 'measured', anchor='middle')
+            self.text(group, x + 7, top + 14, label, anchor='middle', color=GRAY)
+        self.line(group, (left + 14.8, top + 4.5), (left + 17.2, top + 4.5), arrow=True)
 
     def plate(self, group, left, top):
         for offset in (2.2, 1.1, 0):
@@ -145,7 +145,16 @@ class Map:
 
 
 def references():
-    return {'recommendation': [16, 17], 'general': [22, 23], 'transfer': [19], 'prediction': [20]}
+    path = c.A / 'scripts/templates/FIGURE_TEXT.json'
+    config = json.loads(path.read_text(encoding='utf-8'))['Figure_1']
+    defaults = {'recommendation': [16, 17], 'general': [22, 23], 'transfer': [19], 'prediction': [20]}
+    mapping = config.get('references', defaults)
+    if set(mapping) != set(defaults) or any(
+            not isinstance(values, list) or not values or
+            any(type(value) is not int or value < 1 for value in values)
+            for values in mapping.values()):
+        raise ValueError('Figure 1 requires the final numeric reference map')
+    return mapping
 
 
 def suzuki_training_data():
@@ -304,85 +313,85 @@ def figure1(wireframe=False):
     result = m.layer('layer_results')
     chemistry = m.layer('layer_chemistry')
 
-    # The approved physical grid: A 0–44 mm, B 50–144 mm, C 150–183 mm.
-    for x in (47, 147):
-        m.line(gap, (x, 2), (x, 98), '#D7DADC', 0.3 * PT)
-    for x, letter, label in [(0.5, 'A', 'One swap, opposite responses'),
-                              (50.5, 'B', 'Copying hurts; learning helps')]:
-        m.text(gap, x, 4, letter, size=8, bold=True)
-        m.text(gap, x + 6, 4, label, size=7, bold=True)
-    m.text(gap, 150.5, 4, 'C', size=8, bold=True)
-    m.text(gap, 156, 4, 'Measured alternatives', size=7, bold=True)
-    m.text(gap, 156, 8, 'rescue failures', size=7, bold=True)
+    # A: the field-level dependency is the entrance, not a named reaction.
+    m.text(gap, 0.5, 6, 'A', size=9, bold=True)
+    m.text(gap, 6.5, 6, 'Measured effects guide new reactions', size=9, bold=True)
+    for x, label, cx in [(7, 'Chemists', 16), (62, 'Reaction databases', 81),
+                          (130, 'AI planners', 143)]:
+        m.text(gap, x, 14, label, color=GRAY)
+        m.line(gap, (cx, 16), (cx, 20), GRAY, 0.18)
+    m.line(gap, (16, 20), (143, 20), GRAY, 0.18)
+    m.line(gap, (23, 20), (23, 27), GRAY, 0.18, True)
 
-    # A: a compact genuine Suzuki scheme and two native chemical witnesses.
-    m.text(gap, 1, 13, 'Ar–Br + 4-MeOC₆H₄B(OH)₂')
-    m.line(gap, (4, 19), (20, 19), arrow=True)
-    m.text(gap, 23, 20, 'Ar–Ar′')
-    m.text(gap, 1, 27, 'X: PdCl₂(dtbpf)')
-    m.text(gap, 1, 31, 'Y: PdCl₂(PPh₃)₂')
-    m.text(gap, 1, 36, 'Cs₂CO₃, dioxane/H₂O', color=GRAY)
-    m.text(gap, 1, 40, '100 °C, 12 h', color=GRAY)
-    for smiles, name, cy in [(figures14.QUINOLINE, '6-bromoquinoline', 52),
-                              (figures14.INDAZOLE, '5-bromo-1H-indazole', 77)]:
+    # B: one measured pair is reused in two ways on the same target recipe.
+    m.text(routes, 0.5, 31, 'B', size=9, bold=True)
+    m.text(routes, 6.5, 31, 'Reuse the same wells', size=9, bold=True)
+    m.text(routes, 5, 37, 'Reference recipe', bold=True)
+    m.text(routes, 130, 37, 'Target recipe', bold=True)
+    m.wells(routes, 5, 40)
+    m.wells(routes, 130, 40, target=True)
+    m.line(routes, (37, 44.5), (43, 44.5), INK, 0.25)
+    node(routes, 'circle', cx=43, cy=44.5, r=0.45, fill=INK)
+    m.curve(routes, (43, 44.5), ((67, 26), (109, 26)), (129, 44.5), ORANGE, 'copy-route')
+    m.text(routes, 85, 28, 'Copy the difference', size=9, color=ORANGE,
+           anchor='middle', bold=True)
+    m.text(routes, 146, 58, 'same substrate pair', anchor='middle', color=GRAY)
+    m.text(result, 146, 64, 'vs history alone (Fig. 3A)', anchor='middle', color=GRAY)
+    m.text(result, 130, 70, f'Copy +{c.display_decimal(copy_pct, 0)}% error',
+           size=9, color=ORANGE, bold=True)
+    m.text(result, 130, 77, f'Learn {c.display_decimal(learn_pct, 0)}% error',
+           size=9, color=TEAL, bold=True)
+
+    # The learning branch is visibly supplied by other measured pairs.
+    m.line(routes, (43, 44.5), (43, 59), TEAL, 0.28)
+    m.line(routes, (43, 59), (75, 59), TEAL, 0.28)
+    m.line(routes, (75, 59), (75, 74), TEAL, 0.28)
+    m.line(routes, (75, 74), (79.5, 74), TEAL, 0.28, True, 'history-input')
+    m.plate(routes, 81, 70)
+    m.line(routes, (97.5, 74), (109, 74), TEAL, 0.28)
+    m.line(routes, (109, 74), (109, 82), TEAL, 0.28)
+    m.line(routes, (109, 82), (178, 82), TEAL, 0.28)
+    m.line(routes, (178, 82), (178, 44.5), TEAL, 0.28)
+    m.line(routes, (178, 44.5), (163, 44.5), TEAL, 0.28, True, 'learn-route')
+    m.text(routes, 88, 87, 'Matched historical swaps', anchor='middle', color=TEAL, bold=True)
+    m.text(routes, 88, 93, 'Study scope', anchor='middle', color=GRAY)
+    m.text(routes, 88, 99, f'{n_records:,} records', anchor='middle', color=GRAY)
+    m.text(routes, 88, 105, f'{n_transformations} transformations', anchor='middle', color=GRAY)
+    m.text(routes, 88, 111, f'{n_arrays} arrays', anchor='middle', color=GRAY)
+    m.tag(prior, 130, 27, 'condition recommendation', refs['recommendation'])
+    m.line(prior, (164, 30), (164, 38), GRAY, 0.18)
+    m.line(prior, (164, 38), (162, 40), GRAY, 0.18)
+    m.tag(prior, 47, 53, 'transfer learning', refs['transfer'])
+    m.line(prior, (60, 55.5), (60, 59), GRAY, 0.18)
+    m.tag(prior, 84, 53, 'yield-change prediction', refs['prediction'])
+    m.line(prior, (95, 55.5), (95, 67.8), GRAY, 0.18)
+
+    # A small chemical counterexample is attached to the copying challenge.
+    # It is deliberately below the field entry and common-well decision.
+    m.text(result, 5, 64, f'{conflicts}/{testable} testable swaps reverse', size=9, bold=True)
+    m.text(gap, 5, 70, 'Suzuki · X → Y', color=GRAY)
+    for smiles, name, left, cy in [(figures14.QUINOLINE, '6-bromoquinoline', 5, 81),
+                                    (figures14.INDAZOLE, '5-bromo-1H-indazole', 40, 81)]:
         values = records.loc[records.substrate_smiles.eq(smiles)].sort_values('endpoint').yield_percent.to_numpy(float)
         if len(values) != 2:
             raise ValueError('Each chemical witness requires its two unchanged measured wells')
-        m.chemical(chemistry, smiles, 0.5, cy, name)
-        m.text(gap, 0.5, cy + 11, name)
+        m.chemical(chemistry, smiles, left, cy, name)
         color = BLUE if values[1] > values[0] else RED
-        for x, tag, value in [(23, 'X', values[0]), (34.5, 'Y', values[1])]:
-            m.text(gap, x + 4.5, cy - 6.5, tag, color=GRAY, anchor='middle')
-            node(gap, 'rect', x=x, y=cy - 4.5, width=9, height=7, fill='white', stroke=GRAY, stroke_width=0.2)
-            m.text(result, x + 4.5, cy + 0.2, c.display_decimal(value, 0) + '%', anchor='middle')
-        m.line(gap, (32.4, cy - 1), (34.0, cy - 1), arrow=True)
-        m.text(result, 33, cy + 7.5, f'{values[1] - values[0]:+.0f} pp', size=8,
-               color=color, bold=True, anchor='middle')
-    m.text(result, 1, 92, f'{conflicts}/{testable} swaps reverse', bold=True)
-    m.text(result, 1, 96, f'{n_arrays} arrays · Fig. 2', color=GRAY)
+        label = f'{c.display_decimal(values[0], 0)}% → {c.display_decimal(values[1], 0)}%'
+        m.text(result, left + 10, 93, label, color=color, bold=True, anchor='middle')
+    m.text(gap, 5, 100, 'X: PdCl₂(dtbpf)', color=GRAY)
+    m.text(gap, 5, 106, 'Y: PdCl₂(PPh₃)₂', color=GRAY)
+    m.text(gap, 40, 106, 'Fig. 2', color=GRAY)
 
-    # B: identical reference wells branch into two genuinely different uses.
-    m.text(routes, 68, 29, 'Reference recipe', anchor='middle', bold=True)
-    m.text(routes, 128, 29, 'Target recipe', anchor='middle', bold=True)
-    m.wells(routes, 54, 33)
-    m.wells(routes, 114, 33, target=True)
-    m.text(routes, 128, 49, 'same substrate pair', anchor='middle', color=GRAY)
-    m.line(routes, (82, 36.5), (86, 36.5), INK, 0.25)
-    node(routes, 'circle', cx=86, cy=36.5, r=0.45, fill=INK)
-    m.curve(routes, (86, 36.5), ((92, 18), (107, 18)), (113, 36.5), ORANGE, 'copy-route')
-    m.text(routes, 98.5, 17, 'copy Δ', color=ORANGE, anchor='middle', bold=True)
-    m.text(result, 98.5, 35, f'{copy_pct:+.1f}% error', size=8, color=ORANGE, anchor='middle', bold=True)
-    m.line(routes, (86, 36.5), (86, 58), TEAL, 0.28)
-    m.line(routes, (86, 58), (80, 58), TEAL, 0.28)
-    m.line(routes, (80, 58), (80, 61), TEAL, 0.28, True, 'history-input')
-    m.plate(routes, 74, 63)
-    m.line(routes, (90.5, 67), (142.5, 67), TEAL, 0.28)
-    m.line(routes, (142.5, 67), (142.5, 41), TEAL, 0.28, True, 'learn-route')
-    m.text(result, 123, 73, f'{learn_pct:+.1f}% error', size=8, color=TEAL, anchor='middle', bold=True)
-    m.text(routes, 81, 79, 'same swap, other pairs', anchor='middle', color=TEAL, bold=True)
-    m.text(routes, 81, 85, f'{n_arrays} arrays · {n_transformations} transformations', anchor='middle', color=GRAY)
-    m.text(routes, 81, 90, f'{n_records:,} records', anchor='middle', color=GRAY)
-    m.text(result, 123, 78, 'vs history alone (Fig. 3A)', anchor='middle', color=GRAY)
-    m.tag(prior, 109, 13, 'condition recommendation', refs['recommendation'])
-    m.tag(prior, 57, 51, 'transfer learning', refs['transfer'])
-    m.tag(prior, 57, 56, 'yield-change prediction', refs['prediction'])
-
-    # C: the original Figure 4A edit, failure and directly measured alternative.
-    m.tag(prior, 151, 16, 'general conditions', refs['general'])
-    m.chemical(chemistry, before.reactant1_smiles, 155, 30, 'meta-methylthioaniline')
-    m.text(gap, 166, 40, f'meta · HBTU {c.display_decimal(100 * before.yield_numeric, 0)}%', anchor='middle', color=GRAY)
-    m.line(gap, (166, 43), (166, 46), arrow=True)
-    m.chemical(chemistry, failure.reactant1_smiles, 155, 55, 'para-methylthioaniline')
-    m.text(gap, 166, 65, 'para', anchor='middle', color=GRAY)
-    for x, recipe, value, color in [(150.5, 'HBTU', failure.yield_numeric, RED),
-                                    (168, 'TPTU', rescue.yield_numeric, BLUE)]:
-        m.text(gap, x + 6.75, 72, recipe, anchor='middle', bold=True)
-        node(gap, 'rect', x=x, y=75, width=13.5, height=8, fill='white', stroke=color, stroke_width=0.3)
-        m.text(result, x + 6.75, 80.3, c.display_decimal(100 * value, 0) + '%', size=8,
-               anchor='middle', bold=True, color=color)
-    m.line(gap, (164.8, 79), (167.2, 79), BLUE, 0.25, True)
-    m.text(result, 150.5, 92, f'{resolved}/{rescue_total} conflicts resolved', bold=True)
-    m.text(result, 150.5, 96, 'Fig. 4', color=GRAY)
+    # C is a separate measured-recipe consequence, not a prediction claim.
+    m.line(gap, (123, 91), (181, 91), '#D7DADC', 0.18)
+    m.text(gap, 124, 98, 'C', size=9, bold=True)
+    m.text(gap, 130, 98, 'Measured alternatives', bold=True)
+    m.tag(prior, 130, 104, 'general conditions', refs['general'])
+    m.line(prior, (145, 105.5), (145, 107.5), GRAY, 0.18)
+    m.text(result, 130, 111, f'{resolved}/{rescue_total} conflicts resolved', size=9,
+           bold=True, color=BLUE)
+    m.text(gap, 174, 111, 'Fig. 4', color=GRAY)
 
     shown = pd.DataFrame([
         dict(quantity='conflicting swaps', value=conflicts, denominator=testable),

@@ -1,7 +1,39 @@
 {
   "Figure_1": {
     "title": "A measured reagent swap reverses with the substrate and must be learned, not copied",
-    "legend": "**A**, Replacing PdCl₂(dtbpf) with PdCl₂(PPh₃)₂ raises the Suzuki yield of 6-bromoquinoline from 5% to 93% but lowers that of 5-bromo-1H-indazole from 84% to 12%. Across nineteen arrays, 271/283 testable substitutions contradict independent substrate-pair and background signs (Fig. 2). **B**, Copying and learning receive the same two reference wells for the target substrate pair in another recipe. Copying transfers their yield difference; learning relates their difference and mean yield to the target through historical reactions. Across seventeen screens, mean squared error changes by +42.4% with copying and −13.7% with learning relative to history alone (Fig. 3A). Grey labels locate prior work at recommendation, historical learning and general-condition selection; the unlabelled fork tests how to reuse the same measurement. **C**, Moving methylthio from meta to para on an aniline lowers the HBTU yield from 91% to 0%; TPTU gives 93% (Fig. 4A). Measured alternatives resolve 285/542 shared-scope conflicts (Fig. 4C)."
+    "legend": "**A**, Chemists, reaction databases and AI planners reuse measured reagent effects to guide synthesis. **B**, The same two wells for a target substrate pair in another recipe are either copied directly or interpreted through historical reactions. The small Suzuki example shows a catalyst swap increasing quinoline yield from 5% to 93% but decreasing indazole yield from 84% to 12%. Across nineteen arrays, 271/283 testable swaps contradict separate substrate-pair and background signs (Fig. 2). Relative to history alone, copying increases mean squared prediction error by 42%; learning reduces it by 14% across seventeen screens (Fig. 3A). Prior work addresses condition recommendation [1, 2], transfer learning [3], yield-change prediction [4] and general-condition selection [5, 6]. **C**, Measured alternatives resolve 285/542 shared-scope conflicts (Fig. 4), a distinct use of experimental history.",
+    "references": {
+      "recommendation": [
+        1,
+        2
+      ],
+      "transfer": [
+        3
+      ],
+      "prediction": [
+        4
+      ],
+      "general": [
+        5,
+        6
+      ]
+    },
+    "reference_dois": {
+      "recommendation": [
+        "10.1021/acscentsci.8b00357",
+        "10.1039/D4SC06728B"
+      ],
+      "transfer": [
+        "10.1039/D1SC06932B"
+      ],
+      "prediction": [
+        "10.1021/acs.jcim.5c01208"
+      ],
+      "general": [
+        "10.1126/science.adc8743",
+        "10.1038/s41586-024-07021-y"
+      ]
+    }
   },
   "Figure_2": {
     "title": "Substitution responses depend jointly on substrate and recipe background",
