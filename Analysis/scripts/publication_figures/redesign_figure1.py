@@ -20,7 +20,7 @@ INKSCAPE = 'http://www.inkscape.org/namespaces/inkscape'
 ET.register_namespace('', SVG)
 ET.register_namespace('xlink', 'http://www.w3.org/1999/xlink')
 ET.register_namespace('inkscape', INKSCAPE)
-W, H, PT = 183, 110, 25.4 / 72
+W, H, PT = 183, 100, 25.4 / 72
 BLUE, RED, ORANGE, TEAL = '#2F6F9F', '#B8434E', '#D9822B', '#0E7C74'
 INK, GRAY = '#25292C', '#7D858B'
 
@@ -230,72 +230,91 @@ def figure1():
     m.text(left, 2, 32, 'Y: PdCl\u2082(PPh\u2083)\u2082')
     m.text(left, 2, 38, 'Cs\u2082CO\u2083, dioxane/H\u2082O', color=GRAY)
     m.text(left, 38, 38, '100 \u00b0C, 12 h', color=GRAY)
-    for smiles, name, y in [(figures14.QUINOLINE, '6-bromoquinoline', 52), (figures14.INDAZOLE, '5-bromo-1H-indazole', 78)]:
+    for smiles, name, y in [(figures14.QUINOLINE, '6-bromoquinoline', 50), (figures14.INDAZOLE, '5-bromo-1H-indazole', 75)]:
         values = records.loc[records.substrate_smiles.eq(smiles)].sort_values('endpoint').yield_percent.to_numpy(float)
         m.chemical(left, smiles, 2, y, name)
-        m.text(left, 2, y + 12, name)
+        m.text(left, 2, y + 11.5, name)
         color = BLUE if values[1] > values[0] else RED
         for x, tag, value in [(34, 'X', values[0]), (48, 'Y', values[1])]:
             m.text(left, x + 5.75, y - 6.7, tag, color=GRAY, anchor='middle')
             node(left, 'rect', x=x, y=y - 5, width=11.5, height=7, fill='white', stroke=GRAY, stroke_width=0.2)
             m.text(left, x + 5.75, y - 0.3, c.display_decimal(value, 2) + '%', anchor='middle')
         m.text(left, 48, y + 7.5, f'{values[1] - values[0]:+.0f} pp', size=8, color=color, bold=True, anchor='middle')
-    m.text(left, 2, 102, f'{conflicts}/{testable} sign conflicts \u00b7 19 arrays', bold=True)
-    m.line(left, (64, 4), (64, 107), '#D7DADC', 0.2)
+    m.text(left, 2, 97, f'{conflicts}/{testable} sign conflicts \u00b7 19 arrays', bold=True)
+    m.line(left, (64, 4), (64, 98), '#D7DADC', 0.2)
 
     shared = m.layer('02-identical-measured-reference')
     m.text(shared, 68, 7, 'B', size=8, bold=True)
-    m.text(shared, 74, 7, 'Same wells, different use', size=8, bold=True)
-    m.text(shared, 68, 14, 'Choose the target recipe', bold=True)
-    m.tag(shared, 68, 19.5, 'condition recommendation', refs['recommendation'])
-    m.tag(shared, 110, 19.5, 'general conditions', refs['general'])
+    m.text(shared, 74, 7, 'Recipe and history decisions', size=8, bold=True)
+    m.tag(shared, 68, 12.5, 'condition recommendation', refs['recommendation'])
+    m.tag(shared, 118, 12.5, 'general conditions', refs['general'])
+    m.tag(shared, 68, 18, 'transfer learning', refs['transfer'])
+    m.tag(shared, 118, 18, 'yield-change prediction', refs['prediction'])
     first, second = [value.strip() for value in example.substrate_pair.split('>>')]
-    m.chemical(shared, first, 70, 33, 'example-heteroaryl-bromide')
-    m.text(shared, 94, 34, '+')
-    m.chemical(shared, second, 102, 33, 'example-boronic-acid')
-    m.text(shared, 68, 44, 'K\u2083PO\u2084 reference \u00b7 held-out example', color=GRAY)
-    for x, label, value in [(69, 'PdCl\u2082(dtbpf)', reference.yield_percent.iloc[0]),
-                            (110, 'XPhos Pd G3', reference.yield_percent.iloc[1])]:
-        m.text(shared, x + 14, 50, label, anchor='middle')
-        node(shared, 'rect', x=x, y=52, width=28, height=8, fill='white', stroke=INK, stroke_width=0.22)
-        m.text(shared, x + 14, 57.5, c.display_decimal(value, 2) + '%', size=8, anchor='middle')
-    m.text(shared, 69, 69, f'Change {float(example.reference_contrast_pp):+.2f} pp')
-    m.text(shared, 110, 69, f'Mean {mean:.2f}%')
-    m.line(shared, (83, 60.5), (83, 62), GRAY, 0.2)
-    m.line(shared, (124, 60.5), (124, 62), GRAY, 0.2)
-    m.line(shared, (83, 62), (124, 62), GRAY, 0.2)
-    m.line(shared, (103.5, 62), (83, 65), GRAY, 0.2, True)
-    m.line(shared, (103.5, 62), (124, 65), GRAY, 0.2, True)
+    m.chemical(shared, first, 70, 31, 'example-heteroaryl-bromide')
+    m.text(shared, 94, 32, '+')
+    m.chemical(shared, second, 102, 31, 'example-boronic-acid')
+    m.text(shared, 68, 43, 'S4 held-out substrate pair', color=GRAY)
+    m.text(shared, 154, 24, 'Measured reference wells', anchor='middle', bold=True)
+    for x, label, value in [(130, 'PdCl\u2082(dtbpf)', reference.yield_percent.iloc[0]),
+                            (157, 'XPhos Pd G3', reference.yield_percent.iloc[1])]:
+        m.text(shared, x + 10.5, 29.5, label, anchor='middle')
+        node(shared, 'rect', x=x, y=32, width=21, height=7, fill='white', stroke=INK, stroke_width=0.22)
+        m.text(shared, x + 10.5, 37, c.display_decimal(value, 1) + '%', size=8, anchor='middle')
+    m.line(shared, (151.5, 35.5), (156.5, 35.5), GRAY, 0.2, True)
+    m.text(shared, 154, 43, 'K\u2083PO\u2084 reference', anchor='middle', color=GRAY)
+    m.text(shared, 130, 48, f'D {float(example.reference_contrast_pp):+.1f} pp')
+    m.text(shared, 157, 48, f'Mean {mean:.1f}%')
 
     routes = m.layer('03-interpret-the-same-measurement')
-    m.line(routes, (82, 72), (82, 86), ORANGE, 0.4, True, 'copy-example')
-    # Learning uses both features: a bracket collects the change and the mean, then descends to the prediction.
-    m.line(routes, (93, 71), (93, 73.5), TEAL, 0.35)
-    m.line(routes, (125, 71), (125, 73.5), TEAL, 0.35)
-    m.line(routes, (93, 73.5), (125, 73.5), TEAL, 0.35)
-    m.line(routes, (110, 73.5), (110, 89.5), TEAL, 0.4, True, 'learn-example')
-    m.text(routes, 112, 78.5, 'Learn from history', color=TEAL, bold=True)
-    m.tag(routes, 112, 83.5, 'transfer learning', refs['transfer'])
-    m.tag(routes, 112, 88, 'yield-change prediction', refs['prediction'])
-    for x, label, value, color in [
-        (81, 'Copy', example.direct_raw_prediction_pp, ORANGE),
-        (110, 'Learn', example.semantic_full_raw_prediction_pp, TEAL),
-        (138, 'Measured', example.target_contrast_pp, INK),
+    # Every position and zero-to-prediction distance uses this one linear pp scale.
+    axis_left, axis_right, axis_y = 74, 178, 67
+    pp_min, pp_max = -15, 40
+    pp_x = lambda value: axis_left + (float(value) - pp_min) * (axis_right - axis_left) / (pp_max - pp_min)
+    zero_x = pp_x(0)
+    m.line(routes, (axis_left, axis_y), (axis_right, axis_y), GRAY, 0.22)
+    for tick in [-15, -10, 0, 10, 20, 30, 40]:
+        x = pp_x(tick)
+        m.line(routes, (x, axis_y), (x, axis_y + 1.5), INK if tick == 0 else GRAY, 0.22)
+        m.text(routes, x, 74, f'{tick:+d}' if tick else '0', anchor='middle', bold=tick == 0)
+    m.line(routes, (zero_x, 62.5), (zero_x, 70), INK, 0.35)
+    for label, value, color in [
+        ('Copy', example.direct_raw_prediction_pp, ORANGE),
+        ('Learn', example.semantic_full_raw_prediction_pp, TEAL),
+        ('Measured', example.target_contrast_pp, INK),
     ]:
-        m.text(routes, x, 93, label, color=color, bold=True, anchor='middle')
-        m.text(routes, x, 101, f'{float(value):+.2f}', size=9, color=color, bold=True, anchor='middle')
-    m.text(routes, 108, 107, 'Cs\u2082CO\u2083 target change (pp)', anchor='middle', color=GRAY)
+        x = pp_x(value)
+        m.text(routes, x, 55, label, color=color, bold=True, anchor='middle')
+        m.text(routes, x, 60, f'{float(value):+.1f}', size=8, color=color, bold=True, anchor='middle')
+        if label != 'Measured':
+            m.line(routes, (zero_x, axis_y), (x, axis_y), color, 0.5, True, f'{label.lower()}-example')
+            node(routes, 'circle', cx=x, cy=axis_y, r=0.8, fill=color)
+        else:
+            angles = np.arange(10) * np.pi / 5 - np.pi / 2
+            radii = np.where(np.arange(10) % 2 == 0, 1.85, 0.8)
+            points = [(x + radius * np.cos(angle), axis_y + radius * np.sin(angle))
+                      for radius, angle in zip(radii, angles)]
+            node(routes, 'polygon', points=' '.join(f'{px},{py}' for px, py in points), fill=INK)
+    m.text(routes, 126, 79, 'Cs\u2082CO\u2083 target yield change (pp)', anchor='middle', color=GRAY)
 
     summary = m.layer('04-all-held-out-targets')
-    m.line(summary, (150, 4), (150, 107), '#D7DADC', 0.2)
-    m.text(summary, 153, 14, 'All held-out targets', bold=True)
-    m.text(summary, 153, 20, '17 screens (Fig. 3A)', color=GRAY)
-    m.text(summary, 153, 34, 'Error vs history alone', color=GRAY)
-    m.text(summary, 153, 47, 'Copy', color=ORANGE, bold=True)
-    m.text(summary, 153, 56, f'+{copy_pct:.1f}%', size=10, color=ORANGE, bold=True)
-    m.text(summary, 153, 75, 'Learn', color=TEAL, bold=True)
-    m.text(summary, 153, 84, f'{learn_pct:.1f}%', size=10, color=TEAL, bold=True)
-    m.text(summary, 153, 98, 'MSE change (%)', color=GRAY)
+    m.line(summary, (68, 83), (181, 83), '#D7DADC', 0.2)
+    m.text(summary, 68, 88, '17 screens (Fig. 3A)', bold=True)
+    m.text(summary, 68, 94.5, 'MSE vs history alone (%)', color=GRAY)
+    # The population percentage scale is separate from the example's pp scale.
+    pct_x = lambda value: 112 + (float(value) + 20) * (178 - 112) / 70
+    pct_y, pct_zero = 94, pct_x(0)
+    m.line(summary, (pct_x(-20), pct_y), (pct_x(50), pct_y), GRAY, 0.22)
+    for tick in [-20, 0, 20, 40, 50]:
+        x = pct_x(tick)
+        m.line(summary, (x, pct_y), (x, pct_y + 1.2), INK if tick == 0 else GRAY, 0.22)
+        m.text(summary, x, 99, f'{tick:+d}' if tick else '0', anchor='middle', bold=tick == 0)
+    m.line(summary, (pct_zero, 90.5), (pct_zero, 96), INK, 0.3)
+    for label, value, color in [('Copy', copy_pct, ORANGE), ('Learn', learn_pct, TEAL)]:
+        x = pct_x(value)
+        m.line(summary, (pct_zero, pct_y), (x, pct_y), color, 0.45, True, f'{label.lower()}-population')
+        node(summary, 'circle', cx=x, cy=pct_y, r=0.7, fill=color)
+        m.text(summary, x, 88, f'{label} {value:+.1f}%', color=color, bold=True, anchor='middle')
 
     shown = pd.DataFrame([
         dict(quantity='conflicting swaps', value=conflicts, denominator=testable),
