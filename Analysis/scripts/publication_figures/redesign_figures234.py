@@ -163,7 +163,8 @@ def figure2():
     fig = figure(165)
     cs, kk = wide.Cs2CO3_delta_pp, wide.K2CO3_delta_pp
     opposite, shared = int((cs * kk < 0).sum()), len(wide)
-    ax = panel(fig, [0.075, 0.405, 0.52, 0.52], 'a', 'Same catalyst swap, two carbonate backgrounds')
+    ax = panel(fig, [0.075, 0.49, 0.48, 0.435], 'a', 'Catalyst responses reverse with background')
+    ax._draft_panel_title.set_fontsize(7)
     for (x0, y0) in [(-100, 0), (0, -100)]:
         ax.add_patch(Rectangle((x0, y0), 100, 100, facecolor='#F4EFEA', edgecolor='none', zorder=0))
     ax.scatter(cs, kk, color=GRAY, s=5, alpha=0.5, lw=0, zorder=2)
@@ -171,31 +172,48 @@ def figure2():
     ax.axvline(0, color=GRAY, lw=0.5, zorder=1)
     ax.set(xlim=(-100, 100), ylim=(-100, 100), xticks=[-100, -50, 0, 50, 100], yticks=[-100, -50, 0, 50, 100])
     c.clean(ax, 'Change under Cs2CO3 (pp)', 'Change under K2CO3 (pp)')
+    ax.yaxis.tick_right()
+    ax.yaxis.set_label_position('right')
+    ax.spines['left'].set_visible(False)
+    ax.spines['right'].set_visible(True)
     correlation = wide[['Cs2CO3_delta_pp', 'K2CO3_delta_pp']].corr().iloc[0, 1]
     ax.text(-97, 96, f'opposite signs\n{opposite}/{shared} pairs', ha='left', va='top', fontsize=6, color=INK, linespacing=1.3)
     ax.text(97, -96, f'r = {correlation:.2f}', ha='right', va='bottom', fontsize=6, color=INK)
     examples = ['Brc1ccc2[nH]ncc2c1', 'COc1cccnc1Br']
+    highlighted = []
     for i, smiles in enumerate(examples):
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
         x, y = rows.sort_values('order').delta.to_numpy()
+        highlighted.append((x, y))
         ax.scatter(x, y, s=30, facecolors='white', edgecolors=INK, lw=1.1, zorder=5)
         ax.annotate(str(i + 1), (x, y), xytext=(5, 3), textcoords='offset points', fontsize=6.5, weight='bold')
     for i, smiles in enumerate(examples):
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
-        yy = 0.315 - i * 0.08
-        fig.text(0.075, yy, str(i + 1), fontsize=7, weight='bold', va='center')
-        molecule(fig, [0.095, yy - 0.028, 0.11, 0.056], smiles)
+        yy = 0.335 - i * 0.08
+        fig.text(0.049 if i == 0 else 0.032, yy, str(i + 1), fontsize=7, weight='bold', va='center', ha='center')
+        molecule(fig, [0.105, yy - 0.03, 0.125, 0.06], smiles)
         for j, row in enumerate(rows.sort_values('order').itertuples()):
             color = BLUE if row.delta > 0 else RED
-            xx = 0.325 + j * 0.17
-            fig.text(xx, yy + 0.009, f'{row.delta:+.1f} pp', fontsize=7, weight='bold', color=color, ha='center', va='center')
-            fig.text(xx, yy - 0.014, f'{row.low_yield_pp:.0f}% → {row.high_yield_pp:.0f}%', fontsize=6, color=GRAY, ha='center', va='center')
+            xx = 0.355 + j * 0.14
+            fig.add_artist(Rectangle((xx - 0.067, yy - 0.033), 0.134, 0.066,
+                                     transform=fig.transFigure, facecolor='#E7F0F6' if row.delta > 0 else '#F6E7E9',
+                                     edgecolor='white', lw=1, zorder=0))
+            fig.text(xx, yy, f'{row.delta:+.1f}', fontsize=8, weight='bold', color=color, ha='center', va='center')
     for j, label in enumerate(['Cs2CO3', 'K2CO3']):
-        fig.text(0.325 + j * 0.17, 0.34, label, fontsize=6, ha='center', weight='bold')
-    fig.text(0.595, 0.195, '3 negative; 1 positive', fontsize=6, ha='right')
-    conflict = panel(fig, [0.805, 0.235, 0.055, 0.625], 'b', 'Sign conflicts in 19 arrays', title_x=0.665, title_y=0.943)
+        fig.text(0.355 + j * 0.14, 0.385, label, fontsize=7, ha='center', weight='bold')
+    fig.text(0.425, 0.408, 'Catalyst response (pp)', fontsize=7, ha='center')
+    fig.text(0.56, 0.207, '3 negative; 1 positive', fontsize=7, ha='right')
+    # The numbered leaders follow empty corridors around the scatter cloud.
+    for i, point in enumerate(highlighted):
+        end_x = 0.049 if i == 0 else 0.032
+        start = fig.transFigure.inverted().transform(ax.transData.transform(point))
+        bend_y = start[1] if i == 0 else 0.49 + 0.435 * 191 / 200
+        points = [start, (end_x, bend_y), (end_x, 0.347 - i * 0.08)]
+        fig.add_artist(Line2D(*zip(*points), transform=fig.transFigure, color='#B8C0C6', lw=0.45, zorder=1))
+    conflict = panel(fig, [0.795, 0.235, 0.075, 0.625], 'b', 'Sign conflicts in 19 arrays', title_x=0.665, title_y=0.943)
+    conflict._draft_panel_title.set_fontsize(7)
     order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
     totals = {t: (int(signs.loc[signs.threshold_pp.eq(t), 'n_conflicting_edges'].sum()), int(signs.loc[signs.threshold_pp.eq(t), 'n_cycle_edges'].sum())) for t in (0, 20)}
     for i, name in enumerate(order):
@@ -209,22 +227,21 @@ def figure2():
         for k, t in enumerate((0, 20)):
             n_conf, n_cyc = int(rows.loc[t, 'n_conflicting_edges']), int(rows.loc[t, 'n_cycle_edges'])
             text = f'{n_conf}/{n_cyc}' if n_cyc else '–'
-            conflict.text(1.76 + 1.16 * k, i, text, transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=6, color=INK if k == 0 else GRAY)
+            conflict.text(1.35 + 0.79 * k, i, text, transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=6, color=INK if k == 0 else GRAY)
     for k, (label, t, marker) in enumerate((('all', 0, 'o'), ('≥20 pp', 20, 'D'))):
-        conflict.text(1.76 + 1.16 * k - 0.16, -1.2, label, transform=conflict.get_yaxis_transform(), va='center', ha='left', fontsize=6, color=INK if k == 0 else GRAY)
-        conflict.scatter([1.76 + 1.16 * k - 0.35], [-1.2], transform=conflict.get_yaxis_transform(), s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, clip_on=False)
+        conflict.text(1.35 + 0.79 * k - 0.11, -1.2, label, transform=conflict.get_yaxis_transform(), va='center', ha='left', fontsize=6, color=INK if k == 0 else GRAY)
+        conflict.scatter([1.35 + 0.79 * k - 0.25], [-1.2], transform=conflict.get_yaxis_transform(), s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, clip_on=False)
         fig.text(0.665 + k * 0.16, 0.908, f'{totals[t][0]}/{totals[t][1]} {label}', fontsize=7, weight='bold', color=INK if k == 0 else GRAY)
     names = [old23.CLASSES.get(x, x) for x in order]
     conflict.set_yticks(range(len(order)), names, fontsize=5.5)
     conflict.set(xlim=(-4, 104), ylim=(len(order) - 0.5, -0.5), xticks=[0, 50, 100])
     c.clean(conflict, 'Conflicts (%)')
-    strips = panel(fig, [0.075, 0.035, 0.855, 0.12], 'c', 'Response directions in six transformations', title_y=0.178)
+    strips = panel(fig, [0.075, 0.035, 0.875, 0.12], 'c', 'Opposite responses across transformations', title_y=0.178)
+    strips._draft_panel_title.set_fontsize(7)
     strips.axis('off')
-    equations = {'suzuki': 'ArBr + ArB(OH)₂ → ArAr', 'acylation': 'RCO₂H + RNH₂ → RCONHR', 'buchwald-hartwig': 'ArBr + RNH₂ → ArNHR', 'snar': 'ArF + HNu → ArNu', 'ullmann': 'ArBr + ROH → ArOR', 'kumada': 'ArBr + RMgBr → ArR'}
-    substitutions = {'suzuki': 'PdCl2(dtbpf) → PdCl2(PPh3)2', 'acylation': 'TFFH → DCMT', 'buchwald-hartwig': 'RuPhos Pd G3 → BrettPhos Pd G4', 'snar': 'Triethylamine → 2,6-lutidine', 'ullmann': 'N-Methyl-L-proline → L-proline', 'kumada': 'Tetramethylurea → DMI'}
     for i, row in enumerate(swaps.itertuples()):
-        x, y = (0.075 + i % 3 * 0.3, 0.115 - i // 3 * 0.075)
-        axis = fig.add_axes([x, y, 0.255, 0.02])
+        x, y = (0.075 + i * 0.151, 0.068)
+        axis = fig.add_axes([x, y, 0.105, 0.034])
         values = responses[row.reaction_type].display_delta_pp.to_numpy()
         jitter = (np.arange(len(values)) * 0.61803398875 % 1 - 0.5) * 0.6
         axis.scatter(values, jitter, s=1.6, alpha=0.55, color=np.where(values > 0, BLUE, RED), lw=0)
@@ -232,10 +249,9 @@ def figure2():
         axis.set(xlim=(-100, 100), ylim=(-0.5, 0.5), yticks=[], xticks=[-100, 0, 100])
         axis.spines[['left', 'top', 'right']].set_visible(False)
         axis.tick_params(length=2, pad=1, labelsize=5)
-        fig.text(x, y + 0.044, equations[row.reaction_type], fontsize=6)
-        fig.text(x, y + 0.026, substitutions[row.reaction_type], fontsize=5, color=GRAY)
-        fig.text(x + 0.255, y + 0.04, f'n = {len(values):,}', fontsize=5, ha='right')
-    fig.text(0.5, 0.004, 'Yield change (pp)', ha='center', fontsize=6)
+        fig.text(x, 0.142, old23.CLASSES[row.reaction_type], fontsize=7)
+        fig.text(x, 0.119, f'n = {len(values):,}', fontsize=7, color=GRAY)
+    fig.text(0.5, 0.018, 'Yield change (pp)', ha='center', fontsize=7)
     fig._m1_panels.sort(key=lambda item: item[0])
     report = save(fig, 'Figure_2', 'Substrate pairs and recipe backgrounds jointly determine substitution responses')
     report['redesign_checks'].update(opposite_pairs=opposite, shared_pairs=shared, totals=totals)
@@ -468,20 +484,34 @@ def figure4():
         partition = old14.scope_partition()
     height = 150
     fig = figure(height)
-    ymap = lambda y: 1 - (1 - y) * 160 / height
-    hmap = lambda h: h * 160 / height
-    ax = panel(fig, [0.075, ymap(0.52), 0.4, hmap(0.39)], 'a', 'Amide alternatives', title_y=ymap(0.94))
+    ymap = lambda y: y - 0.106
+    hmap = lambda h: h
+    ax = panel(fig, [0.075, 0.34, 0.4, 0.58], 'a', 'Amide alternatives', title_y=0.96)
+    ax._draft_panel_title.set_fontsize(7)
     ax.axis('off')
-    ax = panel(fig, [0.55, ymap(0.52), 0.4, hmap(0.39)], 'b', 'Suzuki alternatives', title_y=ymap(0.94))
+    ax = panel(fig, [0.55, 0.34, 0.4, 0.58], 'b', 'Suzuki alternatives', title_y=0.96)
+    ax._draft_panel_title.set_fontsize(7)
     ax.axis('off')
     amide_example(fig, amide, (ymap, hmap))
     frame = suzuki_example(fig, methyl, (ymap, hmap))
-    fig.text(0.075, 0.408, 'Common acid', fontsize=6, weight='bold')
-    molecule(fig, [0.2, 0.342, 0.18, 0.1], amide.reactant2_smiles.iloc[0])
-    fig.text(0.55, 0.408, 'Common aryl bromide', fontsize=6, weight='bold')
-    molecule(fig, [0.57, 0.315, 0.13, 0.085], methyl.reactant1_smiles.iloc[0])
-    fig.text(0.735, 0.375, '100 °C, 12 h', fontsize=6)
-    fig.text(0.735, 0.352, '1,4-dioxane/H₂O', fontsize=6)
+    # Shared partners sit beside each structural comparison, above its recipe data.
+    fig.text(0.075, 0.897, 'Shared acid', fontsize=7, weight='bold', va='center')
+    molecule(fig, [0.215, 0.858, 0.18, 0.085], amide.reactant2_smiles.iloc[0])
+    fig.text(0.55, 0.897, 'Shared aryl bromide', fontsize=7, weight='bold', va='center')
+    molecule(fig, [0.765, 0.855, 0.13, 0.085], methyl.reactant1_smiles.iloc[0])
+    for xx in (0.245, 0.81):
+        fig.text(xx, 0.835, 'Positional relocation', fontsize=7, ha='center', color=GRAY)
+    for patch in fig.artists:
+        if isinstance(patch, FancyArrowPatch):
+            patch.set_color(GRAY)
+    for text in fig.texts:
+        if text.get_text() == 'DIPEA, DMF; 25 °C, 2 h':
+            text.set_position((0.075, 0.35))
+    fig.text(0.68, 0.35, '1,4-dioxane/H₂O; 100 °C, 12 h', fontsize=6)
+    for xx, color, label in [(0.075, RED, 'Failed recipe'), (0.26, BLUE, 'Measured alternative')]:
+        fig.add_artist(Rectangle((xx, 0.317), 0.009, 0.011, transform=fig.transFigure,
+                                 facecolor='white', edgecolor=color, lw=0.8))
+        fig.text(xx + 0.015, 0.3225, label, fontsize=7, va='center')
     row_bottom, row_height = (0.025, 0.25)
     heading_y = 0.282
     c_region = [0.075, row_bottom, 0.875, row_height]

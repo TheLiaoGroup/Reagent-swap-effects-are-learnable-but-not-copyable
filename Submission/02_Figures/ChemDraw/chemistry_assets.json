@@ -60,6 +60,24 @@
       "native_svg": "Submission/02_Figures/ChemDraw/M_b513554ee2e6.native.svg"
     },
     {
+      "smiles": "Cc1cccc(B(O)O)c1C",
+      "canonical_smiles": "Cc1cccc(B(O)O)c1C",
+      "inchi_key": "ZYYANAWVBDFAHY-UHFFFAOYSA-N",
+      "roundtrip_inchi_key": "ZYYANAWVBDFAHY-UHFFFAOYSA-N",
+      "svg": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.svg",
+      "pdf": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.pdf",
+      "cdxml": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.cdxml",
+      "cdx": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.cdx",
+      "width_pt": 77.50019073486328,
+      "height_pt": 52.50012969970703,
+      "native": true,
+      "marked": false,
+      "alignment_template": null,
+      "fallback_reason": null,
+      "scale_metadata": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.scale.json",
+      "native_svg": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.native.svg"
+    },
+    {
       "smiles": "COc1cccnc1Br",
       "canonical_smiles": "COc1cccnc1Br",
       "inchi_key": "PDOWLYNSFYZIQX-UHFFFAOYSA-N",
@@ -202,24 +220,6 @@
       "fallback_reason": null,
       "scale_metadata": "Submission/02_Figures/ChemDraw/M_083f58e859b3.scale.json",
       "native_svg": "Submission/02_Figures/ChemDraw/M_083f58e859b3.native.svg"
-    },
-    {
-      "smiles": "Cc1cccc(B(O)O)c1C",
-      "canonical_smiles": "Cc1cccc(B(O)O)c1C",
-      "inchi_key": "ZYYANAWVBDFAHY-UHFFFAOYSA-N",
-      "roundtrip_inchi_key": "ZYYANAWVBDFAHY-UHFFFAOYSA-N",
-      "svg": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.svg",
-      "pdf": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.pdf",
-      "cdxml": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.cdxml",
-      "cdx": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.cdx",
-      "width_pt": 77.50019073486328,
-      "height_pt": 52.50012969970703,
-      "native": true,
-      "marked": false,
-      "alignment_template": null,
-      "fallback_reason": null,
-      "scale_metadata": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.scale.json",
-      "native_svg": "Submission/02_Figures/ChemDraw/M_4abb14d3b558.native.svg"
     },
     {
       "smiles": "Cc1ccc(C(=O)O)cc1",

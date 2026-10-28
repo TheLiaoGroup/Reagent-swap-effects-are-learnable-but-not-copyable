@@ -20,7 +20,7 @@ INKSCAPE = 'http://www.inkscape.org/namespaces/inkscape'
 ET.register_namespace('', SVG)
 ET.register_namespace('xlink', 'http://www.w3.org/1999/xlink')
 ET.register_namespace('inkscape', INKSCAPE)
-W, H, PT = 183, 105, 25.4 / 72
+W, H, PT = 183, 110, 25.4 / 72
 BLUE, RED, ORANGE, TEAL = '#2F6F9F', '#B8434E', '#D9822B', '#0E7C74'
 INK, GRAY = '#25292C', '#7D858B'
 
@@ -172,7 +172,7 @@ def source_data():
         records, _ = figures14.flagship_data()
         signs = figures23.sign_data()
         shown = figures23.main_screen_data()
-        points, coefficient = suzuki_training_data()
+        points, coefficient = None, None
     finally:
         c.source = original
     zero = signs.loc[signs.threshold_pp.eq(0)]
@@ -181,99 +181,129 @@ def source_data():
     return records, int(zero.n_conflicting_edges.sum()), int(zero.n_cycle_edges.sum()), shown.iloc[0], points, coefficient
 
 
+def selected_example():
+    from publication_figures.select_fig1_example import MANIFEST_PATH, POPULATION_PATH, REGISTRY_PATH, select_example
+    original = c.source
+
+    def source(name, *args, **kwargs):
+        return original('Fig1_example_wells' if name == 'S5_source_well_audit' else name, *args, **kwargs)
+
+    c.source = source
+    try:
+        row, cells, selection = select_example(write_source=False)
+    finally:
+        c.source = original
+    if (row.screen, row.edge_id, int(row.pair_index)) != ('Suzuki|1', '8f3d681cf95d064e', 10):
+        raise ValueError('The predeclared S4 example changed')
+    reference = cells.loc[cells.background.eq('Reference')].sort_values('endpoint_position')
+    target = cells.loc[cells.background.eq('Target')].sort_values('endpoint_position')
+    mean = float(reference.yield_percent.mean())
+    values = row.to_frame().T.copy()
+    values['reference_mean_yield_percent'] = mean
+    paths = [Path(entry['path']) for entry in selection['source_well_audit']['sources']]
+    matrix = c.A / 'scripts/reference_learning/Analysis/data/matrix_Suzuki_1.npz'
+    prediction_paths = list(dict.fromkeys([POPULATION_PATH, MANIFEST_PATH, REGISTRY_PATH, matrix, *paths]))
+    original('Fig1_example_prediction', values, prediction_paths,
+             'The unchanged predeclared median-error selection shared with Figure S4', 'yield percentage points')
+    original('Fig1_example_inputs', cells, paths,
+             'The four measured endpoint wells of the unchanged Figure S4 example', 'measured yield %')
+    return row, reference, target, mean
+
+
 def figure1():
-    records, conflicts, testable, overall, points, coefficient = source_data()
+    records, conflicts, testable, overall, _, _ = source_data()
+    example, reference, target, mean = selected_example()
     copy_pct, learn_pct = float(overall.direct_raw_relative_pct), float(overall.semantic_full_raw_relative_pct)
     refs, m = references(), Map()
     title = 'The same measured reagent swap becomes useful through learning'
     node(m.root, 'title').text = title
-    top = m.layer('01-chemical-decision')
-    m.text(top, 2, 9, 'Ar\u2013Br', size=8)
-    m.text(top, 16, 9, '+', size=8)
-    m.chemical(top, figures14.BORONIC, 22, 8, 'anisylboronic-acid')
-    m.line(top, (57, 9), (114, 9), arrow=True)
-    m.text(top, 83, 5, 'X: PdCl\u2082(dtbpf)', bold=True, anchor='end')
-    m.line(top, (84, 4), (87, 4), arrow=True)
-    m.text(top, 89, 5, 'Y: PdCl\u2082(PPh\u2083)\u2082', bold=True)
-    m.text(top, 85.5, 14.5, 'Base, dioxane/H\u2082O, 100 \u00b0C, 12 h', anchor='middle')
-    m.text(top, 118, 10, 'Ar\u2013Ar\u2032', size=8)
-    m.line(top, (0, 19), (W, 19), '#D7DADC')
 
-    left = m.layer('02-substrate-reversal')
-    m.text(left, 1, 25, 'A', size=8, bold=True)
-    m.text(left, 7, 25, 'Related substrates, opposite responses', size=8, bold=True)
-    m.text(left, 2, 30.5, 'Cs\u2082CO\u2083 background', color=GRAY)
-    for smiles, name, y in [(figures14.QUINOLINE, '6-bromoquinoline', 40), (figures14.INDAZOLE, '5-bromo-1H-indazole', 68)]:
+    left = m.layer('01-chemical-reversal')
+    m.text(left, 1, 7, 'A', size=8, bold=True)
+    m.text(left, 7, 7, 'One swap, opposite responses', size=8, bold=True)
+    m.text(left, 2, 17, 'Ar\u2013Br')
+    m.text(left, 15, 17, '+')
+    m.chemical(left, figures14.BORONIC, 20, 16, 'anisylboronic-acid')
+    m.line(left, (44, 17), (50, 17), arrow=True)
+    m.text(left, 51.5, 17, 'Ar\u2013Ar\u2032')
+    m.text(left, 2, 27, 'X: PdCl\u2082(dtbpf)')
+    m.text(left, 2, 32, 'Y: PdCl\u2082(PPh\u2083)\u2082')
+    m.text(left, 2, 38, 'Cs\u2082CO\u2083, dioxane/H\u2082O', color=GRAY)
+    m.text(left, 38, 38, '100 \u00b0C, 12 h', color=GRAY)
+    for smiles, name, y in [(figures14.QUINOLINE, '6-bromoquinoline', 52), (figures14.INDAZOLE, '5-bromo-1H-indazole', 78)]:
         values = records.loc[records.substrate_smiles.eq(smiles)].sort_values('endpoint').yield_percent.to_numpy(float)
         m.chemical(left, smiles, 2, y, name)
         m.text(left, 2, y + 12, name)
         color = BLUE if values[1] > values[0] else RED
-        for x, tag, value in [(33, 'X', values[0]), (47, 'Y', values[1])]:
-            m.text(left, x + 5, y - 7, tag, color=GRAY, anchor='middle')
+        for x, tag, value in [(34, 'X', values[0]), (48, 'Y', values[1])]:
+            m.text(left, x + 5.75, y - 6.7, tag, color=GRAY, anchor='middle')
             node(left, 'rect', x=x, y=y - 5, width=11.5, height=7, fill='white', stroke=GRAY, stroke_width=0.2)
             m.text(left, x + 5.75, y - 0.3, c.display_decimal(value, 2) + '%', anchor='middle')
-        m.text(left, 45.5, y + 7.5, f'{values[1] - values[0]:+.0f} pp', size=8, color=color, bold=True, anchor='middle')
-    m.text(left, 2, 91, f'{conflicts}/{testable} substitutions', size=8, bold=True)
-    m.text(left, 2, 96, 'substrate \u00d7 background dependence')
-    m.text(left, 2, 101, '19 arrays \u00b7 17 transformations', color=GRAY)
-    m.line(left, (62, 23), (62, 103), '#D7DADC', 0.2)
+        m.text(left, 48, y + 7.5, f'{values[1] - values[0]:+.0f} pp', size=8, color=color, bold=True, anchor='middle')
+    m.text(left, 2, 102, f'{conflicts}/{testable} sign conflicts \u00b7 19 arrays', bold=True)
+    m.line(left, (64, 4), (64, 107), '#D7DADC', 0.2)
 
-    shared = m.layer('03-identical-reference-input')
-    m.text(shared, 67, 25, 'B', size=8, bold=True)
-    m.text(shared, 73, 25, 'Same pair, new background', size=8, bold=True)
-    m.text(shared, 68, 33, 'Same two wells', bold=True)
-    for x, label in [(70, 'X'), (86, 'Y')]:
-        node(shared, 'rect', x=x, y=37, width=12, height=7, fill='white', stroke=INK, stroke_width=0.22)
-        m.text(shared, x + 6, 41.6, label, anchor='middle')
-    m.text(shared, 68, 48.5, 'K\u2083PO\u2084 reference', color=GRAY)
+    shared = m.layer('02-identical-measured-reference')
+    m.text(shared, 68, 7, 'B', size=8, bold=True)
+    m.text(shared, 74, 7, 'Same wells, different use', size=8, bold=True)
+    m.text(shared, 68, 14, 'Choose the target recipe', bold=True)
+    m.tag(shared, 68, 19.5, 'condition recommendation', refs['recommendation'])
+    m.tag(shared, 110, 19.5, 'general conditions', refs['general'])
+    first, second = [value.strip() for value in example.substrate_pair.split('>>')]
+    m.chemical(shared, first, 70, 33, 'example-heteroaryl-bromide')
+    m.text(shared, 94, 34, '+')
+    m.chemical(shared, second, 102, 33, 'example-boronic-acid')
+    m.text(shared, 68, 44, 'K\u2083PO\u2084 reference \u00b7 same substrate pair', color=GRAY)
+    for x, label, value in [(69, 'PdCl\u2082(dtbpf)', reference.yield_percent.iloc[0]),
+                            (110, 'XPhos Pd G3', reference.yield_percent.iloc[1])]:
+        m.text(shared, x + 14, 50, label, anchor='middle')
+        node(shared, 'rect', x=x, y=52, width=28, height=8, fill='white', stroke=INK, stroke_width=0.22)
+        m.text(shared, x + 14, 57.5, c.display_decimal(value, 2) + '%', size=8, anchor='middle')
+    m.text(shared, 69, 69, f'Change {float(example.reference_contrast_pp):+.2f} pp')
+    m.text(shared, 110, 69, f'Mean {mean:.2f}%')
+    m.line(shared, (83, 60.5), (83, 62), GRAY, 0.2)
+    m.line(shared, (124, 60.5), (124, 62), GRAY, 0.2)
+    m.line(shared, (83, 62), (124, 62), GRAY, 0.2)
+    m.line(shared, (103.5, 62), (83, 65), GRAY, 0.2, True)
+    m.line(shared, (103.5, 62), (124, 65), GRAY, 0.2, True)
 
-    copying = m.layer('04-copy-the-difference')
-    m.line(copying, (99, 40.5), (146, 40.5), ORANGE, 0.4, True, 'copy-route')
-    m.text(copying, 123, 35.5, 'Copy unchanged', color=ORANGE, bold=True, anchor='middle')
-    m.text(copying, 153, 33, 'Error vs history alone', color=GRAY)
-    m.text(copying, 153, 43, f'+{copy_pct:.1f}%', size=10, color=ORANGE, bold=True)
-    m.tag(copying, 110, 47, 'recommendation', refs['recommendation'])
-    m.tag(copying, 110, 52, 'general conditions', refs['general'])
+    routes = m.layer('03-interpret-the-same-measurement')
+    m.line(routes, (82, 72), (82, 86), ORANGE, 0.4, True, 'copy-example')
+    m.line(routes, (102, 73), (102, 88), TEAL, 0.35)
+    m.line(routes, (102, 88), (110, 88), TEAL, 0.35, True, 'learn-example')
+    m.line(routes, (125, 71), (125, 72.5), TEAL, 0.35, True)
+    m.text(routes, 106, 76, 'Learn from history', color=TEAL, bold=True)
+    m.tag(routes, 106, 81, 'transfer learning', refs['transfer'])
+    m.tag(routes, 106, 85.5, 'yield-change prediction', refs['prediction'])
+    for x, label, value, color in [
+        (81, 'Copy', example.direct_raw_prediction_pp, ORANGE),
+        (110, 'Learn', example.semantic_full_raw_prediction_pp, TEAL),
+        (138, 'Measured', example.target_contrast_pp, INK),
+    ]:
+        m.text(routes, x, 93, label, color=color, bold=True, anchor='middle')
+        m.text(routes, x, 101, f'{float(value):+.2f}', size=9, color=color, bold=True, anchor='middle')
+    m.text(routes, 108, 107, 'Cs\u2082CO\u2083 target change (pp)', anchor='middle', color=GRAY)
 
-    history = m.layer('05-learn-the-reference-relationship')
-    m.line(history, (103, 40.5), (103, 71.5), TEAL, 0.4, identity='learn-route-in')
-    m.line(history, (103, 71.5), (111, 71.5), TEAL, 0.4, True, 'learn-route-in-head')
-    m.text(history, 112, 56, f'Learn from {len(points)} Suzuki pairs', color=TEAL, bold=True)
-    x0, x1, y0, y1 = 113, 145, 82, 61
-    px = lambda x: x0 + (x + 100) * (x1 - x0) / 200
-    py = lambda y: y0 - (y + 100) * (y0 - y1) / 200
-    for x, y in zip(points.reference_contrast_pp, points.target_contrast_pp):
-        node(history, 'circle', cx=px(float(x)), cy=py(float(y)), r=0.35, fill=GRAY, fill_opacity=0.4)
-    m.line(history, (x0, y0), (x1, y0), width=0.2)
-    m.line(history, (x0, y0), (x0, y1), width=0.2)
-    m.line(history, (px(0), y0), (px(0), y1), '#D7DADC', 0.15)
-    m.line(history, (x0, py(0)), (x1, py(0)), '#D7DADC', 0.15)
-    m.line(history, (px(-100), py(-100)), (px(100), py(100)), ORANGE, 0.35)
-    intercept = float(coefficient.centered_S_zero_slice_intercept_pp)
-    slope = float(coefficient.centered_S_zero_slice_slope)
-    m.line(history, (px(-100), py(intercept - 100 * slope)), (px(100), py(intercept + 100 * slope)), TEAL, 0.5)
-    m.text(history, 113, 59.5, 'Cs\u2082CO\u2083 target change (pp)', color=GRAY)
-    for value in (-100, 0, 100):
-        m.text(history, px(value), 86.3, str(value), color=GRAY, anchor='middle')
-    for value in (-100, 100):
-        m.text(history, 107 if value < 0 else 109, py(value) + 0.8, str(value), color=GRAY, anchor='end')
-    m.text(history, 129, 91, 'Reference change (pp)', color=GRAY, anchor='middle')
-    m.text(history, 113, 96, f'Learned slope {slope:.2f}', color=TEAL, bold=True)
-    m.line(history, (146, 71.5), (151, 71.5), TEAL, 0.4, True, 'learn-route-out')
-    m.text(history, 153, 74, f'{learn_pct:.1f}%', size=10, color=TEAL, bold=True)
-    m.text(history, 153, 84, 'Held-out targets \u00b7 Fig. 3A', color=GRAY)
-
-    prior = m.layer('06-prior-research-context')
-    m.tag(prior, 68, 76, 'transfer learning', refs['transfer'])
-    m.tag(prior, 68, 83, 'yield-change prediction', refs['prediction'])
+    summary = m.layer('04-all-held-out-targets')
+    m.line(summary, (150, 4), (150, 107), '#D7DADC', 0.2)
+    m.text(summary, 153, 14, 'All held-out targets', bold=True)
+    m.text(summary, 153, 20, '17 screens (Fig. 3A)', color=GRAY)
+    m.text(summary, 153, 34, 'Error vs history alone', color=GRAY)
+    m.text(summary, 153, 47, 'Copy', color=ORANGE, bold=True)
+    m.text(summary, 153, 56, f'+{copy_pct:.1f}%', size=10, color=ORANGE, bold=True)
+    m.text(summary, 153, 75, 'Learn', color=TEAL, bold=True)
+    m.text(summary, 153, 84, f'{learn_pct:.1f}%', size=10, color=TEAL, bold=True)
+    m.text(summary, 153, 98, 'MSE change (%)', color=GRAY)
 
     shown = pd.DataFrame([
         dict(quantity='conflicting swaps', value=conflicts, denominator=testable),
         dict(quantity='copy error change vs history alone (%)', value=copy_pct, denominator=None),
         dict(quantity='learned error change vs history alone (%)', value=learn_pct, denominator=None),
     ])
-    c.source('Fig1_map_numbers', shown, figures23.EDM / 'sparse_sign_feasibility_summary.csv',
-             'Counts and held-out hierarchical error changes as in Figures 2 and 3; relationship from stored training fit', 'count or percent')
+    c.source('Fig1_map_numbers', shown,
+             [figures23.EDM / 'sparse_sign_feasibility_summary.csv',
+              figures23.REFERENCE_LEARNING / 'Nature_Manuscript/source_data/Matched_copy_comparison.csv'],
+             'Sign-conflict counts from Figure 2 and held-out hierarchical error changes from Figure 3', 'count or percent')
     return save(m, title)
 
 
