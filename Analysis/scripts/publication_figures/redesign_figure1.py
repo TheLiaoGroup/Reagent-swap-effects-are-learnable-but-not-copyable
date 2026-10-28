@@ -296,7 +296,7 @@ def figure1(wireframe=False):
     n_arrays, n_transformations, n_records = map_inventory()
     copy_pct, learn_pct = float(overall.direct_raw_relative_pct), float(overall.semantic_full_raw_relative_pct)
     refs, m = references(), Map(wireframe=wireframe)
-    title = 'Learning makes measured reagent swaps useful beyond their original recipe'
+    title = 'A measured reagent swap reverses with the substrate and must be learned, not copied'
     node(m.root, 'title').text = title
     gap = m.layer('layer_gap')
     routes = m.layer('layer_routes')
@@ -362,7 +362,7 @@ def figure1(wireframe=False):
     m.text(routes, 81, 79, 'same swap, other pairs', anchor='middle', color=TEAL, bold=True)
     m.text(routes, 81, 85, f'{n_arrays} arrays · {n_transformations} transformations', anchor='middle', color=GRAY)
     m.text(routes, 81, 90, f'{n_records:,} records', anchor='middle', color=GRAY)
-    m.text(result, 98, 96, 'vs history alone (Fig. 3A)', anchor='middle', color=GRAY)
+    m.text(result, 123, 78, 'vs history alone (Fig. 3A)', anchor='middle', color=GRAY)
     m.tag(prior, 109, 13, 'condition recommendation', refs['recommendation'])
     m.tag(prior, 57, 51, 'transfer learning', refs['transfer'])
     m.tag(prior, 57, 56, 'yield-change prediction', refs['prediction'])
@@ -370,7 +370,7 @@ def figure1(wireframe=False):
     # C: the original Figure 4A edit, failure and directly measured alternative.
     m.tag(prior, 151, 16, 'general conditions', refs['general'])
     m.chemical(chemistry, before.reactant1_smiles, 155, 30, 'meta-methylthioaniline')
-    m.text(gap, 166, 40, 'meta', anchor='middle', color=GRAY)
+    m.text(gap, 166, 40, f'meta · HBTU {c.display_decimal(100 * before.yield_numeric, 0)}%', anchor='middle', color=GRAY)
     m.line(gap, (166, 43), (166, 46), arrow=True)
     m.chemical(chemistry, failure.reactant1_smiles, 155, 55, 'para-methylthioaniline')
     m.text(gap, 166, 65, 'para', anchor='middle', color=GRAY)

@@ -514,9 +514,9 @@ def figure4():
             text.set_fontsize(7)
     fig.text(0.68, 0.399, '1,4-dioxane/H₂O; 100 °C, 12 h', fontsize=7)
     for xx, color, label in [(0.075, RED, 'Failed recipe'), (0.26, BLUE, 'Measured alternative')]:
-        fig.add_artist(Rectangle((xx, 0.317), 0.009, 0.011, transform=fig.transFigure,
+        fig.add_artist(Rectangle((xx, 0.357), 0.009, 0.011, transform=fig.transFigure,
                                  facecolor='white', edgecolor=color, lw=0.8))
-        fig.text(xx + 0.015, 0.3225, label, fontsize=7, va='center')
+        fig.text(xx + 0.015, 0.3625, label, fontsize=7, va='center')
     row_bottom, row_height = (0.025, 0.25)
     heading_y = 0.282
     c_region = [0.075, row_bottom, 0.875, row_height]

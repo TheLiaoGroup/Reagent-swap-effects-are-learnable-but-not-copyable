@@ -245,12 +245,12 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figure1.py": {
-      "sha256": "4c20859622d6ce9480a56614678dff4dc003d1bd2e4e106007438daa68cdba31",
-      "bytes": 26081,
+      "sha256": "34d35e489a9227411a9ecfe2868f43b870046d0875dd95f9f2d4d53080b26fd3",
+      "bytes": 26153,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
-      "sha256": "763e194d95596e5ba543c444aa357d6fd56be3eb92e6cbfbfc034cdc1b320383",
+      "sha256": "405a505e74e9bfe1f9a2672f35c5a56bc768c43866e50d6a93290943b6f54f11",
       "bytes": 42036,
       "kind": "scientific_source"
     },
@@ -965,8 +965,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/templates/FIGURE_TEXT.json": {
-      "sha256": "6513033b33b39a778e4b2b6aea3cea80527fc3f70a37eb98eabcfd8579e12c5e",
-      "bytes": 10733,
+      "sha256": "8f986669ee6c49d8724461436d32fba4d757bde59b5e071297607ac227ed2438",
+      "bytes": 10697,
       "kind": "release_asset"
     },
     "DATA_LICENSE": {
