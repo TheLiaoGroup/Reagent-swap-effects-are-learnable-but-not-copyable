@@ -245,7 +245,7 @@ def figure1():
 
     shared = m.layer('02-identical-measured-reference')
     m.text(shared, 68, 7, 'B', size=8, bold=True)
-    m.text(shared, 74, 7, 'Recipe and history decisions', size=8, bold=True)
+    m.text(shared, 74, 7, 'Same wells: copy or learn', size=8, bold=True)
     m.tag(shared, 68, 12.5, 'condition recommendation', refs['recommendation'])
     m.tag(shared, 118, 12.5, 'general conditions', refs['general'])
     m.tag(shared, 68, 18, 'transfer learning', refs['transfer'])
@@ -254,7 +254,7 @@ def figure1():
     m.chemical(shared, first, 70, 31, 'example-heteroaryl-bromide')
     m.text(shared, 94, 32, '+')
     m.chemical(shared, second, 102, 31, 'example-boronic-acid')
-    m.text(shared, 68, 43, 'S4 held-out substrate pair', color=GRAY)
+    m.text(shared, 68, 43, 'Held-out substrate pair (fig. S4)', color=GRAY)
     m.text(shared, 154, 24, 'Measured reference wells', anchor='middle', bold=True)
     for x, label, value in [(130, 'PdCl\u2082(dtbpf)', reference.yield_percent.iloc[0]),
                             (157, 'XPhos Pd G3', reference.yield_percent.iloc[1])]:
@@ -263,7 +263,7 @@ def figure1():
         m.text(shared, x + 10.5, 37, c.display_decimal(value, 1) + '%', size=8, anchor='middle')
     m.line(shared, (151.5, 35.5), (156.5, 35.5), GRAY, 0.2, True)
     m.text(shared, 154, 43, 'K\u2083PO\u2084 reference', anchor='middle', color=GRAY)
-    m.text(shared, 130, 48, f'D {float(example.reference_contrast_pp):+.1f} pp')
+    m.text(shared, 130, 48, f'Change {float(example.reference_contrast_pp):+.1f} pp')
     m.text(shared, 157, 48, f'Mean {mean:.1f}%')
 
     routes = m.layer('03-interpret-the-same-measurement')

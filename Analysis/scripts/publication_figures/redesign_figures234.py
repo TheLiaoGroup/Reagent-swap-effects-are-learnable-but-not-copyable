@@ -267,42 +267,23 @@ def plate_icon(ax, x, y, w, h, color=GRAY):
 
 def reference_motif(fig):
     ax = fig.add_axes([0.075, 0.855, 0.85, 0.11])
-    width_mm, height_mm = 183 * 0.85, 168 * 0.11
-    ax.set(xlim=(0, width_mm), ylim=(0, height_mm))
+    ax.set(xlim=(0, 1), ylim=(0, 1))
     ax.axis('off')
-    # Reuse the actual Figure 1B measurements, not invented schematic values.
-    example = c.frame(c.DATA / 'Fig1_example_prediction.csv').iloc[0]
-    inputs = c.frame(c.DATA / 'Fig1_example_inputs.csv')
-    reference = inputs.loc[inputs.background.eq('Reference')].sort_values('endpoint_position')
-    ax.text(2, 18.0, 'Same wells (Fig. 1B)', va='top', fontsize=7, weight='bold')
-    for x, value in zip((2, 23), reference.yield_percent):
-        ax.add_patch(Rectangle((x, 9.1), 18, 4.8, facecolor='white', edgecolor=GRAY, lw=0.5))
-        ax.text(x + 9, 11.5, c.display_decimal(value, 1) + '%', ha='center', va='center', fontsize=7)
-    ax.text(2, 5.5, f'Change {float(example.reference_contrast_pp):+.1f} pp'.replace('-', '−'), fontsize=7)
-    ax.text(2, 1.1, f'Mean {float(example.reference_mean_yield_percent):.1f}%', fontsize=7, color=GRAY)
-    arrow(ax, (45.5, 10), (59, 10), GRAY, shrinkA=0, shrinkB=0)
-
-    def position(value):
-        return 64 + (float(value) + 15) * 85 / 55
-
-    zero, baseline = position(0), 7.4
-    ax.plot([64, 149], [baseline, baseline], color=GRAY, lw=0.55, zorder=1)
-    for value in (-10, 0, 10, 20, 30, 40):
-        x = position(value)
-        ax.plot([x, x], [baseline - 0.7, baseline + (1.8 if value == 0 else 0.7)],
-                color=INK if value == 0 else GRAY, lw=1.0 if value == 0 else 0.5)
-        ax.text(x, 3.9, str(value).replace('-', '−'), ha='center', va='center', fontsize=7, color=GRAY)
-    ax.text(107, 18.0, 'Target change (pp)', ha='center', va='top', fontsize=7, weight='bold')
-    for name, value, color in [('Copy', example.direct_raw_prediction_pp, ORANGE),
-                               ('Learn', example.semantic_full_raw_prediction_pp, TEAL)]:
-        arrow(ax, (zero, baseline), (position(value), baseline), color,
-              shrinkA=0, shrinkB=0, zorder=3)
-        ax.text(position(value), 12.3, f'{name} {float(value):+.1f}'.replace('-', '−'),
-                ha='center', va='center', fontsize=7, color=color, weight='bold')
-    measured = float(example.target_contrast_pp)
-    ax.plot(position(measured), baseline, marker='*', color=INK, ms=6.5, zorder=4)
-    ax.text(position(measured), 12.3, f'Measured {measured:+.1f}', ha='center', va='center',
-            fontsize=7, color=INK, weight='bold')
+    for xx, label, target in [(0.1, 'Reference recipe', False), (0.74, 'Target recipe', True)]:
+        ax.text(xx + 0.08, 0.98, label, ha='center', va='top', fontsize=6, weight='bold')
+        for i, endpoint in enumerate(['X', 'Y']):
+            x = xx + i * 0.095
+            ax.add_patch(Rectangle((x, 0.38), 0.065, 0.3, facecolor=LIGHT if target else 'white', edgecolor=GRAY, lw=0.5))
+            ax.text(x + 0.0325, 0.53, '?' if target else 'measured', ha='center', va='center', fontsize=5 if not target else 6.5, color=INK)
+            ax.text(x + 0.0325, 0.24, endpoint, ha='center', va='center', fontsize=5.5, color=GRAY)
+        arrow(ax, (xx + 0.067, 0.53), (xx + 0.093, 0.53), INK)
+        ax.text(xx + 0.08, 0.06, 'same substrate pair', ha='center', va='center', fontsize=5, color=GRAY)
+    arrow(ax, (0.3, 0.7), (0.73, 0.7), ORANGE, connectionstyle='arc3,rad=-0.08', shrinkB=0)
+    ax.text(0.515, 1.04, 'copy Δ', color=ORANGE, ha='center', va='bottom', fontsize=6, weight='bold')
+    arrow(ax, (0.3, 0.38), (0.445, 0.24), TEAL, shrinkB=0)
+    plate_icon(ax, 0.455, 0.08, 0.07, 0.3, TEAL)
+    arrow(ax, (0.545, 0.24), (0.73, 0.38), TEAL, shrinkB=0)
+    ax.text(0.62, 0.12, 'learn from history', color=TEAL, ha='left', va='center', fontsize=6, weight='bold')
 
 
 def figure3():
