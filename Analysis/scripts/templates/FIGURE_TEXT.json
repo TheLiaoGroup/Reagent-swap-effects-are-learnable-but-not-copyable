@@ -1,24 +1,40 @@
 {
   "Figure_1": {
     "title": "A measured reagent swap reverses with the substrate and must be learned, not copied",
-    "legend": "**A**, Chemists, reaction databases and AI planners reuse measured reagent effects to guide synthesis. **B**, The same two wells for a target substrate pair in another recipe are either copied directly or interpreted through historical reactions. The small Suzuki example shows a catalyst swap increasing quinoline yield from 5% to 93% but decreasing indazole yield from 84% to 12%. Across nineteen arrays, 271/283 testable swaps contradict separate substrate-pair and background signs (Fig. 2). Relative to history alone, copying increases mean squared prediction error by 42%; learning reduces it by 14% across seventeen screens (Fig. 3A). Prior work addresses condition recommendation [1, 2], transfer learning [3], yield-change prediction [4] and general-condition selection [5, 6]. **C**, Measured alternatives resolve 285/542 shared-scope conflicts (Fig. 4), a distinct use of experimental history.",
+    "legend": "**A**, Chemists, reaction databases [1, 2] and AI planners [3, 4] reuse measured reagent effects to guide synthesis. **B**, The same two wells for a target substrate pair in another recipe are either copied directly or interpreted through historical reactions. The small Suzuki example shows a catalyst swap increasing quinoline yield from 5% to 93% but decreasing indazole yield from 84% to 12%. Across nineteen arrays, 271/283 testable swaps contradict separate substrate-pair and background signs (Fig. 2). Relative to history alone, copying increases mean squared prediction error by 42%; learning reduces it by 14% across seventeen screens (Fig. 3A). Prior work addresses condition recommendation [5, 6], transfer learning [7], yield-change prediction [8] and general-condition selection [9, 10]. **C**, Measured alternatives resolve 285/542 shared-scope conflicts (Fig. 4), a distinct use of experimental history.",
     "references": {
-      "recommendation": [
+      "database": [
         1,
         2
       ],
-      "transfer": [
-        3
-      ],
-      "prediction": [
+      "planning": [
+        3,
         4
       ],
-      "general": [
+      "recommendation": [
         5,
         6
+      ],
+      "transfer": [
+        7
+      ],
+      "prediction": [
+        8
+      ],
+      "general": [
+        9,
+        10
       ]
     },
     "reference_dois": {
+      "database": [
+        "10.1021/jacs.1c09820",
+        "10.1038/s41467-020-17266-6"
+      ],
+      "planning": [
+        "10.1038/nature25978",
+        "10.1126/science.aax1566"
+      ],
       "recommendation": [
         "10.1021/acscentsci.8b00357",
         "10.1039/D4SC06728B"
