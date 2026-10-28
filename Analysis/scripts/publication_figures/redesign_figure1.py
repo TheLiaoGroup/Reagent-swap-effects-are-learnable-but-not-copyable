@@ -370,15 +370,16 @@ def figure1(wireframe=False):
            size=7, anchor='middle', color=GRAY)
 
     # A two-bend U links the same reference through matched historical swaps.
-    for start, end, arrow, identity in [((48, 44.5), (48, 73), False, 'learn-down'),
-                                        ((48, 73), (143, 73), False, 'learn-across'),
-                                        ((143, 73), (143, 52), True, 'learn-up')]:
+    # The route enters the plate stack from above and leaves from its right edge.
+    m.plate(routes, 41.5, 64)
+    for start, end, arrow, identity in [((48, 44.5), (48, 61.2), True, 'learn-down'),
+                                        ((57.2, 68), (143, 68), False, 'learn-across'),
+                                        ((143, 68), (143, 52), True, 'learn-up')]:
         m.line(routes, start, end, TEAL, 0.28, arrow, identity)
-    m.plate(routes, 34, 66)
-    m.tag(prior, 62, 70, 'transfer learning', refs['transfer'])
-    m.text(prior, 87, 70, '·', color=GRAY)
-    m.tag(prior, 90, 70, 'yield-change prediction', refs['prediction'])
-    m.text(routes, 31, 79, 'matched historical swaps', size=8,
+    m.tag(prior, 62, 73, 'transfer learning', refs['transfer'])
+    m.text(prior, 87, 73, '·', color=GRAY)
+    m.tag(prior, 90, 73, 'yield-change prediction', refs['prediction'])
+    m.text(routes, 49, 79, 'matched historical swaps', size=8,
            anchor='middle', color=TEAL, bold=True)
     m.text(result, 155, 29, 'Prediction error', size=8, color=GRAY, bold=True)
     m.text(result, 155, 46.5, f'Copy +{c.display_decimal(copy_pct, 0)}%',
