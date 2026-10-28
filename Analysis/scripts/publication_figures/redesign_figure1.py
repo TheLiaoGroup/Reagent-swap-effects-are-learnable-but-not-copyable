@@ -253,7 +253,7 @@ def figure1():
     m.chemical(shared, first, 70, 33, 'example-heteroaryl-bromide')
     m.text(shared, 94, 34, '+')
     m.chemical(shared, second, 102, 33, 'example-boronic-acid')
-    m.text(shared, 68, 44, 'K\u2083PO\u2084 reference \u00b7 same substrate pair', color=GRAY)
+    m.text(shared, 68, 44, 'K\u2083PO\u2084 reference \u00b7 held-out example', color=GRAY)
     for x, label, value in [(69, 'PdCl\u2082(dtbpf)', reference.yield_percent.iloc[0]),
                             (110, 'XPhos Pd G3', reference.yield_percent.iloc[1])]:
         m.text(shared, x + 14, 50, label, anchor='middle')
@@ -269,12 +269,14 @@ def figure1():
 
     routes = m.layer('03-interpret-the-same-measurement')
     m.line(routes, (82, 72), (82, 86), ORANGE, 0.4, True, 'copy-example')
-    m.line(routes, (102, 73), (102, 88), TEAL, 0.35)
-    m.line(routes, (102, 88), (110, 88), TEAL, 0.35, True, 'learn-example')
-    m.line(routes, (125, 71), (125, 72.5), TEAL, 0.35, True)
-    m.text(routes, 106, 76, 'Learn from history', color=TEAL, bold=True)
-    m.tag(routes, 106, 81, 'transfer learning', refs['transfer'])
-    m.tag(routes, 106, 85.5, 'yield-change prediction', refs['prediction'])
+    # Learning uses both features: a bracket collects the change and the mean, then descends to the prediction.
+    m.line(routes, (93, 71), (93, 73.5), TEAL, 0.35)
+    m.line(routes, (125, 71), (125, 73.5), TEAL, 0.35)
+    m.line(routes, (93, 73.5), (125, 73.5), TEAL, 0.35)
+    m.line(routes, (110, 73.5), (110, 89.5), TEAL, 0.4, True, 'learn-example')
+    m.text(routes, 112, 78.5, 'Learn from history', color=TEAL, bold=True)
+    m.tag(routes, 112, 83.5, 'transfer learning', refs['transfer'])
+    m.tag(routes, 112, 88, 'yield-change prediction', refs['prediction'])
     for x, label, value, color in [
         (81, 'Copy', example.direct_raw_prediction_pp, ORANGE),
         (110, 'Learn', example.semantic_full_raw_prediction_pp, TEAL),

@@ -150,13 +150,13 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figure1.py": {
-      "sha256": "dc597c96db9efa113ce22ccb599dcb9a48b86cd32a1a258adca225ff719de781",
-      "bytes": 20180,
+      "sha256": "abc8686f226379da5d91a9a1ab42f23a07ff982cc09c7748231d34f4c3d9c42e",
+      "bytes": 20344,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
-      "sha256": "f8da78c9dbf1db3d6cd791d7f8ddebe047ce2c7fcae8f3012ec2c65bf05c9f69",
-      "bytes": 41110,
+      "sha256": "59667f2da108185c92b9c7c7bdced3ee37614ff9b8b38efbc9efb422e0d95e2e",
+      "bytes": 40598,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/select_fig1_example.py": {

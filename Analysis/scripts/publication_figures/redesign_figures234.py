@@ -192,7 +192,7 @@ def figure2():
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
         yy = 0.335 - i * 0.08
-        fig.text(0.049 if i == 0 else 0.032, yy, str(i + 1), fontsize=7, weight='bold', va='center', ha='center')
+        fig.text(0.085, yy, str(i + 1), fontsize=7, weight='bold', va='center', ha='center')
         molecule(fig, [0.105, yy - 0.03, 0.125, 0.06], smiles)
         for j, row in enumerate(rows.sort_values('order').itertuples()):
             color = BLUE if row.delta > 0 else RED
@@ -205,13 +205,6 @@ def figure2():
         fig.text(0.355 + j * 0.14, 0.385, label, fontsize=7, ha='center', weight='bold')
     fig.text(0.425, 0.408, 'Catalyst response (pp)', fontsize=7, ha='center')
     fig.text(0.56, 0.207, '3 negative; 1 positive', fontsize=7, ha='right')
-    # The numbered leaders follow empty corridors around the scatter cloud.
-    for i, point in enumerate(highlighted):
-        end_x = 0.049 if i == 0 else 0.032
-        start = fig.transFigure.inverted().transform(ax.transData.transform(point))
-        bend_y = start[1] if i == 0 else 0.49 + 0.435 * 191 / 200
-        points = [start, (end_x, bend_y), (end_x, 0.347 - i * 0.08)]
-        fig.add_artist(Line2D(*zip(*points), transform=fig.transFigure, color='#B8C0C6', lw=0.45, zorder=1))
     conflict = panel(fig, [0.795, 0.235, 0.075, 0.625], 'b', 'Sign conflicts in 19 arrays', title_x=0.665, title_y=0.943)
     conflict._draft_panel_title.set_fontsize(7)
     order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
