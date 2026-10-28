@@ -50,24 +50,29 @@ def context_data():
     source('Fig2_a_four_cell_witness', witness, path, 'Original indazole/methoxybromopyridine sign witness; common 4-methoxyphenylboronic acid', 'yield change pp')
     return (wide, witness, pivot)
 
-def six_swaps():
+def six_swaps(reaction_order=None):
     registry_path = E59 / 'full_edge_strict_swap_registry.csv'
     corpus_path = E59 / 'full_edge_response_corpus.parquet'
     registry, corpus = (c.frame(registry_path), c.frame(corpus_path))
     selected, response_sets = ([], {})
-    rule = 'Largest substrate-pair support in each prescribed transformation, descending n_pairs and lexical swap_id; the mandated Suzuki flagship suzuki__C23__C26 overrides the transformation maximum'
-    for cls in ['suzuki', 'acylation', 'buchwald-hartwig', 'snar', 'ullmann', 'kumada']:
+    rule = 'Largest substrate-pair support in each prescribed reaction array, descending n_pairs and lexical swap_id; the mandated Suzuki flagship suzuki__C23__C26 overrides the array maximum'
+    classes = list(reaction_order) if reaction_order is not None else ['suzuki', 'acylation', 'buchwald-hartwig', 'snar', 'ullmann', 'kumada']
+    if len(set(classes)) != len(classes):
+        raise ValueError('Duplicate reaction array in the display selection')
+    for cls in classes:
         candidates = registry.loc[registry.reaction_type.eq(cls)].sort_values(['n_pairs', 'swap_id'], ascending=[False, True])
         if candidates.empty:
             raise ValueError(f'No measured substitution in {cls}')
         chosen = registry.loc[registry.swap_id.eq('suzuki__C23__C26')].iloc[0] if cls == 'suzuki' else candidates.iloc[0]
         rows = corpus.loc[corpus.reaction_type.eq(cls) & corpus.swap_slot.eq(chosen.swap_slot) & corpus.component_pair.eq(chosen.component_pair) & corpus.background_fingerprint.eq(chosen.background_fingerprint)].copy()
-        if len(rows) != int(chosen.n_pairs) or len(rows) < 50:
-            raise ValueError('Six-class substitution support changed')
+        if len(rows) != int(chosen.n_pairs) or rows.empty:
+            raise ValueError('Selected exact-substitution support changed')
         rows['display_delta_pp'] = rows.delta * chosen.orientation_sign
         rows['swap_id'] = chosen.swap_id
         source(f"Fig2_b_{cls.replace('buchwald-hartwig', 'BH')}", rows, [registry_path, corpus_path], rule + '; delta oriented to component0_id to component1_id', 'yield change pp')
-        selected.append(chosen)
+        record = chosen.to_dict()
+        record.update(n_positive=int(rows.display_delta_pp.gt(0).sum()), n_negative=int(rows.display_delta_pp.lt(0).sum()), n_zero=int(rows.display_delta_pp.eq(0).sum()))
+        selected.append(record)
         response_sets[cls] = rows
     selected = pd.DataFrame(selected)
     source('Fig2_b_selected_swaps', selected, registry_path, rule, 'exact substitutions and pair counts')

@@ -148,106 +148,96 @@ def figure2():
     wide, witness, _ = old23.context_data()
     original_source = c.source
 
-    def swapped(name, *args, **kwargs):
-        if name.startswith('Fig2_b_'):
-            name = 'Fig2_c_' + name[len('Fig2_b_'):]
-        elif name.startswith('Fig2_c_'):
-            name = 'Fig2_b_' + name[len('Fig2_c_'):]
+    def atlas_source(name, *args, **kwargs):
+        if name == 'Fig2_c_array_conflicts':
+            name = 'Fig2_b_array_conflicts'
         return original_source(name, *args, **kwargs)
-    c.source = swapped
+    c.source = atlas_source
     try:
-        swaps, responses = old23.six_swaps()
         signs = old23.sign_data()
+        order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
+        swaps, responses = old23.six_swaps(order)
     finally:
         c.source = original_source
-    fig = figure(165)
+    if len(order) != 19 or swaps.reaction_type.tolist() != order:
+        raise ValueError('The array atlas requires the original nineteen-array order')
+    # Keep the established component0 -> component1 orientation. In particular,
+    # acylation and allylic raw-delta sign counts reverse after orientation_sign;
+    # the scientific statement is both signs, not a prescribed positive count.
+    if not swaps.n_positive.gt(0).all() or not swaps.n_negative.gt(0).all():
+        raise ValueError('A selected array no longer contains both response signs')
+    fig = figure(150)
     cs, kk = wide.Cs2CO3_delta_pp, wide.K2CO3_delta_pp
     opposite, shared = int((cs * kk < 0).sum()), len(wide)
-    ax = panel(fig, [0.075, 0.49, 0.48, 0.435], 'a', 'Catalyst responses reverse with background')
+    ax = panel(fig, [0.070, 0.505, 0.328, 0.400], 'a', 'Catalyst responses reverse with background', title_x=0.070, title_y=0.947)
     ax._draft_panel_title.set_fontsize(7)
-    for (x0, y0) in [(-100, 0), (0, -100)]:
+    for x0, y0 in [(-100, 0), (0, -100)]:
         ax.add_patch(Rectangle((x0, y0), 100, 100, facecolor='#F4EFEA', edgecolor='none', zorder=0))
     ax.scatter(cs, kk, color=GRAY, s=5, alpha=0.5, lw=0, zorder=2)
     ax.axhline(0, color=GRAY, lw=0.5, zorder=1)
     ax.axvline(0, color=GRAY, lw=0.5, zorder=1)
     ax.set(xlim=(-100, 100), ylim=(-100, 100), xticks=[-100, -50, 0, 50, 100], yticks=[-100, -50, 0, 50, 100])
     c.clean(ax, 'Change under Cs2CO3 (pp)', 'Change under K2CO3 (pp)')
-    ax.yaxis.tick_right()
-    ax.yaxis.set_label_position('right')
-    ax.spines['left'].set_visible(False)
-    ax.spines['right'].set_visible(True)
     correlation = wide[['Cs2CO3_delta_pp', 'K2CO3_delta_pp']].corr().iloc[0, 1]
-    ax.text(-97, 96, f'opposite signs\n{opposite}/{shared} pairs', ha='left', va='top', fontsize=6, color=INK, linespacing=1.3)
-    ax.text(97, -96, f'r = {correlation:.2f}', ha='right', va='bottom', fontsize=6, color=INK)
+    ax.text(-97, 96, f'opposite signs\n{opposite}/{shared} pairs', ha='left', va='top', fontsize=7, color=INK, linespacing=1.15)
+    ax.text(97, -96, f'r = {correlation:.2f}', ha='right', va='bottom', fontsize=7, color=INK)
     examples = ['Brc1ccc2[nH]ncc2c1', 'COc1cccnc1Br']
-    highlighted = []
     for i, smiles in enumerate(examples):
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
         x, y = rows.sort_values('order').delta.to_numpy()
-        highlighted.append((x, y))
         ax.scatter(x, y, s=30, facecolors='white', edgecolors=INK, lw=1.1, zorder=5)
-        ax.annotate(str(i + 1), (x, y), xytext=(5, 3), textcoords='offset points', fontsize=6.5, weight='bold')
+        ax.annotate(str(i + 1), (x, y), xytext=(5, 3), textcoords='offset points', fontsize=7, weight='bold')
     for i, smiles in enumerate(examples):
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
-        yy = 0.335 - i * 0.08
-        fig.text(0.085, yy, str(i + 1), fontsize=7, weight='bold', va='center', ha='center')
-        molecule(fig, [0.105, yy - 0.03, 0.125, 0.06], smiles)
+        yy = 0.319 - i * 0.123
+        fig.text(0.055, yy, str(i + 1), fontsize=7, weight='bold', va='center', ha='center')
+        molecule(fig, [0.075, yy - 0.035, 0.125, 0.070], smiles)
         for j, row in enumerate(rows.sort_values('order').itertuples()):
-            color = BLUE if row.delta > 0 else RED
-            xx = 0.355 + j * 0.14
-            fig.add_artist(Rectangle((xx - 0.067, yy - 0.033), 0.134, 0.066,
-                                     transform=fig.transFigure, facecolor='#E7F0F6' if row.delta > 0 else '#F6E7E9',
+            color = BLUE if row.delta > 0 else RED if row.delta < 0 else GRAY
+            xx = 0.278 + j * 0.103
+            fig.add_artist(Rectangle((xx - 0.049, yy - 0.042), 0.098, 0.084,
+                                     transform=fig.transFigure, facecolor='#E7F0F6' if row.delta > 0 else '#F6E7E9' if row.delta < 0 else LIGHT,
                                      edgecolor='white', lw=1, zorder=0))
             fig.text(xx, yy, f'{row.delta:+.1f}', fontsize=8, weight='bold', color=color, ha='center', va='center')
     for j, label in enumerate(['Cs2CO3', 'K2CO3']):
-        fig.text(0.355 + j * 0.14, 0.385, label, fontsize=7, ha='center', weight='bold')
-    fig.text(0.425, 0.408, 'Catalyst response (pp)', fontsize=7, ha='center')
-    fig.text(0.56, 0.207, '3 negative; 1 positive', fontsize=7, ha='right')
-    conflict = panel(fig, [0.795, 0.235, 0.075, 0.625], 'b', 'Sign conflicts in 19 arrays', title_x=0.665, title_y=0.943)
-    conflict._draft_panel_title.set_fontsize(7)
-    order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
+        fig.text(0.278 + j * 0.103, 0.386, label, fontsize=7, ha='center', weight='bold')
+    fig.text(0.3295, 0.414, 'Catalyst response (pp)', fontsize=7, ha='center')
+    fig.text(0.430, 0.113, '3 negative; 1 positive', fontsize=7, ha='right')
+
+    atlas = panel(fig, [0.705, 0.130, 0.125, 0.700], 'b', 'Opposite responses in all 19 arrays', title_x=0.492, title_y=0.947)
+    atlas._draft_panel_title.set_fontsize(7)
     totals = {t: (int(signs.loc[signs.threshold_pp.eq(t), 'n_conflicting_edges'].sum()), int(signs.loc[signs.threshold_pp.eq(t), 'n_cycle_edges'].sum())) for t in (0, 20)}
-    for i, name in enumerate(order):
-        rows = signs.loc[signs.stratum.eq(name)].set_index('threshold_pp')
-        values = rows.loc[[0, 20], 'conflict_percent'].to_numpy()
-        if np.isfinite(values).all():
-            conflict.plot(values, [i, i], color=GRAY, lw=0.5)
-        for value, marker in zip(values, ['o', 'D']):
-            if np.isfinite(value):
-                conflict.scatter(value, i, s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, zorder=3, clip_on=False)
-        for k, t in enumerate((0, 20)):
-            n_conf, n_cyc = int(rows.loc[t, 'n_conflicting_edges']), int(rows.loc[t, 'n_cycle_edges'])
-            text = f'{n_conf}/{n_cyc}' if n_cyc else '–'
-            conflict.text(1.35 + 0.79 * k, i, text, transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=6, color=INK if k == 0 else GRAY)
-    for k, (label, t, marker) in enumerate((('all', 0, 'o'), ('≥20 pp', 20, 'D'))):
-        conflict.text(1.35 + 0.79 * k - 0.11, -1.2, label, transform=conflict.get_yaxis_transform(), va='center', ha='left', fontsize=6, color=INK if k == 0 else GRAY)
-        conflict.scatter([1.35 + 0.79 * k - 0.25], [-1.2], transform=conflict.get_yaxis_transform(), s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, clip_on=False)
-        fig.text(0.665 + k * 0.16, 0.908, f'{totals[t][0]}/{totals[t][1]} {label}', fontsize=7, weight='bold', color=INK if k == 0 else GRAY)
-    names = [old23.CLASSES.get(x, x) for x in order]
-    conflict.set_yticks(range(len(order)), names, fontsize=5.5)
-    conflict.set(xlim=(-4, 104), ylim=(len(order) - 0.5, -0.5), xticks=[0, 50, 100])
-    c.clean(conflict, 'Conflicts (%)')
-    strips = panel(fig, [0.075, 0.035, 0.875, 0.12], 'c', 'Opposite responses across transformations', title_y=0.178)
-    strips._draft_panel_title.set_fontsize(7)
-    strips.axis('off')
-    for i, row in enumerate(swaps.itertuples()):
-        x, y = (0.075 + i * 0.151, 0.068)
-        axis = fig.add_axes([x, y, 0.105, 0.034])
-        values = responses[row.reaction_type].display_delta_pp.to_numpy()
-        jitter = (np.arange(len(values)) * 0.61803398875 % 1 - 0.5) * 0.6
-        axis.scatter(values, jitter, s=1.6, alpha=0.55, color=np.where(values > 0, BLUE, RED), lw=0)
-        axis.axvline(0, color=GRAY, lw=0.45)
-        axis.set(xlim=(-100, 100), ylim=(-0.5, 0.5), yticks=[], xticks=[-100, 0, 100])
-        axis.spines[['left', 'top', 'right']].set_visible(False)
-        axis.tick_params(length=2, pad=1, labelsize=5)
-        fig.text(x, 0.142, old23.CLASSES[row.reaction_type], fontsize=7)
-        fig.text(x, 0.119, f'n = {len(values):,}', fontsize=7, color=GRAY)
-    fig.text(0.5, 0.018, 'Yield change (pp)', ha='center', fontsize=7)
+    fig.text(0.492, 0.902, f'{totals[0][0]}/{totals[0][1]} all', fontsize=7, weight='bold')
+    fig.text(0.750, 0.902, f'{totals[20][0]}/{totals[20][1]} ≥20 pp', fontsize=7, weight='bold')
+    for x, label, ha in [(0.492, 'Array', 'left'), (0.677, 'n', 'right'), (0.7675, 'Response (pp)', 'center'), (0.880, 'all', 'center'), (0.955, '≥20 pp', 'center')]:
+        fig.text(x, 0.858, label, fontsize=7, color=GRAY, ha=ha)
+    sign_counts = []
+    for i, cls in enumerate(order):
+        values = responses[cls].display_delta_pp.to_numpy()
+        jitter = (np.arange(len(values)) * 0.61803398875 % 1 - 0.5) * 0.52
+        colors = np.where(values > 0, BLUE, np.where(values < 0, RED, GRAY))
+        atlas.scatter(values, i + jitter, s=1.6, alpha=0.58, color=colors, lw=0)
+        yy = 0.130 + 0.700 * (18.5 - i) / 19
+        fig.text(0.492, yy, old23.CLASSES[cls], fontsize=7, va='center')
+        fig.text(0.677, yy, f'{len(values):,}', fontsize=7, va='center', ha='right')
+        rows = signs.loc[signs.stratum.eq(cls)].set_index('threshold_pp')
+        for x, threshold in [(0.880, 0), (0.955, 20)]:
+            k, n = int(rows.loc[threshold, 'n_conflicting_edges']), int(rows.loc[threshold, 'n_cycle_edges'])
+            fig.text(x, yy, f'{k}/{n}', fontsize=7, va='center', ha='center', color=INK if threshold == 0 else GRAY)
+        selected = swaps.loc[swaps.reaction_type.eq(cls)].iloc[0]
+        sign_counts.append({'array': cls, 'swap_id': selected.swap_id, 'n': len(values), 'positive': int((values > 0).sum()), 'negative': int((values < 0).sum()), 'zero': int((values == 0).sum())})
+    atlas.axvline(0, color=LIGHT, lw=0.5, zorder=0)
+    atlas.set(xlim=(-100, 100), ylim=(18.5, -0.5), yticks=[], xticks=[-100, 0, 100])
+    atlas.spines[['left', 'right', 'top']].set_visible(False)
+    atlas.tick_params(length=2, pad=2)
+    atlas.set_xlabel('Yield change (pp)')
     fig._m1_panels.sort(key=lambda item: item[0])
     report = save(fig, 'Figure_2', 'Substrate pairs and recipe backgrounds jointly determine substitution responses')
-    report['redesign_checks'].update(opposite_pairs=opposite, shared_pairs=shared, totals=totals)
+    report['redesign_checks'].update(opposite_pairs=opposite, shared_pairs=shared, totals=totals,
+        selected_array_sign_counts=sign_counts, arrays_with_both_signs=sum(row['positive'] > 0 and row['negative'] > 0 for row in sign_counts),
+        exact_zero_color=GRAY, panel_order='a shared-background scatter and four-cell witness; b nineteen-array atlas')
     (c.OUT / 'Figure_2_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
@@ -393,10 +383,10 @@ def amide_example(fig, cells, rect):
     fig.add_artist(FancyArrowPatch((0.22, ymap(0.858)), (0.273, ymap(0.858)), transform=fig.transFigure, arrowstyle='->', mutation_scale=6, lw=0.6, color=RED))
     for x, value in [(0.142, 'meta'), (0.352, 'para')]:
         fig.text(x, ymap(0.805), value, ha='center', fontsize=5.5)
-    fig.text(0.142, ymap(0.778), f"{c.display_decimal(100 * start.loc['before', 'yield_numeric'])}%", ha='center', fontsize=6)
-    fig.text(0.352, ymap(0.778), f"{c.display_decimal(100 * start.loc['after', 'yield_numeric'])}%", ha='center', fontsize=6, color=RED)
+    fig.text(0.142, ymap(0.778), f"{c.display_decimal(100 * start.loc['before', 'yield_numeric'], 0)}%", ha='center', fontsize=7)
+    fig.text(0.352, ymap(0.778), f"{c.display_decimal(100 * start.loc['after', 'yield_numeric'], 0)}%", ha='center', fontsize=7, color=RED)
     fig.text(0.075, ymap(0.748), 'HBTU, no HOBt', fontsize=6)
-    ax = fig.add_axes([0.14, ymap(0.548), 0.3, hmap(0.167)])
+    ax = fig.add_axes([0.14, ymap(0.518), 0.3, hmap(0.197)])
     ax.set(xlim=(-0.6, 2.4), ylim=(-0.5, 1.5))
     ax.axis('off')
     after = cells.loc[cells.molecular_side.eq('after')].sort_values('panel_position')
@@ -422,8 +412,8 @@ def amide_example(fig, cells, rect):
         recovery = row.binary_level == 0 and row.ternary_level == 2
         color = RED if failure else BLUE if recovery else GRAY
         ax.add_patch(Rectangle((row.ternary_level - half_width, row.binary_level - half_height), 2 * half_width, 2 * half_height, facecolor='white', edgecolor=color, lw=1 if failure or recovery else 0.5, zorder=2))
-        shown = c.display_decimal(100 * row.yield_numeric)
-        ax.text(row.ternary_level, row.binary_level, shown + '%', ha='center', va='center', fontsize=6, zorder=3)
+        shown = c.display_decimal(100 * row.yield_numeric, 0)
+        ax.text(row.ternary_level, row.binary_level, shown + '%', ha='center', va='center', fontsize=7, zorder=3)
     for i, label in enumerate(['HBTU', 'PyBOP', 'TPTU']):
         ax.text(i, 1.45, label, ha='center', fontsize=5.5)
     ax.text(-0.36, 0, 'No HOBt', ha='right', va='center', fontsize=5.5)
@@ -449,8 +439,8 @@ def suzuki_example(fig, cells, rect):
         ax.spines[:].set_visible(False)
         ax.tick_params(length=0, pad=2)
         for (r, k), value in np.ndenumerate(values):
-            shown = c.display_decimal(value)
-            ax.text(k, r, shown, ha='center', va='center', fontsize=6, color='white' if value >= 65 else INK)
+            shown = c.display_decimal(value, 0)
+            ax.text(k, r, shown, ha='center', va='center', fontsize=7, color='white' if value >= 65 else INK)
         if j:
             for rr, color in [(1, RED), (2, BLUE)]:
                 ax.add_patch(Rectangle((0.52, rr - 0.48), 0.96, 0.96, fill=False, edgecolor='white', lw=3, zorder=4))
@@ -458,10 +448,10 @@ def suzuki_example(fig, cells, rect):
             arrow(ax, (1.6, 1.02), (1.6, 1.96), BLUE, connectionstyle='arc3,rad=-.40', clip_on=False)
             frame_location = (x + 0.115 * 1.02 / 2, ymap(0.575) + hmap(0.19) * 0.5 / 3)
     fig.add_artist(FancyArrowPatch((0.81, ymap(0.858)), (0.83, ymap(0.858)), transform=fig.transFigure, arrowstyle='->', mutation_scale=6, lw=0.6, color=RED))
-    bar = fig.colorbar(images[-1], cax=fig.add_axes([0.68, ymap(0.533), 0.265, hmap(0.007)]), orientation='horizontal', ticks=[0, 50, 100])
+    bar = fig.colorbar(images[-1], cax=fig.add_axes([0.68, ymap(0.548), 0.265, hmap(0.007)]), orientation='horizontal', ticks=[0, 50, 100])
     bar.solids.set_rasterized(False)
     bar.ax.tick_params(length=2, pad=1, labelsize=5)
-    bar.set_label('Yield (%)', labelpad=1, fontsize=5.5)
+    fig.text(0.650, ymap(0.5515), 'Yield (%)', ha='right', va='center', fontsize=7)
     return frame_location
 
 def lstar(color):
@@ -520,8 +510,9 @@ def figure4():
             patch.set_color(GRAY)
     for text in fig.texts:
         if text.get_text() == 'DIPEA, DMF; 25 °C, 2 h':
-            text.set_position((0.075, 0.35))
-    fig.text(0.68, 0.35, '1,4-dioxane/H₂O; 100 °C, 12 h', fontsize=6)
+            text.set_position((0.075, 0.399))
+            text.set_fontsize(7)
+    fig.text(0.68, 0.399, '1,4-dioxane/H₂O; 100 °C, 12 h', fontsize=7)
     for xx, color, label in [(0.075, RED, 'Failed recipe'), (0.26, BLUE, 'Measured alternative')]:
         fig.add_artist(Rectangle((xx, 0.317), 0.009, 0.011, transform=fig.transFigure,
                                  facecolor='white', edgecolor=color, lw=0.8))
