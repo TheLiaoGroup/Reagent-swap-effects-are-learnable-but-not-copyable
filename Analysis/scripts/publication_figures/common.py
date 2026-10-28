@@ -222,6 +222,55 @@ def normalize_snar_svg_reading_order(root):
         changed += 1
     return changed
 
+
+def structure_boxes_pt(report):
+    """Read native-structure bounds in PDF points, including the SVG Figure 1."""
+    chemistry = report.get('chemistry', [])
+    if 'chemical_boxes' in report:
+        boxes = report['chemical_boxes']
+        if 'chemistry' in report and len(boxes) != len(chemistry):
+            raise ValueError(f"Chemical bounds count differs in {report.get('figure')}")
+        bounds = [[item[key] for key in ('x_pt', 'y_pt', 'width_pt', 'height_pt')]
+                  for item in boxes]
+    elif 'chemistry' in report:
+        bounds = []
+        for item in chemistry:
+            if 'bounds_pt' in item:
+                bounds.append(item['bounds_pt'])
+            elif 'bounds_mm' in item:
+                bounds.append([value * 72 / 25.4 for value in item['bounds_mm']])
+            else:
+                raise ValueError(f"Missing chemical bounds in {report.get('figure')}")
+    else:
+        raise ValueError(f"Missing chemical inventory in {report.get('figure')}")
+    result = []
+    for i, values in enumerate(bounds):
+        values = [float(value) for value in values]
+        if len(values) != 4 or not np.isfinite(values).all() or min(values[2:]) <= 0:
+            raise ValueError(f"Invalid chemical bounds in {report.get('figure')}: {values}")
+        item = chemistry[i] if i < len(chemistry) else {}
+        result.append({'structure': i + 1, 'smiles': item.get('smiles'), 'bounds_pt': values})
+    return result
+
+
+def structure_box_intersections(report):
+    """Reject any positive-area intersection of independently placed structures."""
+    boxes = structure_boxes_pt(report)
+    hits = []
+    for i, a in enumerate(boxes):
+        ax, ay, aw, ah = a['bounds_pt']
+        for b in boxes[i + 1:]:
+            bx, by, bw, bh = b['bounds_pt']
+            x, y = max(ax, bx), max(ay, by)
+            width = min(ax + aw, bx + bw) - x
+            height = min(ay + ah, by + bh) - y
+            if width > 0 and height > 0:
+                hits.append({'structures': [a['structure'], b['structure']],
+                             'smiles': [a['smiles'], b['smiles']],
+                             'intersection_pt': [x, y, width, height]})
+    return hits
+
+
 def save(fig, stem, title=''):
     caption_path = A / 'scripts/templates/FIGURE_TEXT.json'
     if caption_path.is_file():
@@ -299,6 +348,10 @@ def save(fig, stem, title=''):
     for letter, ax, panel_title in fig._m1_panels:
         grid.append({'panel': letter, 'axes_bounds_px': list(ax.get_window_extent(renderer).bounds), 'title_bounds_px': list(panel_title.get_window_extent(renderer).bounds), 'title': panel_title.get_text(), 'letter_font_pt': ax._draft_panel_letter.get_fontsize(), 'letter_weight': ax._draft_panel_letter.get_fontweight()})
     result = {'figure': stem, 'title': title, 'title_visible': False, 'draft': False, 'width_mm': pw / 72 * 25.4, 'height_mm': ph / 72 * 25.4, 'png_pixels': [pix.width, pix.height], 'text_bounds': boxes, 'text_outside': outside, 'png_width': pix.width, 'png_height': pix.height, 'png_dpi': 300, 'pixel_bounds_pass': True, 'chemical_boxes': [{'x_pt': e['bounds_pt'][0], 'y_pt': e['bounds_pt'][1], 'width_pt': e['bounds_pt'][2], 'height_pt': e['bounds_pt'][3]} for e in chemicals], 'panels': grid, 'chemistry': chemicals, 'source_tables': list(TABLES), 'raster_images': len(pdf[0].get_images()), 'vector_paths': len(pdf[0].get_drawings()), 'editable_svg': str(editable_path), 'svg_sha256': hashlib.sha256(editable_path.read_bytes()).hexdigest(), 'axes_fonts_pt': [{'xlabel': ax.xaxis.label.get_fontsize(), 'ylabel': ax.yaxis.label.get_fontsize(), 'ticks': sorted({t.get_fontsize() for t in ax.get_xticklabels() + ax.get_yticklabels()})} for ax in fig.axes]}
+    intersections = structure_box_intersections(result)
+    result['layout_review'] = {'structure_structure_box_intersections': intersections}
+    if intersections:
+        raise ValueError(f'Structure box intersection in {stem}: {intersections}')
     (OUT / f'{stem}_manifest.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
     QA.append(result)
     pdf.close()

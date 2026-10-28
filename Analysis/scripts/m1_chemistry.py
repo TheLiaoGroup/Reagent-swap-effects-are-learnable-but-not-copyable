@@ -396,6 +396,15 @@ class Chemistry:
         return entry
 
     def finalize(self):
-        result = {'stylesheet': 'Nature Research Document', 'bond_length_pt': 10.8, 'stylesheet_source': str(self.template), 'stylesheet_sha256': TEMPLATE_SHA256, 'label_size_pt': 6, 'assets': list(self.assets.values()), 'fallbacks': self.failures}
+        reader_root = Path(__file__).resolve().parents[2]
+        path_fields = ('svg', 'pdf', 'cdxml', 'cdx', 'scale_metadata', 'native_svg')
+        assets = []
+        for runtime_asset in self.assets.values():
+            asset = dict(runtime_asset)
+            for field in path_fields:
+                if asset.get(field) is not None:
+                    asset[field] = Path(asset[field]).resolve().relative_to(reader_root).as_posix()
+            assets.append(asset)
+        result = {'stylesheet': 'Nature Research Document', 'bond_length_pt': 10.8, 'stylesheet_source': self.template.resolve().relative_to(reader_root).as_posix(), 'stylesheet_sha256': TEMPLATE_SHA256, 'label_size_pt': 6, 'assets': assets, 'fallbacks': self.failures}
         (self.directory / 'chemistry_assets.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
         return result

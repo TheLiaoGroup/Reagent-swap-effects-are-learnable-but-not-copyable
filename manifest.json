@@ -35,8 +35,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/m1_chemistry.py": {
-      "sha256": "9f2197450d7da5e770dff035995b208b5d3f205e3ec4a161af58226d872ad56f",
-      "bytes": 24455,
+      "sha256": "570d5a2ac975de0ab64dfd03af21707f418d036e65cd0c5611f607eb3a68d34f",
+      "bytes": 24950,
       "kind": "scientific_source"
     },
     "Analysis/scripts/m1_corpus_reconciliation.py": {
@@ -115,13 +115,13 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/build.py": {
-      "sha256": "3b6215f47dae72f8a2285adfc40320909d4a8fc1ab3074d80e8d67ea0d831703",
-      "bytes": 14711,
+      "sha256": "c54863adb9630b0130baeaca833be8e9ce4c9746460072f2104529cdd9ba3899",
+      "bytes": 18877,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/common.py": {
-      "sha256": "ff603dccb5255e21bde981f1737e357d9f188911c1ed86a400f38e7c350ec34b",
-      "bytes": 17329,
+      "sha256": "ea1fb39d49bb905804f5ad911b00547f8ef6e0e03d6ba232068d5c37ed17637a",
+      "bytes": 19773,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/direction_accuracy.py": {
@@ -150,13 +150,13 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figure1.py": {
-      "sha256": "9a9795a85b4448592718925ba6efd8803102b0ccd38d5656b356dec2ed9550af",
-      "bytes": 20463,
+      "sha256": "e124fee6f0682130d26f79b1c4174a1b224317e66dffb23d2e8daaf55f745e1a",
+      "bytes": 19077,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
-      "sha256": "0068df79c910309073e15f5a353b520f480920d3e944f58d8602efeb9407750b",
-      "bytes": 39954,
+      "sha256": "b17c1823310c23c5f4ae6e771e067bc72afbda7fa7ae68087c11c4df14937b76",
+      "bytes": 39919,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/select_fig1_example.py": {
@@ -860,8 +860,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/templates/FIGURE_TEXT.json": {
-      "sha256": "41be7cb4b1b02a0c5b1e8cee1b4de01fc29997b6922851d5f2196ae95211b4fe",
-      "bytes": 10586,
+      "sha256": "4c7b1c751e768627ee57fffeb01c987db2fce5a657639a769c5c740901f582a8",
+      "bytes": 10817,
       "kind": "release_asset"
     },
     "DATA_LICENSE": {
@@ -1054,164 +1054,14 @@
       "bytes": 1390,
       "kind": "release_asset"
     },
-    "Results/source_tables/Fig4_d_local_learning.csv": {
-      "sha256": "e14ada6aae9935bd32d205335fbc4a015d68d2247675a90ed46dc434fcbb2261",
-      "bytes": 1653,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/Fig4_d_measurement_cost.csv": {
-      "sha256": "414fa9cdaaaf10537e9fe73eee3594d15faae4b2f0a4df9fede18f79ffef5aaa",
-      "bytes": 10036,
-      "kind": "release_asset"
-    },
     "Results/source_tables/S1_array_inventory.csv": {
       "sha256": "4afc6363baeb0181bed6329a31996cce660a4e04967b619d07231010a2951cfc",
       "bytes": 7783,
       "kind": "release_asset"
     },
-    "Results/source_tables/S2_local_learning.csv": {
-      "sha256": "694a3b9a60740227175ea4c4bc04a6617e672d9db9053cb2d34b685218513706",
-      "bytes": 7890,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S2_measurement_cost.csv": {
-      "sha256": "6fd85f53a9cdd6f8a8b3ca356a964db75ccf8bee68a4d7a47ca5602416c522ec",
-      "bytes": 8692,
-      "kind": "release_asset"
-    },
     "Results/source_tables/S3_a_transfer_directions.csv": {
       "sha256": "03ce6ace21c7574818d50e1688f1bf864490962a9ce94f3e05ac71bcebaa4753",
       "bytes": 8882,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S4_a_response_vectors.csv": {
-      "sha256": "297996a3e171b10e5b7706d8b307aa9372e4168efa092dcbf86cf3457e031d6b",
-      "bytes": 3752,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S4_a_selection_population.csv": {
-      "sha256": "e59f6a9a1d4ebaf4cc5b3d2239b92cb756d1d5501fc50065ed6c6c0ec72f4b2d",
-      "bytes": 276911,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S4_b_within_layer_improvement.csv": {
-      "sha256": "1657da372db7d980889945a8088057650ec43ed297723c22bc35d6c76e6aa5b3",
-      "bytes": 873,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S4_c_net_gain_components.csv": {
-      "sha256": "61a573e36a2064f2db51abf99993066a7a07bd6788f814f946981a8b5e68eec3",
-      "bytes": 2793,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S5_eligible_examples.csv": {
-      "sha256": "3629ce0f2eb3c1e3ea10f0cab1eb613544513a63d2dd201bccc9fbc21d0fbbb0",
-      "bytes": 1805366,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S5_experiment_grid.csv": {
-      "sha256": "8fe7cef748f30d249a523f0f68c4acbc2a788e2b113edd8c1405c53fd99b2904",
-      "bytes": 11669,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S5_pool_counts.csv": {
-      "sha256": "18d1ce576f0da49b583391259e838492829c91f245c75d64fcadfef7f1a40e31",
-      "bytes": 8635,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S5_selected_prediction.csv": {
-      "sha256": "7ee8c17f16b7d2519d9cdeb795917d43d4639f95e6a97abcf7b9715394966b23",
-      "bytes": 3379,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S5_source_well_audit.csv": {
-      "sha256": "97ea7c2139961d053b267f166cb184f57edb06f8991dbc31a15ceb3e40ca0a55",
-      "bytes": 4321,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S6_a_amide16.csv": {
-      "sha256": "f1a69724a1cb100e7df01b4d6a7da2e9358da6840e578e459329e28c5ff0387c",
-      "bytes": 3570,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S6_a_raw_identity.csv": {
-      "sha256": "9437c79753263cbf6088bf3257f126c6ffe76c55b9e2da356bf26b3a40b229d6",
-      "bytes": 8522,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S6_b_FDPP_TOTU.csv": {
-      "sha256": "7b7b95bfb2bd16304777135753767c8965319b875146e7b0ba072d6d988b0f6e",
-      "bytes": 16093,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S6_c_base_DiD.csv": {
-      "sha256": "99939c83c93ef334cf1e9d4cb1d681ae8a1f2979f3c193fc3bbe8fbda74fe166",
-      "bytes": 22408,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S7_a_DgivenS_17screens.csv": {
-      "sha256": "9f89d43354c901df20fa4bf65f26820cf6427091cef1745c574a95659a18c5ad",
-      "bytes": 4356,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S7_b_local_content.csv": {
-      "sha256": "4cbd2d5afa576a2de51996d385bb8e3e935b8ffe1289181a9a6dd30712d0b0f2",
-      "bytes": 8676,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_a_Suzuki_scope.csv": {
-      "sha256": "f5745f75f7801c1163b002c33121294ef44b40c2fb61db1586b8e11b3ab4d1ef",
-      "bytes": 501,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_a_edges.csv": {
-      "sha256": "1d3c182b5c8976267318ce94fa9daaad7668f9b7902fb70854808db5759caaa7",
-      "bytes": 22122,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_a_nodes.csv": {
-      "sha256": "87248245f941096cb6b826d03b393a6066e93f5b32a961d654c26776960e59cc",
-      "bytes": 22619,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_a_raw_conditions.csv": {
-      "sha256": "44143985a4db66453afbc78de88cd8e7d7a6f93ae96b26e40bcea241c2dcf163",
-      "bytes": 26854,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_a_raw_reactions.csv": {
-      "sha256": "609f7c1106f9893a115883ead500e45f3c19f7ed0ca2650e0e4d3f992b2ba5c3",
-      "bytes": 172959,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_a_routes.csv": {
-      "sha256": "469796ccd050469ef39ca6c0fcc101d5392f21841c802a8c4dc2bd2653169a8a",
-      "bytes": 3466,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_b_amide_frontier.csv": {
-      "sha256": "70711ecf523333c4fbf15c69d7626f1dfcad7285afcfa32c2f23a5a3838c5f68",
-      "bytes": 1695,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_b_edges.csv": {
-      "sha256": "f2a2f7375be6ac4ab24d7fe9f59ce1a6cb13c53f9b87a377cff54fa45b50c186",
-      "bytes": 94664,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_b_nodes.csv": {
-      "sha256": "3e0123656352ae41e6d9859bacbb6ed09ba777eb1197f7c369fe0a2a12a502bc",
-      "bytes": 128736,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_b_raw_pointers.csv": {
-      "sha256": "4fded755fb2c4e3280f6246bfccd5ecf04ede960ef6554268b77656474e9df0c",
-      "bytes": 54715,
-      "kind": "release_asset"
-    },
-    "Results/source_tables/S8_b_routes.csv": {
-      "sha256": "3d30307d7e5859153d78a77776508f631690ed7485e8045b374e9f443c788f88",
-      "bytes": 6621,
       "kind": "release_asset"
     },
     "Results/source_tables/SI_broadest_support.csv": {
@@ -1276,8 +1126,8 @@
     },
     "SOURCE_CONTAINER_MAP.json": {
       "kind": "curated_full_support_input",
-      "sha256": "18f11fce051785072fa78d791dfebee09136d4d27aacf772f1b229ae72219c23",
-      "bytes": 63948
+      "sha256": "4047e24ced2a752e30f3f208c63bf7dca9332c055483f69c0653ea2f0946a2fd",
+      "bytes": 63955
     },
     "data/excluded_wells.csv": {
       "sha256": "236b9ab8558e8f708e845912e4c95acb287c67b5ed6fab2f2ae315cc5088d5db",
@@ -2159,15 +2009,45 @@
       "sha256": "0546b89ae5c873e43029ff5d4a3626dc33a1e677b10cfd357b8837d066fd0db6",
       "bytes": 1111
     },
+    "Analysis/out/final_figures/chemistry_work/M_083f58e859b3_readback.mol": {
+      "kind": "release_asset",
+      "sha256": "a2994f9c00d9e3d083b42e2ae78da1b326ce4e11c41cf582792e828735c6bb74",
+      "bytes": 1111
+    },
+    "Analysis/scripts/publication_figures/check_structure_layout.py": {
+      "kind": "release_asset",
+      "sha256": "8b8aa9f5bed9256a06fc925c61c38babc735fc84c640f791224cd703c06e851e",
+      "bytes": 2459
+    },
+    "Analysis/scripts/publication_figures/supplementary_numbering.py": {
+      "kind": "release_asset",
+      "sha256": "74a8e4331644559fc9cfeb5056608be94f22ba87a43a3a8744c8442f2be1a8ff",
+      "bytes": 3518
+    },
+    "Analysis/scripts/publication_figures/test_structure_layout.py": {
+      "kind": "release_asset",
+      "sha256": "cd9967b85808d343fb8f0f4f52912dc5e39c62048a1cb750295d0fc776ca0f37",
+      "bytes": 4919
+    },
     "Results/source_tables/Fig1_array_conflicts.csv": {
       "kind": "release_asset",
       "sha256": "55aea30ede8508664a58ddd60e3acc0c925de005d2eabcaba291dfc2f8740cd6",
       "bytes": 25634
     },
+    "Results/source_tables/Fig1_history_pairs.csv": {
+      "kind": "release_asset",
+      "sha256": "2ba039cdd43106757f458f8d75356d884d982005a774464240b9697c691de35b",
+      "bytes": 80028
+    },
+    "Results/source_tables/Fig1_history_relation.csv": {
+      "kind": "release_asset",
+      "sha256": "109e7279584b0c0afcc8b73b3b1896267aa04cd81f953d67affac970f73b023c",
+      "bytes": 990
+    },
     "Results/source_tables/Fig1_map_numbers.csv": {
       "kind": "release_asset",
-      "sha256": "71153a7cdcbad871ae2f66018c19b987c076fdf016f411a33348795e5939a24f",
-      "bytes": 1081
+      "sha256": "d823da1ee3c7d5f9060e1de0140722557423758b57e898a78e63aa69401e28e0",
+      "bytes": 905
     },
     "Results/source_tables/Fig1_overall_error_change.csv": {
       "kind": "release_asset",
@@ -2219,10 +2099,190 @@
       "sha256": "9ee2409085af60b553b24c7d1e3f40f9b8e769f0905345195f6951492efa7786",
       "bytes": 702
     },
+    "Results/source_tables/S2_a_amide16.csv": {
+      "kind": "release_asset",
+      "sha256": "f1a69724a1cb100e7df01b4d6a7da2e9358da6840e578e459329e28c5ff0387c",
+      "bytes": 3570
+    },
+    "Results/source_tables/S2_a_raw_identity.csv": {
+      "kind": "release_asset",
+      "sha256": "9437c79753263cbf6088bf3257f126c6ffe76c55b9e2da356bf26b3a40b229d6",
+      "bytes": 8522
+    },
+    "Results/source_tables/S2_b_FDPP_TOTU.csv": {
+      "kind": "release_asset",
+      "sha256": "7b7b95bfb2bd16304777135753767c8965319b875146e7b0ba072d6d988b0f6e",
+      "bytes": 16093
+    },
+    "Results/source_tables/S2_c_base_DiD.csv": {
+      "kind": "release_asset",
+      "sha256": "99939c83c93ef334cf1e9d4cb1d681ae8a1f2979f3c193fc3bbe8fbda74fe166",
+      "bytes": 22408
+    },
+    "Results/source_tables/S4_eligible_examples.csv": {
+      "kind": "release_asset",
+      "sha256": "3629ce0f2eb3c1e3ea10f0cab1eb613544513a63d2dd201bccc9fbc21d0fbbb0",
+      "bytes": 1805366
+    },
+    "Results/source_tables/S4_experiment_grid.csv": {
+      "kind": "release_asset",
+      "sha256": "8fe7cef748f30d249a523f0f68c4acbc2a788e2b113edd8c1405c53fd99b2904",
+      "bytes": 11669
+    },
+    "Results/source_tables/S4_pool_counts.csv": {
+      "kind": "release_asset",
+      "sha256": "18d1ce576f0da49b583391259e838492829c91f245c75d64fcadfef7f1a40e31",
+      "bytes": 8635
+    },
+    "Results/source_tables/S4_selected_prediction.csv": {
+      "kind": "release_asset",
+      "sha256": "7ee8c17f16b7d2519d9cdeb795917d43d4639f95e6a97abcf7b9715394966b23",
+      "bytes": 3379
+    },
+    "Results/source_tables/S4_source_well_audit.csv": {
+      "kind": "release_asset",
+      "sha256": "97ea7c2139961d053b267f166cb184f57edb06f8991dbc31a15ceb3e40ca0a55",
+      "bytes": 4321
+    },
+    "Results/source_tables/S5_a_DgivenS_17screens.csv": {
+      "kind": "release_asset",
+      "sha256": "9f89d43354c901df20fa4bf65f26820cf6427091cef1745c574a95659a18c5ad",
+      "bytes": 4356
+    },
+    "Results/source_tables/S5_b_local_content.csv": {
+      "kind": "release_asset",
+      "sha256": "4cbd2d5afa576a2de51996d385bb8e3e935b8ffe1289181a9a6dd30712d0b0f2",
+      "bytes": 8676
+    },
+    "Results/source_tables/S6_a_response_vectors.csv": {
+      "kind": "release_asset",
+      "sha256": "297996a3e171b10e5b7706d8b307aa9372e4168efa092dcbf86cf3457e031d6b",
+      "bytes": 3752
+    },
+    "Results/source_tables/S6_a_selection_population.csv": {
+      "kind": "release_asset",
+      "sha256": "e59f6a9a1d4ebaf4cc5b3d2239b92cb756d1d5501fc50065ed6c6c0ec72f4b2d",
+      "bytes": 276911
+    },
+    "Results/source_tables/S6_b_within_layer_improvement.csv": {
+      "kind": "release_asset",
+      "sha256": "1657da372db7d980889945a8088057650ec43ed297723c22bc35d6c76e6aa5b3",
+      "bytes": 873
+    },
+    "Results/source_tables/S6_c_net_gain_components.csv": {
+      "kind": "release_asset",
+      "sha256": "61a573e36a2064f2db51abf99993066a7a07bd6788f814f946981a8b5e68eec3",
+      "bytes": 2793
+    },
+    "Results/source_tables/S7_a_Suzuki_scope.csv": {
+      "kind": "release_asset",
+      "sha256": "f5745f75f7801c1163b002c33121294ef44b40c2fb61db1586b8e11b3ab4d1ef",
+      "bytes": 501
+    },
+    "Results/source_tables/S7_a_edges.csv": {
+      "kind": "release_asset",
+      "sha256": "1d3c182b5c8976267318ce94fa9daaad7668f9b7902fb70854808db5759caaa7",
+      "bytes": 22122
+    },
+    "Results/source_tables/S7_a_nodes.csv": {
+      "kind": "release_asset",
+      "sha256": "87248245f941096cb6b826d03b393a6066e93f5b32a961d654c26776960e59cc",
+      "bytes": 22619
+    },
+    "Results/source_tables/S7_a_raw_conditions.csv": {
+      "kind": "release_asset",
+      "sha256": "44143985a4db66453afbc78de88cd8e7d7a6f93ae96b26e40bcea241c2dcf163",
+      "bytes": 26854
+    },
+    "Results/source_tables/S7_a_raw_reactions.csv": {
+      "kind": "release_asset",
+      "sha256": "609f7c1106f9893a115883ead500e45f3c19f7ed0ca2650e0e4d3f992b2ba5c3",
+      "bytes": 172959
+    },
+    "Results/source_tables/S7_a_routes.csv": {
+      "kind": "release_asset",
+      "sha256": "469796ccd050469ef39ca6c0fcc101d5392f21841c802a8c4dc2bd2653169a8a",
+      "bytes": 3466
+    },
+    "Results/source_tables/S7_b_amide_frontier.csv": {
+      "kind": "release_asset",
+      "sha256": "70711ecf523333c4fbf15c69d7626f1dfcad7285afcfa32c2f23a5a3838c5f68",
+      "bytes": 1695
+    },
+    "Results/source_tables/S7_b_edges.csv": {
+      "kind": "release_asset",
+      "sha256": "f2a2f7375be6ac4ab24d7fe9f59ce1a6cb13c53f9b87a377cff54fa45b50c186",
+      "bytes": 94664
+    },
+    "Results/source_tables/S7_b_nodes.csv": {
+      "kind": "release_asset",
+      "sha256": "3e0123656352ae41e6d9859bacbb6ed09ba777eb1197f7c369fe0a2a12a502bc",
+      "bytes": 128736
+    },
+    "Results/source_tables/S7_b_raw_pointers.csv": {
+      "kind": "release_asset",
+      "sha256": "4fded755fb2c4e3280f6246bfccd5ecf04ede960ef6554268b77656474e9df0c",
+      "bytes": 54715
+    },
+    "Results/source_tables/S7_b_routes.csv": {
+      "kind": "release_asset",
+      "sha256": "3d30307d7e5859153d78a77776508f631690ed7485e8045b374e9f443c788f88",
+      "bytes": 6621
+    },
+    "Results/source_tables/S8_a_local_learning.csv": {
+      "kind": "release_asset",
+      "sha256": "694a3b9a60740227175ea4c4bc04a6617e672d9db9053cb2d34b685218513706",
+      "bytes": 7890
+    },
+    "Results/source_tables/S8_a_measurement_cost.csv": {
+      "kind": "release_asset",
+      "sha256": "6fd85f53a9cdd6f8a8b3ca356a964db75ccf8bee68a4d7a47ca5602416c522ec",
+      "bytes": 8692
+    },
+    "Results/source_tables/S8_b_local_learning.csv": {
+      "kind": "release_asset",
+      "sha256": "e14ada6aae9935bd32d205335fbc4a015d68d2247675a90ed46dc434fcbb2261",
+      "bytes": 1653
+    },
+    "Results/source_tables/S8_b_measurement_cost.csv": {
+      "kind": "release_asset",
+      "sha256": "414fa9cdaaaf10537e9fe73eee3594d15faae4b2f0a4df9fede18f79ffef5aaa",
+      "bytes": 10036
+    },
+    "Submission/02_Figures/ChemDraw/M_083f58e859b3.cdx": {
+      "kind": "release_asset",
+      "sha256": "db5c5109df36361b7ec79c977521bc018a3881c90fcb38fce902ac96569ee378",
+      "bytes": 2760
+    },
+    "Submission/02_Figures/ChemDraw/M_083f58e859b3.cdxml": {
+      "kind": "release_asset",
+      "sha256": "d58c1109e9bd60801db15afecd2dc5f20f5759238b451eaac338de2ccd0d1d9c",
+      "bytes": 6298
+    },
+    "Submission/02_Figures/ChemDraw/M_083f58e859b3.native.svg": {
+      "kind": "release_asset",
+      "sha256": "06ddbfec9416dd622d893e6f31271fe73e93f9bd175207bc5e51749f9ba1fc51",
+      "bytes": 3753
+    },
+    "Submission/02_Figures/ChemDraw/M_083f58e859b3.pdf": {
+      "kind": "release_asset",
+      "sha256": "76302ae01d7f94e7df6637c943080dd6437d944afaf658ee330911b73489c1f8",
+      "bytes": 33963
+    },
+    "Submission/02_Figures/ChemDraw/M_083f58e859b3.scale.json": {
+      "kind": "release_asset",
+      "sha256": "af2ad7f1796e7fac1cf00fb18c850fec849dccbb4d934aec1a4b599bcdd09f7c",
+      "bytes": 1325
+    },
+    "Submission/02_Figures/ChemDraw/M_083f58e859b3.svg": {
+      "kind": "release_asset",
+      "sha256": "bf5ca937fa26654d8b2e988b44bc8f29d8571fa7bdd680e620ef3865bdf7c597",
+      "bytes": 3643
+    },
     "Submission/02_Figures/ChemDraw/chemistry_assets.json": {
       "kind": "release_asset",
-      "sha256": "fe153d81feab66944c635ca84242f255a128ae3a4a6b11ef8e455e02f40e0f87",
-      "bytes": 19593
+      "sha256": "6a9b8a49c5876b0064c055debf9f6c2da2315d0b4f410d41697bd5c090af9b2b",
+      "bytes": 15489
     }
   }
 }

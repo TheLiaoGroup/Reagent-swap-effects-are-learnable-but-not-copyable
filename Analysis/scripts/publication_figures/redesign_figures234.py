@@ -112,16 +112,18 @@ def layout_review(fig, report):
             path = patch.get_transform().transform_path(patch.get_path())
             if path.get_extents().overlaps(box) and path.intersects_bbox(box, filled=False):
                 arrow_hits.append(text.get_text())
-    return {'text_text_intersections': overlaps, 'text_chemical_box_intersections': chemical_hits, 'text_scatter_center_intersections': sorted(set(point_hits)), 'text_arrow_intersections': sorted(set(arrow_hits)), 'visible_text_count': len(texts)}
+    return {'text_text_intersections': overlaps, 'text_chemical_box_intersections': chemical_hits, 'text_scatter_center_intersections': sorted(set(point_hits)), 'text_arrow_intersections': sorted(set(arrow_hits)), 'structure_structure_box_intersections': c.structure_box_intersections(report), 'visible_text_count': len(texts)}
 
 def save(fig, stem, heading, extra=None):
+    for text in fig.findobj(Text):
+        text.set_fontsize(max(6, text.get_fontsize()))
     report = c.save(fig, stem, heading)
     report['layout_review'] = layout_review(fig, report)
     report['redesign_checks'] = extra or {}
     for values in report['layout_review'].values():
         if isinstance(values, list) and values:
             raise ValueError(f"Layout intersection in {stem}: {report['layout_review']}")
-    (c.OUT / f'{stem}_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    (c.OUT / f'{report["figure"]}_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
 def compact_card(fig, ax, witness, smiles, number, bounds):
@@ -161,7 +163,7 @@ def figure2():
     fig = figure(165)
     cs, kk = wide.Cs2CO3_delta_pp, wide.K2CO3_delta_pp
     opposite, shared = int((cs * kk < 0).sum()), len(wide)
-    ax = panel(fig, [0.075, 0.375, 0.52, 0.55], 'a', 'Same catalyst swap, two carbonate backgrounds')
+    ax = panel(fig, [0.075, 0.405, 0.52, 0.52], 'a', 'Same catalyst swap, two carbonate backgrounds')
     for (x0, y0) in [(-100, 0), (0, -100)]:
         ax.add_patch(Rectangle((x0, y0), 100, 100, facecolor='#F4EFEA', edgecolor='none', zorder=0))
     ax.scatter(cs, kk, color=GRAY, s=5, alpha=0.5, lw=0, zorder=2)
@@ -182,15 +184,18 @@ def figure2():
     for i, smiles in enumerate(examples):
         rows = witness.loc[witness.sub_1_smiles.eq(smiles)].copy()
         rows['order'] = rows.background_fingerprint.str.contains('CMP0334@3').astype(int)
-        x0 = 0.075 + i * 0.27
-        fig.text(x0, 0.272, str(i + 1), fontsize=7, weight='bold', va='center')
-        molecule(fig, [x0 + 0.015, 0.225, 0.11, 0.09], smiles)
+        yy = 0.315 - i * 0.08
+        fig.text(0.075, yy, str(i + 1), fontsize=7, weight='bold', va='center')
+        molecule(fig, [0.095, yy - 0.028, 0.11, 0.056], smiles)
         for j, row in enumerate(rows.sort_values('order').itertuples()):
-            yy = 0.288 - j * 0.036
             color = BLUE if row.delta > 0 else RED
-            fig.text(x0 + 0.135, yy, 'Cs2CO3' if j == 0 else 'K2CO3', fontsize=6, color=GRAY, va='center')
-            fig.text(x0 + 0.185, yy, f'{row.low_yield_pp:.0f}% → {row.high_yield_pp:.0f}%', fontsize=6, color=color, va='center')
-    conflict = panel(fig, [0.815, 0.235, 0.07, 0.69], 'b', 'Sign conflicts in 19 arrays', title_x=0.665)
+            xx = 0.325 + j * 0.17
+            fig.text(xx, yy + 0.009, f'{row.delta:+.1f} pp', fontsize=7, weight='bold', color=color, ha='center', va='center')
+            fig.text(xx, yy - 0.014, f'{row.low_yield_pp:.0f}% → {row.high_yield_pp:.0f}%', fontsize=6, color=GRAY, ha='center', va='center')
+    for j, label in enumerate(['Cs2CO3', 'K2CO3']):
+        fig.text(0.325 + j * 0.17, 0.34, label, fontsize=6, ha='center', weight='bold')
+    fig.text(0.595, 0.195, '3 negative; 1 positive', fontsize=6, ha='right')
+    conflict = panel(fig, [0.805, 0.235, 0.055, 0.625], 'b', 'Sign conflicts in 19 arrays', title_x=0.665, title_y=0.943)
     order = signs.loc[signs.threshold_pp.eq(20)].sort_values(['conflict_percent', 'stratum'], ascending=[False, True], na_position='last').stratum.tolist()
     totals = {t: (int(signs.loc[signs.threshold_pp.eq(t), 'n_conflicting_edges'].sum()), int(signs.loc[signs.threshold_pp.eq(t), 'n_cycle_edges'].sum())) for t in (0, 20)}
     for i, name in enumerate(order):
@@ -204,11 +209,11 @@ def figure2():
         for k, t in enumerate((0, 20)):
             n_conf, n_cyc = int(rows.loc[t, 'n_conflicting_edges']), int(rows.loc[t, 'n_cycle_edges'])
             text = f'{n_conf}/{n_cyc}' if n_cyc else '–'
-            conflict.text(1.42 + 0.62 * k, i, text, transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=5, color=INK if k == 0 else GRAY)
+            conflict.text(1.76 + 1.16 * k, i, text, transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=6, color=INK if k == 0 else GRAY)
     for k, (label, t, marker) in enumerate((('all', 0, 'o'), ('≥20 pp', 20, 'D'))):
-        conflict.text(1.42 + 0.62 * k - 0.1, -1.2, label, transform=conflict.get_yaxis_transform(), va='center', ha='left', fontsize=5, color=INK if k == 0 else GRAY)
-        conflict.scatter([1.42 + 0.62 * k - 0.2], [-1.2], transform=conflict.get_yaxis_transform(), s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, clip_on=False)
-        conflict.text(1.42 + 0.62 * k, len(order) + 0.2, f'{totals[t][0]}/{totals[t][1]}', transform=conflict.get_yaxis_transform(), va='center', ha='center', fontsize=5.5, weight='bold', color=INK if k == 0 else GRAY)
+        conflict.text(1.76 + 1.16 * k - 0.16, -1.2, label, transform=conflict.get_yaxis_transform(), va='center', ha='left', fontsize=6, color=INK if k == 0 else GRAY)
+        conflict.scatter([1.76 + 1.16 * k - 0.35], [-1.2], transform=conflict.get_yaxis_transform(), s=9, marker=marker, facecolors='white' if marker == 'D' else INK, edgecolors=INK, lw=0.5, clip_on=False)
+        fig.text(0.665 + k * 0.16, 0.908, f'{totals[t][0]}/{totals[t][1]} {label}', fontsize=7, weight='bold', color=INK if k == 0 else GRAY)
     names = [old23.CLASSES.get(x, x) for x in order]
     conflict.set_yticks(range(len(order)), names, fontsize=5.5)
     conflict.set(xlim=(-4, 104), ylim=(len(order) - 0.5, -0.5), xticks=[0, 50, 100])
@@ -227,7 +232,7 @@ def figure2():
         axis.set(xlim=(-100, 100), ylim=(-0.5, 0.5), yticks=[], xticks=[-100, 0, 100])
         axis.spines[['left', 'top', 'right']].set_visible(False)
         axis.tick_params(length=2, pad=1, labelsize=5)
-        fig.text(x, y + 0.04, equations[row.reaction_type], fontsize=5.5)
+        fig.text(x, y + 0.044, equations[row.reaction_type], fontsize=6)
         fig.text(x, y + 0.026, substitutions[row.reaction_type], fontsize=5, color=GRAY)
         fig.text(x + 0.255, y + 0.04, f'n = {len(values):,}', fontsize=5, ha='right')
     fig.text(0.5, 0.004, 'Yield change (pp)', ha='center', fontsize=6)
@@ -360,7 +365,7 @@ def amide_example(fig, cells, rect):
         fig.text(x, ymap(0.805), value, ha='center', fontsize=5.5)
     fig.text(0.142, ymap(0.778), f"{c.display_decimal(100 * start.loc['before', 'yield_numeric'])}%", ha='center', fontsize=6)
     fig.text(0.352, ymap(0.778), f"{c.display_decimal(100 * start.loc['after', 'yield_numeric'])}%", ha='center', fontsize=6, color=RED)
-    fig.text(0.075, ymap(0.748), 'HBTU; phenoxyacetic acid', fontsize=5.5)
+    fig.text(0.075, ymap(0.748), 'HBTU, no HOBt', fontsize=6)
     ax = fig.add_axes([0.14, ymap(0.548), 0.3, hmap(0.167)])
     ax.set(xlim=(-0.6, 2.4), ylim=(-0.5, 1.5))
     ax.axis('off')
@@ -427,8 +432,6 @@ def suzuki_example(fig, cells, rect):
     bar.solids.set_rasterized(False)
     bar.ax.tick_params(length=2, pad=1, labelsize=5)
     bar.set_label('Yield (%)', labelpad=1, fontsize=5.5)
-    fig.text(0.55, ymap(0.47), 'Same bromoindazole; 100 °C, 12 h', fontsize=5.5)
-    fig.text(0.55, ymap(0.452), '1,4-dioxane/H₂O', fontsize=5.5)
     return frame_location
 
 def lstar(color):
@@ -462,21 +465,26 @@ def figure4():
         raise ValueError('The measured rescue-contrast count changed')
     c.source('Fig4_a_recovery_classes', counts, repair_path, 'All eligible repairs; distinct measured_cell_repair_id within each reaction array', 'measured contrasts')
     with panel_source_names():
-        values, costs = old14.learning_data()
         partition = old14.scope_partition()
-    height = 112
+    height = 150
     fig = figure(height)
-    ymap = lambda y: 1 - (1 - y) * 130 / height
-    hmap = lambda h: h * 130 / height
+    ymap = lambda y: 1 - (1 - y) * 160 / height
+    hmap = lambda h: h * 160 / height
     ax = panel(fig, [0.075, ymap(0.52), 0.4, hmap(0.39)], 'a', 'Amide alternatives', title_y=ymap(0.94))
     ax.axis('off')
     ax = panel(fig, [0.55, ymap(0.52), 0.4, hmap(0.39)], 'b', 'Suzuki alternatives', title_y=ymap(0.94))
     ax.axis('off')
     amide_example(fig, amide, (ymap, hmap))
     frame = suzuki_example(fig, methyl, (ymap, hmap))
-    row_bottom, row_height = (2 / height, 35 / height)
-    heading_y = 34.5 / height
-    c_region, d_region = ([0.075, row_bottom, 0.525, row_height], [0.6, row_bottom, 0.35, row_height])
+    fig.text(0.075, 0.408, 'Common acid', fontsize=6, weight='bold')
+    molecule(fig, [0.2, 0.342, 0.18, 0.1], amide.reactant2_smiles.iloc[0])
+    fig.text(0.55, 0.408, 'Common aryl bromide', fontsize=6, weight='bold')
+    molecule(fig, [0.57, 0.315, 0.13, 0.085], methyl.reactant1_smiles.iloc[0])
+    fig.text(0.735, 0.375, '100 °C, 12 h', fontsize=6)
+    fig.text(0.735, 0.352, '1,4-dioxane/H₂O', fontsize=6)
+    row_bottom, row_height = (0.025, 0.25)
+    heading_y = 0.282
+    c_region = [0.075, row_bottom, 0.875, row_height]
     views_path = old14.RECIPE_OPTIONS / 'round29/option_scope_domains/all_collective_conflict_domains.csv'
     views = c.frame(views_path)
     by_class = views.groupby('rxn_class').full_graph_rescues20.agg(resolved='sum', conflicts='count').reset_index()
@@ -485,7 +493,8 @@ def figure4():
         raise ValueError('Per-transformation scope partition does not add up to the shared-scope total')
     by_class = by_class.sort_values('conflicts', ascending=False).reset_index(drop=True)
     c.source('Fig4_c_scope_by_transformation', by_class, views_path, 'All 542 conflict views grouped by transformation; resolved = full_graph_rescues20', 'conflict views')
-    scope = panel(fig, [0.21, 9 / height, 0.36, 16 / height], 'c', f'{int(by_class.resolved.sum())} of {int(by_class.conflicts.sum())} shared-scope conflicts resolved', title_x=0.075, title_y=heading_y)
+    scope = panel(fig, [0.21, 0.075, 0.48, 0.14], 'c', f'{int(by_class.resolved.sum())}/{int(by_class.conflicts.sum())} conflicts resolved', title_x=0.075, title_y=heading_y)
+    scope._draft_panel_title.set_fontsize(8)
     names = {'Acylation': 'Amide coupling', 'Suzuki': 'Suzuki', 'Kumada': 'Kumada'}
     for i, row in by_class.iterrows():
         scope.barh(i, row.resolved, color=BLUE, height=0.6)
@@ -494,21 +503,14 @@ def figure4():
     scope.set_yticks(range(len(by_class)), [names.get(x, x) for x in by_class.rxn_class], fontsize=6)
     scope.set(ylim=(len(by_class) - 0.4, -0.6), xlim=(0, 360), xticks=[0, 100, 200, 300])
     c.clean(scope, 'Conflicting reagent choices')
-    fig.text(0.21, 28.3 / height, f'resolved with 1, 2 or 3 extra options: {", ".join(str(v) for v in partition.n.iloc[:3])}', fontsize=5.5, color=GRAY)
-    curve = panel(fig, [0.72, 12 / height, 0.23, 17.5 / height], 'd', 'History adds to local profiles', title_x=0.65, title_y=heading_y)
-    x = np.arange(len(values))
-    curve.plot(x, values.error_change_pct, 'o-', color=TEAL, lw=1.1, ms=3)
-    curve.axhline(0, color=GRAY, lw=0.6)
-    labels = []
-    for n in values.n_vectors:
-        measured = costs.loc[costs.n_vectors.eq(n), 'local_condition_cells']
-        labels.append(f'{n}\n{int(measured.min())}–{int(measured.max())}')
-    curve.set_xticks(x, labels, fontsize=5.3)
-    curve.set(xlim=(-0.1, 3.2), ylim=(-52, 5), yticks=[-50, -25, 0])
-    curve.text(3, values.error_change_pct.iloc[-1] - 7, f'{values.error_change_pct.iloc[-1]:.1f}%', ha='center', va='top', fontsize=6, color=TEAL)
-    curve.text(0.98, 1.0, 'Local-only baseline', transform=curve.transAxes, ha='right', fontsize=5, color=GRAY)
-    c.clean(curve, 'Local profiles\n(endpoint wells)', 'Error change after\nadding history (%)')
-    report = save(fig, 'Figure_4', 'Measured alternatives resolve part of the shared-scope conflict', {'panel_order': 'a amide; b Suzuki; c scope band; d local curve', 'lower_row_height_mm': 35, 'lower_row_width_fractions': {'c': 0.6, 'd': 0.4}, 'panel_source_mapping': {'c': 'Fig4_c_scope_partition', 'd': 'Fig4_d_local_learning/measurement_cost'}})
+    fig.text(0.21, 0.242, f'1, 2 or 3 extra options: {", ".join(str(v) for v in partition.n.iloc[:3])}', fontsize=6, color=GRAY)
+    fig.text(0.765, 0.178, '257/542', fontsize=8, weight='bold', color=GRAY)
+    fig.text(0.765, 0.151, 'unresolved', fontsize=6, color=INK)
+    fig.add_artist(Rectangle((0.765, 0.119), 0.012, 0.012, transform=fig.transFigure, fc=BLUE, lw=0))
+    fig.text(0.785, 0.125, 'Resolved', fontsize=6, va='center')
+    fig.add_artist(Rectangle((0.765, 0.091), 0.012, 0.012, transform=fig.transFigure, fc=LIGHT, lw=0))
+    fig.text(0.785, 0.097, 'Unresolved', fontsize=6, va='center')
+    report = save(fig, 'Figure_4', 'Measured alternatives resolve part of the shared-scope conflict', {'panel_order': 'a amide; b Suzuki; c scope by transformation', 'local_profile_curve_moved_to': 'Figure_S8b', 'panel_source_mapping': {'c': 'Fig4_c_scope_partition/Fig4_c_scope_by_transformation'}})
     png = Image.open(c.FIG / 'Figure_4.png').convert('RGB')
     width, pixels_high = png.size
     border_x, middle_y = (int(round(frame[0] * width)), int(round((1 - frame[1]) * pixels_high)))
@@ -522,7 +524,7 @@ def figure4():
     delta = abs(lstar(np.array(white_sample) / 255) - lstar(np.array(blue_sample) / 255))
     if delta < 30:
         raise ValueError('The rendered blue frame/white lining fails CIELAB contrast')
-    blanks = {name: blank_square(png, region) for name, region in [('c', c_region), ('d', d_region)]}
+    blanks = {'c': blank_square(png, c_region)}
     if not all((item['passes_panel_width_quarter'] for item in blanks.values())):
         raise ValueError(f'The compact Figure4 lower row fails the empty-square threshold: {blanks}')
     report['redesign_checks'].update(rendered_92_cell_contrast={'blue_sample_xy_px': blue_at, 'blue_sample_rgb': blue_sample, 'inner_white_sample_xy_px': white_at, 'inner_white_sample_rgb': white_sample, 'delta_Lstar': delta, 'passes_30_Lstar': delta >= 30}, lower_row_pixel_blanks=blanks)
@@ -539,7 +541,7 @@ class AcceptedChemistry:
 
     def get(self, smiles, marked=False, template=None):
         key = self.Chem.MolToSmiles(self.Chem.MolFromSmiles(smiles))
-        rows = [row for row in self.assets if row['canonical_smiles'] == key and bool(row['marked']) == marked]
+        rows = [row for row in self.assets if row['canonical_smiles'] == key and bool(row['marked']) == marked and row.get('alignment_template') == template]
         if len(rows) != 1:
             raise ValueError(f'Accepted native vector is not unique: {smiles}, marked={marked}')
         return rows[0]

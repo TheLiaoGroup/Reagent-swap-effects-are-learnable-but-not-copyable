@@ -2,7 +2,7 @@
   "schema": "m1-public-csv-provenance-map-v1",
   "status": "verified_provenance_map_not_scientific_acceptance",
   "authority": {
-    "path": "CODEX_PROMPT_V11_SUPPORT_20261024.md",
+    "record": "full-support-scope-authorization-20261024",
     "sha256": "7cf719cda44fa18c710d923b9364a51cdd78320a2a13c42656b378a62ce3054d",
     "bytes": 3977
   },

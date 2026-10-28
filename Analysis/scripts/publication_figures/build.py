@@ -1,15 +1,41 @@
-"""Build the approved four-figure narrative and eight Extended Data figures."""
+"""Build four main figures and eight consistently numbered supplementary figures."""
 from __future__ import annotations
 import argparse
 import json
 import re
+from contextlib import contextmanager, nullcontext
+from pathlib import Path
 import numpy as np
 import pandas as pd
 from matplotlib.text import Text
 from publication_figures import common as c, figures14, figures23, redesign_figure1, redesign_figures234
 from m1_chemistry import Chemistry
+from publication_figures.supplementary_numbering import SM_NUMBER, validate, reject_wrong_table
 RESPONSE_LEARNING = c.A / 'scripts/response_learning'
 E66 = RESPONSE_LEARNING / 'Family_Information_Recovery_E66/results'
+
+
+@contextmanager
+def supplementary_outputs(legacy_number):
+    number = SM_NUMBER[legacy_number]
+    original_source, original_save = c.source, c.save
+
+    def source(name, *args, **kwargs):
+        name = re.sub(rf'^S{legacy_number}_', f'S{number}_', name)
+        value = original_source(name, *args, **kwargs)
+        c.TABLES[-1].update(supplementary_figure=number, caption_key=f'Figure_S{number}')
+        return value
+
+    def save(fig, stem, title=''):
+        if stem != f'Extended_Data_Figure_{legacy_number}':
+            raise ValueError(f'Unexpected supplementary output: {stem}')
+        return original_save(fig, f'Figure_S{number}', title)
+
+    c.source, c.save = source, save
+    try:
+        yield
+    finally:
+        c.source, c.save = original_source, original_save
 
 def extended_inventory():
     support_path = RESPONSE_LEARNING / 'Full_Edge_Corpus_E59/results/full_edge_corpus_class_support_20.csv'
@@ -56,11 +82,10 @@ def extended_budgets():
     if len(scope) != 22963:
         raise ValueError('Curve and measurement-cost denominators differ')
     costs = pd.DataFrame([dict(n_vectors=n, n_backgrounds=int(b), local_wells=2 * int(b) * n, n_query_vectors=int(count)) for n in budgets for b, count in scope.n_backgrounds.value_counts().sort_index().items()])
-    c.source('S2_local_learning', data, path, 'common16/raw_delta/all/equal_class_edge_balanced; original budgets and learners', 'percent MSE change vs history')
-    c.source('S2_measurement_cost', costs, scope_path, 'common16; distinct condition cells=2*backgrounds*profiles', 'condition cells')
-    fig = c.newfig(95)
-    ax = c.panel(fig, [0.14, 0.22, 0.78, 0.65], 'a', 'Local measurement budgets')
-    ax._draft_panel_letter.set_text('')
+    c.source('S2_a_local_learning', data, path, 'common16/raw_delta/all/equal_class_edge_balanced; original budgets and learners', 'percent MSE change vs history')
+    c.source('S2_a_measurement_cost', costs, scope_path, 'common16; distinct condition cells=2*backgrounds*profiles', 'condition cells')
+    fig = c.newfig(105, width_mm=183)
+    ax = c.panel(fig, [0.12, 0.24, 0.35, 0.6], 'a', 'Local measurements complement history')
     for learner, label, color in [('calibration_only', 'Local only', c.RED), ('joint', 'History + local', c.TEAL)]:
         rows = data.loc[data.learner.eq(learner)].sort_values('n_vectors')
         ax.plot([budgets.index(n) for n in rows.n_vectors], rows.error_change_pct, 'o-', color=color, ms=3, label=label)
@@ -71,9 +96,33 @@ def extended_budgets():
     ax.set_ylim(-8, 90)
     ax.set_yticks([0, 40, 80])
     c.clean(ax, 'Local profiles (endpoint wells)', 'Error change relative to history (%)')
-    ax.legend(frameon=False, loc='upper right')
-    ax.text(0.02, 0.96, '22,963 query vectors', transform=ax.transAxes, va='top', fontsize=5.5)
-    return c.save(fig, 'Extended_Data_Figure_2', 'The larger local budget retains a fixed sixteen-profile population')
+    ax.legend(frameon=False, loc='upper right', fontsize=6)
+    ax.text(0.02, 0.96, '22,963 queries', transform=ax.transAxes, va='top', fontsize=6)
+    original_source = c.source
+
+    def local_source(name, *args, **kwargs):
+        name = {'Fig4_c_local_learning': 'S8_b_local_learning', 'Fig4_c_measurement_cost': 'S8_b_measurement_cost'}[name]
+        return original_source(name, *args, **kwargs)
+    c.source = local_source
+    try:
+        local, local_costs = figures14.learning_data()
+    finally:
+        c.source = original_source
+    curve = c.panel(fig, [0.64, 0.24, 0.3, 0.6], 'b', 'History adds to local profiles')
+    x = np.arange(len(local))
+    curve.plot(x, local.error_change_pct, 'o-', color=c.TEAL, lw=1.1, ms=3)
+    curve.axhline(0, color=c.GRAY, lw=0.6)
+    local_labels = []
+    for n in local.n_vectors:
+        measured = local_costs.loc[local_costs.n_vectors.eq(n), 'local_condition_cells']
+        local_labels.append(f'{n}\n{int(measured.min())}–{int(measured.max())}')
+    curve.set_xticks(x, local_labels)
+    curve.set(xlim=(-0.1, 3.2), ylim=(-52, 5), yticks=[-50, -25, 0])
+    curve.text(3, local.error_change_pct.iloc[-1] - 4, f'{local.error_change_pct.iloc[-1]:.1f}%', ha='center', va='top', fontsize=6, color=c.TEAL)
+    curve.text(0.98, 0.99, 'Local-only baseline', transform=curve.transAxes, ha='right', va='top', fontsize=6, color=c.GRAY)
+    curve.text(0.02, 0.06, '24,221 queries', transform=curve.transAxes, va='bottom', fontsize=6)
+    c.clean(curve, 'Local profiles\n(endpoint wells)', 'Error change after adding history (%)')
+    return redesign_figures234.save(fig, 'Extended_Data_Figure_2', 'Local profiles and historical reactions provide complementary information', {'populations': {'a': {'queries': 22963, 'support': 'common16', 'baseline': 'history only'}, 'b': {'queries': 24221, 'support': 'common8', 'baseline': 'local only'}}, 'new_model_fits': False})
 
 def legacy_extended(number, legacy):
     """Keep accepted SI data selections while using the final physical artwork style."""
@@ -83,7 +132,7 @@ def legacy_extended(number, legacy):
 
     def add(name, data, source, selector, unit, note=''):
         prefix = {6: 'S1', 7: 'S2', 8: 'S3'}[number]
-        name = name.replace(prefix + '_', f'S{number}_', 1)
+        name = name.replace(prefix + '_', f'S{SM_NUMBER[number]}_', 1)
         value = original_add(name, data, source, selector, unit, note)
         c.source(name, value, source, selector, unit, note)
         return value
@@ -136,11 +185,24 @@ def main():
     c.OUT.mkdir(parents=True, exist_ok=True)
     if args.source_data_only:
         from m1_source_data import build_workbooks
+        approved_text = json.loads((c.A / 'scripts/templates/FIGURE_TEXT.json').read_text(encoding='utf-8'))
+        validate(json.loads((c.OUT / 'figure_manifest.json').read_text(encoding='utf-8')), approved_text)
         build_workbooks(c.OUT / 'figure_manifest.json', c.ROOT / 'Submission/04_Source_Data', c.OUT)
         return
     from publication_figures.direction_accuracy import ensure
     ensure()
     import m1_figures as legacy
+    previous_path = c.OUT / 'figure_manifest.json'
+    if previous_path.is_file():
+        previous = json.loads(previous_path.read_text(encoding='utf-8'))
+        for table in previous['source_data']:
+            path = c.DATA / (table['name'] + '.csv')
+            path.unlink(missing_ok=True)
+        for entry in previous['extended_data_figures']:
+            stem = Path(entry['pdf']).stem
+            for extension in ('pdf', 'png', 'svg'):
+                (c.FIG / f'{stem}.{extension}').unlink(missing_ok=True)
+            (c.OUT / f'{stem}_manifest.json').unlink(missing_ok=True)
     c.CHEM = Chemistry(c.FIG / 'ChemDraw', c.OUT / 'chemistry_work')
     c.QA.clear()
     all_tables, main, extended = ([], [], [])
@@ -150,24 +212,29 @@ def main():
     approved_text = json.loads((c.A / 'scripts/templates/FIGURE_TEXT.json').read_text(encoding='utf-8'))
     for index, (number, builder) in enumerate(builders):
         c.TABLES.clear()
-        report = builder() or c.QA[-1]
         is_main = index < 4
-        stem = f'Figure_{number}' if is_main else f'Extended_Data_Figure_{number}'
-        full_caption = {**figures14.CAPTIONS, **figures23.CAPTIONS}.get(stem)
+        legacy_number = number
+        with nullcontext() if is_main else supplementary_outputs(legacy_number):
+            report = builder() or c.QA[-1]
+        number = number if is_main else SM_NUMBER[legacy_number]
+        stem = f'Figure_{number}' if is_main else f'Figure_S{number}'
+        old_stem = f'Figure_{number}' if is_main else f'Extended_Data_Figure_{legacy_number}'
+        full_caption = {**figures14.CAPTIONS, **figures23.CAPTIONS}.get(old_stem)
         if full_caption:
             match = re.match('\\*\\*[^|]+\\| (.+?)\\.\\*\\*\\s*(.*)', full_caption, re.S)
             if not match:
                 raise ValueError(f'Unrecognized caption: {stem}')
             title, caption = match.groups()
         else:
-            title, caption = (report['title'], CAPTIONS[number])
+            title, caption = (report['title'], CAPTIONS[legacy_number])
         if stem in approved_text:
             title, caption = (approved_text[stem]['title'], approved_text[stem]['legend'])
-        entry = {'number': number, 'title': title, 'caption': caption, 'legend': caption, 'pdf': str(c.FIG / f'{stem}.pdf'), 'png': str(c.FIG / f'{stem}.png'), 'files': {ext: str(c.FIG / f'{stem}.{ext}') for ext in ['pdf', 'svg', 'png']}, 'panels': [p['panel'] for p in report['panels']], 'single_composite': report.get('single_composite', False)}
+        entry = {'number': number, 'title': title, 'caption': caption, 'legend': caption, 'pdf': str(c.FIG / f'{stem}.pdf'), 'png': str(c.FIG / f'{stem}.png'), 'files': {ext: str(c.FIG / f'{stem}.{ext}') for ext in ['pdf', 'svg', 'png']}, 'panels': [p['panel'] for p in report['panels']], 'single_composite': report.get('single_composite', False), 'source_tables': [table['name'] for table in c.TABLES]}
         if is_main:
             main.append(entry)
         else:
-            entry['si_notes'] = {1: [1], 2: [7], 3: [5], 4: [6], 5: [4], 6: [3], 7: [4, 7], 8: [8]}[number]
+            entry['legacy_number'] = legacy_number
+            entry['si_notes'] = {1: [1], 2: [7], 3: [5], 4: [6], 5: [4], 6: [3], 7: [4, 7], 8: [8]}[legacy_number]
             extended.append(entry)
         all_tables.extend(c.TABLES)
     c.TABLES.clear()
@@ -186,7 +253,11 @@ def main():
     if len({x['name'] for x in all_tables}) != len(all_tables):
         raise ValueError('Duplicate Source Data table names')
     chemistry = c.CHEM.finalize()
-    manifest = {'central_statement': 'Reagent-swap effects are learnable but not copyable', 'figure_width_mm': 183, 'figures': main, 'main_figures': main, 'extended_data_figures': extended, 'supplementary_figures': [], 'source_data': all_tables, 'supplementary_tables': [{'name': e['name'], 'file': e['csv'], 'source': e['source'], 'filter': e['selector']} for e in all_tables if e['name'].startswith('S')], 'chemistry': str(c.FIG / 'ChemDraw/chemistry_assets.json')}
+    extended.sort(key=lambda entry: entry['number'])
+    manifest = {'central_statement': 'Reagent-swap effects are learnable but not copyable', 'figure_width_mm': 183, 'figures': main, 'main_figures': main, 'extended_data_figures': extended, 'supplementary_figures': [], 'supplementary_numbering': 'current_S1_to_S8', 'source_data': all_tables, 'supplementary_tables': [{'name': e['name'], 'file': e['csv'], 'source': e['source'], 'filter': e['selector']} for e in all_tables if e['name'].startswith('S')], 'chemistry': str(c.FIG / 'ChemDraw/chemistry_assets.json')}
+    numbering_checks = validate(manifest, approved_text)
+    numbering_checks['negative_test'] = reject_wrong_table(manifest, approved_text)
+    (c.OUT / 'supplementary_numbering_checks.json').write_text(json.dumps(numbering_checks, indent=2), encoding='utf-8')
     (c.OUT / 'figure_manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
     (c.OUT / 'figure_checks.json').write_text(json.dumps({'figures': c.QA, 'native_structures': sum((e['native'] for e in chemistry['assets'])), 'structure_count': len(chemistry['assets']), 'fallbacks': chemistry['fallbacks']}, indent=2), encoding='utf-8')
     if not args.skip_workbooks:
