@@ -221,28 +221,25 @@ def figure1():
     shared = m.layer('03-identical-reference-input')
     m.text(shared, 67, 25, 'B', size=8, bold=True)
     m.text(shared, 73, 25, 'Same pair, new background', size=8, bold=True)
-    m.text(shared, 68, 33, 'Two wells, same substrate pair', bold=True)
+    m.text(shared, 68, 33, 'Same two wells', bold=True)
     for x, label in [(70, 'X'), (86, 'Y')]:
         node(shared, 'rect', x=x, y=37, width=12, height=7, fill='white', stroke=INK, stroke_width=0.22)
         m.text(shared, x + 6, 41.6, label, anchor='middle')
     m.text(shared, 68, 48.5, 'K\u2083PO\u2084 reference', color=GRAY)
-    m.text(shared, 68, 55, 'Measured yields give')
-    m.text(shared, 68, 60, 'yield change and')
-    m.text(shared, 68, 65, 'overall yield', color=GRAY)
 
     copying = m.layer('04-copy-the-difference')
     m.line(copying, (99, 40.5), (146, 40.5), ORANGE, 0.4, True, 'copy-route')
     m.text(copying, 123, 35.5, 'Copy unchanged', color=ORANGE, bold=True, anchor='middle')
-    m.text(copying, 149, 38, f'+{copy_pct:.1f}%', size=10, color=ORANGE, bold=True)
-    m.text(copying, 149, 44, 'error vs history alone', color=ORANGE)
-    m.tag(copying, 110, 49, 'recommendation', refs['recommendation'])
-    m.tag(copying, 110, 55, 'general conditions', refs['general'])
+    m.text(copying, 153, 33, 'Error vs history alone', color=GRAY)
+    m.text(copying, 153, 43, f'+{copy_pct:.1f}%', size=10, color=ORANGE, bold=True)
+    m.tag(copying, 110, 47, 'recommendation', refs['recommendation'])
+    m.tag(copying, 110, 52, 'general conditions', refs['general'])
 
     history = m.layer('05-learn-the-reference-relationship')
-    m.line(history, (99, 42), (103, 76), TEAL, 0.4, identity='learn-route-in')
-    m.line(history, (103, 76), (111, 78.5), TEAL, 0.4, True, 'learn-route-in-head')
-    m.text(history, 112, 63, 'Learn from Suzuki history', color=TEAL, bold=True)
-    x0, x1, y0, y1 = 113, 145, 89, 68
+    m.line(history, (103, 40.5), (103, 71.5), TEAL, 0.4, identity='learn-route-in')
+    m.line(history, (103, 71.5), (111, 71.5), TEAL, 0.4, True, 'learn-route-in-head')
+    m.text(history, 112, 56, f'Learn from {len(points)} Suzuki pairs', color=TEAL, bold=True)
+    x0, x1, y0, y1 = 113, 145, 82, 61
     px = lambda x: x0 + (x + 100) * (x1 - x0) / 200
     py = lambda y: y0 - (y + 100) * (y0 - y1) / 200
     for x, y in zip(points.reference_contrast_pp, points.target_contrast_pp):
@@ -255,24 +252,20 @@ def figure1():
     intercept = float(coefficient.centered_S_zero_slice_intercept_pp)
     slope = float(coefficient.centered_S_zero_slice_slope)
     m.line(history, (px(-100), py(intercept - 100 * slope)), (px(100), py(intercept + 100 * slope)), TEAL, 0.5)
-    m.text(history, 113, 66.5, 'Cs\u2082CO\u2083 target change (pp)', color=GRAY)
+    m.text(history, 113, 59.5, 'Cs\u2082CO\u2083 target change (pp)', color=GRAY)
     for value in (-100, 0, 100):
-        m.text(history, px(value), 93.3, str(value), color=GRAY, anchor='middle')
+        m.text(history, px(value), 86.3, str(value), color=GRAY, anchor='middle')
     for value in (-100, 100):
         m.text(history, 107 if value < 0 else 109, py(value) + 0.8, str(value), color=GRAY, anchor='end')
-    m.text(history, 129, 98, 'Reference change (pp)', color=GRAY, anchor='middle')
-    m.text(history, 113, 103, f'Stored slope {slope:.2f}', color=TEAL, bold=True)
-    m.text(history, 149, 68, 'Weight the response', color=TEAL, bold=True)
-    m.line(history, (146, 80), (154, 80), TEAL, 0.4, True, 'learn-route-out')
-    m.text(history, 156, 78, f'{learn_pct:.1f}%', size=10, color=TEAL, bold=True)
-    m.text(history, 149, 85, 'error vs history alone', color=TEAL)
-    m.text(history, 149, 94, 'All held-out targets', color=GRAY)
-    m.text(history, 149, 100, '(see Fig. 3A)', color=GRAY)
+    m.text(history, 129, 91, 'Reference change (pp)', color=GRAY, anchor='middle')
+    m.text(history, 113, 96, f'Learned slope {slope:.2f}', color=TEAL, bold=True)
+    m.line(history, (146, 71.5), (151, 71.5), TEAL, 0.4, True, 'learn-route-out')
+    m.text(history, 153, 74, f'{learn_pct:.1f}%', size=10, color=TEAL, bold=True)
+    m.text(history, 153, 84, 'Held-out targets \u00b7 Fig. 3A', color=GRAY)
 
     prior = m.layer('06-prior-research-context')
-    m.tag(prior, 68, 81, 'transfer learning', refs['transfer'])
-    m.tag(prior, 68, 88, 'yield-change prediction', refs['prediction'])
-    m.text(prior, 68, 97, f'{len(points)} historical pairs', color=GRAY)
+    m.tag(prior, 68, 76, 'transfer learning', refs['transfer'])
+    m.tag(prior, 68, 83, 'yield-change prediction', refs['prediction'])
 
     shown = pd.DataFrame([
         dict(quantity='conflicting swaps', value=conflicts, denominator=testable),
