@@ -251,39 +251,27 @@ def figure2():
     (c.OUT / 'Figure_2_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
-def plate_icon(ax, x, y, w, h, color=GRAY):
-    """Stack of three well plates drawn in true millimetres on a non-square axis."""
-    from matplotlib.patches import FancyBboxPatch, Ellipse
-    bbox = ax.get_position()
-    fig = ax.figure
-    mm_x = bbox.width * fig.get_figwidth() * 25.4
-    mm_y = bbox.height * fig.get_figheight() * 25.4
-    for k, alpha in ((2, 0.45), (1, 0.7), (0, 1.0)):
-        ax.add_patch(FancyBboxPatch((x + k * 1.2 / mm_x, y + k * 1.2 / mm_y), w, h, boxstyle='round,pad=0,rounding_size=0.006', mutation_aspect=mm_x / mm_y, facecolor='white', edgecolor=color, lw=0.5, alpha=alpha, zorder=3 + (2 - k)))
-    for r in range(3):
-        for q in range(5):
-            ax.add_patch(Ellipse((x + w * (0.14 + q * 0.18), y + h * (0.22 + r * 0.28)), 1.1 / mm_x, 1.1 / mm_y, facecolor='none', edgecolor=color, lw=0.35, zorder=6))
-
-
-def reference_motif(fig):
-    ax = fig.add_axes([0.075, 0.855, 0.85, 0.11])
-    ax.set(xlim=(0, 1), ylim=(0, 1))
-    ax.axis('off')
-    for xx, label, target in [(0.1, 'Reference recipe', False), (0.74, 'Target recipe', True)]:
-        ax.text(xx + 0.08, 0.98, label, ha='center', va='top', fontsize=6, weight='bold')
-        for i, endpoint in enumerate(['X', 'Y']):
-            x = xx + i * 0.095
-            ax.add_patch(Rectangle((x, 0.38), 0.065, 0.3, facecolor=LIGHT if target else 'white', edgecolor=GRAY, lw=0.5))
-            ax.text(x + 0.0325, 0.53, '?' if target else 'measured', ha='center', va='center', fontsize=5 if not target else 6.5, color=INK)
-            ax.text(x + 0.0325, 0.24, endpoint, ha='center', va='center', fontsize=5.5, color=GRAY)
-        arrow(ax, (xx + 0.067, 0.53), (xx + 0.093, 0.53), INK)
-        ax.text(xx + 0.08, 0.06, 'same substrate pair', ha='center', va='center', fontsize=5, color=GRAY)
-    arrow(ax, (0.3, 0.7), (0.73, 0.7), ORANGE, connectionstyle='arc3,rad=-0.08', shrinkB=0)
-    ax.text(0.515, 1.04, 'copy Δ', color=ORANGE, ha='center', va='bottom', fontsize=6, weight='bold')
-    arrow(ax, (0.3, 0.38), (0.445, 0.24), TEAL, shrinkB=0)
-    plate_icon(ax, 0.455, 0.08, 0.07, 0.3, TEAL)
-    arrow(ax, (0.545, 0.24), (0.73, 0.38), TEAL, shrinkB=0)
-    ax.text(0.62, 0.12, 'learn from history', color=TEAL, ha='left', va='center', fontsize=6, weight='bold')
+def reference_motif(fig, arr):
+    """Generic copy/learn motif; no worked-example numbers from Figure 1 are repeated."""
+    for x, label, target in [(0.155, 'Reference recipe', False), (0.768, 'Target recipe', True)]:
+        fig.text(x + 0.057, 0.968, label, ha='center', weight='bold', fontsize=7)
+        for j, name in enumerate(['X', 'Y']):
+            xx = x + j * 0.087
+            fig.add_artist(Rectangle((xx, 0.912), 0.065, 0.032, transform=fig.transFigure, facecolor=LIGHT if target else 'white', edgecolor=GRAY, lw=0.6))
+            fig.text(xx + 0.0325, 0.928, '?' if target else 'measured', ha='center', va='center', fontsize=7)
+            fig.text(xx + 0.0325, 0.897, name, ha='center', color=GRAY, fontsize=7)
+        arr((x + 0.068, 0.928), (x + 0.084, 0.928))
+        fig.text(x + 0.075, 0.878, 'same substrate pair', ha='center', color=GRAY, fontsize=7)
+    arr((0.343, 0.947), (0.752, 0.947), ORANGE, connectionstyle='arc3,rad=-.06')
+    fig.text(0.55, 0.978, 'copy Δ', ha='center', weight='bold', color=ORANGE, fontsize=7)
+    arr((0.343, 0.912), (0.475, 0.897), TEAL)
+    arr((0.548, 0.897), (0.752, 0.912), TEAL)
+    for dx, dy, alpha in [(0.012, 0.011, 0.45), (0.006, 0.0055, 0.7), (0, 0, 1)]:
+        fig.add_artist(Rectangle((0.485 + dx, 0.877 + dy), 0.056, 0.032, transform=fig.transFigure, facecolor='white', edgecolor=TEAL, lw=0.6, alpha=alpha))
+    for xx in np.linspace(0.492, 0.534, 5):
+        for yy in np.linspace(0.884, 0.902, 3):
+            fig.add_artist(plt.Circle((xx, yy), 0.0022, transform=fig.transFigure, facecolor='white', edgecolor=TEAL, lw=0.5))
+    fig.text(0.595, 0.878, 'learn from history', ha='left', weight='bold', color=TEAL, fontsize=7)
 
 
 def figure3():
@@ -292,77 +280,110 @@ def figure3():
         points, coefficient = old23.training_data()
         identities = old23.reagent_identities()
         local, macro = old23.specificity_data()
+    if len(shown) != 18 or shown.screen.iloc[0] != 'Overall' or len(points) != 452 or len(local) != 102 or len(macro) != 6:
+        raise ValueError('Figure 3 source population changed')
     fig = figure(168)
-    reference_motif(fig)
-    ax = panel(fig, [0.25, 0.43, 0.47, 0.37], 'a', 'Same two wells, two uses', title_x=0.075, title_y=0.815)
+
+    def arr(start, end, color=INK, **kwargs):
+        patch = FancyArrowPatch(start, end, transform=fig.transFigure, arrowstyle='-|>', mutation_scale=6, lw=0.7, color=color, **kwargs)
+        fig.add_artist(patch)
+        return patch
+
+    def heading(rect, letter, text, title_x, title_y):
+        ax = panel(fig, rect, letter, text, title_x=title_x, title_y=title_y)
+        ax._draft_panel_title.set_fontsize(7)
+        return ax
+    reference_motif(fig, arr)
+    # A: all screens in their sealed order; the overall row is the anchor.
+    ax = heading([0.255, 0.432, 0.455, 0.392], 'a', 'Same two wells, two uses', 0.075, 0.837)
     labels = [old23.screen_label(s) for s in shown.screen]
     stems = [label.rsplit(' ', 1)[0] if label[-1:].isdigit() else label for label in labels]
     labels = [label if stems.count(stem) > 1 or not label[-1:].isdigit() else stem for label, stem in zip(labels, stems)]
+    ax.axhspan(-0.5, 0.5, color='#F2F5F5', zorder=0)
     for i, row in enumerate(shown.itertuples()):
         learn, copy = (row.semantic_full_raw_relative_pct, row.direct_raw_relative_pct)
-        ax.plot([learn, min(copy, 78)], [i, i], color='#C9CED2', lw=0.8 if i else 1.4, zorder=1)
-        ax.scatter(learn, i, color=TEAL, s=26 if i == 0 else 10, zorder=3)
+        ax.plot([learn, min(copy, 78)], [i, i], color='#C5CDD1', lw=1.1 if i == 0 else 0.65, zorder=1)
+        ax.scatter(learn, i, color=TEAL, s=31 if i == 0 else 12, zorder=3)
         if copy >= 80:
             ax.plot(78, i, '>', color=ORANGE, ms=4)
-            ax.text(75, i - 0.45, f'{copy:.0f}%', ha='right', color=ORANGE, fontsize=5)
+            ax.text(75, i - 0.43, f'{copy:.0f}%', ha='right', color=ORANGE, fontsize=7)
         else:
-            ax.scatter(copy, i, color=ORANGE, s=26 if i == 0 else 10, zorder=3)
-    ax.axvline(0, color=GRAY, ls='--', lw=0.5)
-    ax.axhspan(-0.5, 0.5, color='#F4F5F6', zorder=0)
+            ax.scatter(copy, i, color=ORANGE, s=31 if i == 0 else 12, zorder=3)
+    ax.axvline(0, color=GRAY, ls=(0, (3, 3)), lw=0.6)
     ax.set(xlim=(-45, 80), ylim=(len(shown) - 0.5, -0.9), xticks=[-40, -20, 0, 20, 40, 60, 80])
-    ax.set_yticks(range(len(shown)), labels, fontsize=5.5)
+    ax.set_yticks(range(len(shown)), labels)
     ax.get_yticklabels()[0].set_weight('bold')
     c.clean(ax, 'Prediction error vs history alone (%)')
     for value, color, align, word in [(shown.iloc[0].semantic_full_raw_relative_pct, TEAL, 'right', 'learn'), (shown.iloc[0].direct_raw_relative_pct, ORANGE, 'left', 'copy')]:
-        ax.annotate(f'{word} {value:+.1f}%'.replace('-', '−'), (value, 0), xytext=(-6 if align == 'right' else 6, 0), textcoords='offset points', color=color, ha=align, va='center', fontsize=6, weight='bold')
-    bars = fig.add_axes([0.80, 0.62, 0.15, 0.09])
+        ax.annotate(f'{word} {value:+.1f}%'.replace('-', '−'), (value, 0), xytext=(-7 if align == 'right' else 7, 0), textcoords='offset points', color=color, ha=align, va='center', fontsize=8, weight='bold')
     wrong = errors.set_index('model')
     values = [wrong.loc['direct_raw', 'wrong_per_100'], wrong.loc['semantic_full_raw', 'wrong_per_100']]
     counts = [int(wrong.loc['direct_raw', 'n_wrong']), int(wrong.loc['semantic_full_raw', 'n_wrong'])]
-    bars.barh([0, 1], values, color=[ORANGE, TEAL], height=0.62)
-    for k, (value, count) in enumerate(zip(values, counts)):
-        bars.text(value + 0.6, k, f'{value:.1f}', va='center', fontsize=6, color=[ORANGE, TEAL][k], weight='bold')
+    fig.text(0.79, 0.786, 'Missed / wrong directions', weight='bold', fontsize=7)
+    fig.text(0.79, 0.765, f'{int(errors.n_targets.iloc[0]):,} held-out changes', color=GRAY, fontsize=7)
+    bars = fig.add_axes([0.805, 0.62, 0.14, 0.091])
+    bars.barh([0, 1], values, color=[ORANGE, TEAL], height=0.5)
+    for k, value in enumerate(values):
+        bars.text(value + 0.7, k, f'{value:.1f}', va='center', weight='bold', fontsize=8, color=[ORANGE, TEAL][k])
     bars.set(xlim=(0, 25), ylim=(1.6, -0.6), xticks=[0, 10, 20])
-    bars.set_yticks([0, 1], ['copy', 'learn'], fontsize=5.5)
+    bars.set_yticks([0, 1], ['copy', 'learn'])
     c.clean(bars, 'per 100 changes ≥20 pp')
-    fig.text(0.80, 0.765, 'Missed or wrong directions', fontsize=6, weight='bold')
-    fig.text(0.80, 0.745, f'{int(errors.n_targets.iloc[0]):,} held-out changes', fontsize=5.5, color=GRAY)
-    fig.text(0.80, 0.555, f'{counts[0] - counts[1]:,} more directions right', fontsize=5.5, color=TEAL)
-    ax = panel(fig, [0.095, 0.075, 0.27, 0.25], 'b', 'Learned slope is not unit slope', title_y=0.345)
-    ax.scatter(points.reference_contrast_pp, points.target_contrast_pp, color=GRAY, s=3, alpha=0.45, lw=0)
+    fig.text(0.79, 0.55, f'{counts[0] - counts[1]:,} more directions right', color=TEAL, fontsize=7)
+    # B: the stored training relation and the actual additive swap.
+    ax = heading([0.095, 0.07, 0.27, 0.25], 'b', 'Learned slope is not unit slope', 0.095, 0.35)
+    ax.scatter(points.reference_contrast_pp, points.target_contrast_pp, color=GRAY, s=4, alpha=0.42, lw=0)
     xx = np.array([-100, 100])
-    ax.plot(xx, xx, color=ORANGE, lw=0.9)
-    ax.plot(xx, coefficient.centered_S_zero_slice_intercept_pp + coefficient.centered_S_zero_slice_slope * xx, color=TEAL, lw=1.1)
-    ax.text(30, 92, 'copy (slope 1)', color=ORANGE, fontsize=5.5)
-    ax.text(97, 26, 'learned', color=TEAL, fontsize=5.5, ha='right')
-    ax.axhline(0, color=LIGHT, lw=0.4)
-    ax.axvline(0, color=LIGHT, lw=0.4)
+    ax.plot(xx, xx, color=ORANGE, lw=1)
+    ax.plot(xx, coefficient.centered_S_zero_slice_intercept_pp + coefficient.centered_S_zero_slice_slope * xx, color=TEAL, lw=1.2)
+    ax.axhline(0, color=LIGHT, lw=0.5, zorder=0)
+    ax.axvline(0, color=LIGHT, lw=0.5, zorder=0)
     ax.set(xlim=(-100, 100), ylim=(-100, 100), xticks=[-100, 0, 100], yticks=[-100, 0, 100])
     c.clean(ax, 'Reference change (pp)', 'Target change (pp)')
-    ax.text(-95, 88, f'{len(points)} training pairs', fontsize=5)
-    fig.text(0.395, 0.318, 'Amide coupling additive', fontsize=5.5, weight='bold')
-    for y, row, name in zip([0.228, 0.103], identities, ['pentafluorophenol', 'N-hydroxyphthalimide']):
-        molecule(fig, [0.40, y, 0.11, 0.072], row['smiles'])
-    fig.add_artist(FancyArrowPatch((0.455, 0.203), (0.455, 0.183), transform=fig.transFigure, arrowstyle='->', mutation_scale=5, color=INK, lw=0.55))
-    ax = panel(fig, [0.75, 0.075, 0.2, 0.25], 'c', 'Same swap beats a matched swap', title_x=0.585, title_y=0.345)
+    ax.text(-95, 88, f'{len(points)} training pairs', fontsize=7)
+    ax.text(30, 92, 'copy (slope 1)', color=ORANGE, fontsize=7)
+    learned = ax.text(103, 23, 'learned', color=TEAL, fontsize=7, ha='right')
+    fig.text(0.455, 0.326, 'Amide coupling', ha='center', weight='bold', fontsize=7)
+    fig.text(0.455, 0.308, 'additive swap', ha='center', fontsize=7)
+    for y, row in zip([0.208, 0.084], identities):
+        molecule(fig, [0.4, y, 0.11, 0.072], row['smiles'])
+    arr((0.455, 0.19), (0.455, 0.176))
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    label_box = learned.get_window_extent(renderer)
+    centers = ax.collections[0].get_offset_transform().transform(np.asarray(ax.collections[0].get_offsets()))
+    line_x = np.linspace(-100, 100, 10001)
+    line_centers = ax.transData.transform(np.column_stack([line_x, coefficient.centered_S_zero_slice_intercept_pp + coefficient.centered_S_zero_slice_slope * line_x]))
+    label_gaps = []
+    for centers_px, radius_px in [(centers, np.sqrt(4) / 2 * fig.dpi / 72), (line_centers, 0.6 * fig.dpi / 72)]:
+        dx = np.maximum(np.maximum(label_box.x0 - centers_px[:, 0], centers_px[:, 0] - label_box.x1), 0)
+        dy = np.maximum(np.maximum(label_box.y0 - centers_px[:, 1], centers_px[:, 1] - label_box.y1), 0)
+        label_gaps.append(float((np.hypot(dx, dy).min() - radius_px) * 72 / fig.dpi))
+    if min(label_gaps) < 2:
+        raise ValueError(f'Figure 3B label touches data: {label_gaps}')
+    # C: all 102 screen points and the six group averages.
+    ax = heading([0.77, 0.07, 0.185, 0.225], 'c', 'Same swap beats a matched swap', 0.585, 0.35)
+    fig.text(0.585, 0.327, 'Screen', color=GRAY, fontsize=7)
+    fig.text(0.724, 0.327, 'Group average', color=TEAL, fontsize=7)
+    fig.add_artist(plt.Circle((0.576, 0.331), 0.0017, transform=fig.transFigure, facecolor=GRAY, edgecolor='none'))
+    fig.add_artist(plt.Circle((0.715, 0.331), 0.0025, transform=fig.transFigure, facecolor=TEAL, edgecolor='none'))
+    fig.text(0.585, 0.3, 'Held out', color=GRAY, fontsize=7)
+    fig.text(0.728, 0.3, 'History', ha='right', color=GRAY, fontsize=7)
     settings = [(s, f) for s in ['pair', 'role1', 'role2'] for f in [0.25, 1.0]]
-    names = {'pair': 'Substrate pair', 'role1': 'First reactant', 'role2': 'Second reactant'}
-    ticks = []
     for i, (split, fraction) in enumerate(settings):
         rows = local.loc[local.split.eq(split) & local.fraction.eq(fraction)].sort_values('screen')
         value = macro.loc[macro.split.eq(split) & macro.fraction.eq(fraction)]
         if len(rows) != 17 or len(value) != 1:
             raise ValueError('Matched-reference population changed')
-        ax.scatter(100 * rows.other_recovery_vs_control, i + np.linspace(-0.15, 0.15, len(rows)), color=GRAY, s=5, alpha=0.6, lw=0)
-        ax.scatter(100 * value.other_recovery_vs_control, [i], color=TEAL, s=18, edgecolors='white', lw=0.4, zorder=3)
-        ticks.append(f'{names[split]}, {int(100 * fraction)}%')
-    ax.set_yticks(range(len(settings)), ticks, fontsize=5.5)
+        ax.scatter(100 * rows.other_recovery_vs_control, i + np.linspace(-0.15, 0.15, len(rows)), color=GRAY, s=8, alpha=0.62, lw=0)
+        ax.scatter(100 * value.other_recovery_vs_control, [i], color=TEAL, s=26, edgecolors='white', lw=0.55, zorder=3)
+        fig.text(0.728, 0.07 + 0.225 * (5.6 - i) / 6.2, f'{int(100 * fraction)}%', ha='right', va='center', fontsize=7)
+    for i, label in [(0.5, 'Substrate pair'), (2.5, 'First reactant'), (4.5, 'Second reactant')]:
+        fig.text(0.585, 0.07 + 0.225 * (5.6 - i) / 6.2, label, va='center', fontsize=7)
     lowest = float(100 * local.other_recovery_vs_control.min())
-    ax.set(ylim=(5.6, -0.6), xlim=(min(-10, np.floor(lowest) - 4), 70), xticks=[0, 30, 60])
-    ax.axvline(0, color=GRAY, lw=0.5, ls='--')
+    ax.set(ylim=(5.6, -0.6), xlim=(min(-10, np.floor(lowest) - 4), 70), xticks=[0, 30, 60], yticks=[])
+    ax.axvline(0, color=GRAY, lw=0.6, ls=(0, (3, 3)))
     c.clean(ax, 'Error removed vs matched control (%)')
-    fig.text(0.585, 0.317, 'held out, history used', fontsize=5, color=GRAY)
-    return save(fig, 'Figure_3', 'Historical relationships make the same reference measurements useful', {'panels': {'a': 'same-reference screen comparison and direction counts', 'b': 'stored training relationship and actual reagent identities', 'c': 'same-substitution specificity'}, 'new_scientific_counts_or_fits': False})
+    return save(fig, 'Figure_3', 'Historical relationships make the same reference measurements useful', {'panels': {'a': 'same-reference screen comparison and direction counts', 'b': 'stored training relationship and actual reagent identities', 'c': 'same-substitution specificity'}, 'learned_label_min_gap_pt': label_gaps, 'new_scientific_counts_or_fits': False})
 
 def amide_example(fig, cells, rect):
     ymap, hmap = rect
