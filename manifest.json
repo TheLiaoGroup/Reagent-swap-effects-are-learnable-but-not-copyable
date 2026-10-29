@@ -250,8 +250,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
-      "sha256": "29d4e4fb40a1c603c1b1f1722fedfa7c992575bf6639aec5d24496e6f29c6154",
-      "bytes": 44428,
+      "sha256": "e68c936829223cc7317a45a23f19fe1ac73af5885509cb33bbe981aa4f96feeb",
+      "bytes": 44511,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/select_fig1_example.py": {

@@ -220,6 +220,7 @@ def figure2():
     totals = {t: (int(signs.loc[signs.threshold_pp.eq(t), 'n_conflicting_edges'].sum()), int(signs.loc[signs.threshold_pp.eq(t), 'n_cycle_edges'].sum())) for t in (0, 20)}
     fig.text(0.442, 0.902, f'{totals[0][0]}/{totals[0][1]} all', fontsize=7, weight='bold')
     fig.text(0.750, 0.902, f'{totals[20][0]}/{totals[20][1]} ≥20 pp', fontsize=7, weight='bold')
+    fig.text(0.8175, 0.883, 'sign conflicts', fontsize=7, color=GRAY, ha='center')
     for x, label, ha in [(0.442, 'Array', 'left'), (0.640, 'n', 'right'), (0.7075, 'Response (pp)', 'center'), (0.790, 'all', 'center'), (0.845, '≥20 pp', 'center'), (0.935, '≥20 pp reversed', 'center')]:
         fig.text(x, 0.858, label, fontsize=7, color=GRAY, ha=ha)
     sign_counts = []
