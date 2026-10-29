@@ -205,8 +205,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/build.py": {
-      "sha256": "c54863adb9630b0130baeaca833be8e9ce4c9746460072f2104529cdd9ba3899",
-      "bytes": 18877,
+      "sha256": "24dd0cf386daa0108449e9b0abc037ad68ffcb68b363413b6d10aa3ab09d16f1",
+      "bytes": 19142,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/check_structure_layout.py": {
@@ -250,8 +250,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/redesign_figures234.py": {
-      "sha256": "405a505e74e9bfe1f9a2672f35c5a56bc768c43866e50d6a93290943b6f54f11",
-      "bytes": 42036,
+      "sha256": "29d4e4fb40a1c603c1b1f1722fedfa7c992575bf6639aec5d24496e6f29c6154",
+      "bytes": 44428,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/select_fig1_example.py": {
@@ -965,8 +965,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/templates/FIGURE_TEXT.json": {
-      "sha256": "b4278a197f957f04c43740f90bbad3e6246d2fa316a893421981b799f567396e",
-      "bytes": 11437,
+      "sha256": "21c3cd4a97974c7352d6547b056ac9fff814a0f7b08fc0763d23c3cbb2d45425",
+      "bytes": 11639,
       "kind": "release_asset"
     },
     "DATA_LICENSE": {
@@ -985,8 +985,8 @@
       "kind": "release_asset"
     },
     "README.txt": {
-      "sha256": "3495481f507cee2975604de1da76d285abe4827d4814af9fee8be59d30c8059a",
-      "bytes": 1881,
+      "sha256": "5ef93fa675d3b552444715825e2f3cebda0135871e55eafb215f9d1294904211",
+      "bytes": 1888,
       "kind": "reader_documentation"
     },
     "Results/M1_well_measurement_status.csv.gz": {
@@ -1225,8 +1225,8 @@
       "bytes": 177863
     },
     "Results/source_tables/Fig3_a_direction_errors.csv": {
-      "sha256": "c86f0cbb1febae8d7140a2aeac8cd82be9e401a0d872a08e5e53e319d4a2a7d1",
-      "bytes": 763,
+      "sha256": "a530adefcbd9e50308eac1079baf40bd2b1decce5de82a514db642adb6f2e9af",
+      "bytes": 1146,
       "kind": "release_asset"
     },
     "Results/source_tables/Fig3_a_screen_comparison.csv": {
@@ -2343,6 +2343,16 @@
       "sha256": "12b5c5cd28d6a443cfb0668e3cd4d6e8fd4f7c9653199b09fef986db7203c71c",
       "bytes": 274,
       "kind": "release_asset"
+    },
+    "Analysis/scripts/publication_figures/decisive_reversals.py": {
+      "kind": "release_asset",
+      "sha256": "2b15608ed225209ab1ad5cba5d9ca78cd59e6781c9fa3590bb9f3404e5996fc4",
+      "bytes": 14042
+    },
+    "Results/source_tables/Fig2_b_decisive_reversals.csv": {
+      "kind": "release_asset",
+      "sha256": "304aa2c0f0e1bce74d93f804c40a18f14a69ecf325c5fd2e672d16987eb2a49a",
+      "bytes": 14251
     }
   }
 }

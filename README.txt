@@ -1,4 +1,4 @@
-Reagent-swap effects are learnable but not copyable
+Copying a reaction precedent is no better than having none
 =================================================
 
 Files

@@ -145,6 +145,7 @@ def compact_card(fig, ax, witness, smiles, number, bounds):
         fig.add_artist(FancyArrowPatch((fx + fw * 0.674, yy + fh * 0.15), (fx + fw * 0.714, yy + fh * 0.15), transform=fig.transFigure, arrowstyle='->', mutation_scale=4, lw=0.6, color=BLUE if row.delta > 0 else RED))
 
 def figure2():
+    from publication_figures import decisive_reversals
     wide, witness, _ = old23.context_data()
     original_source = c.source
 
@@ -161,6 +162,14 @@ def figure2():
         c.source = original_source
     if len(order) != 19 or swaps.reaction_type.tolist() != order:
         raise ValueError('The array atlas requires the original nineteen-array order')
+    decisive = decisive_reversals.build_decisive_reversals()
+    c.source('Fig2_b_decisive_reversals', decisive, decisive_reversals.source_paths(),
+             'Same typed swap including component-specific doses and substrate pair; backgrounds differ in exactly one other component identity; both absolute responses at least20pp',
+             'response comparison counts and percent',
+             'Unordered background comparisons share substrates and measured wells; unsupported arrays are undefined, not zero')
+    decisive_by_array = decisive.loc[decisive.level.eq('array')].set_index('reaction_type')
+    if set(decisive_by_array.index) != set(order):
+        raise ValueError('Decisive reversal rows do not cover the nineteen-array atlas')
     # Keep the established component0 -> component1 orientation. In particular,
     # acylation and allylic raw-delta sign counts reverse after orientation_sign;
     # the scientific statement is both signs, not a prescribed positive count.
@@ -206,12 +215,12 @@ def figure2():
     fig.text(0.3295, 0.414, 'Catalyst response (pp)', fontsize=7, ha='center')
     fig.text(0.430, 0.113, '3 negative; 1 positive', fontsize=7, ha='right')
 
-    atlas = panel(fig, [0.705, 0.130, 0.125, 0.700], 'b', 'Opposite responses in all 19 arrays', title_x=0.492, title_y=0.947)
+    atlas = panel(fig, [0.660, 0.130, 0.095, 0.700], 'b', 'Opposite responses in all 19 arrays', title_x=0.442, title_y=0.947)
     atlas._draft_panel_title.set_fontsize(7)
     totals = {t: (int(signs.loc[signs.threshold_pp.eq(t), 'n_conflicting_edges'].sum()), int(signs.loc[signs.threshold_pp.eq(t), 'n_cycle_edges'].sum())) for t in (0, 20)}
-    fig.text(0.492, 0.902, f'{totals[0][0]}/{totals[0][1]} all', fontsize=7, weight='bold')
+    fig.text(0.442, 0.902, f'{totals[0][0]}/{totals[0][1]} all', fontsize=7, weight='bold')
     fig.text(0.750, 0.902, f'{totals[20][0]}/{totals[20][1]} ≥20 pp', fontsize=7, weight='bold')
-    for x, label, ha in [(0.492, 'Array', 'left'), (0.677, 'n', 'right'), (0.7675, 'Response (pp)', 'center'), (0.880, 'all', 'center'), (0.955, '≥20 pp', 'center')]:
+    for x, label, ha in [(0.442, 'Array', 'left'), (0.640, 'n', 'right'), (0.7075, 'Response (pp)', 'center'), (0.790, 'all', 'center'), (0.845, '≥20 pp', 'center'), (0.935, '≥20 pp reversed', 'center')]:
         fig.text(x, 0.858, label, fontsize=7, color=GRAY, ha=ha)
     sign_counts = []
     for i, cls in enumerate(order):
@@ -220,12 +229,16 @@ def figure2():
         colors = np.where(values > 0, BLUE, np.where(values < 0, RED, GRAY))
         atlas.scatter(values, i + jitter, s=1.6, alpha=0.58, color=colors, lw=0)
         yy = 0.130 + 0.700 * (18.5 - i) / 19
-        fig.text(0.492, yy, old23.CLASSES[cls], fontsize=7, va='center')
-        fig.text(0.677, yy, f'{len(values):,}', fontsize=7, va='center', ha='right')
+        fig.text(0.442, yy, old23.CLASSES[cls], fontsize=7, va='center')
+        fig.text(0.640, yy, f'{len(values):,}', fontsize=7, va='center', ha='right')
         rows = signs.loc[signs.stratum.eq(cls)].set_index('threshold_pp')
-        for x, threshold in [(0.880, 0), (0.955, 20)]:
+        for x, threshold in [(0.790, 0), (0.845, 20)]:
             k, n = int(rows.loc[threshold, 'n_conflicting_edges']), int(rows.loc[threshold, 'n_cycle_edges'])
             fig.text(x, yy, f'{k}/{n}', fontsize=7, va='center', ha='center', color=INK if threshold == 0 else GRAY)
+        reversal = decisive_by_array.loc[cls]
+        nk, nn = int(reversal.n_ge20_reversed), int(reversal.n_ge20_comparisons)
+        reversal_label = f'{nk:,}/{nn:,} ({c.display_decimal(100 * nk / nn, 0)}%)' if nn else '–'
+        fig.text(0.935, yy, reversal_label, fontsize=7, va='center', ha='center', color=INK)
         selected = swaps.loc[swaps.reaction_type.eq(cls)].iloc[0]
         sign_counts.append({'array': cls, 'swap_id': selected.swap_id, 'n': len(values), 'positive': int((values > 0).sum()), 'negative': int((values < 0).sum()), 'zero': int((values == 0).sum())})
     atlas.axvline(0, color=LIGHT, lw=0.5, zorder=0)
@@ -237,7 +250,9 @@ def figure2():
     report = save(fig, 'Figure_2', 'Substrate pairs and recipe backgrounds jointly determine substitution responses')
     report['redesign_checks'].update(opposite_pairs=opposite, shared_pairs=shared, totals=totals,
         selected_array_sign_counts=sign_counts, arrays_with_both_signs=sum(row['positive'] > 0 and row['negative'] > 0 for row in sign_counts),
-        exact_zero_color=GRAY, panel_order='a shared-background scatter and four-cell witness; b nineteen-array atlas')
+        exact_zero_color=GRAY, panel_order='a shared-background scatter and four-cell witness; b nineteen-array atlas',
+        decisive_reversal_arrays_with_support=int(decisive_by_array.n_ge20_comparisons.gt(0).sum()),
+        decisive_reversal_anchor=decisive_reversals.last_anchor_result())
     (c.OUT / 'Figure_2_manifest.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
@@ -266,7 +281,19 @@ def reference_motif(fig, arr):
 
 def figure3():
     with panel_source_names():
-        shown, errors = (old23.main_screen_data(), old23.direction_errors())
+        shown = old23.main_screen_data()
+        direction_path = old23.METRICS / 'direction_accuracy_summary.csv'
+        direction_raw = c.frame(direction_path)
+        errors = direction_raw.loc[direction_raw.threshold_pp.eq(20) & direction_raw.aggregation.eq('pooled')
+                                   & direction_raw.model.isin(['marginal', 'direct_raw', 'semantic_full_raw'])].copy()
+        errors = errors.set_index('model').loc[['marginal', 'direct_raw', 'semantic_full_raw']].reset_index()
+        errors['wrong_per_100'] = 100 * (1 - errors.accuracy)
+        errors['n_wrong'] = errors.n_targets - errors.n_correct
+        if errors.n_targets.tolist() != [21997, 21997, 21997] or errors.n_wrong.tolist()[1:] != [4097, 2982]:
+            raise ValueError('Direction-error headline population changed')
+        c.source('Fig3_a_direction_errors', errors, direction_path,
+                 'Pooled unique repeat0 targets with measured absolute change at least20pp; history alone, copy and learn; zero predictions count as errors',
+                 'errors per100 and target counts')
         points, coefficient = old23.training_data()
         identities = old23.reagent_identities()
         local, macro = old23.specificity_data()
@@ -307,16 +334,16 @@ def figure3():
     for value, color, align, word in [(shown.iloc[0].semantic_full_raw_relative_pct, TEAL, 'right', 'learn'), (shown.iloc[0].direct_raw_relative_pct, ORANGE, 'left', 'copy')]:
         ax.annotate(f'{word} {value:+.1f}%'.replace('-', '−'), (value, 0), xytext=(-7 if align == 'right' else 7, 0), textcoords='offset points', color=color, ha=align, va='center', fontsize=8, weight='bold')
     wrong = errors.set_index('model')
-    values = [wrong.loc['direct_raw', 'wrong_per_100'], wrong.loc['semantic_full_raw', 'wrong_per_100']]
+    values = [wrong.loc[model, 'wrong_per_100'] for model in ['marginal', 'direct_raw', 'semantic_full_raw']]
     counts = [int(wrong.loc['direct_raw', 'n_wrong']), int(wrong.loc['semantic_full_raw', 'n_wrong'])]
     fig.text(0.79, 0.786, 'Missed / wrong directions', weight='bold', fontsize=7)
     fig.text(0.79, 0.765, f'{int(errors.n_targets.iloc[0]):,} held-out changes', color=GRAY, fontsize=7)
-    bars = fig.add_axes([0.805, 0.62, 0.14, 0.091])
-    bars.barh([0, 1], values, color=[ORANGE, TEAL], height=0.5)
+    bars = fig.add_axes([0.805, 0.62, 0.14, 0.12])
+    bars.barh([0, 1, 2], values, color=[GRAY, ORANGE, TEAL], height=0.5)
     for k, value in enumerate(values):
-        bars.text(value + 0.7, k, f'{value:.1f}', va='center', weight='bold', fontsize=8, color=[ORANGE, TEAL][k])
-    bars.set(xlim=(0, 25), ylim=(1.6, -0.6), xticks=[0, 10, 20])
-    bars.set_yticks([0, 1], ['copy', 'learn'])
+        bars.text(value + 0.7, k, f'{value:.1f}', va='center', weight='bold', fontsize=8, color=[GRAY, ORANGE, TEAL][k])
+    bars.set(xlim=(0, 25), ylim=(2.6, -0.6), xticks=[0, 10, 20])
+    bars.set_yticks([0, 1, 2], ['history alone', 'copy', 'learn'])
     c.clean(bars, 'per 100 changes ≥20 pp')
     fig.text(0.79, 0.55, f'{counts[0] - counts[1]:,} more directions right', color=TEAL, fontsize=7)
     # B: the stored training relation and the actual additive swap.
