@@ -1,4 +1,4 @@
-Copying a reaction precedent is no better than having none
+Copying measured reagent effects can mislead synthesis
 =================================================
 
 Files
