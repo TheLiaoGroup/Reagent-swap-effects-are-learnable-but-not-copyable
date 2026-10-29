@@ -255,7 +255,7 @@ def main():
         raise ValueError('Duplicate Source Data table names')
     chemistry = c.CHEM.finalize()
     extended.sort(key=lambda entry: entry['number'])
-    manifest = {'central_statement': 'Copying measured reagent effects can mislead synthesis', 'figure_width_mm': 183, 'figures': main, 'main_figures': main, 'extended_data_figures': extended, 'supplementary_figures': [], 'supplementary_numbering': 'current_S1_to_S8', 'source_data': all_tables, 'supplementary_tables': [{'name': e['name'], 'file': e['csv'], 'source': e['source'], 'filter': e['selector']} for e in all_tables if e['name'].startswith('S')], 'chemistry': str(c.FIG / 'ChemDraw/chemistry_assets.json')}
+    manifest = {'central_statement': 'Copying a reaction precedent is no better than having none', 'figure_width_mm': 183, 'figures': main, 'main_figures': main, 'extended_data_figures': extended, 'supplementary_figures': [], 'supplementary_numbering': 'current_S1_to_S8', 'source_data': all_tables, 'supplementary_tables': [{'name': e['name'], 'file': e['csv'], 'source': e['source'], 'filter': e['selector']} for e in all_tables if e['name'].startswith('S')], 'chemistry': str(c.FIG / 'ChemDraw/chemistry_assets.json')}
     numbering_checks = validate(manifest, approved_text)
     numbering_checks['negative_test'] = reject_wrong_table(manifest, approved_text)
     (c.OUT / 'supplementary_numbering_checks.json').write_text(json.dumps(numbering_checks, indent=2), encoding='utf-8')

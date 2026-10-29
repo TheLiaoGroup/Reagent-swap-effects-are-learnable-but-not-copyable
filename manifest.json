@@ -205,8 +205,8 @@
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/build.py": {
-      "sha256": "0310a20cd12cc968fd275925cc9a69d7f39e168c6bfaa9231ca037782545c4a3",
-      "bytes": 19138,
+      "sha256": "24dd0cf386daa0108449e9b0abc037ad68ffcb68b363413b6d10aa3ab09d16f1",
+      "bytes": 19142,
       "kind": "scientific_source"
     },
     "Analysis/scripts/publication_figures/check_structure_layout.py": {
@@ -985,8 +985,8 @@
       "kind": "release_asset"
     },
     "README.txt": {
-      "sha256": "98c54748fd1f45ab2dc2858548db4b8313f064259e8f227874b9843446adf872",
-      "bytes": 1884,
+      "sha256": "5ef93fa675d3b552444715825e2f3cebda0135871e55eafb215f9d1294904211",
+      "bytes": 1888,
       "kind": "reader_documentation"
     },
     "Results/M1_well_measurement_status.csv.gz": {
